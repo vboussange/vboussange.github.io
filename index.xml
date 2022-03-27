@@ -1,0 +1,640 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Victor Boussange</title>
+    <link>https://vboussange.github.io/</link>
+      <atom:link href="https://vboussange.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <description>Victor Boussange</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sat, 01 Jun 2030 13:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://vboussange.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url>
+      <title>Victor Boussange</title>
+      <link>https://vboussange.github.io/</link>
+    </image>
+    
+    <item>
+      <title>Example Talk</title>
+      <link>https://vboussange.github.io/talk/example-talk/</link>
+      <pubDate>Sat, 01 Jun 2030 13:00:00 +0000</pubDate>
+      <guid>https://vboussange.github.io/talk/example-talk/</guid>
+      <description>&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    Click on the &lt;strong&gt;Slides&lt;/strong&gt; button above to view the built-in slides feature.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Slides can be added in a few ways:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Create&lt;/strong&gt; slides using Wowchemy&amp;rsquo;s &lt;a href=&#34;https://wowchemy.com/docs/managing-content/#create-slides&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;em&gt;Slides&lt;/em&gt;&lt;/a&gt; feature and link using &lt;code&gt;slides&lt;/code&gt; parameter in the front matter of the talk file&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Upload&lt;/strong&gt; an existing slide deck to &lt;code&gt;static/&lt;/code&gt; and link using &lt;code&gt;url_slides&lt;/code&gt; parameter in the front matter of the talk file&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Embed&lt;/strong&gt; your slides (e.g. Google Slides) or presentation video on this page using &lt;a href=&#34;https://wowchemy.com/docs/writing-markdown-latex/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;shortcodes&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Further event details, including &lt;a href=&#34;https://wowchemy.com/docs/writing-markdown-latex/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;page elements&lt;/a&gt; such as image galleries, can be added to the body of this page.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Alpine CV</title>
+      <link>https://vboussange.github.io/pages/alpine_cv/</link>
+      <pubDate>Tue, 15 Mar 2022 22:32:56 +0100</pubDate>
+      <guid>https://vboussange.github.io/pages/alpine_cv/</guid>
+      <description>&lt;h2 id=&#34;ski-mountaineering--backcountry-skiing&#34;&gt;Ski mountaineering / Backcountry skiing&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Chronenstock 2451m, AD-, 2022&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Spilauer Grätli 2303m, PD, 2022&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Hundstock 2212m, AD-, 2022&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Hagelstock 2181m, L, 2022&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Pic du Rognolet 2659m, PD, 2021&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Petit Chateau 2458m, Couloir NE, 40° / PD-, 2021&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Chläbdächer 2017m, PD+, 2021&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Strahlhorn 4190m, from Britanniahütte, AD, 2021&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Allalinhorn 4027m, PD+, 2021&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Hausstock 3158m, S ridge, 38° / D, 2021&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Stucklistock 3313m, S ridge, 40° / D, 2021&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Pigne d&amp;rsquo;Arolla 3787m, PD+, group leader, 2021&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Pointes d&amp;rsquo;Oren 3520m, PD, 2021&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Mont Brulé 3576m, AD-, 2021&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Graubünden Haute Route, 6 days, group leader, 2021 - &lt;a href=&#34;https://www.youtube.com/watch?v=-AAVG_6zCjQ&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;em&gt;video&lt;/em&gt; 📺&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Piz d&amp;rsquo;Agnel 3204m, PD&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Pischahorn 2980m, PD&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Egghorn 3127m, PD&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Buinlücke, 40°+&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Piz Fess 2881m, PD, group leader, 2021&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Piz Tomül 2946m, PD, group leader, 2021&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Wissigstock 2887m, PD, group leader 2019&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Piz Calderas 3397m, AD+, 2019&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Piz Linard 3410m, AD, 2019&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Piz d&amp;rsquo;Err 3377m, AD, 2019&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Pizzo Centrale 2999m, from Gemsstock / S ridge, AD-, group leader, 2019&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Hengelhorn AD, 2019&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Spitzmielen 2501m, PD+, group leader, 2019&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Rossstock 2460m, PD, group leader, 2019&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Rütistein 2025m, PD, 2019&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Roggenstock 1776m, by night, 2019&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;alpinism&#34;&gt;Alpinism&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Vrenelisgärtli 2905m , Normal route from Glarnischhütte, PD, group leader, 2021&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Spaghetti tour, group leader, 2021 - &lt;a href=&#34;https://www.youtube.com/watch?v=sVtr_m1H1II&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;em&gt;video&lt;/em&gt; 📺&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Castor 4228m, PD I&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Naso del Liskamm 4272m, PD+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Parrotspitze 4434m, PD&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Zumsteinspitze 4563m, PD&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Alphubel 4206m, from Täschütte / SE ridge, PD, 2020&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Mönch 4017m, Normal route, AD, 2020&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Piz Palü 3882m, traverse W-E from Rifugi dals Chamuotschs-Fortezza, PD 2c, 2020&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Basodino 3273m, E ridge, 2020&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Hinter Tierberg 3445m, PD, 2019&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Mount Ararat 5 137m, Turkey, 2008&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;alpine-climbing&#34;&gt;Alpine climbing&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Sewenstock 2820m, &amp;ldquo;Amarone&amp;rdquo;, 10 pitches, 7 pitches in 6a+, 2021&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Gemsplanggenstock 2752m, 14 pitches, 5c+ max, 2020&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Gross Furkahorn 3169m, E-S-E ridge, 12 pitches, IV+, 2020&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Hannibalturm 2920m, &amp;ldquo;Conquest of Paradise&amp;rdquo;, 6 pitches, 6b, 2020&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Brüggler, &amp;ldquo;Sonntagweg&amp;rdquo;, 7 pitches, 6a+, 2020&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Bockmattli, &amp;ldquo;Nameonlose Kante, 9 pitches, 5a, 2020&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Poncione di Manió 2925m, AD+ 4a, 2020&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;canyoning&#34;&gt;Canyoning&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Barranco de Arandari, group leader, Pyrénnées, Spain, 2021&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Tiger Snake, ??, Newnes Plateau, Australia, 2016&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Claustral Canyon, ??, Blue Mountains, Australia, 2016&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Tourmoun, v3a3II, group leader, Pyrénnées, France, 2013&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Soussoueou, v3a3II, group leader, Pyrénnées, France, 2013&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Gorgol, v4a4III, group leader, Pyrénnées, France, 2013&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Forronías, ??, group leader, Pyrénnées, France, 2013&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Bitet inférieur, v4a3IV, group leader, Pyrénnées, France, 2013&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Peonera Inferior, v2a3III, Pyrénnées, Spain, 2012&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;caving&#34;&gt;Caving&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Blowfly Cave, NSW, Australia, 2016&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;bikepacking&#34;&gt;Bikepacking&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;From the first to the last droplet of the Rhone river, group leader&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Rhone Glacier to Geneva, 5 days mountainbiking in self-sufficiency and through the Zwischbergenpass 3268 m, Switzerland, 2020 - &lt;a href=&#34;https://www.youtube.com/watch?v=gHgxTTPf2Vc&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;em&gt;video&lt;/em&gt; 📺&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Geneva to Lyon, 400km, 2019&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Lyon to Marseille, 400km, 2018&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Tour du Mont Blanc, mountainbiking, 5 days, group leader, 2019 - &lt;a href=&#34;https://www.youtube.com/watch?v=LEumD6ZbYU0&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;em&gt;video&lt;/em&gt; 📺&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Sydney Canbera, 500km, Australia, 2016&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;hikes&#34;&gt;Hikes&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Larapinta trail, 10 days- 200km, Australia, 2016&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Overland Track, 5 days, Tasmania, Australia, 2015&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Topology and habitat assortativity drive neutral and adaptive diversification in spatial graphs</title>
+      <link>https://vboussange.github.io/publication/differentiation-in-graphs/</link>
+      <pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate>
+      <guid>https://vboussange.github.io/publication/differentiation-in-graphs/</guid>
+      <description>&lt;!-- 
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    Click the &lt;em&gt;Cite&lt;/em&gt; button above to demo the feature to enable visitors to import publication metadata into their reference management software.
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    Create your slides in Markdown - click the &lt;em&gt;Slides&lt;/em&gt; button to check out the example.
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+Supplementary notes can be added here, including [code, math, and images](https://wowchemy.com/docs/writing-markdown-latex/). --&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Econobiology: What can economics learn from biology?</title>
+      <link>https://vboussange.github.io/project/econobiology/</link>
+      <pubDate>Sun, 27 Jun 2021 00:00:00 +0000</pubDate>
+      <guid>https://vboussange.github.io/project/econobiology/</guid>
+      <description>&lt;p&gt;The fields of Evolutionary Biology and Economics have mutually exchanged ideas that lead to breakthrough for the past two centuries, starting with Darwin who got inspired from the economist Malthus for developing his theory on Evolution. Indeed, it is more and more acknowledged that companies, which are structured around market niches within which they develop competitive and mutualistic interactions, interact in similar ways as biological species. I rely on scientific machine learning to better understand how &lt;strong&gt;evolutionary processes arising in economic systems connect to those observed in biological systems&lt;/strong&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Highly dimensional non-local non-linear PDEs in Biology, Finance and Economics</title>
+      <link>https://vboussange.github.io/post/highdimpde/</link>
+      <pubDate>Sat, 01 May 2021 00:20:37 +0100</pubDate>
+      <guid>https://vboussange.github.io/post/highdimpde/</guid>
+      <description>&lt;p&gt;Non-local nonlinear PDEs arise from a variety of models in physics, engineering, finance and biology.&lt;/p&gt;
+&lt;p&gt;In general, non-local models provide more accurate predictions since they are generalisations of their local counterparts. Yet they lead to further complications in obtaining approximation solutions. Non-local nonlinear PDEs can generally not be solved analytically in practical cases, and it is one of the most challenging issues in applied mathematics and numerical analysis to design and analyze approximation methods.&lt;/p&gt;
+&lt;p&gt;The Deep Splitting method uses a stochastic representation of the PDE under consideration, which allows to train a Neural Network that approximate the solution of the equation. This technique breaks the &lt;strong&gt;curse of dimensionality&lt;/strong&gt;, in the sense that its computational cost is dramatically reduced compared to standard schemes such as the Finite Element Method.&lt;/p&gt;
+&lt;h3 id=&#34;where-do-such-equations-arise&#34;&gt;Where do such equations arise?&lt;/h3&gt;
+&lt;p&gt;In &lt;strong&gt;finance&lt;/strong&gt;, non-local PDEs arise e.g. in jump-diffusion models for the pricing of derivatives, where underlying stochastic processes experience large jumps.  Nonlinearities occur when considering e.g. large investor, where the agent policy affects the assets prices, considering default risks, transactions costs or Knightian uncertainty.&lt;/p&gt;
+&lt;p&gt;In &lt;strong&gt;economics&lt;/strong&gt;, non-local nonlinear PDEs arise e.g. in evolutionary game theory with the so-called replicator mutator equation considering infinite strategy spaces, or in growth model where consumption is non-local.&lt;/p&gt;
+&lt;p&gt;In &lt;strong&gt;biology&lt;/strong&gt;, non-local nonlinear PDEs appear e.g. in models of morphogeneis and cancer evolution, or in models of gene regulatory networks. They are also present in many models of evolution, for example in population genetics with the non-local Fisher KPP equation, or in quantitative genetics where populations are structured with quantitative traits.&lt;/p&gt;
+&lt;h3 id=&#34;why-is-it-important-to-solve-such-equations-in-high-dimensions&#34;&gt;Why is it important to solve such equations in high dimensions&lt;/h3&gt;
+&lt;p&gt;In financial modelling, the dimensionality of the problem corresponds to the &lt;strong&gt;number of financial assets&lt;/strong&gt; (such as stocks, commodities, exchange rates and interest rates) in the involved portfolio. In evolutionary dynamics, it relates to the dimension of the &lt;strong&gt;strategy space&lt;/strong&gt;. In biology, it usually corresponds to the dimension of the &lt;strong&gt;phenotypic space&lt;/strong&gt; and / or of the &lt;strong&gt;geographical space&lt;/strong&gt; that represent the population.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>HighDimPDE.jl</title>
+      <link>https://vboussange.github.io/software/highdimpde.jl/</link>
+      <pubDate>Wed, 10 Mar 2021 00:21:37 +0100</pubDate>
+      <guid>https://vboussange.github.io/software/highdimpde.jl/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SciML Scientific Machine Learning Software</title>
+      <link>https://vboussange.github.io/software/sciml/</link>
+      <pubDate>Wed, 10 Mar 2021 00:21:37 +0100</pubDate>
+      <guid>https://vboussange.github.io/software/sciml/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Parameter Inference in dynamical systems</title>
+      <link>https://vboussange.github.io/post/param-inference/</link>
+      <pubDate>Sat, 09 Jan 2021 00:00:00 +0000</pubDate>
+      <guid>https://vboussange.github.io/post/param-inference/</guid>
+      <description>&lt;p&gt;&lt;em&gt;One of the challenges modellers face in biological sciences is to calibrate models in order to match as closely as possible observations and gain predictive power. This can be done via direct measurements through experimental design, but this process is often costly, time consuming and even sometimes not possible.
+Scientific machine learning addresses this problem by applying optimisation techniques originally developed within the field of artificial intelligence to mechanistic models, allowing  to infer parameters directly from observation data.
+In this blog post, I shall explain the basics of this approach, and how the Julia ecosystem has efficiently embedded such techniques into ready to use packages. This promises exciting perspectives for modellers in all areas of environmental sciences.&lt;/em&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;🚧 This is Work in progress 🚧&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Dynamical systems are models that allow to reproduce, understand and forecast systems. They connect the time variation of the state of the system to the fundamental processes we believe driving it, that is&lt;/p&gt;
+&lt;p&gt;$$
+\begin{equation*}
+\text{ time variation of }  🌍_t  = \sum \text{processes acting on }  🌍_t
+\end{equation*}
+$$&lt;/p&gt;
+&lt;p&gt;where $🌍_t$ denotes the state of the system at time $t$. This translates mathematically into&lt;/p&gt;
+&lt;p&gt;$$
+\begin{equation}
+\partial_t(🌍_t) = f_\theta( 🌍_t )
+\end{equation}
+$$&lt;/p&gt;
+&lt;p&gt;where the function $f_\theta$ captures the ensembles of the processes considered, and depend on the parameters $\theta$.&lt;/p&gt;
+&lt;p&gt;Eq. (1) is a Differential Equation, that can be integrated with respect to time to obtain the state of the system at time $t$ given an initial state $🌍_{t_0}$.&lt;/p&gt;
+&lt;p&gt;$$
+\begin{equation}
+🌍_t = 🌍_{t_0} + \int_0^t f_\theta( 🌍_s ) ds
+\end{equation}
+$$&lt;/p&gt;
+&lt;p&gt;Dynamical systems have been used for hundreds of years and have successfully captured e.g. the motion of planets (&lt;a href=&#34;https://en.wikipedia.org/wiki/Kepler%27s_laws_of_planetary_motion#Second_law&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;second law of Kepler&lt;/a&gt;), &lt;a href=&#34;https://en.wikipedia.org/wiki/RC_circuit#Natural_response&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;the voltage in an electrical circuit&lt;/a&gt;, population dynamics (&lt;a href=&#34;https://en.wikipedia.org/wiki/Lotka%e2%80%93Volterra_equations&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Lotka Volterra equations&lt;/a&gt;) and morphogenesis (&lt;a href=&#34;https://en.wikipedia.org/wiki/Turing_pattern&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Turing patterns&lt;/a&gt;)&amp;hellip;&lt;/p&gt;
+&lt;p&gt;Such models can be used to &lt;strong&gt;forecast the state of the system in the future&lt;/strong&gt;, or can be used in the sense of &lt;strong&gt;virtual laboratories&lt;/strong&gt;. In both cases, one of the requirement is that they &lt;strong&gt;reproduce patterns&lt;/strong&gt; - at least at a qualitative level. To do so, the modeler needs to find the true parameter combination $\theta$ that correspond to the system under consideration. And this is tricky! In this post we adress this challenge.&lt;/p&gt;
+&lt;h2 id=&#34;model-calibration&#34;&gt;Model calibration&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;How to determine $\theta$ so that $\text{simulations} \approx \text{empirical data}$?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The best way to do that is to design an experiment!&lt;/p&gt;
+&lt;iframe src=&#34;https://giphy.com/embed/0DYipdNqJ5n4GYATKL&#34; width=&#34;480&#34; height=&#34;360&#34; frameBorder=&#34;0&#34; class=&#34;giphy-embed&#34; allowFullScreen&gt;&lt;/iframe&gt;&lt;p&gt;&lt;a href=&#34;https://giphy.com/gifs/BTTF-back-to-the-future-bttf-one-0DYipdNqJ5n4GYATKL&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;When possible, measuring directly the parameters in a controlled experiment with e.g. physical devices is a great approach. This is a very powerful scientific method, used e.g. in &lt;a href=&#34;https://en.wikipedia.org/wiki/General_circulation_model&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;global circulation models&lt;/a&gt; where scientists can measure the water viscosity, the change in water density with respect to temperature, etc&amp;hellip; Unfortunately, such direct methods are often not possible considering other systems!&lt;/p&gt;
+&lt;p&gt;An opposite approach is to infer the parameters undirectly with the empirical data available.&lt;/p&gt;
+&lt;h3 id=&#34;parameter-exploration&#34;&gt;Parameter exploration&lt;/h3&gt;
+&lt;p&gt;One way to find right parameters is to perform parameter exploration, that is, slicing the parameter space and running the model for all parameter combinations chosen. Comparing the simulation results to the empirical data available, one can elect the combination with the higher explanatory power.&lt;/p&gt;
+&lt;p&gt;But as the parameter space becomes larger (higher number of parameters) this becomes tricky. Such problem is often refered to as the &lt;a href=&#34;https://en.wikipedia.org/wiki/Curse_of_dimensionality&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;curse of dimensionality&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Feels very much like being lost in a giant maze. We need more clever technique to get out!&lt;/p&gt;
+&lt;h3 id=&#34;a-machine-learning-problem&#34;&gt;A Machine Learning problem&lt;/h3&gt;
+&lt;p&gt;In artificial intelligence, people try to predict a variable $y$ from predictors $x$ by finding suitable parameters $\theta$ of a parametric function $F_\theta$ so that&lt;/p&gt;
+&lt;p&gt;$$
+\begin{equation}
+y = F_\theta(x)
+\end{equation}
+$$&lt;/p&gt;
+&lt;p&gt;For example, in computer vision, this function might be designed for the specific task of labelling images, such as for instance&lt;/p&gt;
+&lt;p&gt;$F_\theta ($ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://vboussange.github.io/images/misc/cat.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+ $) \to \{\text{cat}, \text{dog}\}$&lt;/p&gt;
+&lt;p&gt;Usually people use neural networks, as they are good approximators for high dimensional function (see the &lt;a href=&#34;https://en.wikipedia.org/wiki/Universal_approximation_theorem&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Universal approximation theorem&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;$$
+\begin{equation*}
+F_\theta \equiv NN_\theta
+\end{equation*}
+$$&lt;/p&gt;
+&lt;p&gt;One should really see neural networks as functions ! For example, feed forward neural networks are mathematically described by matrix multiplications&lt;/p&gt;
+&lt;p&gt;$$
+\begin{equation*}
+NN_\theta (x) = A x + b
+\end{equation*}
+$$&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;(without activation function)&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Notice that Eq. (2) is similar to Eq. (3)&lt;/strong&gt;! Indeed one can think of $🌍_0$ as the analogous to $x$ - i.e. the predictor - and $🌍_t$ as the variable $y$ to predict.&lt;/p&gt;
+&lt;p&gt;$$
+\begin{equation*}
+🌍_t = F_\theta(🌍_{t_0})
+\end{equation*}
+$$&lt;/p&gt;
+&lt;p&gt;where $$F_\theta (🌍_{t_0}) \equiv 🌍_{t_0} + \int_0^t f_\theta( 🌍_s ) ds .$$&lt;/p&gt;
+&lt;p&gt;With this perspective in mind, techniques developed within the field of Machine Learning - to find suitable parameters $\theta$ that best predict $y$ - become readily available to reach our specific needs: model calibration!&lt;/p&gt;
+&lt;h2 id=&#34;parameter-inference&#34;&gt;Parameter inference&lt;/h2&gt;
+&lt;p&gt;The general strategy to find a suitable neural network that can perform the tasks required is to &amp;ldquo;train&amp;rdquo; it, that is, to find the parameters $\theta$ so that its predictions are accurate.&lt;/p&gt;
+&lt;p&gt;In order to train it, one &amp;ldquo;scores&amp;rdquo; how good a combination of parameter $\theta$ performs. A way to do so is to introduce a &amp;ldquo;&lt;strong&gt;Loss function&lt;/strong&gt;&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;$$
+\begin{equation*}
+L(\theta) = (F_\theta(x) - y_{\text{empirical}})^2
+\end{equation*}
+$$&lt;/p&gt;
+&lt;p&gt;One can then use an optimisation method to find a local minima (and in the best scenario, the global minima) for $L$.&lt;/p&gt;
+&lt;h3 id=&#34;gradient-descent&#34;&gt;Gradient descent&lt;/h3&gt;
+&lt;p&gt;You ready?&lt;/p&gt;
+&lt;iframe src=&#34;https://giphy.com/embed/l2Je5HLxfeuppOkuc&#34; width=&#34;480&#34; height=&#34;270&#34; frameBorder=&#34;0&#34; class=&#34;giphy-embed&#34; allowFullScreen&gt;&lt;/iframe&gt;&lt;p&gt;&lt;a href=&#34;https://giphy.com/gifs/toferra-ski-skiing-into-the-mind-l2Je5HLxfeuppOkuc&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Gradient descent and stochastic gradient descent are &amp;ldquo;iterative optimisation methods that seek to find a local minimum of a differentiable function&amp;rdquo; (&lt;a href=&#34;https://en.wikipedia.org/wiki/Gradient_descent&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Wikipedia&lt;/a&gt;). Such methods have become widely used with the development of artifical intelligence.&lt;/p&gt;
+&lt;p&gt;Those methods are used to compute iteratively $\theta$ using the sensitivity of the loss function to changes in $\theta$, denoted by $\partial_\theta L(\theta)$&lt;/p&gt;
+&lt;p&gt;$$
+\begin{equation*}
+\theta^{i+1} = \theta^{(i)} - \lambda \partial_\theta L(\theta)
+\end{equation*}
+$$&lt;/p&gt;
+&lt;p&gt;where $\lambda$ is called the learning rate.&lt;/p&gt;
+&lt;h2 id=&#34;in-practice&#34;&gt;In practice&lt;/h2&gt;
+&lt;p&gt;The sensitivity with respect to the parameters $\partial_\theta L(\theta)$ is in practice obtained by differentiating the code (&lt;a href=&#34;https://en.wikipedia.org/wiki/Automatic_differentiation&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Automatic Differentiation&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;For some programming languages this can be done automatically, with low computational cost. In particular, &lt;a href=&#34;https://github.com/FluxML/Flux.jl&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Flux.jl&lt;/a&gt; allows to efficiently obtain the gradient of any function written in the wonderful language &lt;a href=&#34;https://julialang.org&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Julia&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The library &lt;a href=&#34;https://github.com/SciML/DiffEqFlux.jl&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;DiffEqFlux.jl&lt;/a&gt; based on &lt;a href=&#34;https://github.com/FluxML/Flux.jl&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Flux.jl&lt;/a&gt; implements differentiation rules (&lt;a href=&#34;https://juliadiff.org/ChainRulesCore.jl/stable/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;custom adjoints&lt;/a&gt;) to obtain even more efficiently the sensitivity of a loss function that depends on the numerical solution of a differential equation. That is, &lt;a href=&#34;https://github.com/SciML/DiffEqFlux.jl&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;DiffEqFlux.jl&lt;/a&gt; precisely allows to do parameter inference in dynamical systems. Go and check it out!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Machine learning to solve highly dimensional non-local nonlinear PDEs</title>
+      <link>https://vboussange.github.io/project/highdimpde/</link>
+      <pubDate>Sat, 27 Jun 2020 00:00:00 +0000</pubDate>
+      <guid>https://vboussange.github.io/project/highdimpde/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Partial_differential_equation&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Partial Differential Equations&lt;/a&gt; (PDEs) are equations that arise in a variety of models in physics, engineering, finance and biology. I develop &lt;strong&gt;numerical schemes&lt;/strong&gt; based on &lt;strong&gt;machine learning techniques&lt;/strong&gt; to solve for a special class of PDEs (cf below) in high dimension.&lt;/p&gt;
+&lt;p&gt;The equation below defines the class of PDEs I am interested in. These PDEs are also referred in the literature as non-local reaction diffusion equations.&lt;/p&gt;
+&lt;p&gt;$$
+\begin{aligned}
+(\tfrac{\partial}{\partial t}u)(t,x)
+&amp;amp;=
+\int_{D} f\big(t,x,{\bf x}, u(t,x),u(t,{\bf x}), ( \nabla_x u )(t,x ),( \nabla_x u )(t,{\bf x} ) \big) \, \nu_x(d{\bf x}) \\
+&amp;amp; \quad + \big\langle \mu(t,x), ( \nabla_x u )( t,x ) \big\rangle + \tfrac{ 1 }{ 2 }
+\text{Trace}\big(
+\sigma(t,x) [ \sigma(t,x) ]^*
+( \text{Hess}_x u)( t,x )
+\big).
+\end{aligned}
+$$&lt;/p&gt;
+&lt;p&gt;Such PDEs permit to e.g. &lt;strong&gt;model the evolution of biological populations in a realistic manner&lt;/strong&gt;, by describing the dynamics of several &lt;em&gt;traits&lt;/em&gt; characterising individuals (for a population of birds, think of traits as the beak length, the body size, or the color of the birds).&lt;/p&gt;
+&lt;p&gt;I have implemented those schemes in &lt;a href=&#34;https://github.com/vboussange/HighDimPDE.jl&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;HighDimPDE.jl&lt;/a&gt;, a Julia package that should allow scientists to develop models that better capture the complexity of life. These techniques extend beyond biology and are also relevant for other fields, such as finance.&lt;/p&gt;
+&lt;p&gt;Check out my &lt;a href=&#34;../_posts/2021-05-01-highdimpde.md&#34;&gt;blog post&lt;/a&gt; to read more about it!&lt;/p&gt;
+&lt;h4 id=&#34;related-papers&#34;&gt;Related papers&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Boussange, V., Becker, S., Jentzen, A., Pellissier, L., &lt;em&gt;Deep learning approximations for non-local nonlinear PDEs with Neumann boundary conditions&lt;/em&gt;. In preparation.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Gaining a mechanistic understanding of spatial biodiversity patterns</title>
+      <link>https://vboussange.github.io/project/diff-in-graphs/</link>
+      <pubDate>Sat, 27 Apr 2019 00:00:00 +0000</pubDate>
+      <guid>https://vboussange.github.io/project/diff-in-graphs/</guid>
+      <description>&lt;p&gt;Biodiversity results from differentiation mechanisms developing within biological populations. Such mechanisms are influenced by the properties of the landscape over which individuals interact, disperse and evolve. The documentation of high levels of species diversity in complex mountain region or riverine systems suggest that some &lt;strong&gt;peculiar landscape properties foster diversity&lt;/strong&gt;. I use mathematical models to investigate how connectivity and habitat heterogeneity foster diversity. My modeling approach complements empirical work on biodiversity by connecting documented patterns to the processes that have generated it.&lt;/p&gt;
+&lt;!-- only necessary when there is no featured publications --&gt;
+&lt;!-- #### Related papers
+- Boussange, V. &amp; Pellissier, L., _Topology and habitat assortativity drive neutral and adaptive diversification in spatial graphs_, [bioRxiv](https://www.biorxiv.org/content/10.1101/2021.07.06.451404.abstract) (2021), 25 pages. Revision requested from Communications Biology. --&gt;</description>
+    </item>
+    
+    <item>
+      <title>Slides</title>
+      <link>https://vboussange.github.io/slides/example/</link>
+      <pubDate>Tue, 05 Feb 2019 00:00:00 +0000</pubDate>
+      <guid>https://vboussange.github.io/slides/example/</guid>
+      <description>&lt;h1 id=&#34;create-slides-in-markdown-with-wowchemy&#34;&gt;Create slides in Markdown with Wowchemy&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&#34;https://wowchemy.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Wowchemy&lt;/a&gt; | &lt;a href=&#34;https://owchemy.com/docs/managing-content/#create-slides&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Documentation&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;features&#34;&gt;Features&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Efficiently write slides in Markdown&lt;/li&gt;
+&lt;li&gt;3-in-1: Create, Present, and Publish your slides&lt;/li&gt;
+&lt;li&gt;Supports speaker notes&lt;/li&gt;
+&lt;li&gt;Mobile friendly slides&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;controls&#34;&gt;Controls&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Next: &lt;code&gt;Right Arrow&lt;/code&gt; or &lt;code&gt;Space&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Previous: &lt;code&gt;Left Arrow&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Start: &lt;code&gt;Home&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Finish: &lt;code&gt;End&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Overview: &lt;code&gt;Esc&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Speaker notes: &lt;code&gt;S&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Fullscreen: &lt;code&gt;F&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Zoom: &lt;code&gt;Alt + Click&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/hakimel/reveal.js#pdf-export&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;PDF Export&lt;/a&gt;: &lt;code&gt;E&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;code-highlighting&#34;&gt;Code Highlighting&lt;/h2&gt;
+&lt;p&gt;Inline code: &lt;code&gt;variable&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Code block:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;porridge&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;blueberry&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;porridge&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;blueberry&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Eating...&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;math&#34;&gt;Math&lt;/h2&gt;
+&lt;p&gt;In-line math: $x + y = z$&lt;/p&gt;
+&lt;p&gt;Block math:&lt;/p&gt;
+&lt;p&gt;$$
+f\left( x \right) = ;\frac{{2\left( {x + 4} \right)\left( {x - 4} \right)}}{{\left( {x + 4} \right)\left( {x + 1} \right)}}
+$$&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;fragments&#34;&gt;Fragments&lt;/h2&gt;
+&lt;p&gt;Make content appear incrementally&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;{{% fragment %}} One {{% /fragment %}}
+{{% fragment %}} **Two** {{% /fragment %}}
+{{% fragment %}} Three {{% /fragment %}}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Press &lt;code&gt;Space&lt;/code&gt; to play!&lt;/p&gt;
+&lt;span class=&#34;fragment &#34; &gt;
+  One
+&lt;/span&gt;
+&lt;span class=&#34;fragment &#34; &gt;
+  &lt;strong&gt;Two&lt;/strong&gt;
+&lt;/span&gt;
+&lt;span class=&#34;fragment &#34; &gt;
+  Three
+&lt;/span&gt;
+&lt;hr&gt;
+&lt;p&gt;A fragment can accept two optional parameters:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;class&lt;/code&gt;: use a custom style (requires definition in custom CSS)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;weight&lt;/code&gt;: sets the order in which a fragment appears&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;speaker-notes&#34;&gt;Speaker Notes&lt;/h2&gt;
+&lt;p&gt;Add speaker notes to your presentation&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;{{% speaker_note %}}
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;-&lt;/span&gt; Only the speaker can read these notes
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;-&lt;/span&gt; Press &lt;span class=&#34;sb&#34;&gt;`S`&lt;/span&gt; key to view
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;{{% /speaker_note %}}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Press the &lt;code&gt;S&lt;/code&gt; key to view the speaker notes!&lt;/p&gt;
+&lt;aside class=&#34;notes&#34;&gt;
+  &lt;ul&gt;
+&lt;li&gt;Only the speaker can read these notes&lt;/li&gt;
+&lt;li&gt;Press &lt;code&gt;S&lt;/code&gt; key to view&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/aside&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;themes&#34;&gt;Themes&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;black: Black background, white text, blue links (default)&lt;/li&gt;
+&lt;li&gt;white: White background, black text, blue links&lt;/li&gt;
+&lt;li&gt;league: Gray background, white text, blue links&lt;/li&gt;
+&lt;li&gt;beige: Beige background, dark text, brown links&lt;/li&gt;
+&lt;li&gt;sky: Blue background, thin dark text, blue links&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;night: Black background, thick white text, orange links&lt;/li&gt;
+&lt;li&gt;serif: Cappuccino background, gray text, brown links&lt;/li&gt;
+&lt;li&gt;simple: White background, black text, blue links&lt;/li&gt;
+&lt;li&gt;solarized: Cream-colored background, dark green text, blue links&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+
+&lt;section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image=&#34;/media/boards.jpg&#34;
+  &gt;
+
+&lt;h2 id=&#34;custom-slide&#34;&gt;Custom Slide&lt;/h2&gt;
+&lt;p&gt;Customize the slide style and background&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;{{&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;slide&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;background-image&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;/media/boards.jpg&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;}}
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;{{&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;slide&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;background-color&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;#0000FF&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;}}
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;{{&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;slide&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;class&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;my-style&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;}}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;custom-css-example&#34;&gt;Custom CSS Example&lt;/h2&gt;
+&lt;p&gt;Let&amp;rsquo;s make headers navy colored.&lt;/p&gt;
+&lt;p&gt;Create &lt;code&gt;assets/css/reveal_custom.css&lt;/code&gt; with:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-css&#34; data-lang=&#34;css&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;reveal&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;section&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;h1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;reveal&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;section&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;h2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;reveal&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;section&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;h3&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;k&#34;&gt;color&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;navy&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h1 id=&#34;questions&#34;&gt;Questions?&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/wowchemy/wowchemy-hugo-modules/discussions&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Ask&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://wowchemy.com/docs/managing-content/#create-slides&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Documentation&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://vboussange.github.io/admin/config.yml</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://vboussange.github.io/admin/config.yml</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>EvoId.jl</title>
+      <link>https://vboussange.github.io/software/evoid.jl/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://vboussange.github.io/software/evoid.jl/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

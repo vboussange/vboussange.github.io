@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Scientific Machine Learning | Victor Boussange</title>
+    <link>https://vboussange.github.io/category/scientific-machine-learning/</link>
+      <atom:link href="https://vboussange.github.io/category/scientific-machine-learning/index.xml" rel="self" type="application/rss+xml" />
+    <description>Scientific Machine Learning</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sat, 01 May 2021 00:20:37 +0100</lastBuildDate>
+    <image>
+      <url>https://vboussange.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url>
+      <title>Scientific Machine Learning</title>
+      <link>https://vboussange.github.io/category/scientific-machine-learning/</link>
+    </image>
+    
+    <item>
+      <title>Highly dimensional non-local non-linear PDEs in Biology, Finance and Economics</title>
+      <link>https://vboussange.github.io/post/highdimpde/</link>
+      <pubDate>Sat, 01 May 2021 00:20:37 +0100</pubDate>
+      <guid>https://vboussange.github.io/post/highdimpde/</guid>
+      <description>&lt;p&gt;Non-local nonlinear PDEs arise from a variety of models in physics, engineering, finance and biology.&lt;/p&gt;
+&lt;p&gt;In general, non-local models provide more accurate predictions since they are generalisations of their local counterparts. Yet they lead to further complications in obtaining approximation solutions. Non-local nonlinear PDEs can generally not be solved analytically in practical cases, and it is one of the most challenging issues in applied mathematics and numerical analysis to design and analyze approximation methods.&lt;/p&gt;
+&lt;p&gt;The Deep Splitting method uses a stochastic representation of the PDE under consideration, which allows to train a Neural Network that approximate the solution of the equation. This technique breaks the &lt;strong&gt;curse of dimensionality&lt;/strong&gt;, in the sense that its computational cost is dramatically reduced compared to standard schemes such as the Finite Element Method.&lt;/p&gt;
+&lt;h3 id=&#34;where-do-such-equations-arise&#34;&gt;Where do such equations arise?&lt;/h3&gt;
+&lt;p&gt;In &lt;strong&gt;finance&lt;/strong&gt;, non-local PDEs arise e.g. in jump-diffusion models for the pricing of derivatives, where underlying stochastic processes experience large jumps.  Nonlinearities occur when considering e.g. large investor, where the agent policy affects the assets prices, considering default risks, transactions costs or Knightian uncertainty.&lt;/p&gt;
+&lt;p&gt;In &lt;strong&gt;economics&lt;/strong&gt;, non-local nonlinear PDEs arise e.g. in evolutionary game theory with the so-called replicator mutator equation considering infinite strategy spaces, or in growth model where consumption is non-local.&lt;/p&gt;
+&lt;p&gt;In &lt;strong&gt;biology&lt;/strong&gt;, non-local nonlinear PDEs appear e.g. in models of morphogeneis and cancer evolution, or in models of gene regulatory networks. They are also present in many models of evolution, for example in population genetics with the non-local Fisher KPP equation, or in quantitative genetics where populations are structured with quantitative traits.&lt;/p&gt;
+&lt;h3 id=&#34;why-is-it-important-to-solve-such-equations-in-high-dimensions&#34;&gt;Why is it important to solve such equations in high dimensions&lt;/h3&gt;
+&lt;p&gt;In financial modelling, the dimensionality of the problem corresponds to the &lt;strong&gt;number of financial assets&lt;/strong&gt; (such as stocks, commodities, exchange rates and interest rates) in the involved portfolio. In evolutionary dynamics, it relates to the dimension of the &lt;strong&gt;strategy space&lt;/strong&gt;. In biology, it usually corresponds to the dimension of the &lt;strong&gt;phenotypic space&lt;/strong&gt; and / or of the &lt;strong&gt;geographical space&lt;/strong&gt; that represent the population.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
