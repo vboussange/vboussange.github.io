@@ -1,0 +1,27 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - gh-pages
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout master
+      uses: actions/checkout@v1
+      with:
+        submodules: true
+
+    - name: Hugo Deploy GitHub Pages
+      uses: benmatselby/hugo-deploy-gh-pages@master
+      env:
+        GO_VERSION: 1.17
+        HUGO_VERSION: 0.95.0
+        HUGO_EXTENDED: true
+        TARGET_REPO: vboussange/vboussange.github.io
+        TOKEN: ${{ secrets.TOKEN_HUGO_DEPLOY }}
+        CNAME: vboussange.github.io
