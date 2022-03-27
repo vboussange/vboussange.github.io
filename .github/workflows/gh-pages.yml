@@ -3,7 +3,7 @@ name: Build and Deploy
 on:
   push:
     branches:
-      - gh-pages
+      - master
 
 jobs:
   build:
@@ -23,5 +23,6 @@ jobs:
         HUGO_VERSION: 0.95.0
         HUGO_EXTENDED: true
         TARGET_REPO: vboussange/vboussange.github.io
+        TARGET_BRANCH: gh-pages
         TOKEN: ${{ secrets.TOKEN_HUGO_DEPLOY }}
         CNAME: vboussange.github.io
