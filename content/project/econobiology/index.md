@@ -9,7 +9,7 @@ date: "2021-06-27T00:00:00Z"
 external_link: ""
 
 image:
-  caption: Photo by rawpixel on Unsplash
+  caption: "Left: A forest in Sorapiss, Dolomites, Italy.  Right: New York City, USA."
   focal_point: Center
 
 links:
