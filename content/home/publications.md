@@ -40,7 +40,8 @@ subtitle: ''
 
 ### Preprints
 
-- Boussange, V. & Pellissier, L., _Topology and habitat assortativity drive neutral and adaptive diversification in spatial graphs_, [bioRxiv](https://www.biorxiv.org/content/10.1101/2021.07.06.451404.abstract) (2021), 25 pages. Revision requested from Communications Biology.
+- Boussange, V. & Pellissier, L., _Topology and habitat assortativity drive neutral and adaptive diversification in spatial graphs_, [bioRxiv](https://www.biorxiv.org/content/10.1101/2021.07.06.451404.abstract) (2021), 25 pages. Accepted in Communications Biology.
+- Boussange, V., Becker, S., Jentzen, A., Kuckuck, B., Pellissier, L., Deep learning approximations for non-local nonlinear PDEs with Neumann boundary conditions. [arXiv](https://arxiv.org/abs/2205.03672) (2022), 59 pages.
 
 ### Proceedings
 
@@ -48,10 +49,8 @@ subtitle: ''
 
 ### Works in progress
 
-- Boussange, V., Becker, S., Jentzen, A., Pellissier, L., _Deep learning approximations for non-local nonlinear PDEs with Neumann boundary conditions_.
 - Boussange, V., Sornette, D., Pellissier, L., _Eco-evolutionary dynamics in economic systems_.
 - Boussange, V., Vilimelis-Aceituno, P., Pellissier, L., _Interpretable Machine Learning for forecasting dynamical processes in ecosystems_.
-- Boussange, V., Becker, S., Rackauckas, C., Pellissier, L., `HighDimPDE.jl`: _A Julia package for solving high dimensional, non-local, nonlinear PDEs_.
 
 ### Talks
 
