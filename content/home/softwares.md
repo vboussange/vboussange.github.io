@@ -64,6 +64,6 @@ Solver for **highly dimensional, non-local, nonlinear PDEs**. It is integrated w
 
 
 # [SciML](https://github.com/SciML/)
-I am actively participating in the development of **Sci-ML**, an open source ecosystem for Scientific Machine Learning in the Julia programming language. On top of being the author of **HighDimPDE.jl**, I am involved in the developement of other packages such as [DiffEqFlux.jl](https://github.com/SciML/DiffEqFlux.jl), a library to train differential equations with data.
+I am a member of the **SciML** organisation, an open source ecosystem for Scientific Machine Learning in the Julia programming language. On top of being the author of **HighDimPDE.jl**, I actively participate in the development of other packages such as [DiffEqFlux.jl](https://github.com/SciML/DiffEqFlux.jl), a library to train differential equations with data.
 
 {{< github_button button="star" user="SciML" repo="DiffEqFlux.jl" count="true" dark="true" large="true">}}
