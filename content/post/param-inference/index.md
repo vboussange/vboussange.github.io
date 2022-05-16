@@ -1,9 +1,9 @@
 ---
 title: Parameter Inference in dynamical systems
-subtitle: One of the challenges modellers face in biological sciences is to calibrate models in order to match as closely as possible observations and gain predictive power. Scientific machine learning addresses this problem by applying optimisation techniques originally developed within the field of artificial intelligence to mechanistic models, allowing  to infer parameters directly from observation data.
+subtitle: One of the challenges modellers face in biological sciences is to calibrate models in order to match as closely as possible observations and gain predictive power. Scientific machine learning addresses this problem by applying optimisation techniques originally developed within the field of machine learning to mechanistic models, allowing  to infer parameters directly from observation data.
 
 # Summary for listings and search engines
-summary: One of the challenges modellers face in biological sciences is to calibrate models in order to match as closely as possible observations and gain predictive power. Scientific machine learning addresses this problem by applying optimisation techniques originally developed within the field of artificial intelligence to mechanistic models, allowing  to infer parameters directly from observation data.
+summary: One of the challenges modellers face in biological sciences is to calibrate models in order to match as closely as possible observations and gain predictive power. Scientific machine learning addresses this problem by applying optimisation techniques originally developed within the field of machine learning to mechanistic models, allowing  to infer parameters directly from observation data.
 
 # Link this post with a project
 projects: []
@@ -42,9 +42,9 @@ categories:
 ---
 
 
-_One of the challenges modellers face in biological sciences is to calibrate models in order to match as closely as possible observations and gain predictive power. This can be done via direct measurements through experimental design, but this process is often costly, time consuming and even sometimes not possible.
-Scientific machine learning addresses this problem by applying optimisation techniques originally developed within the field of artificial intelligence to mechanistic models, allowing  to infer parameters directly from observation data.
-In this blog post, I shall explain the basics of this approach, and how the Julia ecosystem has efficiently embedded such techniques into ready to use packages. This promises exciting perspectives for modellers in all areas of environmental sciences._
+One of the challenges modellers face in biological sciences is to calibrate models in order to match as closely as possible observations and gain predictive power. This can be done via direct measurements through experimental design, but this process is often costly, time consuming and even sometimes not possible.
+Scientific machine learning addresses this problem by applying optimisation techniques originally developed within the field of machine learning to mechanistic models, allowing  to infer parameters directly from observation data.
+In this blog post, I shall explain the basics of this approach, and how the Julia ecosystem has efficiently embedded such techniques into ready to use packages. This promises exciting perspectives for modellers in all areas of environmental sciences.
 
 > 🚧 This is Work in progress 🚧
 
@@ -61,7 +61,7 @@ where $🌍_t$ denotes the state of the system at time $t$. This translates math
 $$
 \begin{equation}
   \partial_t(🌍_t) = f_\theta( 🌍_t )
-\end{equation}
+\end{equation}\tag{1}
 $$
 
 where the function $f_\theta$ captures the ensembles of the processes considered, and depend on the parameters $\theta$.
@@ -71,7 +71,7 @@ Eq. (1) is a Differential Equation, that can be integrated with respect to time 
 $$
 \begin{equation}
   🌍_t = 🌍_{t_0} + \int_0^t f_\theta( 🌍_s ) ds
-\end{equation}
+\end{equation}\tag{2}
 $$
 
 Dynamical systems have been used for hundreds of years and have successfully captured e.g. the motion of planets ([second law of Kepler](https://en.wikipedia.org/wiki/Kepler%27s_laws_of_planetary_motion#Second_law)), [the voltage in an electrical circuit](https://en.wikipedia.org/wiki/RC_circuit#Natural_response), population dynamics ([Lotka Volterra equations](https://en.wikipedia.org/wiki/Lotka–Volterra_equations)) and morphogenesis ([Turing patterns](https://en.wikipedia.org/wiki/Turing_pattern))...
@@ -85,49 +85,36 @@ The best way to do that is to design an experiment!
 
 <iframe src="https://giphy.com/embed/0DYipdNqJ5n4GYATKL" width="480" height="360" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/BTTF-back-to-the-future-bttf-one-0DYipdNqJ5n4GYATKL"></a></p>
 
-When possible, measuring directly the parameters in a controlled experiment with e.g. physical devices is a great approach. This is a very powerful scientific method, used e.g. in [global circulation models](https://en.wikipedia.org/wiki/General_circulation_model) where scientists can measure the water viscosity, the change in water density with respect to temperature, etc... Unfortunately, such direct methods are often not possible considering other systems!
+When possible, measuring directly the parameters in a controlled experiment with e.g. physical devices is a great approach. This is a very powerful scientific method, used e.g. in [global circulation models](https://en.wikipedia.org/wiki/General_circulation_model) where scientists can measure the water viscosity, the change in water density with respect to temperature, etc... Unfortunately, such direct methods are often not possible considering other systems.
 
-An opposite approach is to infer the parameters undirectly with the empirical data available.
+An opposite approach, known as inverse modelling, is to infer the parameters undirectly with the empirical data available.
 
 ### Parameter exploration
 One way to find right parameters is to perform parameter exploration, that is, slicing the parameter space and running the model for all parameter combinations chosen. Comparing the simulation results to the empirical data available, one can elect the combination with the higher explanatory power.
 
-But as the parameter space becomes larger (higher number of parameters) this becomes tricky. Such problem is often refered to as the [curse of dimensionality](https://en.wikipedia.org/wiki/Curse_of_dimensionality)
-
-Feels very much like being lost in a giant maze. We need more clever technique to get out!
+But as the parameter space becomes larger (higher number of parameters) this becomes tricky. Such problem is often refered to as the [curse of dimensionality](https://en.wikipedia.org/wiki/Curse_of_dimensionality). Feels very much like being lost in a giant maze. We need more clever technique to get out!
 
 ### A Machine Learning problem
-In artificial intelligence, people try to predict a variable $y$ from predictors $x$ by finding suitable parameters $\theta$ of a parametric function $F_\theta$ so that
+In machine learning, people try to predict a variable $y$ from predictors $x$ by finding suitable parameters $\theta$ of a parametric function $F_\theta$ so that
 
 $$
 \begin{equation}
-y = F_\theta(x)
-\end{equation}
+  y = F_\theta(x)
+\end{equation}\tag{3}
 $$
 
 For example, in computer vision, this function might be designed for the specific task of labelling images, such as for instance
 
-$F_\theta ($ ![](/images/misc/cat.png) $) \to \\{\text{cat}, \text{dog}\\}$
+$F_\theta ($![](/misc/cat.png "")$) \to \\{\text{cat}, \text{dog}\\}$
 
-Usually people use neural networks, as they are good approximators for high dimensional function (see the [Universal approximation theorem](https://en.wikipedia.org/wiki/Universal_approximation_theorem)).
-
+Usually people use neural networks so that $F_\theta \equiv NN_\theta$, as they are good approximators for high dimensional function (see the [Universal approximation theorem](https://en.wikipedia.org/wiki/Universal_approximation_theorem)). One should really see neural networks as functions ! For example, feed forward neural networks are mathematically described by a series of matrix multiplications and nonlinear operations, i.e. $NN_\theta (x) = \sigma_1 \circ f_1 \circ  \dots \circ \sigma_n \circ f_n(x)$
+where $\sigma_i$ is an activation function and $f_i$ is linear function
 $$
 \begin{equation*}
-  F_\theta \equiv NN_\theta
+  f_i (x) = A_i x + b_i .
 \end{equation*}
 $$
-
-One should really see neural networks as functions ! For example, feed forward neural networks are mathematically described by matrix multiplications
-
-$$
-\begin{equation*}
-  NN_\theta (x) = A x + b 
-\end{equation*}
-$$
-
-_(without activation function)_
-
-**Notice that Eq. (2) is similar to Eq. (3)**! Indeed one can think of $🌍_0$ as the analogous to $x$ - i.e. the predictor - and $🌍_t$ as the variable $y$ to predict.
+**Notice that Eq. (2) is similar to Eq. (3)**! Indeed one can think of $🌍_0$ as the analogous to $x$ - i.e. the predictor - and $🌍_t$ as the variable $y$ to predict:
 
 $$
 \begin{equation*}

@@ -44,7 +44,7 @@ featured: true
 # - name: Custom Link
 #   url: http://example.org
 
-url_pdf: ''
+url_pdf: 'https://www.biorxiv.org/content/10.1101/2021.07.06.451404v2'
 url_code: ''
 url_dataset: ''
 url_poster: ''

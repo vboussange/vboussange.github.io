@@ -5,6 +5,7 @@ authors: []
 tags: []
 categories: []
 date: 2021-05-01T00:20:37+01:00
+draft: true
 
 # Optional external URL for project (replaces project detail page).
 external_link: ""
@@ -27,11 +28,9 @@ categories:
 - Scientific Machine Learning
 ---
 
-Non-local nonlinear PDEs arise from a variety of models in physics, engineering, finance and biology.
+PDEs are useful mathematical objects to model a variety of processes in fields such as physics, engineering, finance and biology.
 
-In general, non-local models provide more accurate predictions since they are generalisations of their local counterparts. Yet they lead to further complications in obtaining approximation solutions. Non-local nonlinear PDEs can generally not be solved analytically in practical cases, and it is one of the most challenging issues in applied mathematics and numerical analysis to design and analyze approximation methods.
-
-The Deep Splitting method uses a stochastic representation of the PDE under consideration, which allows to train a Neural Network that approximate the solution of the equation. This technique breaks the **curse of dimensionality**, in the sense that its computational cost is dramatically reduced compared to standard schemes such as the Finite Element Method.
+Non-local PDE models are generalisations of their local counterparts and provide more accurate predictions since they can for example capture non-local interactions. Yet they lead to further complications in obtaining approximation solutions. Non-local nonlinear PDEs can generally not be solved analytically in practical cases, and it is one of the most challenging issues in applied mathematics and numerical analysis to design and analyze approximation methods.
 
 ### Where do such equations arise?
 In **finance**, non-local PDEs arise e.g. in jump-diffusion models for the pricing of derivatives, where underlying stochastic processes experience large jumps.  Nonlinearities occur when considering e.g. large investor, where the agent policy affects the assets prices, considering default risks, transactions costs or Knightian uncertainty. 

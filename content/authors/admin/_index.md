@@ -70,7 +70,7 @@ highlight_name: true
 ---
 
 
-I'm Victor, a third year Ph.D candidate in the [Landscape Ecology Group](https://landecology.ethz.ch) at [ETH Zürich](https://ethz.ch/en.html) and at the [Swiss Federal Institute for Forest, Snow & Landscape (WSL)](https://www.wsl.ch/en/index.html), Switzerland.
+I'm Victor, a $4^{th}$ year Ph.D candidate in the [Landscape Ecology Group](https://landecology.ethz.ch) at [ETH Zürich](https://ethz.ch/en.html) and at the [Swiss Federal Institute for Forest, Snow & Landscape (WSL)](https://www.wsl.ch/en/index.html), Switzerland.
 <br>
 
 My Ph.D aims at better understanding **evolutionary processes that affect the dynamics of ecosystems and economic systems**. I conduct my investigations with **mathematical models** capturing **eco-evolutionary dynamics**. In parallel, I develop **machine learning methods** to combine these models with empirical data and infer scientific knowledge. I believe that the combination of mechanistic models and machine learning provides a powerful approach to better understand and forecast the dynamics of real ecosystems and economies. This is crucial for policy-makers to take the right decisions, in the face of potentially important ecosystem changes and accelerating threats.

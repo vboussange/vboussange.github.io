@@ -58,7 +58,7 @@ Evolutionary Individual based modelling, mathematically grounded. A user friendl
 {{< github_button button="star" user="vboussange" repo="evoid.jl" count="true" dark="true" large="true">}}
 
 # [HighDimPDE.jl](https://github.com/vboussange/HighDimPDE.jl)
-Solver for **highly dimensional, non-local, nonlinear PDEs**. It is integrated within the Sci-ML ecosystem (see below). Try it out! &#128515; If you want to learn more about the algorithms implemented, check out my [research interests]({{site.url}}/research/#developping-numerical-schemes-for-solving-high-dimensional-non-local-nonlinear-pdes).
+Solver for **highly dimensional, non-local, nonlinear PDEs**. It is integrated within the SciML ecosystem (see below). Try it out! &#128515; If you want to learn more about the algorithms implemented, check out my [research interests]({{site.url}}/research/#developping-numerical-schemes-for-solving-high-dimensional-non-local-nonlinear-pdes).
 
 {{< github_button button="star" user="vboussange" repo="highdimpde.jl" count="true" dark="true" large="true">}}
 
