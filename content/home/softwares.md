@@ -10,7 +10,7 @@ headless: true
 weight: 30
 
 title: Open source softwares 🧑🏽‍💻
-subtitle: ""
+subtitle: "Open source as a philosphy."
 
 design:
   columns: "2"

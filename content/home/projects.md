@@ -10,7 +10,7 @@ headless: true
 weight: 20
 
 title: Research projects  🔬
-subtitle: ''
+subtitle: 'Click on each project to learn more.'
 
 content:
   # Page type to display. E.g. project.

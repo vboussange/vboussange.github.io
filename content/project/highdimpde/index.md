@@ -33,7 +33,11 @@ links:
 # slides: example
 ---
 
-[Partial Differential Equations](https://en.wikipedia.org/wiki/Partial_differential_equation) (PDEs) are equations that arise in a variety of models in physics, engineering, finance and biology. I develop **numerical schemes** based on **machine learning techniques** to solve for a special class of PDEs (cf below) in high dimension. 
+[Partial Differential Equations](https://en.wikipedia.org/wiki/Partial_differential_equation) (PDEs) are equations that arise in a variety of models in physics, engineering, finance and biology. I develop **numerical methods** based on **machine learning techniques** to simulate a special class of PDEs in high dimension, that can capture non-locality (cf generic form of the PDEs below). Such PDEs permit to e.g. **model the evolution of biological populations in a realistic manner**, by describing the dynamics of several *traits* characterising individuals. For plants, traits correspond for instance to flower colour, specific leaf area, seed mass, etc.... These characteristics define a high dimensional space that must be considered when modelling ecological and evolutionary processes in biological populations, as they determine the overall fitness of a population in a given environment. 
+
+![](misc/hemerocallis.jpg "Trait diversity in the genus Hemerocallis. Plants can be caracterised by many different traits, all of which can be assigned numerical values:  Flower colour, specific leaf area, seed mass, Plant nitrogen fixation capacity, Leaf shape, Flower sex, plant woodiness. Source: [H Cui et al. 2019](https://doi.org/10.1371/journal.pone.0216460)")
+
+High dimensionality leads to numerical difficulties in simulating the models. The methods I develop overcome this so-called "curse of dimensionality". 
 
 The equation below defines the class of PDEs I am interested in. These PDEs are also referred in the literature as non-local reaction diffusion equations.
 
@@ -50,11 +54,6 @@ $$
 \end{aligned}
 $$
 
-Such PDEs permit to e.g. **model the evolution of biological populations in a realistic manner**, by describing the dynamics of several *traits* characterising individuals (for a population of birds, think of traits as the beak length, the body size, or the color of the birds).
+
 
 I have implemented those schemes in [HighDimPDE.jl](https://github.com/vboussange/HighDimPDE.jl), a Julia package that should allow scientists to develop models that better capture the complexity of life. These techniques extend beyond biology and are also relevant for other fields, such as finance.
-
-Check out my [blog post](../_posts/2021-05-01-highdimpde.md) to read more about it!
-
-#### Related papers
-- Boussange, V., Becker, S., Jentzen, A., Pellissier, L., _Deep learning approximations for non-local nonlinear PDEs with Neumann boundary conditions_. In preparation.
