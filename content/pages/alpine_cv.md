@@ -29,6 +29,12 @@ projects: []
 ---
 
 ## Ski mountaineering / Backcountry skiing
+  * Haute Route Chamonix - Zermatt, 7 days, group leader, February 2022 - [*video* 📺](https://www.youtube.com/watch?v=CfwHbL9e0kQ&list=PL6uty1R0qERWbpkLSbkEJXP4q8Z1FCSO8)
+    * Grande Tête de By, 3588m
+    * Tête de Valpelline, 3798m
+
+  * Oberalpstock 3328m, über den Staldenfirn ins Maderanertal, D, 2022
+
   * Chronenstock 2451m, AD-, 2022
 
   * Spilauer Grätli 2303m, PD, 2022
@@ -57,7 +63,7 @@ projects: []
 
   * Mont Brulé 3576m, AD-, 2021
 
-  * Graubünden Haute Route, 6 days, group leader, 2021 - [*video* 📺](https://www.youtube.com/watch?v=-AAVG_6zCjQ)
+  * Graubünden Haute Route, 7 days, group leader, 2021 - [*video* 📺](https://www.youtube.com/watch?v=-AAVG_6zCjQ)
     
     * Piz d'Agnel 3204m, PD
 
