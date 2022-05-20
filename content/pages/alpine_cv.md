@@ -33,6 +33,8 @@ projects: []
     * Grande Tête de By, 3588m
     * Tête de Valpelline, 3798m
 
+  * Redertenstock, 2214m, 2022, PD
+
   * Oberalpstock 3328m, über den Staldenfirn ins Maderanertal, D, 2022
 
   * Chronenstock 2451m, AD-, 2022
