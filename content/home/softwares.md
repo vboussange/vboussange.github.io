@@ -57,13 +57,13 @@ Evolutionary Individual based modelling, mathematically grounded. A user friendl
 
 {{< github_button button="star" user="vboussange" repo="evoid.jl" count="true" dark="true" large="true">}}
 
-# [HighDimPDE.jl](https://github.com/vboussange/HighDimPDE.jl)
+# [HighDimPDE.jl](https://github.com/SciML/HighDimPDE.jl)
 Solver for **highly dimensional, non-local, nonlinear PDEs**. It is integrated within the SciML ecosystem (see below). Try it out! &#128515; If you want to learn more about the algorithms implemented, check out my [research interests]({{site.url}}/research/#developping-numerical-schemes-for-solving-high-dimensional-non-local-nonlinear-pdes).
 
-{{< github_button button="star" user="vboussange" repo="highdimpde.jl" count="true" dark="true" large="true">}}
+{{< github_button button="star" user="SciML" repo="HighDimPDE.jl" count="true" dark="true" large="true">}}
 
 
 # [SciML](https://github.com/SciML/)
-I am a member of the **SciML** organisation, an open source ecosystem for Scientific Machine Learning in the Julia programming language. On top of being the author of **HighDimPDE.jl**, I actively participate in the development of other packages such as [DiffEqFlux.jl](https://github.com/SciML/DiffEqFlux.jl), a library to train differential equations with data.
+I am a member of the **SciML** organisation, an open source ecosystem for Scientific Machine Learning in the Julia programming language. On top of being the main author of **HighDimPDE.jl**, I actively participate in the development of other packages such as [DiffEqFlux.jl](https://github.com/SciML/DiffEqFlux.jl), a library to train differential equations with data.
 
 {{< github_button button="star" user="SciML" repo="DiffEqFlux.jl" count="true" dark="true" large="true">}}

@@ -56,4 +56,4 @@ $$
 
 
 
-I have implemented those schemes in [HighDimPDE.jl](https://github.com/vboussange/HighDimPDE.jl), a Julia package that should allow scientists to develop models that better capture the complexity of life. These techniques extend beyond biology and are also relevant for other fields, such as finance.
+I have implemented those schemes in [HighDimPDE.jl](https://github.com/SciML/HighDimPDE.jl), a Julia package that should allow scientists to develop models that better capture the complexity of life. These techniques extend beyond biology and are also relevant for other fields, such as finance.
