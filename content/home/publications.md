@@ -55,6 +55,8 @@ subtitle: ''
 ### Talks
 
 <!-- - _Numerical approximations of solutions of highly dimensional, non-local nonlinear PDEs_. StAMBio seminar, St Andrews, UK. (November 2021), [[slides]]({{site.url}}/files/slides/CCS2021_V2.4_splitted.pdf). -->
+- _Investigating empirical patterns of biodiversity with mechanistic eco-evolutionary models_, Seminar at the Theoretical Ecology and Evolution group, invited speaker, Universität Bern (June 2022).
+- _Deep learning approximations for non-local nonlinear PDEs_, StAMBio seminar, invited speaker, St Andrews, UK (November 2021).
 - _Graph topology and habitat assortativity drive phenotypic differentiation in an eco-evolutionary model_, Conference on Complex Systems, Lyon, France (October 2021). {{% staticref "slides/CCS2021_V2.4_splitted.pdf" %}}[slides]{{% /staticref %}}
 - _Using graph-based metrics to assess the effect of landscape topography on diversification_, ECBC, Amsterdam, Netherlands (October 2021). {{% staticref "slides/ECBC_amsterdam_v3.pdf" %}}[slides]{{% /staticref %}}
 - _Solving non-local nonlinear Partial Differential Equations in high dimensions with_ `HighDimPDE.jl`, International Conference on Computational Methods in Systems Biology, Bordeaux, France (October 2021). {{% staticref "posters/poster_CMSB2021_Boussange.pdf" %}}[poster]{{% /staticref %}}
