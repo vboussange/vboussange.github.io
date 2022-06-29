@@ -55,6 +55,7 @@ subtitle: ''
 ### Talks
 
 <!-- - _Numerical approximations of solutions of highly dimensional, non-local nonlinear PDEs_. StAMBio seminar, St Andrews, UK. (November 2021), [[slides]]({{site.url}}/files/slides/CCS2021_V2.4_splitted.pdf). -->
+- _Interpretable machine learning for forecasting dynamical processes in ecosystems_, World Biodiversity Forum, Davos, Switzerland (June 2022). {{% staticref "slides/interpretable_ML.pdf" %}}[slides]{{% /staticref %}}
 - _Investigating empirical patterns of biodiversity with mechanistic eco-evolutionary models_, Seminar at the Theoretical Ecology and Evolution group, invited speaker, Universität Bern (June 2022).
 - _Deep learning approximations for non-local nonlinear PDEs_, StAMBio seminar, invited speaker, St Andrews, UK (November 2021).
 - _Graph topology and habitat assortativity drive phenotypic differentiation in an eco-evolutionary model_, Conference on Complex Systems, Lyon, France (October 2021). {{% staticref "slides/CCS2021_V2.4_splitted.pdf" %}}[slides]{{% /staticref %}}
