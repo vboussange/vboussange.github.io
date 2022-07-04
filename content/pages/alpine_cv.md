@@ -101,7 +101,9 @@ projects: []
 
 ## Alpinism
 
-  * Vrenelisgärtli 2905m , Normal route from Glarnischhütte, PD, group leader, 2021
+  * Tete Blanche 3421m, North Face, Petite Fourche 3512m, 2022
+
+  * Vrenelisgärtli 2905m, Normal route from Glarnischhütte, PD, group leader, 2021
 
   * Spaghetti tour, group leader, 2021 - [*video* 📺](https://www.youtube.com/watch?v=sVtr_m1H1II)
 
@@ -127,6 +129,10 @@ projects: []
 
 
 ## Alpine climbing
+
+  * Mattstock 1935m, "Kobold" - "Gipfelstürmer" - Südwestgrat, 2022
+
+  * Haggenspitz 1762m, Nordwestgrat, 2022
 
   * Sewenstock 2820m, "Amarone", 10 pitches, 7 pitches in 6a+, 2021
 
