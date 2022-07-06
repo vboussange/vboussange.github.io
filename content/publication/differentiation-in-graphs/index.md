@@ -1,5 +1,5 @@
 ---
-title: "Topology and habitat assortativity drive neutral and adaptive diversification in spatial graphs"
+title: "Eco-evolutionary model on spatial graphs reveals how habitat structure affects phenotypic differentiation"
 
 # Authors
 # If you created a profile for a user (e.g. the default `admin` user), write the username (folder name) here 
@@ -13,8 +13,8 @@ authors:
 # - "Equal contribution"
 # - "Equal contribution"
 
-date: "2021-07-01T00:00:00Z"
-doi: ""
+date: "2022-07-06T00:00:00Z"
+doi: "10.1038/s42003-022-03595-3"
 
 # Schedule page publish date (NOT publication's date).
 publishDate: "2017-01-01T00:00:00Z"
@@ -23,18 +23,18 @@ publishDate: "2017-01-01T00:00:00Z"
 # Legend: 0 = Uncategorized; 1 = Conference paper; 2 = Journal article;
 # 3 = Preprint / Working Paper; 4 = Report; 5 = Book; 6 = Book section;
 # 7 = Thesis; 8 = Patent
-publication_types: ["3"]
+publication_types: ["2"]
 
 # Publication name and optional abbreviated publication name.
-publication: Revision requested from Communications Biology.
-publication_short: Under review
+publication: Communications Biology
+publication_short: Commun. Biol.
 
-abstract: Differentiation mechanisms are influenced by the properties of the landscape over which individuals interact, disperse and evolve. Here, we investigate how habitat connectivity and habitat heterogeneity affect phenotypic differentiation by formulating a stochastic eco-evolutionary model where individuals are structured over a spatial graph. Individuals possess neutral and adaptive traits, whose divergence results in differentiation at the population level. We combine analytical insights into the eco-evolutionary dynamics with numerical simulations to understand how the graph topology and the spatial distribution of habitat types affect differentiation. We show that not only low connectivity but also heterogeneity in connectivity promotes neutral differentiation, due to increased competition in highly connected vertices. Habitat assortativity, a measure of habitat spatial auto-correlation in graphs, additionally drives differentiation under habitat-dependent selection. While assortative graphs systematically amplify adaptive differentiation, they can foster or depress neutral differentiation depending on the migration regime. By formalising the eco-evolutionary and spatial dynamics of biological populations on graphs, our study establishes fundamental links between landscape features and phenotypic differentiation.
+abstract: Differentiation mechanisms are influenced by the properties of the landscape over which individuals interact, disperse and evolve. Here, we investigate how habitat connectivity and habitat heterogeneity affect phenotypic differentiation by formulating a stochastic eco-evolutionary model where individuals are structured over a spatial graph. We combine analytical insights into the eco-evolutionary dynamics with numerical simulations to understand how the graph topology and the spatial distribution of habitat types affect differentiation. We show that not only low connectivity but also heterogeneity in connectivity promotes neutral differentiation, due to increased competition in highly connected vertices. Habitat assortativity, a measure of habitat spatial auto-correlation in graphs, additionally drives differentiation under habitat-dependent selection. While assortative graphs systematically amplify adaptive differentiation, they can foster or depress neutral differentiation depending on the migration regime. By formalising the eco-evolutionary and spatial dynamics of biological populations on graphs, our study establishes fundamental links between landscape features and phenotypic differentiation.
 
 # Summary. An optional shortened abstract.
 summary: Differentiation mechanisms are influenced by the properties of the landscape over which individuals interact, disperse and evolve. Here, we investigate how habitat connectivity and habitat heterogeneity affect phenotypic differentiation by formulating a stochastic eco-evolutionary model where individuals are structured over a spatial graph. By formalising the eco-evolutionary and spatial dynamics of biological populations on graphs, our study establishes fundamental links between landscape features and phenotypic differentiation.
 
-tags: [IBM]
+tags: [Biodiversity, Evolutionary ecology, Network topology, Population dynamics]
 
 # Display this page in the Featured widget?
 featured: true
@@ -44,8 +44,8 @@ featured: true
 # - name: Custom Link
 #   url: http://example.org
 
-url_pdf: 'https://www.biorxiv.org/content/10.1101/2021.07.06.451404v2'
-url_code: ''
+url_pdf: 'https://rdcu.be/cQ4Ry'
+url_code: 'https://github.com/vboussange/differentiation-in-spatial-graphs'
 url_dataset: ''
 url_poster: ''
 url_project: ''
@@ -59,9 +59,9 @@ url_video: ''
 # Focal point options: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight
 # Set `preview_only` to `true` to just use the image for thumbnails.
 image:
-  placement: 1
+  # placement: ["1"]
   caption: 'Effect of habitat heterogeneity on differentiation in a mathematical model where the vertices of the graph, corresponding to geographical areas, are assigned different environmental conditions favoring different niche traits. The configuration of the environmental conditions determines the level of differentiation $Q_{ST,s}$ of populations across the vertices.'
-  focal_point: "Center"
+  # focal_point: "Center"
   preview_only: false
 
 # Associated Projects (optional).
