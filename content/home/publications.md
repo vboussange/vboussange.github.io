@@ -38,9 +38,10 @@ subtitle: ''
 ---
 
 ### Publications
+
 - Boussange, V. & Pellissier, L., _Eco-evolutionary model on spatial graphs reveals how habitat structure affects phenotypic differentiation_. [Commun Biol](https://doi.org/10.1038/s42003-022-03595-3) **5**, 668 (2022). [[bioRxiv](https://www.biorxiv.org/content/10.1101/2021.07.06.451404.abstract)] 
 ### Preprints
-
+- Boussange, V., Vilimelis-Aceituno, P., Pellissier, L., _Mini-batching ecological data to improve ecosystem models with machine learning_ [[bioRxiv](https://www.biorxiv.org/content/10.1101/2022.07.25.501365v1)] (2022), 46 pages.
 - Boussange, V., Becker, S., Jentzen, A., Kuckuck, B., Pellissier, L., Deep learning approximations for non-local nonlinear PDEs with Neumann boundary conditions. [[arXiv](https://arxiv.org/abs/2205.03672)] (2022), 59 pages.
 
 ### Proceedings
@@ -50,7 +51,6 @@ subtitle: ''
 ### Works in progress
 
 - Boussange, V., Sornette, D., Pellissier, L., _Eco-evolutionary dynamics in economic systems_.
-- Boussange, V., Vilimelis-Aceituno, P., Pellissier, L., _Interpretable Machine Learning for forecasting dynamical processes in ecosystems_.
 
 ### Talks
 

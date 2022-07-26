@@ -5,7 +5,7 @@ tags:
 - Deep Learning
 - PDEs
 - Applied Mathematics
-- Scientific Machine Learning
+- Scientific machine learning
 date: "2020-06-27T00:00:00Z"
 
 # Optional external URL for project (replaces project detail page).

@@ -28,7 +28,7 @@ content:
   - name: All
     tag: '*'
   - name: Scientific Machine Learning
-    tag: Scientific Machine Learning
+    tag: Scientific machine learning
   - name: Ecology and evolution
     tag: Ecology and evolution
   - name: Economics
