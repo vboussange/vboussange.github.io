@@ -53,7 +53,7 @@ subtitle: ''
 - Boussange, V., Sornette, D., Pellissier, L., _Eco-evolutionary dynamics in economic systems_.
 
 ### Talks
-
+- _**HighDimPDE.jl**: A Julia package for solving high-dimensional PDEs_, JuliaCon2022, online [*video* 📺](https://youtu.be/4sXqGhhknT4)
 <!-- - _Numerical approximations of solutions of highly dimensional, non-local nonlinear PDEs_. StAMBio seminar, St Andrews, UK. (November 2021), [[slides]]({{site.url}}/files/slides/CCS2021_V2.4_splitted.pdf). -->
 - _Interpretable machine learning for forecasting dynamical processes in ecosystems_, World Biodiversity Forum, Davos, Switzerland (June 2022). {{% staticref "slides/interpretable_ML.pdf" %}}[slides]{{% /staticref %}}
 - _Investigating empirical patterns of biodiversity with mechanistic eco-evolutionary models_, Seminar at the Theoretical Ecology and Evolution group, invited speaker, Universität Bern (June 2022).
