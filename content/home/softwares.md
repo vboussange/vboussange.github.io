@@ -62,10 +62,10 @@ Solver for **highly dimensional, non-local, nonlinear PDEs**. It is integrated w
 
 {{< github_button button="star" user="SciML" repo="HighDimPDE.jl" count="true" dark="true" large="true">}}
 
-# [MiniBatchInference.jl](https://github.com/vboussange/MiniBatchInference.jl)
+# [PiecewiseInference.jl](https://github.com/vboussange/PiecewiseInference.jl)
 Suite for parameter inference and model selection with dynamical models characterised by complex dynamics.
 
-{{< github_button button="star" user="vboussange" repo="MiniBatchInference.jl" count="true" dark="true" large="true">}}
+{{< github_button button="star" user="vboussange" repo="PiecewiseInference.jl" count="true" dark="true" large="true">}}
 
 
 # [SciML](https://github.com/SciML/)
