@@ -101,6 +101,8 @@ projects: []
 
 ## Alpinism
 
+  * Nadelhorn 4327m, PD, 2022
+
   * Tete Blanche 3421m, North Face, Petite Fourche 3512m, 2022
 
   * Vrenelisgärtli 2905m, Normal route from Glarnischhütte, PD, group leader, 2021
@@ -129,6 +131,12 @@ projects: []
 
 
 ## Alpine climbing
+
+  * Pic de Jallouvre 2408m, Voie des Cristaux, AD-, 2022
+
+  * Pointes de la Blonniere 2369m, Arête à Marion, AD-, 2022
+
+  * Dri Horlini, SW ridge, AD, 2022
 
   * Mattstock 1935m, "Kobold" - "Gipfelstürmer" - Südwestgrat, 2022
 
