@@ -63,6 +63,8 @@ features:
     extra_languages:
       - r
       - latex
+      - julia
+    highlight_style: 'github'
   math:
     enable: true
   diagram:
