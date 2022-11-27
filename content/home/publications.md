@@ -39,18 +39,23 @@ subtitle: ''
 
 ### Publications
 
-- Boussange, V. & Pellissier, L., _Eco-evolutionary model on spatial graphs reveals how habitat structure affects phenotypic differentiation_. [Commun Biol](https://doi.org/10.1038/s42003-022-03595-3) **5**, 668 (2022). [[bioRxiv](https://www.biorxiv.org/content/10.1101/2021.07.06.451404.abstract)] 
+- **Boussange, V.** & Pellissier, L., _Eco-evolutionary model on spatial graphs reveals how habitat structure affects phenotypic differentiation_. [Commun Biol](https://doi.org/10.1038/s42003-022-03595-3) **5**, 668 (2022). [[bioRxiv](https://www.biorxiv.org/content/10.1101/2021.07.06.451404.abstract)] 
 ### Preprints
-- Boussange, V., Vilimelis-Aceituno, P., Pellissier, L., _Mini-batching ecological data to improve ecosystem models with machine learning_ [[bioRxiv](https://www.biorxiv.org/content/10.1101/2022.07.25.501365v1)] (2022), 46 pages. In review.
-- Boussange, V., Becker, S., Jentzen, A., Kuckuck, B., Pellissier, L., _Deep learning approximations for non-local nonlinear PDEs with Neumann boundary conditions_. [[arXiv](https://arxiv.org/abs/2205.03672)] (2022), 59 pages. Revision requested from Partial Differential Equations and Applications.
+- **Boussange, V.**, Vilimelis-Aceituno, P., Pellissier, L., _Mini-batching ecological data to improve ecosystem models with machine learning_ [[bioRxiv](https://www.biorxiv.org/content/10.1101/2022.07.25.501365v1)] (2022), 46 pages. In review.
+- **Boussange, V.**, Becker, S., Jentzen, A., Kuckuck, B., Pellissier, L., _Deep learning approximations for non-local nonlinear PDEs with Neumann boundary conditions_. [[arXiv](https://arxiv.org/abs/2205.03672)] (2022), 59 pages. Revision requested from Partial Differential Equations and Applications.
 
 ### Proceedings
 
-- Poulet, T., Alevizos, S., Veveakis, M., Boussange, V., Regenauer-Lieb, K., _Episodic mineralising fluid injection through chemical shear zones_, [ASEG Extended Abstracts](https://www.biorxiv.org/content/10.1101/2021.07.06.451404.abstract) (2018), 5 pages.
+- Poulet, T., Alevizos, S., Veveakis, M., **Boussange, V.**, Regenauer-Lieb, K., _Episodic mineralising fluid injection through chemical shear zones_, [ASEG Extended Abstracts](https://www.biorxiv.org/content/10.1101/2021.07.06.451404.abstract) (2018), 5 pages.
 
 ### Works in progress
+- **Boussange, V.**, Sornette, D., Lischke, H., Pellissier, L., _Analogous processes to ecological interactions and dispersal shape the dynamics of economic activities_.
 
-- Boussange, V., Sornette, D., Lischke, H., Pellissier, L., _Quantifiying eco-evolutionary dynamics in economic systems_.
+- Skeels, A., Boschman, L.M., McFadden, I., Joyce, E.M., Hagen, O., Jiménez Robles, O., Bach, W., **Boussange, V.**, Keggin, T., Jetz, W., Pellissier, L., _Paleoenvironments shaped biotic exchange across Wallace’s Line_. In review at Science.
+
+- **Boussange, V.**, Karger, D., Malle, J. T., Midolo, D., _Species area environment relationships_. (in alphabetical order)
+
+- Becker, S., **Boussange, V.**, Jentzen, A., Kruse, T.,  _Machine learning methods for computing asset trading strategies in goal based investment management_. (in alphabetical order)
 
 ### Talks
 - _**HighDimPDE.jl**: A Julia package for solving high-dimensional PDEs_, JuliaCon2022, online [*video* 📺](https://youtu.be/4sXqGhhknT4)

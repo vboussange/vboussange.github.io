@@ -67,6 +67,10 @@ Suite for parameter inference and model selection with dynamical models characte
 
 {{< github_button button="star" user="vboussange" repo="PiecewiseInference.jl" count="true" dark="true" large="true">}}
 
+# [ParametricModels.jl](https://github.com/vboussange/ParametricModels.jl)
+Utilities for parametric and composite differential equation models.
+
+{{< github_button button="star" user="vboussange" repo="ParametricModels.jl" count="true" dark="true" large="true">}}
 
 # [SciML](https://github.com/SciML/)
 I am a member of the **SciML** organisation, an open source ecosystem for Scientific Machine Learning in the Julia programming language. On top of being the main author of **HighDimPDE.jl**, I actively participate in the development of other packages such as [DiffEqFlux.jl](https://github.com/SciML/DiffEqFlux.jl), a library to train differential equations with data.

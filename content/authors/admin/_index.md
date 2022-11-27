@@ -70,10 +70,10 @@ highlight_name: true
 ---
 
 
-I'm Victor, a $4^{th}$ year Ph.D candidate in the [Landscape Ecology Group](https://landecology.ethz.ch) at [ETH Zürich](https://ethz.ch/en.html) and at the [Swiss Federal Institute for Forest, Snow & Landscape (WSL)](https://www.wsl.ch/en/index.html), Switzerland.
+I'm Victor, a postdoctoral researcher in the [Ecosystems and Landscape Evolution Group](https://landecology.ethz.ch) at [ETH Zürich](https://ethz.ch/en.html) and at the [Swiss Federal Institute for Forest, Snow & Landscape (WSL)](https://www.wsl.ch/en/index.html), Switzerland.
 <br>
 
-My Ph.D aims at better understanding **evolutionary processes that affect the dynamics of ecosystems and economic systems**. I conduct my investigations with **mathematical models** capturing **eco-evolutionary dynamics**. In parallel, I develop **machine learning methods** to confront these models with empirical data and infer scientific knowledge. I believe that the combination of mechanistic models and machine learning provides a powerful approach to better understand our world. This is crucial, in the face of potentially important ecosystem changes and accelerating threats.
+My work aims at better understanding **ecological and evolutionary processes that affect the dynamics of ecosystems**. Because analogous processes affect them, I am also interested in the dynamics of **economic systems**. I conduct my investigations with **mathematical models** capturing **eco-evolutionary dynamics**. In parallel, I develop **machine learning methods** to confront these models with empirical data and infer scientific knowledge. I believe that the combination of mechanistic models and machine learning provides a powerful approach to better understand our world. This is crucial, in the face of potentially important ecosystem changes and accelerating threats.
 <br>
 
 Besides work, I am passionate about alpine adventures and spend my freetime climbing and going down mountains &#x1F3D4; , be it with chalk, ice-axes, skis, or a mountainbike. You can check out **my alpine CV** [here]({{<ref "/pages/alpine_cv.md" >}}).
