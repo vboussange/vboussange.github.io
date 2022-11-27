@@ -10,6 +10,8 @@ Unfortunately the code below for now is not working
 open(tuto_path_hugo_md, "w") do mdfile
     replace(mdfile,"../" =>"")
 end
+
+- replace "\\" in multiline equations by \\\\
 ```
 =#
 using Weave
@@ -22,7 +24,7 @@ for tuto in to_generate
     tuto_path_hugo = joinpath(post_path, tuto)
     tuto_path_hugo_md = joinpath(tuto_path_hugo, "index.md")
 
-    if isfile(tuto_path_hugo) 
+    if isfile(tuto_path_hugo) # this is not working, one should check at the index.md
         @info("Skipping $(tuto)")
         continue
     else
