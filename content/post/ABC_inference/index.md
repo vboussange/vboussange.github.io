@@ -2,36 +2,35 @@
 featured: false
 subtitle: ""
 summary: "In this tutorial, you'll learn the basics of approximate Bayesian computation (ABC). ABC is an inference method with very little requirements in terms of the model structure - yet it can be very powerful. It is very simple to apply to any model, and to understand. We'll play around with Julia, and we will visualize graphically the inference results, so that you can build an intuition of the inference method."
-date: "2022-11-18"
+date: "2022-11-27"
 header-includes:
   - "\\newcommand{\\M}{\\mathcal{M}}"
 draft: false
-title: "A practical introduction to Approximate Bayesian Computation"
+title: "A practical introduction to approximate Bayesian computation"
 tags: []
 categories: []
 authors: []
-lastmod: "2022-11-18"
+lastmod: "2022-11-27"
 ---
 
 
 ## Introduction
-In this tutorial, you'll learn the basics of approximate Bayesian computation (ABC). <!-- and Bayesian inference, and compare the two approaches. -->
-ABC is an inference method with very little requirements in terms of the model structure - yet it can be very powerful. It is very simple to apply to any model, and to understand. 
-We'll play around with Julia, and we will visualize graphically the inference results, so that you can build an intuition of the inference method.
+In this tutorial, we'll learn the basics of approximate Bayesian computation (ABC). <!-- and Bayesian inference, and compare the two approaches. -->
+ABC is a very flexible inference method that is quite intuitive, and that you can apply to almost any model type. As such, it is quite handy to have it in one's toolbox! To build up an intuition of the method, we'll perform ABC on a very simple ecosystem model, using Julia, and will visualize graphically the inference results.
 
 ## Package loading
 We first need to load a few packages.
 ```julia
 cd(@__DIR__)
 using Pkg; Pkg.activate(".")
-import Optimisers:destructure # required to simplify parameter indexing
-using ApproxBayes
-using Distributions # to define the priors
-using OrdinaryDiffEq
-using UnPack
-using ParametricModels # package not registered
 using Random
 using LinearAlgebra
+import Optimisers:destructure # required to simplify parameter indexing
+using UnPack # for parameter indexing
+using ApproxBayes # ABC toolbox
+using Distributions # useful to define the priors
+using OrdinaryDiffEq # ODE solver library
+using ParametricModels # convenience package for ODE models. /!\ package not registered
 ```
 
 
@@ -50,9 +49,9 @@ Random.seed!(11);
 
 
 ## Model definition and data generation
-Let's consider a predator-prey ecological model, known as [Lotka-Volterra equations](https://en.wikipedia.org/wiki/Lotka–Volterra_equations). This model has a total of four different parameters $\alpha, \beta, \gamma, \delta$, that describe the interactions between the two species. For the sake of simplicity, we'll assume that we know perfectly the parameters $\gamma, \delta$, and seek to infer $\alpha$ and $\beta$. Assuming to know $\gamma, \delta$ is of course a very unrealistic assumption...
+Let's consider a predator-prey ecological model, the [Lotka-Volterra equations](https://en.wikipedia.org/wiki/Lotka–Volterra_equations). This model has a total of four different parameters $\alpha, \beta, \gamma, \delta$, that describe the interactions between the two species. For the sake of simplicity, we'll assume that we know perfectly the parameters $\gamma, \delta$, and seek to infer $\alpha$ and $\beta$. Assuming to know $\gamma, \delta$ is of course a very unrealistic assumption...
 
-In the following, we use ParametricModels.jl to define our ODE problem. ParametricModels.jl is a simple wrapper around DifferentialEquations.jl, but makes it easier for multiple model simulation. For readability and maintenance, we'll encapsulate the parameters in a NamedTuple
+In the following, we use [**ParametricModels.jl**](https://github.com/vboussange/ParametricModels.jl) to define our ODE problem. **ParametricModels.jl** is a simple wrapper around **OrdinaryDiffEq.jl**, that allows to play around with the model without bothering further about the details of the numerical solve, etc... This makes it easier for multiple model simulation. For readability and maintenance, we'll encapsulate the parameters in a `NamedTuple`
 
 ```julia
 # Declaration of the model
@@ -84,11 +83,13 @@ sol = simulate(model);
 
 
 
-And here we go, we have our model defined! ParametricModels.jl make the work easy, but as an exercise, you can try to write the same model with OrdinaryDiffEq.jl.
+And here we go, we have our model defined!
+
+> As an exercise, you could try to write the same model with OrdinaryDiffEq.jl.
 
 Let's now plot the model output.
 We first need to import some plotting utilities.
-For plotting, I tend to use PyPlot.jl, which is a wrapper around the Python library matplotlib. I find it much more convenient than the Julia package `Plots.jl`, in the sense that it is much more complete.
+For plotting, I tend to use **PyPlot.jl**, which is a wrapper around the Python library matplotlib. I find it much more convenient than the Julia package **Plots.jl**, in the sense that it contains more utility functions. It is always a good idea to load in parallel **PyCall.jl**, which allows to import other utility funtions from Python.
 
 ```julia
 using PyPlot # to plot 3d landscape
@@ -98,7 +99,7 @@ using PyCall
 
 
 
-Now we can simply plot the model output without noise, 
+Here is a plot of the model output without noise:
 ```julia
 fig = PyPlot.figure()
 PyPlot.plot(sol')
@@ -124,26 +125,24 @@ The model and the synthetic data are ready, let's get started with ABC!
 
 ## Approximate Bayesian computation
 
-For ABC, one needs to define a distance $\rho$ that measures the distance between the model output $\hat\mu$ (in the picture below, $\mu_i$) and the empirical data $\mu$.
+For ABC, one needs to define a function $\rho$ that measures the distance between the model output $\hat \mu$ (in the picture below, $\mu_i$) and the empirical data $\mu$.
 
 ![source: Wikipedia](https://upload.wikimedia.org/wikipedia/commons/b/b9/Approximate_Bayesian_computation_conceptual_overview.svg)
 
-In our case, the empirical data available (`odedata`) allows us to explicitly define the likelihood of the model given the data. For additive Gaussian noise, the likelihood of the model is given by
+In our case, the empirical data available (`odedata`) allows us to explicitly define the likelihood of the model given the data. As a distance function, we therefore can first use the negative log of the likelihood. For additive Gaussian noise, the likelihood of the model is given by
 $$
 \begin{split}
-    p(\by_{1:K} | \theta, \M) &= \prod_{i=1}^K p(y_{i} | \theta, \M)\\
+    p(\textbf{y}_{1:K} | \theta, \mathcal{M}) &= \prod_{i=1}^K p(y_{i} | \theta, \mathcal{M})\\
                         &= \prod_{k=1}^K \frac{1}{\sqrt{(2\pi)^d|\Sigma_y|}} \exp \left(-\frac{1}{2} \epsilon_k^{T} \Sigma_y^{-1} \epsilon_k \right)
 \end{split}
 $$
-where $\epsilon_k \equiv \epsilon(t_k) = y(t_k) - h\left(\M(t_k, \theta)\right)$ and $\Sigma_y = \sigma^2 I$ in our case.
-
-As a distance, we'll simply use the negative log of the likelihood!
+where $\epsilon_k \equiv \epsilon(t_k) = y(t_k) - h\left(\mathcal{M}(t_k, \theta)\right)$ and $\Sigma_y = \sigma^2 I$ in our case. 
 
 So let's translate all this in Julia code. 
 
-`ApproxBayes` requires as input a function `simfunc(params, constants, data)`. It should return the distance value, as well as a second value that may be used for logging. To make things simple, we'll return `nothing` for this second value. 
+**ApproxBayes.jl** requires as input a function `simfunc(params, constants, data)`, which plays the role of the $\rho$ function. It should return the distance value, as well as a second value that may be used for logging. To make things simple, we'll return `nothing` for this second value. 
 
-Because `ApproxBayes` requires that `params` is an array (`params <: AbstractArray`), we further use a special trick relying on the function `Optimiser.destructure`. This utility function allows to generate a function `re` that can recover a `NamedTuple` from a vector. Very useful in combination with the utility macro `@unpack`!
+Because **ApproxBayes.jl** requires that `params` is an array (`params <: AbstractArray`), we further use a special trick relying on the function `Optimiser.destructure`. This utility function allows to generate a function `re` that can recover a `NamedTuple` from a vector. Very useful in combination with the utility macro `@unpack`!
 
 ```julia
 _, re = destructure(p)
@@ -203,9 +202,7 @@ Parameter 2: 1.00 (0.86,1.16)
 And here we go: `abcresult` informs us that the ABC inference could indeed recover the parameters that generated the data!
 
 ## Visualizing the inference process
-To better understand what has happened, let's plot the parameters that have not been accepted by the sampler, together with the real likelihood landscape.
-
-As a first step, let's calculate the real likelihoood landscape.
+To better understand what has happened, let's plot the parameters that have been accepted by the sampler, together with the real likelihood landscape. As a first step, let's visualise the real likelihoood landscape.
 ```julia
 
 αs = range(1.45, 1.55, length=100)
@@ -279,3 +276,206 @@ display(fig)
 {{< figure src="figures/ABC_inference_11_1.png"  >}}
 
 Cool, right?
+
+## Summary statistics
+It may be useful, or necessary, to use summary statistics of the data instead of the full likelihood, to be provided to the distance function. Summary statistics are values calculated from the data to represent the maximum amount of information in the simplest possible form. Using summary statistics allows to reduce the dimensionality of the data, which increases the probability of accepting the model output. In our case, the dimensionality correponds to the number of time steps multiplied by the number of state variables). Using summary statistics may prove useful to improve the convergence of the inference process, were the inference not converge using the likelihood function. But because it reduces the amount of information provided to the inference method, it may also hamper a precise characterisation of the model parameter values.
+
+<!-- ### Note: to improve performance, you could increase the time series length -->
+### Mean and variance
+As summary statistics, we can here compute the mean and covariance matrix of the state variables, and use those to define the distance between the model output and the data.
+```julia
+compute_summary_stats(data) = [mean(data,dims=2); cov(data, dims=2)[:]]
+ss_data = compute_summary_stats(odedata)
+```
+
+```
+6×1 Matrix{Float64}:
+ 2.966416873264894
+ 1.5414956648089986
+ 4.784360022666909
+ 0.07385819785251807
+ 0.07385819785251807
+ 2.680060599643699
+```
+
+
+
+
+
+Let's now proceed similarly to above
+```julia
+function simfunc(params, constants, ss_data)
+    p_tuple = re(params)
+    pred = simulate(model, p=p_tuple)
+    ss_pred = compute_summary_stats(pred)
+    ρ = sum((ss_pred .- ss_data).^2) # taking euclidean distance between
+    return ρ, nothing
+end
+
+simfunc([1.0, 1.2], nothing, ss_data)
+
+priors = [truncated(Normal(1.1, 1.), 0.5, 2.5), # for α and β
+            truncated(Normal(1.1, 1.), 0., 2.)]
+num_samples = 500
+max_iterations = 1e5
+ϵ = 0.15
+abcsetup = ABCRejection(simfunc,
+                        length(priors),
+                        ϵ,
+                        ApproxBayes.Prior(priors);
+                        nparticles=num_samples,
+                        maxiterations=max_iterations)
+
+abcresult = runabc(abcsetup, ss_data, progress=true, parallel=true)
+```
+
+```
+Preparing to run in parallel on 5 processors
+Number of simulations: 1.00e+05
+Acceptance ratio: 5.00e-03
+
+Median (95% intervals):
+Parameter 1: 2.10 (1.98,2.30)
+Parameter 2: 1.11 (1.01,1.23)
+```
+
+
+
+
+As you can see, the results of the inference or much less accurate. 
+
+> Which other summary statistics of the time series could you think of? You can find below tests with other summary statistics.
+
+And that's it for today! Hopefully this tutorial has given you some basics and intuition on ABC, and how to use in Julia.
+
+## Further references
+- [A comparison of approximate versus exact techniques for Bayesian inference in nonlinear ordinary differential equations, Alahmadi et al. 2020.](https://royalsocietypublishing.org/doi/epdf/10.1098/rsos.191315)
+
+## Appendix
+You can find the corresponding tutorial as a `.jmd` file at [https://github.com/vboussange/MyTutorials](https://github.com/vboussange/MyTutorials). To use `ParametricModels.jl`, follow the procedure indicated on the [github repo](https://github.com/vboussange/ParametricModels.jl).
+Please contact me, if you have found a mistake, or if you have any comment or suggestion on how to improve this tutorial.
+
+### Summary statistics with Fourier transforms
+```julia
+using FFTW
+# Fourier Transform of the data
+F = fft(odedata .- mean(odedata,dims=2)) |> fftshift
+# freqs = fftfreq(size(odedata, 2), 1.0/Ts) |> fftshift
+fig = figure()
+plot(1:size(odedata,2), abs.(F)')
+display(fig)
+```
+
+{{< figure src="figures/ABC_inference_14_1.png"  >}}
+
+Let's select the frequency which frequency is predominent, and consider it for our summary statistics
+
+```julia
+freq_x = sortperm(abs.(F[1,:]))[end-1:end] # selecting the two most important frequencies
+freq_y = sortperm(abs.(F[1,:]))[end-1:end] # selecting the two most important frequencies
+@assert freq_x == freq_y # both prey and predator data peak at the same frequencies
+
+function compute_summary_stats(data)
+    F = fft(Array(data)) |> fftshift
+    return abs.(F[:,freq_x])
+end
+ss_data = compute_summary_stats(Array(odedata))
+simfunc([1.0, 1.2], nothing, ss_data)
+```
+
+```
+(29583.477061802652, nothing)
+```
+
+
+
+
+
+Let's now proceed similarly to above
+```julia
+priors = [truncated(Normal(1.1, 1.), 0.5, 2.5), # for α and β
+            truncated(Normal(1.1, 1.), 0., 2.)]
+num_samples = 500
+max_iterations = 1e5
+ϵ = 0.15
+abcsetup = ABCRejection(simfunc,
+                        length(priors),
+                        ϵ,
+                        ApproxBayes.Prior(priors);
+                        nparticles=num_samples,
+                        maxiterations=max_iterations)
+
+abcresult = runabc(abcsetup, ss_data, progress=true, parallel=true)
+```
+
+```
+Preparing to run in parallel on 5 processors
+Number of simulations: 1.00e+05
+Acceptance ratio: 5.00e-03
+
+Median (95% intervals):
+Parameter 1: 1.44 (1.05,2.38)
+Parameter 2: 0.92 (0.26,0.99)
+```
+
+
+
+
+Although we have quite a large uncertainty on the parameters, the Fourier transform-based summary statistics seem to contain more relevant information, and this is reflected on the more accurate value of the inferred parameters.
+
+### Summary statistics with auto-correlation
+Here we use the autocorrelation function to build our summary statistics. The default lag value of the `autocor` in Julia reduces the dimension of the data to a matrix of size `21x2`. 
+```julia
+using StatsBase
+autocor_ss = autocor(odedata') 
+fig = figure()
+plot(1:size(autocor_ss,1), autocor_ss)
+display(fig)
+```
+
+{{< figure src="figures/ABC_inference_17_1.png"  >}}
+
+If we were to compute the lag from $t = 0$ to $t = t_{\text{max}}$, we would obtain a sinusoidal curve, similar to the time series raw data.
+
+```julia
+compute_summary_stats(data) = autocor(Array(data)')
+ss_data = compute_summary_stats(odedata)
+simfunc([1.0, 1.2], nothing, ss_data)
+```
+
+```
+(1.4530748281677037, nothing)
+```
+
+
+
+
+
+Let's now proceed similarly to above
+```julia
+priors = [truncated(Normal(1.1, 1.), 0.5, 2.5), # for α and β
+            truncated(Normal(1.1, 1.), 0., 2.)]
+num_samples = 500
+max_iterations = 1e5
+ϵ = 0.15
+abcsetup = ABCRejection(simfunc,
+                        length(priors),
+                        ϵ,
+                        ApproxBayes.Prior(priors);
+                        nparticles=num_samples,
+                        maxiterations=max_iterations)
+
+abcresult = runabc(abcsetup, ss_data, progress=true, parallel=true)
+```
+
+```
+Preparing to run in parallel on 5 processors
+Number of simulations: 1.00e+05
+Acceptance ratio: 5.00e-03
+
+Median (95% intervals):
+Parameter 1: 1.53 (1.45,1.61)
+Parameter 2: 0.35 (0.29,0.41)
+```
+
+

@@ -1,5 +1,16 @@
 #=
-File to generate the blogposts from .jmd files located in MyTutorials
+File to generate the blogposts from .jmd files located in MyTutorials.
+
+- tutorials listed in `to_generate` should be stored in folder `MyTutorials`
+followng the structure `tuto/tuto.jmd`
+
+- /!\ make sure to replace "../" by "". 
+Unfortunately the code below for now is not working
+```julia
+open(tuto_path_hugo_md, "w") do mdfile
+    replace(mdfile,"../" =>"")
+end
+```
 =#
 using Weave
 cd(@__DIR__)
@@ -18,10 +29,5 @@ for tuto in to_generate
         isdir(tuto_path_hugo) ? nothing : mkpath(tuto_path_hugo)
         tuto_path_jmd = joinpath(path_to_tutorials, tuto, tuto*".jmd")
         weave(tuto_path_jmd, doctype="hugo", out_path=tuto_path_hugo_md)
-        # /!\ make sure to replace "../" by "". 
-        # Unfortunately the code below for now is not working
-        # open(tuto_path_hugo_md, "w") do mdfile
-        #     replace(mdfile,"../" =>"")
-        # end
     end
 end
