@@ -6,10 +6,12 @@ title: Victor Boussange
 superuser: true
 
 # Role/position/tagline
-role: PhD candidate
+role: Postdoctoral researcher
 
 # Organizations/Affiliations to show in About widget
 organizations:
+- name: WSL Birmensdorf
+  url: https://www.wsl.ch/en/
 - name: ETH Zürich
   url: https://www.ethz.ch/en
 
