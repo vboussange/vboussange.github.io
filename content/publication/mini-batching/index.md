@@ -71,7 +71,7 @@ image:
 #   E.g. `internal-project` references `content/project/internal-project/index.md`.
 #   Otherwise, set `projects: []`.
 projects:
-- diff-in-graphs
+- ecology-informed-ML
 
 # Slides (optional).
 #   Associate this publication with Markdown slides.
