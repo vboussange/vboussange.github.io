@@ -32,7 +32,7 @@ content:
   - name: Ecology and evolution
     tag: Ecology and evolution
   - name: Economics
-    tag: Economics
+    tag: economic systems
 
 design:
   # Choose how many columns the section has. Valid values: '1' or '2'.

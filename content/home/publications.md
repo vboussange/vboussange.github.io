@@ -39,17 +39,21 @@ subtitle: ''
 
 ### Publications
 
-- **Boussange, V.** & Pellissier, L., _Eco-evolutionary model on spatial graphs reveals how habitat structure affects phenotypic differentiation_. [Commun Biol](https://doi.org/10.1038/s42003-022-03595-3) **5**, 668 (2022). [[bioRxiv](https://www.biorxiv.org/content/10.1101/2021.07.06.451404.abstract)] 
+- **Boussange, V.** & Pellissier, L., _Eco-evolutionary model on spatial graphs reveals how habitat structure affects phenotypic differentiation_. [Commun Biol](https://doi.org/10.1038/s42003-022-03595-3) **5**, 668 (2022). [[bioRxiv]](https://www.biorxiv.org/content/10.1101/2021.07.06.451404.abstract)
 
 ### Preprints
-- **Boussange, V.**, Sornette, D., Lischke, H., Pellissier, L., _Processes analogous to ecological interactions and dispersal shape the dynamics of economic activities_. [[arXiv](https://arxiv.org/abs/2301.09486)] (2023), 23 pages. In review.
+- **Boussange, V.**, Sornette, D., Lischke, H., Pellissier, L., _Processes analogous to ecological interactions and dispersal shape the dynamics of economic activities_. [[arXiv]](https://arxiv.org/abs/2301.09486) (2023), 23 pages. In review.
 
-- **Boussange, V.**, Vilimelis-Aceituno, P., Pellissier, L., _Mini-batching ecological data to improve ecosystem models with machine learning_ [[bioRxiv](https://www.biorxiv.org/content/10.1101/2022.07.25.501365v1)] (2022), 46 pages. In review.
-- **Boussange, V.**, Becker, S., Jentzen, A., Kuckuck, B., Pellissier, L., _Deep learning approximations for non-local nonlinear PDEs with Neumann boundary conditions_. [[arXiv](https://arxiv.org/abs/2205.03672)] (2022), 59 pages. Revision requested from Partial Differential Equations and Applications.
+- **Boussange, V.**, Vilimelis-Aceituno, P., Pellissier, L., _Mini-batching ecological data to improve ecosystem models with machine learning_. [[bioRxiv]](https://www.biorxiv.org/content/10.1101/2022.07.25.501365v1) (2022), 46 pages. In review.
+- **Boussange, V.**, Becker, S., Jentzen, A., Kuckuck, B., Pellissier, L., _Deep learning approximations for non-local nonlinear PDEs with Neumann boundary conditions_. [[arXiv]](https://arxiv.org/abs/2205.03672) (2022), 59 pages. Revision requested from Partial Differential Equations and Applications.
 
 ### Proceedings
 
-- Poulet, T., Alevizos, S., Veveakis, M., **Boussange, V.**, Regenauer-Lieb, K., _Episodic mineralising fluid injection through chemical shear zones_, [ASEG Extended Abstracts](https://www.biorxiv.org/content/10.1101/2021.07.06.451404.abstract) (2018), 5 pages.
+- Poulet, T., Alevizos, S., Veveakis, M., **Boussange, V.**, Regenauer-Lieb, K., _Episodic mineralising fluid injection through chemical shear zones_. [ASEG Extended Abstracts](https://www.biorxiv.org/content/10.1101/2021.07.06.451404.abstract) (2018), 5 pages.
+
+### Monographs
+- **Boussange, V.**, _Forward and inverse modelling of eco-evolutionary dynamics in ecological and economic systems_. [[ETH library]](https://doi.org/10.3929/ethz-b-000598848) (2022), 207 pages.
+
 
 ### Works in progress
 
@@ -60,11 +64,12 @@ subtitle: ''
 - Becker, S., **Boussange, V.**, Jentzen, A., Kruse, T.,  _Machine learning methods for computing asset trading strategies in goal based investment management_. (in alphabetical order)
 
 ### Talks
+- _Combining eco-evolutionary theory and machine learning to advance our understanding of living systems_, invited speaker, Seminar at the Laboratoire interdisciplinaire de physique (LiPhy), Grenoble, France (February 2023). {{% staticref "slides/liphy_presentation.pdf" %}}[slides]{{% /staticref %}}
 - _**HighDimPDE.jl**: A Julia package for solving high-dimensional PDEs_, JuliaCon2022, online [*video* 📺](https://youtu.be/4sXqGhhknT4)
 <!-- - _Numerical approximations of solutions of highly dimensional, non-local nonlinear PDEs_. StAMBio seminar, St Andrews, UK. (November 2021), [[slides]]({{site.url}}/files/slides/CCS2021_V2.4_splitted.pdf). -->
 - _Interpretable machine learning for forecasting dynamical processes in ecosystems_, World Biodiversity Forum, Davos, Switzerland (June 2022). {{% staticref "slides/interpretable_ML.pdf" %}}[slides]{{% /staticref %}}
-- _Investigating empirical patterns of biodiversity with mechanistic eco-evolutionary models_, Seminar at the Theoretical Ecology and Evolution group, invited speaker, Universität Bern (June 2022).
-- _Deep learning approximations for non-local nonlinear PDEs_, StAMBio seminar, invited speaker, St Andrews, UK (November 2021).
+- _Investigating empirical patterns of biodiversity with mechanistic eco-evolutionary models_, invited speaker, Seminar at the Theoretical Ecology and Evolution group, Universität Bern (June 2022).
+- _Deep learning approximations for non-local nonlinear PDEs_, invited speaker, StAMBio seminar, St Andrews, UK (November 2021).
 - _Graph topology and habitat assortativity drive phenotypic differentiation in an eco-evolutionary model_, Conference on Complex Systems, Lyon, France (October 2021). {{% staticref "slides/CCS2021_V2.4_splitted.pdf" %}}[slides]{{% /staticref %}}
 - _Using graph-based metrics to assess the effect of landscape topography on diversification_, ECBC, Amsterdam, Netherlands (October 2021). {{% staticref "slides/ECBC_amsterdam_v3.pdf" %}}[slides]{{% /staticref %}}
 - _Solving non-local nonlinear Partial Differential Equations in high dimensions with_ `HighDimPDE.jl`, International Conference on Computational Methods in Systems Biology, Bordeaux, France (October 2021). {{% staticref "posters/poster_CMSB2021_Boussange.pdf" %}}[poster]{{% /staticref %}}

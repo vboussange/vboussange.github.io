@@ -29,11 +29,18 @@ projects: []
 ---
 
 ## Ski mountaineering / Backcountry skiing
+  * [Trou de la Mouche 2453m, Tour du Passage du Père](https://skitour.fr/topos/853), 45° AD, Aravis, France, 2023
+  * Pointe du Midi 2364m, Aravis, France, 2023
+  * Fuggstock 2371m, PD, Glarus, Switzerland, 2023
+  * Rote Totz 2847m, PD, Wallis, Switzerland, 2023
+  * Horlini 2458m, Wallis, Switzerland, 2023
+  * [Pic de l'Étendard](https://www.camptocamp.org/routes/54094/fr/pic-de-l-etendard-versant-ne-voie-normale-a-pied-) 3464m, PD, 2022
+  * [Roche du Chardonnet](https://www.camptocamp.org/routes/49758/fr/roche-du-chardonnet-versant-w-par-le-vallon-des-muandes) 2950m, PD, 2022
   * Haute Route Chamonix - Zermatt, 7 days, group leader, February 2022 - [*video* 📺](https://www.youtube.com/watch?v=CfwHbL9e0kQ&list=PL6uty1R0qERWbpkLSbkEJXP4q8Z1FCSO8)
-    * Grande Tête de By, 3588m
-    * Tête de Valpelline, 3798m
+    * Grande Tête de By 3588m
+    * Tête de Valpelline 3798m
 
-  * Redertenstock, 2214m, 2022, PD
+  * Redertenstock 2214m, 2022, PD
 
   * Oberalpstock 3328m, über den Staldenfirn ins Maderanertal, D, 2022
 
@@ -73,7 +80,7 @@ projects: []
 
     * Egghorn 3127m, PD
 
-    * Buinlücke, 40°+
+    * Buinlücke, 45°
 
   * Piz Fess 2881m, PD, group leader, 2021
 
