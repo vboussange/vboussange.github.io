@@ -72,6 +72,11 @@ Utilities for parametric and composite differential equation models.
 
 {{< github_button button="star" user="vboussange" repo="ParametricModels.jl" count="true" dark="true" large="true">}}
 
+# [EcoEvoModelZoo.jl](https://github.com/vboussange/EcoEvoModelZoo.jl)
+A zoo of eco-evolutionary models with high fitness.
+
+{{< github_button button="star" user="vboussange" repo="EcoEvoModelZoo.jl" count="true" dark="true" large="true">}}
+
 # [SciML](https://github.com/SciML/)
 I am a member of the **SciML** organisation, an open source ecosystem for Scientific Machine Learning in the Julia programming language. On top of being the main author of **HighDimPDE.jl**, I actively participate in the development of other packages such as [DiffEqFlux.jl](https://github.com/SciML/DiffEqFlux.jl), a library to train differential equations with data.
 
