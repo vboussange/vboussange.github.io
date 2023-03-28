@@ -54,6 +54,8 @@ subtitle: ''
 ### Monographs
 - **Boussange, V.**, _Forward and inverse modelling of eco-evolutionary dynamics in ecological and economic systems_. [[ETH library]](https://doi.org/10.3929/ethz-b-000598848) (2022), 207 pages.
 
+### Other resources
+- **Boussange, V.**, Werder, M., [Practical introduction to Julia for modelling and data analysis in biodiversity and earth sciences](https://github.com/vboussange/WSLJuliaWorkshop2023)
 
 ### Works in progress
 
