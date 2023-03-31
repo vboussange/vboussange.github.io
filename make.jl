@@ -18,8 +18,8 @@ using Weave
 cd(@__DIR__)
 
 path_to_tutorials = "/Users/victorboussange/ETHZ/projects/MyTutorials"
-tuto = "PiecewiseInference"
-tuto_path_jmd = joinpath(path_to_tutorials, tuto, "PiecewiseInference_tuto_3sp.jmd")
+tuto = "HybridModelling"
+tuto_path_jmd = joinpath(path_to_tutorials, tuto, "HybridModelling.ipynb")
 
 post_path = "./content/post"
 tuto_path_hugo = joinpath(post_path, tuto)
