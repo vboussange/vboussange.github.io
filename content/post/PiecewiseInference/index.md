@@ -14,14 +14,14 @@ authors: []
 featured: false
 ---
 
-Mechanistic ecosystem models permit to quantiatively describe how population, species or communities grow, interact and evolve. Yet calibrating them to fit real-world data is a daunting task. That's why I'm excited to introduce **PiecewiseInference.jl**, a new Julia package that provides a user-friendly and efficient framework for inverse ecosystem modeling. In this blog post, I will guide you through the main features of **PiecewiseInference.jl** and provide a step-by-step tutorial on how to use it with a three-compartment ecosystem model. Whether you're a quantitative ecologist or a curious data scientist, I hope this post will inspire you to explore the fascinating world of ecological modeling and inference.
+Mechanistic ecosystem models permit to quantiatively describe how population, species or communities grow, interact and evolve. Yet calibrating them to fit real-world data is a daunting task. That's why I'm excited to introduce [**PiecewiseInference.jl**](https://github.com/vboussange/PiecewiseInference.jl), a new Julia package that provides a user-friendly and efficient framework for inverse ecosystem modeling. In this blog post, I will guide you through the main features of **PiecewiseInference.jl** and provide a step-by-step tutorial on how to use it with a three-compartment ecosystem model. Whether you're a quantitative ecologist or a curious data scientist, I hope this post will encourage you to join the effort and use and develop inverse ecosystem modelling methods to improve our understanding and predictions of ecosystems.
 
 ## Preliminary steps
 This tutorial relies on three packages that I have authored but are (yet) not registered on the official Julia registry. Those are
 
 - `PiecewiseInference`,
 - `EcoEvoModelZoo`: a package which provides access to a collection of ecosystem models,
-- `ParametricModels`: a wrapper package around `OrdinaryDiffEq` to manipulate ODE models in a similar fashion as you would handle a ML model. Specifically, `ParametricModels` avoids the hassle of specifying, at each time you want to simulate the model, boring details such as the algorithm to solve it, the time span, etc... 
+- `ParametricModels`: a wrapper package to manipulate dynamical models. Specifically, `ParametricModels` avoids the hassle of specifying, at each time you want to simulate an ODE model, boring details such as the algorithm to solve it, the time span, etc... 
 
 To easily install them on your machine, you'll have to add my personal registry by doing the following:
 ```julia
@@ -515,13 +515,11 @@ You can try to change e.g. the `batch_sizes` and the `group_size`. How do those 
 
 ## Conclusion
 
-In this blog post, we have explored how to perform parameter inference in a dynamical system model using the Julia programming language and the PiecewiseInference.jl package. We have shown how to use the package to set up an inference problem, and train the model parameters. We have also discussed some best practices, such as setting the right learning rate and batch size and monitoring the optimization process.
+PiecewiseInference.jl provides an efficient and flexible way to perform inference on complex ecological models, making use of automatic differentiation and optimizers traditionally used in Machine Learning. The segmentation method implemented in PiecewiseInference.jl regularizes the inference problem and enables inverse modelling of complex dynamical systems, for which standard methods would otherwise fail.
 
-PiecewiseInference.jl provides an efficient and flexible way to perform inference on complex ecological models, making use of automatic differentiation and parallel computation. By dividing the time series into smaller pieces, PiecewiseInference.jl enables the use of more advanced and computationally intensive inference algorithms that would otherwise be infeasible on larger datasets.
+Furthermore, PiecewiseInference.jl together with EcoEvoModelZoo.jl offer a powerful toolkit for ecologists and evolutionary biologists to benchmark and validate models against data. The combination of theoretical modelling and data can provide new insights into complex ecological systems, helping us to better understand and predict the dynamics of biodiversity.
 
-Furthermore, PiecewiseInference.jl together with EcoEvoModelZoo.jl offers a powerful toolkit for ecologists and evolutionary biologists to build, test and refine models that can be fitted to real-world data. The combination of theoretical modelling and machine learning can provide new insights into complex ecological systems, helping us to better understand and predict the dynamics of biodiversity.
-
-We invite users to explore these packages and contribute to their development, by adding new models to the EcoEvoModelZoo.jl and improve the features of PiecewiseInference.jl. With these tools, we can continue to push the boundaries of ecological modelling and make important strides towards a more sustainable and biodiverse future.
+We invite users to explore these packages and contribute to their development, by adding new models to the EcoEvoModelZoo.jl and improve the features of PiecewiseInference.jl. With these tools, we can continue to push the boundaries of ecological modelling and make important strides towards a more sustainable future.
 
 ## Appendix
 You can find the corresponding tutorial as a `.jmd` file at [https://github.com/vboussange/MyTutorials](https://github.com/vboussange/MyTutorials).
