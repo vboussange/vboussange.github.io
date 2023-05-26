@@ -28,13 +28,11 @@ categories:
 - Sailing tutorials
 ---
 
-*Back in the days, people used to orient themselves with paper maps and the stars or with a sextant. Unfortunately, we have lost this knowledge. It would now be difficult, at least for me, to live without a digital map and a GPS.*
-
-In today's digital age, navigation has become heavily reliant on digital maps and GPS systems. However, there is still something enchanting about the traditional methods of navigating using paper maps, stars, and sextants. While the knowledge of these methods may have been lost over time, the availability of open source projects now allows us to recreate the joy of sailing with a modern twist. In this blog post, we will explore the journey of setting up an open source navigation system for sailing, using a Raspberry Pi and open source software. Join me on this exciting DIY adventure as we embrace the spirit of exploration and innovation.
+*Back in the days, people used to orient themselves with paper maps and the stars or with a sextant. Unfortunately, we have lost this knowledge. It would now be difficult, at least for me, to live without a digital map and a GPS. In this blog post, I detail how to set up a handy navigation system for sailing, using a Raspberry Pi and OpenPlotter to transmit GPS and AIS signals over Wifi to the Navionics Boating app.*
 
 ## Choosing the Right Chart Maps
 
-There are plenty of digital chart map options available for navigation, and we had to figure out which one would fit our need on the boat. We ended up with two best alternatives: [o-charts charts](https://www.o-charts.org), to be used in combination with OpenCPN, an open source navigation software, or [Navionics](https://www.navionics.com) charts, to be used with the "Boating" application. Both had a similar pricing for what we wanted (charts for Germany, Denmark, Sweden, Norway, Shetland Islands, UK, Ireland and France): around 120-150EUR, with a slight advantage for Navionics. Pros for o-charts is that you can use them more than one year, although the update option is only valid for a year (I think, although I am not 100% sure). Navionics charts is only valid for a year, the period of the subscription. Pros for Navionics is that you can use your subscription on many devices (at least 5, I think), while you cannot use o-charts on iOS devices and on more than 2 devices. Because we wanted to have charts on our smartphones, we decided to go for Navionics.
+There are plenty of digital chart map options available for navigation, and we had to figure out which one would fit our need on the boat. After careful consideration, we narrowed down our choices to two alternatives: [o-charts charts](https://www.o-charts.org), to be used in combination with OpenCPN, an open source navigation software, or [Navionics](https://www.navionics.com) charts, to be used with the "Navionics Boating" application. Both had a similar pricing for what we wanted (charts for Germany, Denmark, Sweden, Norway, Shetland Islands, UK, Ireland and France): around 120-150EUR, with a slight advantage for Navionics. Pros for o-charts is that you can use them more than one year, although the update option is only valid for a year (I think, although I am not 100% sure). Navionics charts is only valid for a year, the period of the subscription. Pros for Navionics is that you can use your subscription on many devices (at least 5, I think), while you cannot use o-charts on iOS devices and on more than 2 devices. Because we wanted to have charts on our smartphones, we decided to go for Navionics.
 
 ## The Importance of Accurate GPS and AIS
 
@@ -44,17 +42,21 @@ In the following, I explain how I installed a server on our boat that transmits 
 
 ## Installing OpenPlotter on the Raspberry Pi
 
-To get started, you need to install [OpenPlotter](https://openmarine.net/openplotter), a Linux distribution designed for Raspberry Pi and that contains the essential softwares for navigation. I used the 64-bit [OpenPlotter Starting image](https://openplotter.readthedocs.io/en/latest/getting_started/downloading.html#openplotter-starting) that contains an appropriate pre-built kernel. To install it, you'll need a less than 32GB SD-card, to be formatted in FAT32. My problem was that the SD card I had had already been used on a Raspberry Pi, and as such contained an EXT4 partition. EXT4 partitions are used by Linux system, but are not recognized by MacOS. This prevented me to format the card in FAT32. To allow formatting, I used the `diskutil` utility from MacOS.
+To get started, you need to install [OpenPlotter](https://openmarine.net/openplotter), a Linux distribution designed for Raspberry Pi and that contains the essential softwares for navigation. I used the 64-bit [OpenPlotter Starting image](https://openplotter.readthedocs.io/en/latest/getting_started/downloading.html#openplotter-starting) that contains an appropriate pre-built kernel. To install it, you'll need a less than 32GB SD-card, to be formatted in FAT32. My problem was that the SD card I had had already been used on a Raspberry Pi, and as such contained an EXT4 partition. EXT4 partitions are used by Linux systems, but are not recognized by MacOS. This prevented me to format the card in FAT32. To allow formatting, I used the `diskutil` utility from MacOS.
 
-First run `diskutil list`. This allows you to identify your SD card, in my case `/dev/disk4`.  I had previously installed [`ext4fuse`](https://medium.com/@iamalleksy/how-to-mount-raspberry-pi-sd-card-using-mac-3046abc2059a), not sure if this is a required step. To format the SD card, execute the command 
+First run 
+
+```diskutil list```
+
+in the Terminal. This allows you to identify your SD card, in my case `/dev/disk4`.  I had previously installed [`ext4fuse`](https://medium.com/@iamalleksy/how-to-mount-raspberry-pi-sd-card-using-mac-3046abc2059a), not sure if this is a required step. To format the SD card, execute the command 
 
 ```
 sudo diskutil eraseDisk FAT32 RASPBERRY MBRFormat /dev/disk4
 ```
 
-You can change `RASPBERRY` with any name you may like. More details of this command in [this thread](https://superuser.com/questions/527657/how-do-you-format-a-2-gb-sd-card-to-fat32-preferably-with-disk-utility).
+You can change `RASPBERRY` with any name you like best. More details of this command in [this thread](https://superuser.com/questions/527657/how-do-you-format-a-2-gb-sd-card-to-fat32-preferably-with-disk-utility).
 
-Now the SD card is ready to be used. Download the [Raspberry Pi Imager](https://www.raspberrypi.com/software/) to install the image on the SD card. You first need to unzip the image, then execute Raspberry Pi Imager, click "Choose OS" and click on "Use custom". Locate the ".img" file, then choose the SD card in "Choose storage" and hit "Write". The SD card is ready. Insert it in the Raspberry Pi and swith the power on. The system is going boot on the SD card and set up OpenPlotter. This took a relatively short amount of time.
+Now the SD card is ready to be used. Download the [Raspberry Pi Imager](https://www.raspberrypi.com/software/) to install the image on the SD card. You first need to unzip the image, then execute Raspberry Pi Imager, click "Choose OS" and click on "Use custom". Locate the `.img` file, then choose the SD card in "Choose storage" and hit "Write". The SD card is ready. Insert it in the Raspberry Pi and swith the power on. The system is going boot on the SD card and set up OpenPlotter. This took a relatively short amount of time.
 
 ## Setting up OpenPlotter
 I had an external monitor that I could use for the Raspberry Pi. I encountered a minor hurdle as OpenPlotter failed to identify it correctly, and did not properly display. I had to adjust the resolution of the screen by hitting the raspberry, then "Preferences" and "Screen configuration". Check also the configuration of the monitor, that may be set to zoom in the visual signal.
@@ -85,4 +87,14 @@ scp -r path/to/folder/on/laptop pi@openplotter.local:/home/pi/path/you/want/to/d
 ```
 
 ## Useful links
-- [This video](https://www.youtube.com/watch?v=r8CGixMl18k) is quite complete and helpful to set-up the above system and more, but a bit outdated.
+
+- [o-charts charts](https://www.o-charts.org)
+- [Navionics charts](https://www.navionics.com)
+- [OpenPlotter](https://openmarine.net/openplotter)
+- [OpenPlotter Starting image](https://openplotter.readthedocs.io/en/latest/getting_started/downloading.html#openplotter-starting)
+- [ext4fuse](https://medium.com/@iamalleksy/how-to-mount-raspberry-pi-sd-card-using-mac-3046abc2059a)
+- [Raspberry Pi Imager](https://www.raspberrypi.com/software/)
+- [Tutorial: Setting up GPS](https://youtu.be/r8CGixMl18k?t=358)
+- [Tutorial: Setting up AIS](https://youtu.be/r8CGixMl18k)
+- [Tutorial: Creating OpenPlotter Access Point](https://www.youtube.com/watch?v=tlU4HKT6XxM)
+- [Tutorial: SSH Connection](https://openplotter.readthedocs.io/en/latest/getting_started/installing.html?highlight=ssh#headless)
