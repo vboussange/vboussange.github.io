@@ -32,14 +32,14 @@ projects: []
   * [Mont Blanc 4808m, uphill via Arrête Nord and descent via Grand and Petit Plateau](https://www.camptocamp.org/routes/46950/fr/mont-blanc-par-les-grands-mulets-arete-n-du-dome), 3.2 AD, France, May 2023
   * [Bishorn 4153m, from cabane de Tracuit](https://www.camptocamp.org/routes/45969/fr/bishorn-versant-nw-voie-normale-), PD, Switzerland, April 2023
   * [Mt Vélan 3727m](https://www.camptocamp.org/routes/45518/fr/mont-velan-couloir-d-annibal), uphill and downhill via **Couloir Hannibal**, 4.3 D, Switzerland
-  * Traverse of the Alps from Innsbruck to Venezia with bicycles and skis, 10 days, Mars 2023
+  * Traverse of the Alps from Innsbruck to Venezia with bicycles and skis, 11 days, Mars 2023
     * 🚲 Innsbruck (Austria) - Valles (Italy)
     * [Wilde Kreuzspitze 3132m](https://www.suedtirolerland.it/de/freizeit-aktiv/wintersport/skitouren/auf-die-wilde-kreuzspitze/)
     * 🚲 Valles - Lungiarù
     * Ciampani 2668m, via Canale Norte
     * 🚲 Lungiarù - Misurina
     * [Canale Norte "Staunies"](https://fatmap.com/routeid/19588/staunies-north-couloir)
-    * Forcella delli Angeli - Forcella del Diavolo
+    * Forcella degli Angeli - Forcella del Diavolo
     * 🚲 Misurina - Mareson Pecol
     * Mt Pelmo 3168m
     * 🚲 Mareson Pecol - Venezia
