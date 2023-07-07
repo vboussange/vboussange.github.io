@@ -38,6 +38,7 @@ subtitle: ''
 ---
 
 ### Publications
+- Skeels, A., Boschman, L. M., McFadden, I. R., Joyce, E.M., Hagen, O., Jiménez Robles, O., Bach, W., **Boussange, V.**, Keggin, T., Jetz, W., Pellissier, L., _Paleoenvironments shaped the exchange of terrestrial vertebrates across Wallace’s Line_. [Science](https://www.science.org/doi/10.1126/science.adf7122) **381**, 86-92 (2023).
 
 - **Boussange, V.** & Pellissier, L., _Eco-evolutionary model on spatial graphs reveals how habitat structure affects phenotypic differentiation_. [Commun Biol](https://doi.org/10.1038/s42003-022-03595-3) **5**, 668 (2022). [[bioRxiv]](https://www.biorxiv.org/content/10.1101/2021.07.06.451404.abstract)
 
@@ -59,13 +60,12 @@ subtitle: ''
 
 ### Works in progress
 
-- Skeels, A., Boschman, L.M., McFadden, I., Joyce, E.M., Hagen, O., Jiménez Robles, O., Bach, W., **Boussange, V.**, Keggin, T., Jetz, W., Pellissier, L., _Paleoenvironments shaped biotic exchange across Wallace’s Line_. In review at Science.
+- **Boussange, V.**, Karger, D., Malle, J. T., Midolo, D., _Unveiling climate-biodiversity interactions: linking earth system and biodiversity models_. (in alphabetical order)
 
-- **Boussange, V.**, Karger, D., Malle, J. T., Midolo, D., _Species area environment relationships_. (in alphabetical order)
-
-- Becker, S., **Boussange, V.**, Jentzen, A., Kruse, T.,  _Machine learning methods for computing asset trading strategies in goal based investment management_. (in alphabetical order)
+<!-- - Becker, S., **Boussange, V.**, Jentzen, A., Kruse, T.,  _Machine learning methods for computing asset trading strategies in goal based investment management_. (in alphabetical order) -->
 
 ### Talks
+- _**PiecewiseInference.jl**: a machine learning framework for inverse ecosystem modelling_, speaker, EGU 2023, Vienna, Austria (April 2023). [[slides]](slides/EGU2023.pdf)
 - _Combining eco-evolutionary theory and machine learning to advance our understanding of living systems_, invited speaker, Seminar at the Laboratoire interdisciplinaire de physique (LiPhy), Grenoble, France (February 2023). {{% staticref "slides/liphy_presentation.pdf" %}}[slides]{{% /staticref %}}
 - _**HighDimPDE.jl**: A Julia package for solving high-dimensional PDEs_, JuliaCon2022, online [*video* 📺](https://youtu.be/4sXqGhhknT4)
 <!-- - _Numerical approximations of solutions of highly dimensional, non-local nonlinear PDEs_. StAMBio seminar, St Andrews, UK. (November 2021), [[slides]]({{site.url}}/files/slides/CCS2021_V2.4_splitted.pdf). -->
