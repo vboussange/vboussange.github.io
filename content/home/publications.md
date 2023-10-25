@@ -38,7 +38,11 @@ subtitle: ''
 ---
 
 ### Publications
+- Alsos, I.G., **Boussange, V.**, Rijal, D.P., Beaulieu, M., Brown, A.G., Herzschuh, U., Svenning, J.C., Pellissier, L., _Ancient sedimentary DNA to forecast trajectories of ecosystem under climate change_. (2023). Accepted in Philosophical Transactions of the Royal Society B.
+
 - Skeels, A., Boschman, L. M., McFadden, I. R., Joyce, E.M., Hagen, O., Jiménez Robles, O., Bach, W., **Boussange, V.**, Keggin, T., Jetz, W., Pellissier, L., _Paleoenvironments shaped the exchange of terrestrial vertebrates across Wallace’s Line_. [Science](https://www.science.org/doi/10.1126/science.adf7122) **381**, 86-92 (2023).
+
+- **Boussange, V.**, Becker, S., Jentzen, A., Kuckuck, B., Pellissier, L., _Deep learning approximations for non-local nonlinear PDEs with Neumann boundary conditions_. [[arXiv]](https://arxiv.org/abs/2205.03672) (2022), 59 pages. Accepted in Partial Differential Equations and Applications.
 
 - **Boussange, V.** & Pellissier, L., _Eco-evolutionary model on spatial graphs reveals how habitat structure affects phenotypic differentiation_. [Commun Biol](https://doi.org/10.1038/s42003-022-03595-3) **5**, 668 (2022). [[bioRxiv]](https://www.biorxiv.org/content/10.1101/2021.07.06.451404.abstract)
 
@@ -46,7 +50,6 @@ subtitle: ''
 - **Boussange, V.**, Sornette, D., Lischke, H., Pellissier, L., _Processes analogous to ecological interactions and dispersal shape the dynamics of economic activities_. [[arXiv]](https://arxiv.org/abs/2301.09486) (2023), 23 pages. In review.
 
 - **Boussange, V.**, Vilimelis-Aceituno, P., Pellissier, L., _Mini-batching ecological data to improve ecosystem models with machine learning_. [[bioRxiv]](https://www.biorxiv.org/content/10.1101/2022.07.25.501365v1) (2022), 46 pages. In review.
-- **Boussange, V.**, Becker, S., Jentzen, A., Kuckuck, B., Pellissier, L., _Deep learning approximations for non-local nonlinear PDEs with Neumann boundary conditions_. [[arXiv]](https://arxiv.org/abs/2205.03672) (2022), 59 pages. Revision requested from Partial Differential Equations and Applications.
 
 ### Proceedings
 
