@@ -28,11 +28,16 @@ image:
 projects: []
 ---
 
+## Sailing
+  * Bought Tippelei, a 40 year old, 36 feet sailing boat, and sailed it to Norway from May to September 2023 during a sabbatical.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/TkmXIaGAx-I?si=dbeJw3G-8rxLzloE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 ## Ski mountaineering / Backcountry skiing
   * [Mont Blanc 4808m, uphill via Arrête Nord and descent via Grand and Petit Plateau](https://www.camptocamp.org/routes/46950/fr/mont-blanc-par-les-grands-mulets-arete-n-du-dome), 3.2 AD, France, May 2023
   * [Bishorn 4153m, from cabane de Tracuit](https://www.camptocamp.org/routes/45969/fr/bishorn-versant-nw-voie-normale-), PD, Switzerland, April 2023
   * [Mt Vélan 3727m](https://www.camptocamp.org/routes/45518/fr/mont-velan-couloir-d-annibal), uphill and downhill via **Couloir Hannibal**, 4.3 D, Switzerland
-  * Traverse of the Alps from Innsbruck to Venezia with bicycles and skis, 11 days, Mars 2023 - [*video* 📺](https://youtu.be/5PEl9Ajqwwo)
+  * Traverse of the Alps from Innsbruck to Venezia with bicycles and skis, 11 days, Mars 2023
     * 🚲 Innsbruck (Austria) - Valles (Italy)
     * [Wilde Kreuzspitze 3132m](https://www.suedtirolerland.it/de/freizeit-aktiv/wintersport/skitouren/auf-die-wilde-kreuzspitze/)
     * 🚲 Valles - Lungiarù
@@ -43,6 +48,8 @@ projects: []
     * 🚲 Misurina - Mareson Pecol
     * Mt Pelmo 3168m
     * 🚲 Mareson Pecol - Venezia
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/5PEl9Ajqwwo?si=n-QQwEOBLT-NSMEk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
   * [Trou de la Mouche 2453m, Tour du Passage du Père](https://skitour.fr/topos/853), 45° AD, Aravis, France, 2023
   * Pointe du Midi 2364m, Aravis, France, 2023

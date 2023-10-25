@@ -72,12 +72,12 @@ highlight_name: true
 ---
 
 
-I'm Victor, a postdoctoral researcher in the [Ecosystems and Landscape Evolution Group](https://landecology.ethz.ch) at [ETH Zürich](https://ethz.ch/en.html) and at the [Swiss Federal Institute for Forest, Snow & Landscape (WSL)](https://www.wsl.ch/en/index.html), Switzerland.
+I'm Victor, a postdoctoral researcher in the [Dynamic Macroecology Group](https://www.wsl.ch/de/ueber-die-wsl/organisation/forschungseinheiten/landschaftsdynamik/dynamische-makrooekologie/) at the [Swiss Federal Institute for Forest, Snow & Landscape (WSL)](https://www.wsl.ch/en/index.html), Switzerland.
 <br>
 
-My work aims at better understanding **ecological and evolutionary processes that affect the dynamics of ecosystems**. Because analogous processes affect them, I am also interested in the dynamics of **economic systems**. I conduct my investigations with **mathematical models** capturing **eco-evolutionary dynamics**. In parallel, I develop **machine learning methods** to confront these models with empirical data and infer scientific knowledge. I believe that the combination of mechanistic models and machine learning provides a powerful approach to better understand our world. This is crucial, in the face of potentially important ecosystem changes and accelerating threats.
+My work is centered on **developing innovative models and methods** to better **understand and forecast the dynamics of ecosystems**. Ecosystems currently face intense disruptions, with enormous risks for human societies. In order to design adequate policies and mitigation strategies, we need models capable of accurately predicting ecosystem responses under various scenarios. While rooted in ecological theory, traditional process-based ecosystem models often fall short in this regard. Conversely, mainstream machine learning methods are not suited to extrapolate beyond observations and anticipate the potential nonlinear responses of ecosystems to global changes. With the objective of harnessing the strengths of both approaches, my focus lies in **leveraging process-based ecosystem models with machine learning to provide a more refined quantitative understanding of ecosystems and enhance our ability to forecast their responses to disruptions**. 
 <br>
 
-Besides work, I am passionate about alpine adventures and spend my freetime climbing and going down mountains &#x1F3D4; , be it with chalk, ice-axes, skis, or a mountainbike. You can check out **my alpine CV** [here]({{<ref "/pages/alpine_cv.md" >}}).
+Besides work, I am passionate about outdoor adventures and spend my freetime climbing and going down mountains &#x1F3D4; , be it with chalk, ice-axes, skis, or a mountainbike. I also enjoy sailing and surfing from times to times. You can check out **my alpine CV** [here]({{<ref "/pages/alpine_cv.md" >}}).
 
 <!-- {{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/demo_resume.pdf" "newtab" >}}resumé{{< /staticref >}}. -->
