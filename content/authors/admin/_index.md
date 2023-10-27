@@ -31,7 +31,7 @@ education:
   courses:
   - course: PhD in Environmental Sciences
     institution: ETH Zürich, Switzerland
-    year: expected 2022
+    year: 2022
   - course: MSc in Energy and Environmental Sciences
     institution: INSA Lyon, France
     year: 2018
