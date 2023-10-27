@@ -72,10 +72,10 @@ highlight_name: true
 ---
 
 
-I'm Victor, a postdoctoral researcher in the [Dynamic Macroecology Group](https://www.wsl.ch/de/ueber-die-wsl/organisation/forschungseinheiten/landschaftsdynamik/dynamische-makrooekologie/) at the [Swiss Federal Institute for Forest, Snow & Landscape (WSL)](https://www.wsl.ch/en/index.html), Switzerland.
+Greeting! I'm Victor, a postdoctoral researcher in the [Dynamic Macroecology Group](https://www.wsl.ch/de/ueber-die-wsl/organisation/forschungseinheiten/landschaftsdynamik/dynamische-makrooekologie/) at the [Swiss Federal Institute for Forest, Snow & Landscape (WSL)](https://www.wsl.ch/en/index.html), Switzerland.
 <br>
 
-My work is centered on **developing innovative models and methods** to better **understand and forecast the dynamics of ecosystems**. Ecosystems currently face intense disruptions, with enormous risks for human societies. In order to design adequate policies and mitigation strategies, we need models capable of accurately predicting ecosystem responses under various scenarios. While rooted in ecological theory, traditional process-based ecosystem models often fall short in this regard. Conversely, mainstream machine learning methods are not suited to extrapolate beyond observations and anticipate the potential nonlinear responses of ecosystems to global changes. With the objective of harnessing the strengths of both approaches, my focus lies in **leveraging process-based ecosystem models with machine learning to provide a more refined quantitative understanding of ecosystems and enhance our ability to forecast their responses to disruptions**. 
+My work is centered on **developing innovative models and methods** to better **understand and forecast the dynamics of ecosystems**. With the objective of harnessing the strengths of both approaches, my focus lies in **leveraging process-based ecosystem models with machine learning to provide a more refined quantitative understanding of ecosystems and enhance our ability to forecast their responses to disruptions**. 
 <br>
 
 Besides work, I am passionate about outdoor adventures and spend my freetime climbing and going down mountains &#x1F3D4; , be it with chalk, ice-axes, skis, or a mountainbike. I also enjoy sailing and surfing from times to times. You can check out **my alpine CV** [here]({{<ref "/pages/alpine_cv.md" >}}).
