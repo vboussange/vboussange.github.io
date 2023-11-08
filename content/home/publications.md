@@ -68,7 +68,7 @@ subtitle: ''
 <!-- - Becker, S., **Boussange, V.**, Jentzen, A., Kruse, T.,  _Machine learning methods for computing asset trading strategies in goal based investment management_. (in alphabetical order) -->
 
 ### Talks
-- _Learning from scarce data by combining machine learning and fundamental ecological knowledge_, invited speaker, Bioinformatics seminar, Fribourg University, Fribourg, Switzerland
+- _Learning from scarce data by combining machine learning and fundamental ecological knowledge_, invited speaker, Bioinformatics seminar, Fribourg University, Fribourg, Switzerland (December 2023)
 - _**PiecewiseInference.jl**: a machine learning framework for inverse ecosystem modelling_, speaker, EGU 2023, Vienna, Austria (April 2023). [[slides]](slides/EGU2023.pdf)
 - _Combining eco-evolutionary theory and machine learning to advance our understanding of living systems_, invited speaker, Seminar at the Laboratoire interdisciplinaire de physique (LiPhy), Grenoble, France (February 2023). {{% staticref "slides/liphy_presentation.pdf" %}}[slides]{{% /staticref %}}
 - _**HighDimPDE.jl**: A Julia package for solving high-dimensional PDEs_, JuliaCon2022, online [*video* 📺](https://youtu.be/4sXqGhhknT4)
