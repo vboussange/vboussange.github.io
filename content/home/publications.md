@@ -38,7 +38,7 @@ subtitle: ''
 ---
 
 ### Publications
-- Alsos, I.G., **Boussange, V.**, Rijal, D.P., Beaulieu, M., Brown, A.G., Herzschuh, U., Svenning, J.C., Pellissier, L., _Ancient sedimentary DNA to forecast trajectories of ecosystem under climate change_. (2023). Accepted in Philosophical Transactions of the Royal Society B.
+- Alsos, I.G., **Boussange, V.**, Rijal, D.P., Beaulieu, M., Brown, A.G., Herzschuh, U., Svenning, J.C., Pellissier, L., _Ancient sedimentary DNA to forecast trajectories of ecosystem under climate change_. (2023). Accepted in Philosophical Transactions of the Royal Society B. [[preprint]](https://www.researchsquare.com/article/rs-3542192/v1)
 
 - Skeels, A., Boschman, L. M., McFadden, I. R., Joyce, E.M., Hagen, O., Jiménez Robles, O., Bach, W., **Boussange, V.**, Keggin, T., Jetz, W., Pellissier, L., _Paleoenvironments shaped the exchange of terrestrial vertebrates across Wallace’s Line_. [Science](https://www.science.org/doi/10.1126/science.adf7122) **381**, 86-92 (2023).
 
@@ -68,6 +68,7 @@ subtitle: ''
 <!-- - Becker, S., **Boussange, V.**, Jentzen, A., Kruse, T.,  _Machine learning methods for computing asset trading strategies in goal based investment management_. (in alphabetical order) -->
 
 ### Talks
+- _Learning from scarce data by combining machine learning and fundamental ecological knowledge_, invited speaker, Bioinformatics seminar, Fribourg University, Fribourg, Switzerland
 - _**PiecewiseInference.jl**: a machine learning framework for inverse ecosystem modelling_, speaker, EGU 2023, Vienna, Austria (April 2023). [[slides]](slides/EGU2023.pdf)
 - _Combining eco-evolutionary theory and machine learning to advance our understanding of living systems_, invited speaker, Seminar at the Laboratoire interdisciplinaire de physique (LiPhy), Grenoble, France (February 2023). {{% staticref "slides/liphy_presentation.pdf" %}}[slides]{{% /staticref %}}
 - _**HighDimPDE.jl**: A Julia package for solving high-dimensional PDEs_, JuliaCon2022, online [*video* 📺](https://youtu.be/4sXqGhhknT4)
