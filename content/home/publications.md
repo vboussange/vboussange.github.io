@@ -42,7 +42,7 @@ subtitle: ''
 
 - Skeels, A., Boschman, L. M., McFadden, I. R., Joyce, E.M., Hagen, O., Jiménez Robles, O., Bach, W., **Boussange, V.**, Keggin, T., Jetz, W., Pellissier, L., _Paleoenvironments shaped the exchange of terrestrial vertebrates across Wallace’s Line_. [Science](https://www.science.org/doi/10.1126/science.adf7122) **381**, 86-92 (2023).
 
-- **Boussange, V.**, Becker, S., Jentzen, A., Kuckuck, B., Pellissier, L., _Deep learning approximations for non-local nonlinear PDEs with Neumann boundary conditions_. [[arXiv]](https://arxiv.org/abs/2205.03672) (2022), 59 pages. Accepted in Partial Differential Equations and Applications.
+- **Boussange, V.**, Becker, S., Jentzen, A., Kuckuck, B., Pellissier, L., _Deep learning approximations for non-local nonlinear PDEs with Neumann boundary conditions_. [Partial Differ. Equ. Appl.](https://link.springer.com/article/10.1007/s42985-023-00244-0) **4** (2022), Paper no. 51, 59 pp. [[arXiv]](https://arxiv.org/abs/2205.03672)
 
 - **Boussange, V.** & Pellissier, L., _Eco-evolutionary model on spatial graphs reveals how habitat structure affects phenotypic differentiation_. [Commun Biol](https://doi.org/10.1038/s42003-022-03595-3) **5**, 668 (2022). [[bioRxiv]](https://www.biorxiv.org/content/10.1101/2021.07.06.451404.abstract)
 
