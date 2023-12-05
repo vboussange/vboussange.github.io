@@ -68,6 +68,8 @@ subtitle: ''
 <!-- - Becker, S., **Boussange, V.**, Jentzen, A., Kruse, T.,  _Machine learning methods for computing asset trading strategies in goal based investment management_. (in alphabetical order) -->
 
 ### Talks
+- [_Introduction to Julia for Geosciences_](https://meetingorganizer.copernicus.org/EGU24/session/49443), co-convener, Short course at EGU 2024, Vienna, Austria (April 2024)
+- _A scalable machine learning approach to assess the combined effect of habitat loss and climate change on biodiversity_, speaker, International Biogeography Society conference 2024, Prague, Czech Republic (January 2024).
 - _Learning from scarce data by combining machine learning and fundamental ecological knowledge_, invited speaker, Bioinformatics seminar, Fribourg University, Fribourg, Switzerland (December 2023)
 - _**PiecewiseInference.jl**: a machine learning framework for inverse ecosystem modelling_, speaker, EGU 2023, Vienna, Austria (April 2023). [[slides]](slides/EGU2023.pdf)
 - _Combining eco-evolutionary theory and machine learning to advance our understanding of living systems_, invited speaker, Seminar at the Laboratoire interdisciplinaire de physique (LiPhy), Grenoble, France (February 2023). {{% staticref "slides/liphy_presentation.pdf" %}}[slides]{{% /staticref %}}
