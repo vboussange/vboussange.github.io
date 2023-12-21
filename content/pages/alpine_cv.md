@@ -34,6 +34,10 @@ projects: []
 <iframe width="560" height="315" src="https://www.youtube.com/embed/TkmXIaGAx-I?si=dbeJw3G-8rxLzloE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ## Ski mountaineering / Backcountry skiing
+  * Winterhorn / Pizzo d'Orsino 2662m, NW face, AD+, Switzerland, December 2023
+  * Chrüz 2195m, F, Switzerland, December 2023
+  * Girenspitz 2367m, PD+, Switzerland, December 2023
+  * Piet 1965m, PD+, Switzerland, December 2023
   * [Mont Blanc 4808m, uphill via Arrête Nord and descent via Grand and Petit Plateau](https://www.camptocamp.org/routes/46950/fr/mont-blanc-par-les-grands-mulets-arete-n-du-dome), 3.2 AD, France, May 2023
   * [Bishorn 4153m, from cabane de Tracuit](https://www.camptocamp.org/routes/45969/fr/bishorn-versant-nw-voie-normale-), PD, Switzerland, April 2023
   * [Mt Vélan 3727m](https://www.camptocamp.org/routes/45518/fr/mont-velan-couloir-d-annibal), uphill and downhill via **Couloir Hannibal**, 4.3 D, Switzerland
