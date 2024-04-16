@@ -37,7 +37,7 @@ projects: []
   * Finsteraarhorn 4274m, AD, Switzerland, April 2024
   * Wyssnollen 3590m, from Grünhornlücke, AD, Switzerland, April 2024
 
-<iframe width="560" height="315" src="https://www.youtube.com/watch?v=fb2iS7i_PxA&feature=youtu.be" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/fb2iS7i_PxA?si=kw1c3w0BNUK0k2vM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
   
   * From Tromsø to Norkapp with bicycle and skis, Norway, March 2024
     * 🚲 Tromsø - Laksvelbukt
@@ -53,7 +53,8 @@ projects: []
     * Store Kågtinden 1228m
     * 🚲 Skervøy - Nordkapp
   * Druesberg 2282m, D-, from Zürich with bicycle, Switzerland, February 2024
-<iframe width="560" height="315" src="https://www.youtube.com/watch?v=u942702uVGo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/u942702uVGo?si=X-00N-kWJ8YuvXe8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
   
   * Piz Badus 2928m, E face, PD+, Switzerland, January 2024
   * Piz Ravetsch 3007m, NW face, PD, Switzerland, January 2024
