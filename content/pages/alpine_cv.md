@@ -34,6 +34,32 @@ projects: []
 <iframe width="560" height="315" src="https://www.youtube.com/embed/TkmXIaGAx-I?si=dbeJw3G-8rxLzloE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ## Ski mountaineering / Backcountry skiing
+  * Finsteraarhorn 4274m, AD, Switzerland, April 2024
+  * Wyssnollen 3590m, from Grünhornlücke, AD, Switzerland, April 2024
+
+<iframe width="560" height="315" src="https://www.youtube.com/watch?v=fb2iS7i_PxA&feature=youtu.be" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  
+  * From Tromsø to Norkapp with bicycle and skis, Norway, March 2024
+    * 🚲 Tromsø - Laksvelbukt
+    * Tomas couloir
+    * Banana couloir of Holmbukktinden, 45˚
+    * 🚲 Laksvelbukt - Nordkjosbotn
+    * Lille Russetinden 1527m
+    * 🚲 Nordkjosbotn - Lyngseidet
+    * [New Year's Rocket](https://fatmap.com/routeid/2931511/new-year's-rocket), 50˚
+    * Istinden 1490m
+    * Store Kjsotinden 1488m
+    * 🚲 Lyngseidet - Skervøy
+    * Store Kågtinden 1228m
+    * 🚲 Skervøy - Nordkapp
+  * Druesberg 2282m, D-, from Zürich with bicycle, Switzerland, February 2024
+<iframe width="560" height="315" src="https://www.youtube.com/watch?v=u942702uVGo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  
+  * Piz Badus 2928m, E face, PD+, Switzerland, January 2024
+  * Piz Ravetsch 3007m, NW face, PD, Switzerland, January 2024
+  * Aiguille de l'Épaisseur 3230m, SE face, PD, France, January 2024
+  * Pizzo Rotondo 3192m, from Capanna Piansecco, D+, Switzerland, January 2024
+  * Râteau d'Aussois 3131m, NW face, PD+, France, January 2024
   * Winterhorn / Pizzo d'Orsino 2662m, NW face, AD+, Switzerland, December 2023
   * Chrüz 2195m, F, Switzerland, December 2023
   * Girenspitz 2367m, PD+, Switzerland, December 2023
