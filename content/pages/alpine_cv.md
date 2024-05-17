@@ -34,6 +34,11 @@ projects: []
 <iframe width="560" height="315" src="https://www.youtube.com/embed/TkmXIaGAx-I?si=dbeJw3G-8rxLzloE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ## Ski mountaineering / Backcountry skiing
+
+  * Dent d'Hérens 4171m, face SW arrête W, AD, Switzerland, May 2024
+  
+  {{< instagram C6_M73dKX9V>}}
+
   * Finsteraarhorn 4274m, AD, Switzerland, April 2024
   * Wyssnollen 3590m, from Grünhornlücke, AD, Switzerland, April 2024
 
