@@ -47,9 +47,9 @@ subtitle: ''
 - **Boussange, V.** & Pellissier, L., _Eco-evolutionary model on spatial graphs reveals how habitat structure affects phenotypic differentiation_. [Commun Biol](https://doi.org/10.1038/s42003-022-03595-3) **5**, 668 (2022). [[bioRxiv]](https://www.biorxiv.org/content/10.1101/2021.07.06.451404.abstract)
 
 ### Preprints
-- **Boussange, V.**, Sornette, D., Lischke, H., Pellissier, L., _Processes analogous to ecological interactions and dispersal shape the dynamics of economic activities_. [[arXiv]](https://arxiv.org/abs/2301.09486) (2023), 23 pages. In review.
+- **Boussange, V.**, Vilimelis-Aceituno, P., Schäfer, F., Pellissier, L., _Partitioning time series to improve process-based models with machine learning_. [[bioRxiv]](https://www.biorxiv.org/content/10.1101/2022.07.25.501365v2) (2024), 46 pages. In review.
 
-- **Boussange, V.**, Vilimelis-Aceituno, P., Pellissier, L., _Mini-batching ecological data to improve ecosystem models with machine learning_. [[bioRxiv]](https://www.biorxiv.org/content/10.1101/2022.07.25.501365v1) (2022), 46 pages. In review.
+- **Boussange, V.**, Sornette, D., Lischke, H., Pellissier, L., _Processes analogous to ecological interactions and dispersal shape the dynamics of economic activities_. [[arXiv]](https://arxiv.org/abs/2301.09486) (2023), 23 pages.
 
 ### Proceedings
 
@@ -58,26 +58,26 @@ subtitle: ''
 ### Monographs
 - **Boussange, V.**, _Forward and inverse modelling of eco-evolutionary dynamics in ecological and economic systems_. [[ETH library]](https://doi.org/10.3929/ethz-b-000598848) (2022), 207 pages.
 
-### Other resources
-- **Boussange, V.**, Werder, M., [Practical introduction to Julia for modelling and data analysis in biodiversity and earth sciences](https://github.com/vboussange/WSLJuliaWorkshop2023)
-
 ### Works in progress
-
+<!-- - White paper on Swiss Renewable Energy and Biodiversity -->
+<!--  -->
+- Vilimelis-Aceituno, P., Miller, J., Marti, N., Farag, Y., **Boussange, V.**,  _Temporal horizons in forecasting: a performance-learnability trade-off_
+-  Sapienza, F., Bolibar, J., Schäfer, F., Groenke, B., **Boussange, V.**, Heimbach, P., Hooker, G., Pérez, F, Persson, P.O., Rackauckas, C., **Differentiable Programming for Differential Equations: A Review**. [GitHub repository](https://github.com/ODINN-SciML/DiffEqSensitivity-Review)
 - **Boussange, V.**, Karger, D., Malle, J. T., Midolo, D., _Unveiling climate-biodiversity interactions: linking earth system and biodiversity models_. (in alphabetical order)
 
 <!-- - Becker, S., **Boussange, V.**, Jentzen, A., Kruse, T.,  _Machine learning methods for computing asset trading strategies in goal based investment management_. (in alphabetical order) -->
 
 ### Talks
-- [_Introduction to Julia for Geosciences_](https://meetingorganizer.copernicus.org/EGU24/session/49443), co-convener, Short course at EGU 2024, Vienna, Austria (April 2024)
+- _**PiecewiseInference.jl**: inverse modelling for complex dynamics_, speaker, JuliaCon2024, Eindhoven, Netherlands (July 2024).
+- [_Introduction to Julia for Geosciences_](https://meetingorganizer.copernicus.org/EGU24/session/49443), co-convener, Short course at EGU 2024, Vienna, Austria (April 2024).
 - _A scalable machine learning approach to assess the combined effect of habitat loss and climate change on biodiversity_, speaker, International Biogeography Society conference 2024, Prague, Czech Republic (January 2024).
 - _Learning from scarce data by combining machine learning and fundamental ecological knowledge_, invited speaker, Bioinformatics seminar, Fribourg University, Fribourg, Switzerland (December 2023). [[slides]](slides/wegmann_presentation_compressed.pdf)
 - _**PiecewiseInference.jl**: a machine learning framework for inverse ecosystem modelling_, speaker, EGU 2023, Vienna, Austria (April 2023). [[slides]](slides/EGU2023.pdf)
 - _Combining eco-evolutionary theory and machine learning to advance our understanding of living systems_, invited speaker, Seminar at the Laboratoire interdisciplinaire de physique (LiPhy), Grenoble, France (February 2023). {{% staticref "slides/liphy_presentation.pdf" %}}[slides]{{% /staticref %}}
 - _**HighDimPDE.jl**: A Julia package for solving high-dimensional PDEs_, JuliaCon2022, online [*video* 📺](https://youtu.be/4sXqGhhknT4)
-<!-- - _Numerical approximations of solutions of highly dimensional, non-local nonlinear PDEs_. StAMBio seminar, St Andrews, UK. (November 2021), [[slides]]({{site.url}}/files/slides/CCS2021_V2.4_splitted.pdf). -->
 - _Interpretable machine learning for forecasting dynamical processes in ecosystems_, World Biodiversity Forum, Davos, Switzerland (June 2022). {{% staticref "slides/interpretable_ML.pdf" %}}[slides]{{% /staticref %}}
 - _Investigating empirical patterns of biodiversity with mechanistic eco-evolutionary models_, invited speaker, Seminar at the Theoretical Ecology and Evolution group, Universität Bern (June 2022).
-- _Deep learning approximations for non-local nonlinear PDEs_, invited speaker, StAMBio seminar, St Andrews, UK (November 2021).
+- _Deep learning approximations for non-local nonlinear PDEs_, invited speaker, StAMBio seminar, St Andrews, UK (November 2021). [[slides]]({{site.url}}/files/slides/CCS2021_V2.4_splitted.pdf) 
 - _Graph topology and habitat assortativity drive phenotypic differentiation in an eco-evolutionary model_, Conference on Complex Systems, Lyon, France (October 2021). {{% staticref "slides/CCS2021_V2.4_splitted.pdf" %}}[slides]{{% /staticref %}}
 - _Using graph-based metrics to assess the effect of landscape topography on diversification_, ECBC, Amsterdam, Netherlands (October 2021). {{% staticref "slides/ECBC_amsterdam_v3.pdf" %}}[slides]{{% /staticref %}}
 - _Solving non-local nonlinear Partial Differential Equations in high dimensions with_ `HighDimPDE.jl`, International Conference on Computational Methods in Systems Biology, Bordeaux, France (October 2021). {{% staticref "posters/poster_CMSB2021_Boussange.pdf" %}}[poster]{{% /staticref %}}

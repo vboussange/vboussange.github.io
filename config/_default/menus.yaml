@@ -7,21 +7,24 @@ main:
   - name: Home
     url: '#about'
     weight: 10
-  - name: Research projects 🔬
+  - name: 🔬 Research projects
     url: '#projects'
     weight: 20
-  - name: Softwares 🧑🏽‍💻
+  - name: 🧑🏽‍💻 Softwares
     url: '#softwares'
     weight: 30
   # - name: Talks
   #   url: '#talks'
     # weight: 40  
-  - name: Publications & Talks
+  - name: 📄 Publications & Talks
     url: '#publications'
     weight: 40
-  - name: Posts
-    url: '#posts'
+  - name: 🎓 Teaching & resources
+    url: '#teaching'
     weight: 50
+  - name: 💬 Posts
+    url: '#posts'
+    weight: 60
   # - name: Contact
   #   url: '#contact'
   #   weight: 60
