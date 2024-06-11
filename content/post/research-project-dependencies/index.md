@@ -1,7 +1,7 @@
 ---
 featured: false
 subtitle: ""
-summary: "Reproducibility in research projects requires that others (and future you) can recreate the minimal environment to run your scripts. This is best achieved using **package managers**  and **virtual environments**."
+summary: "Your future you and others should be able to recreate the minimal environment to run the scripts in your research project. This is best achieved using **package managers**  and **virtual environments**."
 date: "2024-06-11"
 header-includes:
   - "\\newcommand{\\M}{\\mathcal{M}}"
@@ -14,10 +14,10 @@ authors:
 lastmod: "2024-06-11"
 ---
 
-You future you and others should be able to recreate the minimal environment to run the scripts in your research project. This is best achieved using **package managers**  and **virtual environments**.
+Your future you and others should be able to recreate the minimal environment to run the scripts in your research project. This is best achieved using **package managers**  and **virtual environments**.
 
 - [Some definitions](#some-definitions)
-  - [What is a dependency](#what-is-a-dependency)
+  - [What is a dependency?](#what-is-a-dependency)
   - [What is a package manager?](#what-is-a-package-manager)
   - [What is a virtual environment?](#what-is-a-virtual-environment)
 - [Package managers](#package-managers)
@@ -36,7 +36,7 @@ You future you and others should be able to recreate the minimal environment to 
 
 
 ## Some definitions
-### What is a dependency
+### What is a dependency?
 A **dependency**  is an external package that a project requires to run.
 
 ### What is a package manager?
