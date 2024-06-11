@@ -16,30 +16,21 @@ lastmod: "2024-06-11"
 
 Documentation serves multiple purposes and may be useful for various audiences, including your future self, collaborators, users and contributors - should you aim at packaging some of your code into a general-purpose library. 
 
+This post is part of a series of posts on best practices for managing research project code. Much of this material was developed in collaboration with [Mauro Werder](https://github.com/mauro3) as part of the [Course On Reproducible Research, Data Pipelines, and Scientific Computing (CORDS)](https://github.com/mauro3/CORDS/tree/master). If you have experiences to share or spot any errors, please reach out!
+
+
 - [Style guides](#style-guides)
 - [Comments](#comments)
-    - [julia](#julia)
-    - [python](#python)
 - [Literal documentation](#literal-documentation)
   - [README](#readme)
   - [API documentation / doc strings](#api-documentation--doc-strings)
-      - [python](#python-1)
-    - [julia](#julia-1)
   - [Type annotations](#type-annotations)
-    - [python](#python-2)
-    - [julia](#julia-2)
   - [Consider raising errors](#consider-raising-errors)
-    - [python](#python-3)
   - [Tutorials](#tutorials)
 - [Accessing documentation](#accessing-documentation)
-    - [julia](#julia-3)
-    - [python](#python-4)
-  - [Doc testing](#doc-testing)
-  - [Why doc testing](#why-doc-testing)
-    - [Python](#python-5)
-    - [julia](#julia-4)
-- [More resources](#more-resources)
+- [Doc testing](#doc-testing)
 - [Useful packages to help you write and lint your documentation](#useful-packages-to-help-you-write-and-lint-your-documentation)
+- [More resources](#more-resources)
 - [Take home messages](#take-home-messages)
 
 
@@ -78,7 +69,7 @@ In-line comments should be used sparingly. Aim to write self-explanatory code in
 
 Use single-line comments for brief explanations and multi-line comments for more detailed information.
 
-##### julia
+**julia**
 ```julia
 #=
 This is a multi-line
@@ -86,7 +77,7 @@ comment
 =#
 ```
 
-##### python
+**python**
 ```python
 """
 This is a multi-line
@@ -164,9 +155,9 @@ foo(xs::Array) = ...
 - Returns
 - Examples
 
-Several flavours may be used, even for a single language
+Several flavours may be used, even for a single language.
 
-###### python
+**python**
 3 Different documentation style flavours
 - [reST (reStructuredText)](https://sphinx-rtd-tutorial.readthedocs.io/en/latest/docstrings.html)
 - [Google style](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html)
@@ -207,7 +198,7 @@ def add(a, b):
     return a + b
 ```
 
-##### julia
+**julia**
 ````julia
 """
     add(a, b)
@@ -249,14 +240,14 @@ Typing refers to the specification of variable types and function return types w
 -  helps catch type-related errors early in the development process.
 -  encourages consistent usage of types throughout the codebase.
 
-##### python
+**python**
 ```python
 def add(a: int, b: int) -> int:
     return a + b
 ```
 In Python, using typing does not enforce type checking at runtime! You may use decorators to enforce it.
 
-##### julia
+**julia**
 ```julia
 function add(a::Int, b::Int)
     return a + b
@@ -268,7 +259,7 @@ In Julia, types are enforced at runtime! Type annotations help the Julia compile
 - We do not like reading manuals. But we are foreced to read error messages. Use assertions and error messages to handle unexpected inputs and guide users.
 
 
-##### python
+**python**
 - `assert`: When an assert doesn’t pass, it raises an AssertionError. You can optionally add an error message at the end.
 - `NotImplementedError`, `ValueError`, `NameError`: Commonly used, generic errors you can raise. I probably overuse `NotImplementedError` compared to other types.
 
@@ -287,7 +278,7 @@ Create tutorial Jupyter notebooks or vignettes in R to demonstrate the usage of 
 
 ### Accessing documentation
 
-##### julia
+**julia**
 
 ```julia
 ?cos
@@ -295,7 +286,7 @@ Create tutorial Jupyter notebooks or vignettes in R to demonstrate the usage of 
 ?r""
 ```
 
-##### python
+**python**
 
 ```python
 help(myfun)
@@ -306,15 +297,15 @@ But e.g. VSCode can be also quite helpful, and this works also with your own cod
 ![](resources/hover_doc.png)
 
 
-#### Doc testing
+### Doc testing
 Doc testing, or doctest, allows you to test your code by running examples embedded in the documentation (docstrings). It compares the output of the examples with the expected results given in the docstrings, ensuring the code works as documented.
 
-#### Why doc testing
+Why doc testing?
 - Ensures that the code examples in your documentation are accurate and up-to-date.
 - Simple to write and understand, making it accessible for both writing and reading tests.
 - Promotes writing comprehensive docstrings which enhance code readability and maintainability.
 
-##### Python
+**Python**
 ```python
 def add(a, b):
     """
@@ -339,7 +330,7 @@ if __name__ == "__main__":
     doctest.testmod()
 ```
 
-##### julia
+**julia**
 Available through `Documenter.jl`
 
 ````julia
@@ -361,14 +352,6 @@ end
 
 ````
 
-### More resources
-- [Julia documentation recommendations](https://docs.julialang.org/en/v1/manual/documentation/#Writing-Documentation)
-- [Good research tutorial on documentation](https://goodresearch.dev/docs)
-
-
-- [Carpentries incubator on packaging and publish python - type roles](https://carpentries-incubator.github.io/python-packaging-publishing/05-documentation-types-roles/index.html)
-- [Carpentries incubator on packaging and publish python - documentation in code](https://carpentries-incubator.github.io/python-packaging-publishing/06-documentation-in-code/index.html)
-
 ### Useful packages to help you write and lint your documentation
 - Better Comments
 ![](resources/bettercomments.jpeg)
@@ -376,6 +359,15 @@ end
 ![](resources/autodocstring.jpeg)
 - Python test explorer
 ![](resources/pythontest.jpeg)
+
+
+### More resources
+- [Julia documentation recommendations](https://docs.julialang.org/en/v1/manual/documentation/#Writing-Documentation)
+- [Good research tutorial on documentation](https://goodresearch.dev/docs)
+
+
+- [Carpentries incubator on packaging and publish python - type roles](https://carpentries-incubator.github.io/python-packaging-publishing/05-documentation-types-roles/index.html)
+- [Carpentries incubator on packaging and publish python - documentation in code](https://carpentries-incubator.github.io/python-packaging-publishing/06-documentation-in-code/index.html)
 
 
 ### Take home messages
