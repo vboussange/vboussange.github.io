@@ -6,7 +6,7 @@ date: "2024-06-11"
 header-includes:
   - "\\newcommand{\\M}{\\mathcal{M}}"
 draft: false
-title: "A multi-language overview on how to organise your research project"
+title: "A multi-language overview on how to organise your research project code and documents"
 tags:
   - Julia
 authors:
