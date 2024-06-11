@@ -10,8 +10,8 @@ title: "A multi-language overview on how to organise your research project"
 tags:
   - Julia
 authors:
-  - admin
   - Mauro Werder
+  - admin
 lastmod: "2024-06-11"
 ---
 

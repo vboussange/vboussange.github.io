@@ -1,7 +1,7 @@
 ---
 featured: false
 subtitle: ""
-summary: "Your future you and others should be able to recreate the minimal environment to run the scripts in your research project. This is best achieved using **package managers**  and **virtual environments**."
+summary: "Your future self and others should be able to recreate the minimal environment to run the scripts in your research project. This is best achieved using **package managers**  and **virtual environments**."
 date: "2024-06-11"
 header-includes:
   - "\\newcommand{\\M}{\\mathcal{M}}"
@@ -11,10 +11,11 @@ tags:
   - Julia
 authors:
   - admin
+  - Mauro Werder
 lastmod: "2024-06-11"
 ---
 
-Your future you and others should be able to recreate the minimal environment to run the scripts in your research project. This is best achieved using **package managers**  and **virtual environments**.
+Your future self and others should be able to recreate the minimal environment to run the scripts in your research project. This is best achieved using **package managers**  and **virtual environments**.
 
 This post is part of a series of posts on best practices for managing research project code. Much of this material was developed in collaboration with [Mauro Werder](https://github.com/mauro3) as part of the [Course On Reproducible Research, Data Pipelines, and Scientific Computing (CORDS)](https://github.com/mauro3/CORDS/tree/master). If you have experiences to share or spot any errors, please reach out!
 
