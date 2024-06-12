@@ -75,9 +75,9 @@ highlight_name: true
 Greeting! I'm Victor, a postdoctoral researcher in the [Dynamic Macroecology Group](https://www.wsl.ch/de/ueber-die-wsl/organisation/forschungseinheiten/landschaftsdynamik/dynamische-makrooekologie/) at the [Swiss Federal Institute for Forest, Snow & Landscape (WSL)](https://www.wsl.ch/en/index.html), Switzerland.
 <br>
 
-My work is centered on **developing innovative models and methods** to better **understand and forecast the dynamics of ecosystems**. With the objective of providing a more refined quantitative understanding of ecosystems and enhancing our ability to forecast their responses to disruptions, my focus lies at the interface between **process-based ecosystem modeling and machine learning**. I specifically attempt to leverage the potential extrapolation ability of theoretically grounded model with the flexibility of state-of-the-art data driven techniques. 
+My work is centered on **developing innovative models and methods** to better **understand and forecast the dynamics of ecosystems and their response to disruptions**. My focus lies at the interface between **process-based modelling and machine learning**. I am specifically interested in leveraging the extrapolation ability of mechanistic models with the flexibility of state-of-the-art data driven techniques. 
 <br>
 
-Besides work, I am passionate about outdoor adventures and spend my freetime climbing and descending mountains &#x1F3D4; , be it with chalk, ice-axes, skis, or a mountainbike. I also enjoy sailing and surfing from time to time. You can check out **my alpine CV** [here]({{<ref "/pages/alpine_cv.md" >}}).
+Outside of work, I am a part-time alpinist, passionate about mountain adventures and writing. I also enjoy sailing and surfing occasionally. You can check out **my alpine CV** [here]({{<ref "/pages/alpine_cv.md" >}}).
 
 <!-- {{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/demo_resume.pdf" "newtab" >}}resumé{{< /staticref >}}. -->
