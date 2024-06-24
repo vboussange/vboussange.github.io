@@ -139,7 +139,8 @@ Note that you may want at some point to locate your `src/` (and associated `test
 Further reading for
 - [Python](https://goodresearch.dev/setup#create-a-pip-installable-package-recommended)
 - [R](https://statisticsglobe.com/create-package-r)
-- [Julia](https://pkgdocs.julialang.org/v1/creating-packages/)
+- [Julia Pkg.jl documentation and how to create packages](https://pkgdocs.julialang.org/v1/creating-packages/)
+- [Modern Julia Workflows website](https://modernjuliaworkflows.github.io)
 
 ## Wrapping up
 Explore these exemplary toy research repositories in different programming languages:
