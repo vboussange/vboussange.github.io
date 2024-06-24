@@ -8,11 +8,12 @@ header-includes:
 draft: false
 title: "A multi-language overview on how to organise your research project code and documents"
 tags:
-  - Julia
+  - julia
+  - python
 authors:
   - Mauro Werder
   - admin
-lastmod: "2024-06-11"
+lastmod: "2024-06-25"
 ---
 
 I personally find that one of the biggest challenge when doing research is to keep things neat and organized. Having a good management system for your code and resources is key to optimizing time and brain resources. In this post, I discuss various methods for structuring a research project folder that includes code, data, publications, and more. Additionally, I discuss the specifics of organizing your research code. As I started my PhD, I wish I could have had some of such guidelines. But starting from scratch allowed me to build, with trials and errors, a good system for my later life. Hopefully, some of this can apply to you! 

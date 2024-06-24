@@ -8,17 +8,20 @@ header-includes:
 draft: false
 title: "A multi-language overview on how to test your research project code"
 tags:
-  - Julia
+  - julia
+  - python
 authors:
   - admin
   - Mauro Werder
-lastmod: "2024-06-11"
+lastmod: "2024-06-25"
 ---
 
 Code testing is essential to identify and fix potential issues, to maintain sanity over the course of the development of the project and quickly identify bugs, and to ensure the reliability and sanity of your experiment overtime.
 
 This post is part of a series of posts on best practices for managing research project code. Much of this material was developed in collaboration with [Mauro Werder](https://github.com/mauro3) as part of the [Course On Reproducible Research, Data Pipelines, and Scientific Computing (CORDS)](https://github.com/mauro3/CORDS/). If you have experiences to share or spot any errors, please reach out!
 
+## Content
+- [Content](#content)
 - [Unit testing](#unit-testing)
   - [Lightweight formal tests with `assert`](#lightweight-formal-tests-with-assert)
     - [Python](#python)

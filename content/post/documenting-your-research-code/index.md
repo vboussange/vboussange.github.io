@@ -8,31 +8,33 @@ header-includes:
 draft: false
 title: "A multi-language overview on how to document your research project code"
 tags:
-  - Julia
+  - julia
+  - python
 authors:
   - admin
   - Mauro Werder
-lastmod: "2024-06-11"
+lastmod: "2024-06-25"
 ---
 
 Documentation serves multiple purposes and may be useful for various audiences, including your future self, collaborators, users and contributors - should you aim at packaging some of your code into a general-purpose library. 
 
 This post is part of a series of posts on best practices for managing research project code. Much of this material was developed in collaboration with [Mauro Werder](https://github.com/mauro3) as part of the [Course On Reproducible Research, Data Pipelines, and Scientific Computing (CORDS)](https://github.com/mauro3/CORDS/tree/master). If you have experiences to share or spot any errors, please reach out!
 
-
-- [Style guides](#style-guides)
-- [Comments](#comments)
-- [Literal documentation](#literal-documentation)
-  - [README](#readme)
-  - [API documentation / doc strings](#api-documentation--doc-strings)
-  - [Type annotations](#type-annotations)
-  - [Consider raising errors](#consider-raising-errors)
-  - [Tutorials](#tutorials)
-- [Accessing documentation](#accessing-documentation)
-- [Doc testing](#doc-testing)
-- [Useful packages to help you write and lint your documentation](#useful-packages-to-help-you-write-and-lint-your-documentation)
-- [More resources](#more-resources)
-- [Take home messages](#take-home-messages)
+## Content
+- [Content](#content)
+  - [Style guides](#style-guides)
+  - [Comments](#comments)
+  - [Literal documentation](#literal-documentation)
+    - [README](#readme)
+    - [API documentation / doc strings](#api-documentation--doc-strings)
+    - [Type annotations](#type-annotations)
+    - [Consider raising errors](#consider-raising-errors)
+    - [Tutorials](#tutorials)
+  - [Accessing documentation](#accessing-documentation)
+  - [Doc testing](#doc-testing)
+  - [Useful packages to help you write and lint your documentation](#useful-packages-to-help-you-write-and-lint-your-documentation)
+  - [More resources](#more-resources)
+  - [Take home messages](#take-home-messages)
 
 
 ### Style guides

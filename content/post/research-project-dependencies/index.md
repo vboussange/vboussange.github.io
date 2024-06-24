@@ -8,18 +8,20 @@ header-includes:
 draft: false
 title: "A multi-language overview on how to handle dependencies within a research project"
 tags:
-  - Julia
+  - julia
+  - python
 authors:
   - admin
   - Mauro Werder
-lastmod: "2024-06-11"
+lastmod: "2024-06-25"
 ---
 
 Your future self and others should be able to recreate the minimal environment to run the scripts in your research project. This is best achieved using **package managers**  and **virtual environments**.
 
 This post is part of a series of posts on best practices for managing research project code. Much of this material was developed in collaboration with [Mauro Werder](https://github.com/mauro3) as part of the [Course On Reproducible Research, Data Pipelines, and Scientific Computing (CORDS)](https://github.com/mauro3/CORDS/tree/master). If you have experiences to share or spot any errors, please reach out!
 
-
+## Content
+- [Content](#content)
 - [Some definitions](#some-definitions)
   - [What is a dependency?](#what-is-a-dependency)
   - [What is a package manager?](#what-is-a-package-manager)
