@@ -19,8 +19,9 @@ I personally find that one of the biggest challenge when doing research is to ke
 
 This post is part of a series of posts on best practices for managing research code. Much of this material was developed in collaboration with [Mauro Werder](https://github.com/mauro3) as part of the [Course On Reproducible Research, Data Pipelines, and Scientific Computing (CORDS)](https://github.com/mauro3/CORDS/tree/master). If you have experiences to share or spot any errors, please reach out!
 
+## Content
+- [Content](#content)
 - [Project folder structures](#project-folder-structures)
-  - [Other folder structures](#other-folder-structures)
 - [`code/` structure](#code-structure)
 - [Turning your `code/` into a "package"](#turning-your-code-into-a-package)
 - [Wrapping up](#wrapping-up)
@@ -28,13 +29,11 @@ This post is part of a series of posts on best practices for managing research c
 
 
 ## Project folder structures
-I quite like this project folder structure
+I quite like this project folder structure, which keeps apart raw data and results from the code, but still place them relatively close, together with admin and publications. Having a separate git repo for the paper is something I would recommend as well (possibly linked to an Overleaf project). 
 
 ```
 |-- code/
 |-- data/
-|    |-- own
-|    |-- foreign
 |-- results
 |-- publications
 |    |-- talks
@@ -45,56 +44,7 @@ I quite like this project folder structure
 |-- more-folders
  -- README.md
 ```
-
-**Advantages**
-- stuff which also belongs to a project, say `admin/` is not mixed with code specifics, such as `environment.yml`
-- it feels to me that raw data may should be elsewhere than in a code-folder
-- submission to a data-repository of a folder containing `data`, `results` and `code` seems to have a nice setup
-- typically I want to have a different git repo for the paper than for the code (but there opinions may also differ)
-
-**Disadvantages**
-- code will write results into its parent directory, which is not so nice
-- stuff such as admin, etc., will still need to be weeded out before submission
-
-### Other folder structures
-
-The [Good Research Code Handbook](https://goodresearch.dev/setup#create-a-project-skeleton) suggests
-```
-|-- data
-|-- docs
-|-- results
-|-- scripts
-|-- src
-|-- tests
- -- .gitignore
- -- environment.yml
- -- README.md
-```
-
-
-One good option could be to put all processing and data stuff into `analysis`
-```
-MyScientificProject/
- -- README.md
-|-- admin/
-|-- personnel/
-|-- publications/
-|-- analysis/
-|   |-- README.md
-|   |-- src/
-|   |-- data/
-|   |   |-- raw/
-|   |   |-- processed/
-|   |-- results/
-|   |-- docs/
-|   |-- scripts/
-|   |-- tests/
-|   |-- environment.yml
-|   |-- requirements.txt
-```
-The data-submission would then be the `analysis` folder.
-
-
+You may want to place `results` within `code`, together with `data` (which you should not git track)
 The structure of `code/` deserves here some attention.
 
 ## `code/` structure

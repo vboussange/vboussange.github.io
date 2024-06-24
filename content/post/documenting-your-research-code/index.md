@@ -295,7 +295,7 @@ help(myfun)
 
 But e.g. VSCode can be also quite helpful, and this works also with your own code!
 
-![](resources/hover_doc.png)
+![](figures/hover_doc.png)
 
 
 ### Doc testing
@@ -355,11 +355,11 @@ end
 
 ### Useful packages to help you write and lint your documentation
 - Better Comments
-![](resources/bettercomments.jpeg)
+![](figures/bettercomments.jpeg)
 - Automatic doc string generation
-![](resources/autodocstring.jpeg)
+![](figures/autodocstring.jpeg)
 - Python test explorer
-![](resources/pythontest.jpeg)
+![](figures/pythontest.jpeg)
 
 
 ### More resources
