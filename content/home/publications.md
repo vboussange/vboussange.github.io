@@ -47,6 +47,10 @@ subtitle: ''
 - **Boussange, V.** & Pellissier, L., _Eco-evolutionary model on spatial graphs reveals how habitat structure affects phenotypic differentiation_. [Commun Biol](https://doi.org/10.1038/s42003-022-03595-3) **5**, 668 (2022). [[bioRxiv]](https://www.biorxiv.org/content/10.1101/2021.07.06.451404.abstract)
 
 ### Preprints
+-  Sapienza, F., Bolibar, J., Schäfer, F., Groenke, B., Pal, A., **Boussange, V.**, Heimbach, P., Hooker, G., Pérez, F, Persson, P.O., Rackauckas, C., _Differentiable Programming for Differential Equations: A Review_. [[arXiv]](https://arxiv.org/abs/2406.09699) (2024), 72 pages. [GitHub repository](https://github.com/ODINN-SciML/DiffEqSensitivity-Review). In review.
+
+-  Reji Chacko, M., Albouy, C., Altermatt, F., Casanelles Abella, J., Brändle, M., **Boussange, V.**, Campell, F., Ellis, W. N., Fopp, F., Gossner, M., Ho, H. C., Joss, A., Kipf, P., Neff, F., Petrović, A., Prié, V., Tomanović, Ž., Zimmerli, N., Pellissier, L., _trophiCH - a national species-level trophic metaweb of 23k species for Switzerland_. [[EcoEvoRxiv]](https://ecoevorxiv.org/repository/view/7294/) (2024), 32 pages. In review.
+
 - **Boussange, V.**, Vilimelis-Aceituno, P., Schäfer, F., Pellissier, L., _Partitioning time series to improve process-based models with machine learning_. [[bioRxiv]](https://www.biorxiv.org/content/10.1101/2022.07.25.501365v2) (2024), 46 pages. In review.
 
 - **Boussange, V.**, Sornette, D., Lischke, H., Pellissier, L., _Processes analogous to ecological interactions and dispersal shape the dynamics of economic activities_. [[arXiv]](https://arxiv.org/abs/2301.09486) (2023), 23 pages.
@@ -62,7 +66,6 @@ subtitle: ''
 <!-- - White paper on Swiss Renewable Energy and Biodiversity -->
 <!--  -->
 - Vilimelis-Aceituno, P., Miller, J., Marti, N., Farag, Y., **Boussange, V.**,  _Temporal horizons in forecasting: a performance-learnability trade-off_
--  Sapienza, F., Bolibar, J., Schäfer, F., Groenke, B., **Boussange, V.**, Heimbach, P., Hooker, G., Pérez, F, Persson, P.O., Rackauckas, C., **Differentiable Programming for Differential Equations: A Review**. [GitHub repository](https://github.com/ODINN-SciML/DiffEqSensitivity-Review)
 - **Boussange, V.**, Karger, D., Malle, J. T., Midolo, D., _Unveiling climate-biodiversity interactions: linking earth system and biodiversity models_. (in alphabetical order)
 
 <!-- - Becker, S., **Boussange, V.**, Jentzen, A., Kruse, T.,  _Machine learning methods for computing asset trading strategies in goal based investment management_. (in alphabetical order) -->
