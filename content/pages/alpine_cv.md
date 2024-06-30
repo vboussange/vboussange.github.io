@@ -166,6 +166,8 @@ projects: []
 
 ## Alpinism
 
+  * Gwächtenhorn 3404m, W-E traverse, PD, 2024
+
   * Nadelhorn 4327m, PD, 2022
 
   * Tete Blanche 3421m, North Face, Petite Fourche 3512m, 2022
@@ -190,9 +192,9 @@ projects: []
 
   * Basodino 3273m, E ridge, 2020
 
-  * Hinter Tierberg 3445m, PD, 2019
+  * Vorder Tierberg 3090, F, 2019
 
-  * Mount Ararat 5 137m, Turkey, 2008
+  * Mount Ararat 5137m, Turkey, 2008
 
 
 ## Alpine climbing
