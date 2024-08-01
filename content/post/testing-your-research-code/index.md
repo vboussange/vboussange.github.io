@@ -206,11 +206,9 @@ def test_file_to_upper():
 
 ## Continuous integration
 
-Automated testing on local machines is useful, but for projects involving multiple developers and various target platforms, continuous integration (CI) is essential. CI clones the repository, builds it if necessary, and runs tests whenever changes are committed. GitHub Actions is a popular CI tool available within GitHub.
-
-With GitHub Actions, you can automatically run tests on each proposed change. Additionally, Actions can also build documentation, check for code coverage, and more.
-
-Continuous Integration is based on `.yaml` files, which specify the environment to run the script. You can use build matrices to test across different environments (e.g. Linux, Windows and MacOS, with different versino of python or Julia). Jobs will be created that run our tests for each permutation of these.
+Automated testing on local machines is useful, but you can do better with continuous integration (CI). In fact, CI is essential for projects involving multiple developers and various target platforms. CI consists in running tests whenever changes are committed. 
+CI can also be used to automatically build documentation, check for code coverage, and more. GitHub Actions is a popular CI tool available within GitHub.
+CI is based on `.yaml` files, which specify the environment to run the script. You can build matrices to test across different environments (e.g. Linux, Windows and MacOS, with different versino of python or Julia). Jobs will be created that run our tests for each permutation of these.
 
 
 
