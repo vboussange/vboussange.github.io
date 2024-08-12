@@ -64,6 +64,10 @@ social:
   icon_pack: ai
   link: uploads/CV_vboussange.pdf
 
+- icon: orcid
+  icon_pack: ai
+  link: https://orcid.org/0000-0002-4202-3599
+
 # Enter email to display Gravatar (if Gravatar enabled in Config)
 email: ""
 
