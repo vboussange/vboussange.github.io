@@ -166,6 +166,20 @@ projects: []
 
 ## Alpinism
 
+  * Aiguilles Dorées 3519m, traverse E-W, D-, 2024
+
+  * Nadelgrat (Dirruhorn 4035m, Hohberghorn 4219m, Stecknadelhorn 4241m, Nadelhorn 4327m), AD, 2024
+
+  * Dent Blanche 4358m, arrête S, AD, 2024
+
+  * Breithorn 4139m - 4159m - 4164m, traverse E-W, AD+, 2024
+
+  * Lyskamm 4527m - 4479m, traverse E-W, AD, 2024
+
+  * Monte Rosa - Dufourspitze 4634m, traverse W-SE, AD+, 2024
+
+  * Weissmies 4017m, Nordgrat, AD+, 2024
+
   * Gwächtenhorn 3404m, W-E traverse, PD, 2024
 
   * Nadelhorn 4327m, PD, 2022
