@@ -46,7 +46,14 @@ subtitle: ''
 
 - **Boussange, V.** & Pellissier, L., _Eco-evolutionary model on spatial graphs reveals how habitat structure affects phenotypic differentiation_. [Commun Biol](https://doi.org/10.1038/s42003-022-03595-3) **5**, 668 (2022). [[bioRxiv]](https://www.biorxiv.org/content/10.1101/2021.07.06.451404.abstract)
 
+### Books
+
+- RE-BD AR2024. *Accelerating renewable energy development while enhancing biodiversity protection in Switzerland*. [doi:10.5075/epfl.20.500.14299/241642](https://infoscience.epfl.ch/handle/20.500.14299/241642) (2024). Contributing author of chapter 2 and 5.
+
 ### Preprints
+
+- Poulet, T., Truttmann,  S., **Boussange, V.**, Veveakis, M., *Chaotic Slow Slip Events in New Zealand from two coupled slip patches: a proof of concept*. [[arXiv]](https://arxiv.org/abs/2411.01688) (2024). [GitHub repository](https://github.com/vboussange/coupledOscillators). In review.
+
 -  Sapienza, F., Bolibar, J., Schäfer, F., Groenke, B., Pal, A., **Boussange, V.**, Heimbach, P., Hooker, G., Pérez, F, Persson, P.O., Rackauckas, C., _Differentiable Programming for Differential Equations: A Review_. [[arXiv]](https://arxiv.org/abs/2406.09699) (2024), 72 pages. [GitHub repository](https://github.com/ODINN-SciML/DiffEqSensitivity-Review). In review.
 
 -  Reji Chacko, M., Albouy, C., Altermatt, F., Casanelles Abella, J., Brändle, M., **Boussange, V.**, Campell, F., Ellis, W. N., Fopp, F., Gossner, M., Ho, H. C., Joss, A., Kipf, P., Neff, F., Petrović, A., Prié, V., Tomanović, Ž., Zimmerli, N., Pellissier, L., _trophiCH - a national species-level trophic metaweb of 23k species for Switzerland_. [[EcoEvoRxiv]](https://ecoevorxiv.org/repository/view/7294/) (2024), 32 pages. In review.
