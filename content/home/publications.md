@@ -38,7 +38,7 @@ subtitle: ''
 ---
 
 ### Publications
-- Alsos, I.G., **Boussange, V.**, Rijal, D.P., Beaulieu, M., Brown, A.G., Herzschuh, U., Svenning, J.C., Pellissier, L., _Ancient sedimentary DNA to forecast trajectories of ecosystem under climate change_. (2023). Accepted in Philosophical Transactions of the Royal Society B. [[preprint]](https://www.researchsquare.com/article/rs-3542192/v1)
+- Alsos, I.G., **Boussange, V.**, Rijal, D.P., Beaulieu, M., Brown, A.G., Herzschuh, U., Svenning, J.C., Pellissier, L., _Ancient sedimentary DNA to forecast trajectories of ecosystem under climate change_. (2023). [Philosophical Transactions of the Royal Society B.]([Philosophical Transactions of the Royal Society B](http://doi.org/10.1098/rstb.2023.0017)) [[preprint]](https://www.researchsquare.com/article/rs-3542192/v1)
 
 - Skeels, A., Boschman, L. M., McFadden, I. R., Joyce, E.M., Hagen, O., Jiménez Robles, O., Bach, W., **Boussange, V.**, Keggin, T., Jetz, W., Pellissier, L., _Paleoenvironments shaped the exchange of terrestrial vertebrates across Wallace’s Line_. [Science](https://www.science.org/doi/10.1126/science.adf7122) **381**, 86-92 (2023).
 
