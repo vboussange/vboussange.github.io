@@ -37,6 +37,7 @@ subtitle: ''
 #   columns: '2'
 ---
 ### Resources
+- [Swiss SolarWind Explorer](https://swiss-solarwind-explorer.ethz.ch): a web tool to identify optimal sites for solar and wind energy projects based on potential energy production, biodiversity and landscape protection.
 - [Practical introduction to Julia for modelling and data analysis in biodiversity and earth sciences](https://github.com/vboussange/WSLJuliaWorkshop2023)
 - [Course On Reproducible Research, Data Pipelines, and Scientific Computing](https://github.com/mauro3/CORDS/)
 

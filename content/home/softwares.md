@@ -10,7 +10,7 @@ headless: true
 weight: 30
 
 title: Open source softwares 🧑🏽‍💻
-subtitle: "Open source as a philosphy."
+# subtitle: "Open source as a philosphy."
 
 design:
   columns: "2"
@@ -52,30 +52,30 @@ design:
 ---
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 
-# [EvoId.jl](https://github.com/vboussange/EvoId.jl)
-Evolutionary Individual based modelling, mathematically grounded. A user friendly package aimed at simulating the evolutionary dynamics of a population structured over a complex spatio-evolutionary structures.
+# [jaxscape](https://github.com/vboussange/jaxscape)
+A minimal JAX library for graph-based connectivity analysis at scales.
 
-{{< github_button button="star" user="vboussange" repo="evoid.jl" count="true" dark="true" large="true">}}
+{{< github_button button="star" user="vboussange" repo="jaxscape" count="true" dark="true" large="true">}}
+
+# [PiecewiseInference.jl](https://github.com/vboussange/PiecewiseInference.jl)
+Inverse modelling framework for dynamical models characterised by complex dynamics.
+
+{{< github_button button="star" user="vboussange" repo="PiecewiseInference.jl" count="true" dark="true" large="true">}}
 
 # [HighDimPDE.jl](https://github.com/SciML/HighDimPDE.jl)
 Solver for **highly dimensional, non-local, nonlinear PDEs**. It is integrated within the SciML ecosystem (see below). Try it out! &#128515; If you want to learn more about the algorithms implemented, check out my [research interests]({{site.url}}/research/#developping-numerical-schemes-for-solving-high-dimensional-non-local-nonlinear-pdes).
 
 {{< github_button button="star" user="SciML" repo="HighDimPDE.jl" count="true" dark="true" large="true">}}
 
-# [PiecewiseInference.jl](https://github.com/vboussange/PiecewiseInference.jl)
-Suite for parameter inference and model selection with dynamical models characterised by complex dynamics.
-
-{{< github_button button="star" user="vboussange" repo="PiecewiseInference.jl" count="true" dark="true" large="true">}}
-
-# [ParametricModels.jl](https://github.com/vboussange/ParametricModels.jl)
-Utilities for parametric and composite differential equation models.
-
-{{< github_button button="star" user="vboussange" repo="ParametricModels.jl" count="true" dark="true" large="true">}}
-
 # [EcoEvoModelZoo.jl](https://github.com/vboussange/EcoEvoModelZoo.jl)
 A zoo of eco-evolutionary models with high fitness.
 
 {{< github_button button="star" user="vboussange" repo="EcoEvoModelZoo.jl" count="true" dark="true" large="true">}}
+
+# [EvoId.jl](https://github.com/vboussange/EvoId.jl)
+Evolutionary Individual based modelling, mathematically grounded. A user friendly package aimed at simulating the evolutionary dynamics of a population structured over a complex spatio-evolutionary structures.
+
+{{< github_button button="star" user="vboussange" repo="evoid.jl" count="true" dark="true" large="true">}}
 
 # [SciML](https://github.com/SciML/)
 I am a member of the **SciML** organisation, an open source ecosystem for Scientific Machine Learning in the Julia programming language. On top of being the main author of **HighDimPDE.jl**, I actively participate in the development of other packages such as [DiffEqFlux.jl](https://github.com/SciML/DiffEqFlux.jl), a library to train differential equations with data.
