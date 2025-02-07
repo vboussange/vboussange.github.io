@@ -20,11 +20,12 @@ bio: Researcher in ecology and evolution, scientific machine learning enthusiast
 
 # Interests to show in About widget
 interests:
+- Scientific machine learning
+- Complex dynamical systems
 - Ecology and evolution
 # - Interdisciplinary science
 - Mathematical modeling
-- Scientific machine learning
-- Complex systems
+
 
 # Education to show in About widget
 education:
