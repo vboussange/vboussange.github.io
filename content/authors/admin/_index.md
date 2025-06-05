@@ -63,7 +63,7 @@ social:
 # and uncomment the lines below.
 - icon: cv
   icon_pack: ai
-  link: uploads/CV_vboussange.pdf
+  link: uploads/cv.pdf
 
 - icon: orcid
   icon_pack: ai

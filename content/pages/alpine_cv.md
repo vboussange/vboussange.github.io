@@ -35,6 +35,12 @@ projects: []
 
 ## Ski mountaineering / Backcountry skiing
 
+  * Wintertürmli 3002m, from Meiental, AD-, Switzerland, January 2025
+
+  * Plattenburg 2747m, face W, 45°, Switzerland, January 2025
+
+  <!-- * Couloir de Mona 45°, Switzerland, January 2025 TO BE COMPLETED -->
+
   * Dent d'Hérens 4171m, face SW arrête W, AD, Switzerland, May 2024
   
   {{< instagram C6_M73dKX9V>}}
@@ -45,6 +51,7 @@ projects: []
 <iframe width="560" height="315" src="https://www.youtube.com/embed/fb2iS7i_PxA?si=kw1c3w0BNUK0k2vM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
   
   * From Tromsø to Norkapp with bicycle and skis, Norway, March 2024
+
     * 🚲 Tromsø - Laksvelbukt
     * Tomas couloir
     * Banana couloir of Holmbukktinden, 45˚
@@ -57,6 +64,9 @@ projects: []
     * 🚲 Lyngseidet - Skervøy
     * Store Kågtinden 1228m
     * 🚲 Skervøy - Nordkapp
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/8rTHwFRBPxc?si=CpRZsK-Ej09Ekxov" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
   * Druesberg 2282m, D-, from Zürich with bicycle, Switzerland, February 2024
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/u942702uVGo?si=X-00N-kWJ8YuvXe8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -212,6 +222,13 @@ projects: []
 
 
 ## Alpine climbing
+  * Schmalstöckli 2012m, "Bird on a wire", 5 pitches, 6b, 2024
+
+  * Läged Windgällen 2572m, "Zentralpfeiler", 10 pitches, 6a, 2024
+
+  * Balmflue 730m, "Südwände" + "Föhrenweg", 5+4 pitches, 6b, 2024
+
+  * Cheselenflue 1750 m, "Dr Blau Chäfer", 6 pitches, 6a+, 2024
 
   * Pic de Jallouvre 2408m, Voie des Cristaux, AD-, 2022
 
@@ -233,7 +250,7 @@ projects: []
 
   * Brüggler, "Sonntagweg", 7 pitches, 6a+, 2020
 
-  * Bockmattli, "Nameonlose Kante, 9 pitches, 5a, 2020
+  * Bockmattli, "Nameonlose Kante", 9 pitches, 5a, 2020
 
   * Poncione di Manió 2925m, AD+ 4a, 2020 
 
