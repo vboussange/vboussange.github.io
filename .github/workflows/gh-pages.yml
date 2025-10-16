@@ -19,7 +19,8 @@ jobs:
     - name: Hugo Deploy GitHub Pages
       uses: benmatselby/hugo-deploy-gh-pages@main
       env:
-        HUGO_VERSION: 0.118
+        GO_VERSION: 1.17
+        HUGO_VERSION: 0.95.0
         HUGO_EXTENDED: true
         TARGET_REPO: vboussange/vboussange.github.io
         TARGET_BRANCH: gh-pages
