@@ -38,27 +38,36 @@ subtitle: ''
 ---
 
 ### Publications
-- Alsos, I.G., **Boussange, V.**, Rijal, D.P., Beaulieu, M., Brown, A.G., Herzschuh, U., Svenning, J.C., Pellissier, L., _Ancient sedimentary DNA to forecast trajectories of ecosystem under climate change_. (2023). [Philosophical Transactions of the Royal Society B.]([Philosophical Transactions of the Royal Society B](http://doi.org/10.1098/rstb.2023.0017)) [[preprint]](https://www.researchsquare.com/article/rs-3542192/v1)
+- **Boussange, V.**, Vilimelis-Aceituno, P., Schäfer, F., Pellissier, L., _A calibration framework to improve mechanistic forecasts with hybrid dynamic models_. Accepted in Methods in Ecology and Evolution (2025). [[preprint]](https://www.biorxiv.org/content/10.1101/2022.07.25.501365v2)
 
-- Skeels, A., Boschman, L. M., McFadden, I. R., Joyce, E.M., Hagen, O., Jiménez Robles, O., Bach, W., **Boussange, V.**, Keggin, T., Jetz, W., Pellissier, L., _Paleoenvironments shaped the exchange of terrestrial vertebrates across Wallace’s Line_. [Science](https://www.science.org/doi/10.1126/science.adf7122) **381**, 86-92 (2023).
+-  Sapienza, F., Bolibar, J., Schäfer, F., Groenke, B., Pal, A., **Boussange, V.**, Heimbach, P., Hooker, G., Pérez, F, Persson, P.O., Rackauckas, C., _Differentiable Programming for Differential Equations: A Review_. Accepted in SIAM Review (2025). [[preprint]](https://arxiv.org/abs/2406.09699)
 
-- **Boussange, V.**, Becker, S., Jentzen, A., Kuckuck, B., Pellissier, L., _Deep learning approximations for non-local nonlinear PDEs with Neumann boundary conditions_. [Partial Differ. Equ. Appl.](https://link.springer.com/article/10.1007/s42985-023-00244-0) **4** (2022), Paper no. 51, 59 pp. [[arXiv]](https://arxiv.org/abs/2205.03672)
 
-- **Boussange, V.** & Pellissier, L., _Eco-evolutionary model on spatial graphs reveals how habitat structure affects phenotypic differentiation_. [Commun Biol](https://doi.org/10.1038/s42003-022-03595-3) **5**, 668 (2022). [[bioRxiv]](https://www.biorxiv.org/content/10.1101/2021.07.06.451404.abstract)
+- Aceituno, P., Miller, J., Marti, N., Farag, Y., **Boussange, V.**, _Temporal horizons in forecasting: a performance-learnability trade-off_. [Transactions on Machine Learning Research](https://openreview.net/pdf?id=BeudQIxT1R) (2025). [[preprint]](https://arxiv.org/abs/2506.03889)
+
+- Reji Chacko, M., Albouy, C., Altermatt, F., **Boussange, V.**, Br{"a}ndle, M., Farwig, N., Gossner, M. M., Ho, H.C., Joss, A., Neff, F., Pellissier, L., _Species loss in key habitats accelerates regional food web disruption_. [Communications Biology](https://doi.org/10.1038/s42003-025-08396-y) (2025).
+
+- Reji Chacko, M., Albouy, C., Altermatt, F., Casanelles Abella, J., Brändle, M., **Boussange, V.**, Campell, F., Ellis, W. N., Fopp, F., Gossner, M., Ho, H. C., Joss, A., Kipf, P., Neff, F., Petrović, A., Prié, V., Tomanović, Ž., Zimmerli, N., Pellissier, L., _A species-level multi-trophic metaweb for Switzerland_. [Scientific Data](https://doi.org/10.1038/s41597-025-05487-7) (2024).
+
+
+- Alsos, I.G., **Boussange, V.**, Rijal, D.P., Beaulieu, M., Brown, A.G., Herzschuh, U., Svenning, J.C., Pellissier, L., _Ancient sedimentary DNA to forecast trajectories of ecosystem under climate change_. [Philosophical Transactions of the Royal Society B](http://doi.org/10.1098/rstb.2023.0017) (2023). [[preprint]](https://www.researchsquare.com/article/rs-3542192/v1)
+
+- Skeels, A., Boschman, L. M., McFadden, I. R., Joyce, E.M., Hagen, O., Jiménez Robles, O., Bach, W., **Boussange, V.**, Keggin, T., Jetz, W., Pellissier, L., _Paleoenvironments shaped the exchange of terrestrial vertebrates across Wallace’s Line_. [Science](https://www.science.org/doi/10.1126/science.adf7122) (2023).
+
+- **Boussange, V.**, Becker, S., Jentzen, A., Kuckuck, B., Pellissier, L., _Deep learning approximations for non-local nonlinear PDEs with Neumann boundary conditions_. [Partial Differential Equations and Applications](https://link.springer.com/article/10.1007/s42985-023-00244-0) (2022). [[preprint]](https://arxiv.org/abs/2205.03672)
+
+- **Boussange, V.** & Pellissier, L., _Eco-evolutionary model on spatial graphs reveals how habitat structure affects phenotypic differentiation_. [Communications Biology](https://doi.org/10.1038/s42003-022-03595-3) (2022). [[preprint]](https://www.biorxiv.org/content/10.1101/2021.07.06.451404.abstract)
 
 ### Books
 
 - RE-BD AR2024. *Accelerating renewable energy development while enhancing biodiversity protection in Switzerland*. [doi:10.5075/epfl.20.500.14299/241642](https://infoscience.epfl.ch/handle/20.500.14299/241642) (2024). Contributing author of chapter 2 and 5.
 
 ### Preprints
+- **Boussange, V.**, Brun, P., Malle, J. T., Midolo, G., Portier, J., Sanchez, T., Zimmermann, N. E., Axmanova, I., Bruelheide, H., Chytry, M., Kambach, S., Lososova, Z., Vecera, M., Birrun, I., Ecker, K. T., Lenoir, J., Svenning, J.C., Karger, D. N., _Multi-scale species richness estimation with deep learning_. [[arXiv]](https://arxiv.org/abs/2507.06358) (2025). In revision at Nature Communications.
+
+- Adde, A., **Boussange, V.**, Chauvier, Y., Dahito, M.A., Fruh, J., Gross, A., Stofer, S., Rey, E., Sieber, P., Fopp, F., Schouten, R., Van Moorter, B., Guisan, A., Graham, C., Pellissier, L., Zimmermann, N.E., Altermatt, F., _Spatial biodiversity indicators and a composite index for conservation prioritization in Switzerland_. [[bioRxiv]](https://doi.org/10.1101/2025.06.10.657334) (2025). In revision at Scientific Data.
 
 - Poulet, T., Truttmann,  S., **Boussange, V.**, Veveakis, M., *Chaotic Slow Slip Events in New Zealand from two coupled slip patches: a proof of concept*. [[arXiv]](https://arxiv.org/abs/2411.01688) (2024). [GitHub repository](https://github.com/vboussange/coupledOscillators). In review.
-
--  Sapienza, F., Bolibar, J., Schäfer, F., Groenke, B., Pal, A., **Boussange, V.**, Heimbach, P., Hooker, G., Pérez, F, Persson, P.O., Rackauckas, C., _Differentiable Programming for Differential Equations: A Review_. [[arXiv]](https://arxiv.org/abs/2406.09699) (2024), 72 pages. [GitHub repository](https://github.com/ODINN-SciML/DiffEqSensitivity-Review). In review.
-
--  Reji Chacko, M., Albouy, C., Altermatt, F., Casanelles Abella, J., Brändle, M., **Boussange, V.**, Campell, F., Ellis, W. N., Fopp, F., Gossner, M., Ho, H. C., Joss, A., Kipf, P., Neff, F., Petrović, A., Prié, V., Tomanović, Ž., Zimmerli, N., Pellissier, L., _trophiCH - a national species-level trophic metaweb of 23k species for Switzerland_. [[EcoEvoRxiv]](https://ecoevorxiv.org/repository/view/7294/) (2024), 32 pages. In review.
-
-- **Boussange, V.**, Vilimelis-Aceituno, P., Schäfer, F., Pellissier, L., _Partitioning time series to improve process-based models with machine learning_. [[bioRxiv]](https://www.biorxiv.org/content/10.1101/2022.07.25.501365v2) (2024), 46 pages. In review.
 
 - **Boussange, V.**, Sornette, D., Lischke, H., Pellissier, L., _Processes analogous to ecological interactions and dispersal shape the dynamics of economic activities_. [[arXiv]](https://arxiv.org/abs/2301.09486) (2023), 23 pages.
 
@@ -68,14 +77,6 @@ subtitle: ''
 
 ### Monographs
 - **Boussange, V.**, _Forward and inverse modelling of eco-evolutionary dynamics in ecological and economic systems_. [[ETH library]](https://doi.org/10.3929/ethz-b-000598848) (2022), 207 pages.
-
-### Works in progress
-<!-- - White paper on Swiss Renewable Energy and Biodiversity -->
-<!--  -->
-- Vilimelis-Aceituno, P., Miller, J., Marti, N., Farag, Y., **Boussange, V.**,  _Temporal horizons in forecasting: a performance-learnability trade-off_
-- **Boussange, V.**, Karger, D., Malle, J. T., Midolo, D., _Unveiling climate-biodiversity interactions: linking earth system and biodiversity models_. (in alphabetical order)
-
-<!-- - Becker, S., **Boussange, V.**, Jentzen, A., Kruse, T.,  _Machine learning methods for computing asset trading strategies in goal based investment management_. (in alphabetical order) -->
 
 ### Talks
 - _**PiecewiseInference.jl**: inverse modelling for complex dynamics_, speaker, JuliaCon2024, Eindhoven, Netherlands (July 2024).

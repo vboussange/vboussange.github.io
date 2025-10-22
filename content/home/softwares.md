@@ -57,10 +57,10 @@ A minimal JAX library for graph-based connectivity analysis at scales.
 
 {{< github_button button="star" user="vboussange" repo="jaxscape" count="true" dark="true" large="true">}}
 
-# [PiecewiseInference.jl](https://github.com/vboussange/PiecewiseInference.jl)
-Inverse modelling framework for dynamical models characterised by complex dynamics.
+# [HybridDynamicModels.jl](https://github.com/vboussange/HybridDynamicModels.jl)
+A Julia library for easily building and training hybrid dynamic models which combine mechanistic and data driven components.
 
-{{< github_button button="star" user="vboussange" repo="PiecewiseInference.jl" count="true" dark="true" large="true">}}
+{{< github_button button="star" user="vboussange" repo="HybridDynamicModels.jl" count="true" dark="true" large="true">}}
 
 # [HighDimPDE.jl](https://github.com/SciML/HighDimPDE.jl)
 Solver for **highly dimensional, non-local, nonlinear PDEs**. It is integrated within the SciML ecosystem (see below). Try it out! &#128515; If you want to learn more about the algorithms implemented, check out my [research interests]({{site.url}}/research/#developping-numerical-schemes-for-solving-high-dimensional-non-local-nonlinear-pdes).
