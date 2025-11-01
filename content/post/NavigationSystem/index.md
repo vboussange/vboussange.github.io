@@ -42,7 +42,7 @@ In the following, I explain how I installed a server on our boat that transmits 
 
 ## Installing OpenPlotter on the Raspberry Pi
 
-To get started, you need to install [OpenPlotter](https://openmarine.net/openplotter), a Linux distribution designed for Raspberry Pi and that contains the essential softwares for navigation. I used the 64-bit [OpenPlotter Starting image](https://openplotter.readthedocs.io/en/latest/getting_started/downloading.html#openplotter-starting) that contains an appropriate pre-built kernel. To install it, you'll need a less than 32GB SD-card, to be formatted in FAT32. My problem was that the SD card I had had already been used on a Raspberry Pi, and as such contained an EXT4 partition. EXT4 partitions are used by Linux systems, but are not recognized by MacOS. This prevented me to format the card in FAT32. To allow formatting, I used the `diskutil` utility from MacOS.
+To get started, you need to install [OpenPlotter](https://openmarine.net/openplotter), a Linux distribution designed for Raspberry Pi and that contains the essential software for navigation. I used the 64-bit [OpenPlotter Starting image](https://openplotter.readthedocs.io/en/latest/getting_started/downloading.html#openplotter-starting) that contains an appropriate pre-built kernel. To install it, you'll need a less than 32GB SD-card, to be formatted in FAT32. My problem was that the SD card I had had already been used on a Raspberry Pi, and as such contained an EXT4 partition. EXT4 partitions are used by Linux systems, but are not recognized by MacOS. This prevented me to format the card in FAT32. To allow formatting, I used the `diskutil` utility from MacOS.
 
 First run 
 

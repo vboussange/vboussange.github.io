@@ -10,8 +10,8 @@ main:
   # - name: 🔬 Research projects
   #   url: '#projects'
   #   weight: 20
-  - name: 🧑🏽‍💻 Softwares
-    url: '#softwares'
+  - name: 🧑🏽‍💻 Software
+    url: '#software'
     weight: 30
   # - name: Talks
   #   url: '#talks'

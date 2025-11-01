@@ -9,7 +9,7 @@ headless: true
 # Order that this section appears on the page.
 weight: 30
 
-title: Open source softwares 🧑🏽‍💻
+title: Open source software 🧑🏽‍💻
 # subtitle: "Open source as a philosphy."
 
 design:
