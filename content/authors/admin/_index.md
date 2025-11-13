@@ -16,15 +16,14 @@ organizations:
   url: https://www.ethz.ch/en
 
 # Short bio (displayed in user profile at end of posts)
-bio: Researcher in ecology and evolution, scientific machine learning enthusiastic.
+bio: Scientific machine learning and computational ecology.
 
 # Interests to show in About widget
 interests:
 - Scientific machine learning
-- Complex dynamical systems
-- Ecology and evolution
+- Scientific computing
+- Biomathematics
 # - Interdisciplinary science
-- Mathematical modeling
 
 
 # Education to show in About widget

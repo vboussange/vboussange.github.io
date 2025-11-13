@@ -34,6 +34,13 @@ projects: []
 <iframe width="560" height="315" src="https://www.youtube.com/embed/TkmXIaGAx-I?si=dbeJw3G-8rxLzloE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ## Ski mountaineering / Backcountry skiing
+  * Expedition ""
+
+  * [Couloir du Pertuis par le Morétan](https://skitour.fr/topos/284), 4.1 E2, France, February 2025
+
+  * Rocher Gris 2757m, [couloir du Dérobé](https://skitour.fr/topos/8856), 5.1 E2, France, February 2025 ⭐️
+
+  * Sunnenhöreli 2164m, PD, Switzerland January 2025
 
   * Wintertürmli 3002m, from Meiental, AD-, Switzerland, January 2025
 
