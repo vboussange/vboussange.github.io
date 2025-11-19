@@ -7,9 +7,9 @@ main:
   - name: Home
     url: '#about'
     weight: 10
-  # - name: 🔬 Research projects
-  #   url: '#projects'
-  #   weight: 20
+  - name: 🔬 Student projects
+    url: 'studentprojects'
+    weight: 20
   - name: 🧑🏽‍💻 Software
     url: '#software'
     weight: 30
