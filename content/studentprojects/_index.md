@@ -17,3 +17,5 @@ sections:
       show_read_time: false
       show_read_more: false
 ---
+
+If you are a student and interested in one of the projects listed below, please get in touch by email to discuss potential supervision.
