@@ -79,7 +79,8 @@ highlight_name: true
 Hey there, I'm Victor, a postdoctoral researcher in the [Dynamic Macroecology Group](https://www.wsl.ch/de/ueber-die-wsl/organisation/forschungseinheiten/landschaftsdynamik/dynamische-makrooekologie/) at the [Swiss Federal Institute for Forest, Snow & Landscape (WSL)](https://www.wsl.ch/en/index.html), Switzerland.
 <br>
 
-I am broadly interested in understanding and predicting the **dynamics of complex systems** by developing **methods** leveraging the extrapolation ability of **mechanistic models** with the flexibility of **machine learning** techniques. My main domain of application is **ecology**, where I focus on understanding the dynamics of ecosystems and their response to disruptions. 
+I am an interdisciplinary scientist specializing in **biomathematics**, **scientific computing**, and **machine learning** with applications for **environmental sciences**.
+I am especially interested in **hybrid methods** that combine the extrapolation capabilities of process-based models with the flexibility of machine learning techniques. My main domain of application is **ecology**, although the solutions I develop often extend beyond this field.
 <br>
 
 Outside of work, I am a part-time alpinist, passionate about mountain adventures and writing. I also enjoy sailing and surfing occasionally. You can check out **my alpine CV** [here]({{<ref "/pages/alpine_cv.md" >}}).
