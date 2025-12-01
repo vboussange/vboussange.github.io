@@ -76,7 +76,7 @@ highlight_name: true
 ---
 
 
-Hey there, I'm Victor, a postdoctoral researcher in the [Dynamic Macroecology Group](https://www.wsl.ch/de/ueber-die-wsl/organisation/forschungseinheiten/landschaftsdynamik/dynamische-makrooekologie/) at the [Swiss Federal Institute for Forest, Snow & Landscape (WSL)](https://www.wsl.ch/en/index.html), Switzerland.
+Hey there, I'm Victor, a postdoctoral researcher in the [Information and Network Dynamics Lab](https://indy.epfl.ch) at the [Ecole Polytechnique Fédérale de Lausanne (EPFL)](https://www.epfl.ch).
 <br>
 
 I am an interdisciplinary scientist specializing in **biomathematics**, **scientific computing**, and **machine learning** with applications for **environmental sciences**.
