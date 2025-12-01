@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Algebraic Multigrid | Victor Boussange</title>
+    <link>https://vboussange.github.io/tag/algebraic-multigrid/</link>
+      <atom:link href="https://vboussange.github.io/tag/algebraic-multigrid/index.xml" rel="self" type="application/rss+xml" />
+    <description>Algebraic Multigrid</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Wed, 19 Nov 2025 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://vboussange.github.io/media/icon_hua3c898eed18b98379688891d5011a1d0_203625_512x512_fill_lanczos_center_3.png</url>
+      <title>Algebraic Multigrid</title>
+      <link>https://vboussange.github.io/tag/algebraic-multigrid/</link>
+    </image>
+    
+    <item>
+      <title>Developing an algebraic multigrid solver in JAX</title>
+      <link>https://vboussange.github.io/studentprojects/amg_jax/</link>
+      <pubDate>Wed, 19 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>https://vboussange.github.io/studentprojects/amg_jax/</guid>
+      <description>&lt;p&gt;Multigrid methods represent the state-of-the-art for solving large-scale linear systems arising from discretized partial differential equations, offering optimal computational complexity for many problem classes.&lt;/p&gt;
+&lt;p&gt;Established implementations such as &lt;a href=&#34;https://github.com/pyamg/pyamg&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;pyAMG&lt;/a&gt; and &lt;a href=&#34;https://github.com/JuliaLinearAlgebra/AlgebraicMultigrid.jl&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;AMG.jl&lt;/a&gt; provide robust solvers but lack two critical capabilities for modern scientific machine learning: GPU acceleration and automatic differentiation compatibility. These features are essential for scientific machine learning workflows where differentiable simulation components (e.g., neural networks embedded in physical models) require efficient iterative solves with gradient backpropagation for end-to-end optimization.&lt;/p&gt;
+&lt;p&gt;This project aims to develop an algebraic multigrid (AMG) solver in JAX that natively supports automatic differentiation and GPU acceleration. The work involves analyzing existing Python and Julia implementations to design an architecture compatible with JAX&amp;rsquo;s functional programming paradigm and just-in-time compilation model. A successful implementation could have substantial impact on the JAX ecosystem, from &lt;a href=&#34;https://github.com/deepmodeling/jax-fem&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;accelerating finite element packages&lt;/a&gt; to &lt;a href=&#34;https://github.com/vboussange/jaxscape&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;accelerating ecological connectivity analysis&lt;/a&gt; tools.&lt;/p&gt;
+&lt;p&gt;The project scope is flexible and can emphasize software engineering or algorithmic optimization depending on the student&amp;rsquo;s background and interests. Prior experience with JAX or advanced numerical linear algebra is beneficial but not required; students will gain deep expertise in iterative solvers, functional programming patterns, and best practices for scientific open-source software development.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
