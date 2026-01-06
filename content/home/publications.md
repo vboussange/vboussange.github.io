@@ -63,6 +63,8 @@ subtitle: ''
 - RE-BD AR2024. *Accelerating renewable energy development while enhancing biodiversity protection in Switzerland*. [doi:10.5075/epfl.20.500.14299/241642](https://infoscience.epfl.ch/handle/20.500.14299/241642) (2024). Contributing author of chapter 2 and 5.
 
 ### Preprints
+- Van Moorter, B., Kivimaki, I., Panzacchi, M., Schouten, R., Wuyts, B., Niebuhr, B. B., Saerens, M., **Boussange, V.**, _A Unified Framework for Prioritizing Habitat and Connectivity Conservation through Analytical Sensitivity_. [[bioRxiv]](https://doi.org/10.64898/2026.01.05.697654) (2026). In revision at Landscape Ecology.
+
 - **Boussange, V.**, Brun, P., Malle, J. T., Midolo, G., Portier, J., Sanchez, T., Zimmermann, N. E., Axmanova, I., Bruelheide, H., Chytry, M., Kambach, S., Lososova, Z., Vecera, M., Birrun, I., Ecker, K. T., Lenoir, J., Svenning, J.C., Karger, D. N., _Multi-scale species richness estimation with deep learning_. [[arXiv]](https://arxiv.org/abs/2507.06358) (2025). In revision at Nature Communications.
 
 - Adde, A., **Boussange, V.**, Chauvier, Y., Dahito, M.A., Fruh, J., Gross, A., Stofer, S., Rey, E., Sieber, P., Fopp, F., Schouten, R., Van Moorter, B., Guisan, A., Graham, C., Pellissier, L., Zimmermann, N.E., Altermatt, F., _Spatial biodiversity indicators and a composite index for conservation prioritization in Switzerland_. [[bioRxiv]](https://doi.org/10.1101/2025.06.10.657334) (2025). In revision at Scientific Data.
