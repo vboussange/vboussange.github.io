@@ -14,20 +14,20 @@ authors:
 lastmod: "2025-01-02"
 ---
 
-Here you will learn about different techniques to infer parameters of a
-(differentiable) process-based model against data. This is useful to in
-the context of mechanistic inference, where we want to explain patterns
+This tutorial covers techniques for inferring parameters of
+differentiable process-based models from observational data. These methods are
+fundamental to mechanistic inference, where we want to explain patterns
 in a system by understanding the processes that generate them, in
 contrast to purely statistical or empirical inference, which might
 identify patterns or correlations in data without necessarily
 understanding the causes. We’ll mostly focus on differential equation
 models. Make sure that you stick to the end, where we’ll see how we can
-not only infer parameter values but also functional forms, by
-parametrizing models’ components with neural networks.
+not only infer parameter values but also the functional form of processes *within* the model, by
+parametrizing the relevant components with neural networks.
 
 # Preliminaries
 
-## Wait, what is a differentiable model?
+## Differentiable Models: Definition and Properties
 
 One can usually write a model as a map ℳ mapping some parameters *p*, an
 initial state *u*<sub>0</sub> and a time *t* to a future state
@@ -35,10 +35,11 @@ initial state *u*<sub>0</sub> and a time *t* to a future state
 
 *u*<sub>*t*</sub> = ℳ(*u*<sub>0</sub>, *t*, *p*).
 
-We call **differentiable** a model ℳ for which we can calculate its
-derivative with respect to *p* or *u*<sub>0</sub>. The derivative
-$\frac{\partial \mathcal{M}}{\partial \theta}$ expresses how much the
-model output changes with respect to a small change in *θ*.
+A model ℳ is **differentiable** if we can compute its partial
+derivatives with respect to parameters *p* or initial conditions
+*u*<sub>0</sub>. The derivative
+$\frac{\partial \mathcal{M}}{\partial \theta}$ quantifies the
+sensitivity of model outputs to infinitesimal perturbations in parameter *θ*.
 
 > **Recall your Calculus class!**
 >
@@ -138,7 +139,7 @@ As you can observe, the carrying capacity has no effect at small *t*
 where population is small, and its influence on the dynamics grows as
 the population grows. We expect the reverse effect for *r*.
 
-## On the importance of gradients for inference
+## The Role of Gradients in Statistical Inference
 
 The ability to calculate the derivative of a model is crucial when it
 comes to inference. Both within a full Bayesian inference context, where
@@ -150,27 +151,24 @@ Bayesian inference context, they are used e.g. with Hamiltonian Markov
 Chains methods, such as the NUTS sampler, and in a machine learning
 context, they are used with gradient-based optimizer.
 
-### Gradient descent
+### Gradient Descent Optimization
 
-The best way to grasp the importance of gradients in inference is to
-understand the [gradient descent
-algorithm](https://en.wikipedia.org/wiki/Gradient_descent).
-
-The following picture illustrates the algorithm in the special case
-where *p* is one-dimensional.
+Gradient descent provides a fundamental algorithm for parameter
+estimation. The following figure illustrates the algorithm for the
+scalar parameter case.
 
 ![](https://editor.analyticsvidhya.com/uploads/631731_P7z2BKhd0R-9uyn9ThDasA.png)
 
-Given an initial estimate of the parameter value *p*<sub>0</sub>,
-$\frac{d \mathcal{M}}{dp}$ is used to suggest a new, better estimate,
-following
+Starting from an initial parameter estimate *p*<sub>0</sub>, the
+algorithm iteratively updates parameters using the gradient
+$\frac{d \mathcal{M}}{dp}$ according to:
 
 $$p\_{n+1} = p_n - \eta \frac{d \mathcal{M}}{dp}(u_0, t, p) $$
 
-where *η* is the learning rate.
-
-Gradient-based methods are usually very efficient in high-dimensional
-spaces.
+where *η* denotes the learning rate (step size). Gradient-based
+optimization methods exhibit favorable scaling properties in
+high-dimensional parameter spaces, often achieving computational
+complexity advantages over derivative-free alternatives.
 
 ## Automatic differentiation
 
@@ -203,19 +201,18 @@ using ForwardDiff
 
       1.225 μs (12 allocations: 432 bytes)
 
-This is what makes Julia great for model calibration and inference!
-Write your model in Julia, and any inference method using AD will be
-able to work with your model!
+This property makes Julia particularly well-suited for model calibration
+and inference: models written in native Julia are automatically
+compatible with AD-based inference frameworks.
 
-To learn more about AD in Julia, check-out this [cool
-blog-post](https://gdalle.github.io/AutodiffTutorial/) and [this short
+For comprehensive coverage of AD in Julia, consult this [tutorial](https://gdalle.github.io/AutodiffTutorial/) and [technical
 presentation](https://gdalle.github.io/JuliaCon2024-AutoDiff/#/title-slide).
 
 Now let’s get started with inference.
 
 # Mechanistic inference
 
-## The mechanistic model and the data
+## The Mechanistic Model and Synthetic Data Generation
 
 We’ll use a simple dynamical community model, the [Lotka
 Volterra](https://en.wikipedia.org/wiki/Lotka–Volterra_equations) model,
@@ -264,17 +261,17 @@ plot(sol_true)
 This is the true state of the system. Now let’s contaminate it with
 observational noise.
 
-> **Exercise: contaminate data with noise**
+> **Exercise: Introducing observational noise**
 >
-> Create a `data_mat` array, which consists of the ODE solution
-> contaminated with a lognormally-distributed noise with standard
-> deviation `0.3`.
+> Create a `data_mat` array consisting of the ODE solution perturbed by
+> lognormally-distributed multiplicative noise with standard deviation
+> `0.3`.
 >
 > > **Note**
 > >
-> > Note that we add lognormally-distributed noise instead of
-> > normally-distributed because we are observing population abundance,
-> > which can only be positive.
+> > We employ lognormal rather than Gaussian noise to ensure
+> > observations remain strictly positive, consistent with the physical
+> > constraint that population abundances cannot be negative.
 
 <details class="code-fold">
 <summary> Solution </summary>
@@ -292,7 +289,7 @@ scatter!(sol_true.t, data_mat'; color=[1 2], label="")
 
 Now that we have our data, let’s do some inference!
 
-## Mechanistic inference as a supervised learning task
+## Mechanistic Inference via Optimization
 
 We’ll get started with a very crude approach to inference, where we’ll
 treat the calibration of our LV model similarly to a supervised machine
@@ -324,8 +321,9 @@ end
 
 > **Note**
 >
-> Notice that we explicitly check whether predictions are \> 0, because
-> the log of negative number is not defined and will throw an error!
+> We explicitly verify that predictions remain positive, as the
+> logarithm is undefined for non-positive values and would otherwise
+> cause numerical errors.
 
 Let’s define a helper function, that will plot how good does the model
 perform across different iterations.
@@ -368,9 +366,8 @@ predictions in a real-case scenario!
 We’ll use the library `Optimization`, which is a wrapper library around
 many optimization libraries in Julia. `Optimization` therefore provides
 us with many different types of optimizers to find parameters minimizing
-`loss`. We’ll specifically use the infamous [Adam
-optimizer](https://arxiv.org/abs/1412.6980) (187k citations!!!), widely
-used in ML.
+`loss`. We’ll specifically use the widely-adopted [Adam optimizer](https://arxiv.org/abs/1412.6980),
+a stochastic gradient descent variant with adaptive learning rates.
 
 ```julia
 using Optimization
@@ -409,16 +406,17 @@ res_ada.minimizer
 
     ComponentVector{Float64}(α = 1.5322556800023097, β = 1.0159023620691514, γ = 2.8926590524331766, δ = 0.9148575218436299)
 
-Nice! It seems that the optimizer did a reasonable job, and that we
-found a reasonable estimate of our parameters!
+The optimizer successfully converges to reasonable parameter estimates,
+demonstrating effective model calibration.
 
-> **Exercise: Hey, this is cheating!**
+> **Exercise: Joint inference of initial conditions**
 >
-> Notice that we use the true `u0`, as if we were to know exactly the
-> initial state. In a real situation, we need also to infer the true
-> state!
+> The current implementation assumes knowledge of the true initial state
+> `u0`, an unrealistic assumption in practical applications. In genuine
+> inverse problems, initial conditions must also be inferred from data.
 >
-> Can you modify the model to infer the true state?
+> Modify the inference framework to simultaneously estimate both
+> parameters and initial conditions.
 
 <details class="code-fold">
 <summary>
@@ -477,7 +475,7 @@ res_ada.minimizer
 </details>
 
 
-## Regularization
+## Regularization Techniques
 
 In supervised learning, it is common practice to regularize the model to
 prevent overfitting. Regularization can also help the model to converge.
@@ -485,21 +483,24 @@ Regularization is done by adding a penalty term to the loss function:
 
 Loss(*θ*) = Loss<sub>data</sub>(*θ*) + *λ* Reg(*θ*)
 
-> **Exercise: regularization**
+> **Exercise: Implementing regularization**
 >
-> Add a regularization term to the loss, which penalizes the loss when
-> the inferred initial conditions are less than 0.
+> Incorporate a regularization term that penalizes solutions with
+> negative initial conditions, enforcing the physical constraint of
+> non-negative population abundances.
 
-## Multiple shooting
+## Multiple Shooting Methods
 
-Another trick that can greatly improve the convergence of the
-optimization is to break down the prediction task into simpler tasks.
-Namely, instead of trying to predict in one shot the whole time series,
-the idea of multiple shooting is to predict for shorter time horizon.
+Multiple shooting is a numerical technique that can significantly
+improve optimization convergence for dynamical systems. Rather than
+integrating the entire trajectory from a single initial condition
+(single shooting), multiple shooting partitions the time domain and
+integrates shorter sub-intervals with independent initial conditions.
 
-> **Exercise: multiple shooting**
+> **Exercise: Implementing multiple shooting**
 >
-> Can you modify your loss function to implement this idea?
+> Reformulate the loss function to employ multiple shooting by dividing
+> the observation interval into shorter segments.
 >
 
 <details class="code-fold">
@@ -565,14 +566,15 @@ res_ada.minimizer
     ComponentVector{Float64}(α = 2.0111356895351227, β = 1.3936359371191127, γ = 2.8416910236613444, δ = 1.031702000687222)
 </details>
 
-## Sensitivity methods
+## Sensitivity Analysis Methods
 
-Did you wonder why do we need to load `SciMLSensitivity`? and why did we
-specify `adtype = Optimization.AutoZygote()`?
+The `SciMLSensitivity` package and `adtype = Optimization.AutoZygote()`
+specification merit explanation, as they determine how gradients are
+computed for ODE-constrained optimization problems.
 
-AD comes in different flavours, with broadly two types of AD methods -
-**forward methods** and **backward methods** -, and a bunch of different
-implementations.
+Automatic differentiation encompasses two primary paradigms: **forward-mode**
+and **reverse-mode** (adjoint) methods, with numerous algorithmic
+variants for each.
 
 You can specify which ones `Optimization.jl` will use to differentiate
 `loss` with `adtype`, see available options
@@ -585,27 +587,25 @@ differentiate `solve`, a specific adjoint rule provided by the
 
 > **What are adjoint rules?**
 >
-> These are algoirithmic rules that specify to the AD backend *how* to
-> calculate the derivative of a specific function.
+> Adjoint rules (also called custom derivatives or custom vjps) are
+> algorithmic prescriptions that specify to an AD framework the optimal
+> procedure for computing derivatives of specific functions. For
+> technical details, consult the [ChainRules.jl
+> documentation](https://juliadiff.org/ChainRulesCore.jl/).
+
+Sensitivity algorithms are specified via the `sensealg` keyword
+argument to `solve`. Multiple specialized algorithms exist (reviewed in
+[Ma et al. 2024](https://arxiv.org/abs/2406.09699)). When `sensealg` is
+omitted, an adaptive polyalgorithm automatically selects an appropriate
+method based on problem characteristics.
+
+Consult the [documentation](https://docs.sciml.ai/SciMLSensitivity/stable/manual/differential_equation_sensitivities/)
+for guidance on algorithm selection.
+
+> **Exercise: Benchmarking sensitivity algorithms**
 >
-> If you want to know more, check-out the [ChainRules.jl
-> documentation](https://juliadiff.org/ChainRulesCore.jl/)
-
-These adjoint rules can be specificed by the keyword `sensealg` when
-calling `solve` and have been designed for best performance when
-differentiating solutions of an `ODEProblem`. There exists a lot of them
-(see a review [here](https://arxiv.org/abs/2406.09699)), and if
-`sensealg` is not provided, a smart polyalgorithm is going to pick up
-one for you.
-
-You can have a look in the documentation
-[here](https://docs.sciml.ai/SciMLSensitivity/stable/manual/differential_equation_sensitivities/)
-for hints on how to choose an algorithm.
-
-> **Exercise: benchmarking sensitivity methods**
->
-> Can you evaluate the performance of `ForwardDiffSensitivity()` and
-> `ReverseDiffAdjoint()`?
+> Compare the computational performance of `ForwardDiffSensitivity()`
+> and `ReverseDiffAdjoint()` for the Lotka-Volterra inference problem.
 >
 
 <details class="code-fold">
@@ -645,12 +645,13 @@ pinit = ComponentArray(;α = 1., β = 1.5, γ = 1.0, δ = 0.5, u0 = data_mat[:,1
       4.904 ms (104797 allocations: 4.45 MiB)
 </details>
 
-For a small number of parameters, forward methods tend to perform best,
-but with higher number of parameters, the other way around is true.
+Forward-mode methods typically exhibit superior performance for
+problems with few parameters, while reverse-mode (adjoint) methods scale
+more favorably as parameter dimensionality increases.
 
 Well done! Now, let’s jump into the Bayesian world…
 
-## Bayesian inference
+## Bayesian Inference Framework
 
 Julia has a very strong library for Bayesian inference:
 [Turing.jl](https://turinglang.org).
@@ -706,7 +707,8 @@ end
 
     fitlv (generic function with 2 methods)
 
-Now we can instantiate our model, and run the inference!
+We now instantiate the probabilistic model and perform posterior
+inference via Hamiltonian Monte Carlo sampling.
 
 ```julia
 model = fitlv(data_mat, prob)
@@ -760,7 +762,7 @@ plot(chain)
 
 ![](mechanistic_inference_1_files/figure-markdown_strict/cell-26-output-1.svg)
 
-### Data retrodiction
+### Posterior Predictive Checking
 
 Let’s now generate simulated data using samples from the posterior
 distribution, and compare to the original data.
@@ -785,13 +787,14 @@ plot_predictions(chain, sol_true, data_mat)
 
 ![](mechanistic_inference_1_files/figure-markdown_strict/cell-27-output-1.svg)
 
-> **Exercise: Hey, this is cheating!**
+> **Exercise: Joint inference of initial conditions**
 >
-> Notice that we use the true `u0`, as if we were to know exactly the
-> initial state. In a real situation, we need also to infer the true
-> state!
+> The current implementation assumes known initial conditions `u0`. In
+> realistic applications, initial states are typically unknown and must
+> be inferred alongside parameters.
 >
-> Can you modify the model to infer the true state?
+> Extend the probabilistic model to include prior distributions over
+> initial conditions.
 
 <details class="code-fold">
 <summary> Solution </summary>
@@ -858,7 +861,7 @@ plot_predictions2(chain2, sol_true, data_mat)
 </details>
 
 
-### Mode estimation
+### Maximum A Posteriori Estimation
 
 Turing allows you to find the maximum likelihood estimate (MLE) or
 maximum a posteriori estimate (MAP).
@@ -891,8 +894,8 @@ $$
 > unlikely parameter values based on our prior beliefs. Priors on
 > parameters can be seen as regularization term.
 
-MLE and MAP can be obtained by `maximum_likelihood` and
-`maximum_a_posteriori`.
+Turing provides `maximum_likelihood` and `maximum_a_posteriori`
+functions for point estimation.
 
 ```julia
 Random.seed!(0)
@@ -912,7 +915,7 @@ map_res = maximum_a_posteriori(model2, Adam(0.01), maxiters=2000)
     ModeResult with maximized lp of -104.88
     [0.35455374965749115, 1.4707686527453756, 0.9171941147556801, 3.2614628620071664, 1.0235193248242322, 2.1506473758409883, 2.4789084651090993]
 
-We can check whether the optimization has converged:
+We verify optimization convergence by examining the result object:
 
 ```julia
 @show map_res.optim_result
@@ -1081,7 +1084,7 @@ plot!(p, yaxis=:log10)
 
 Now you need to realise that up to now, we had a relatively simple model. How would this model scale, should we have a much larger model? Let's cook-up some idealised LV model. -->
 
-### AD backends and `sensealg`
+### Automatic Differentiation Backend Selection for MCMC
 
 The `NUTS` sampler uses automatic differentiation under the hood.
 
@@ -1136,10 +1139,10 @@ See
 [here](https://turinglang.org/docs/tutorials/docs-10-using-turing-autodiff/index.html)
 for more information.
 
-> **Exercise: benchmark**
+> **Exercise: Sensitivity algorithm performance comparison**
 >
-> Can you evaluate the performance of `ForwardDiffSensitivity()` and
-> `ReverseDiffAdjoint()`?
+> Benchmark the computational efficiency of `ForwardDiffSensitivity()`
+> versus `ReverseDiffAdjoint()` in the Bayesian inference context.
 
 ### Variational Inference
 
@@ -1191,8 +1194,8 @@ plot_predictions_vi(q, sol_true, data_mat)
 
 ![](mechanistic_inference_1_files/figure-markdown_strict/cell-39-output-1.svg)
 
-The cool thing with VI that we can sample from the resulting `q` with
-ease.
+A key advantage of VI is that the resulting approximate posterior `q` is
+an explicit distribution from which sampling is computationally trivial.
 
 ```julia
 q isa MultivariateDistribution
@@ -1218,7 +1221,7 @@ rand(q)
 -   [VI in general
     here](https://mpatacchiola.github.io/blog/2021/01/25/intro-variational-inference.html)
 
-# Infering functional forms
+# Inferring Functional Forms via Universal Differential Equations
 
 Up to now, we have been infering the value of the model’s parameters,
 assuming that the structure of our model is correct. But this is very
@@ -1300,9 +1303,10 @@ pinit = ComponentArray(;σ = 0.3, α = 1., γ = 1.0, p_nn=p_nn_init)
 
     ComponentVector{Float64}(σ = 0.3, α = 1.0, γ = 1.0, p_nn = (weight = [-1.0083649158477783 -0.7284937500953674; -1.219232201576233 0.4427390396595001], bias = [0.0; 0.0;;]))
 
-> **Exercise: neural network-based Lotka-Volterra model**
+> **Exercise: Implementing a universal differential equation**
 >
-> Define the neural network-based Lotka-Volterra model
+> Formulate the UDE by replacing the interaction terms in the
+> Lotka-Volterra system with neural network outputs.
 
 <details class="code-fold">
 <summary> Solution </summary>
@@ -1415,11 +1419,14 @@ plot!(sol_map, color = [1 2], label=["Inferred predator abundance" "Inferred pre
 
 ![](mechanistic_inference_1_files/figure-markdown_strict/cell-52-output-2.svg)
 
-This seems to fail.
+Initial optimization struggles to converge, a common challenge in UDE
+inference due to the complex loss landscape introduced by neural network
+parameterization.
 
-> **Exercise: take some initiative!**
+> **Exercise: Improving UDE optimization**
 >
-> What could you do to improve the convergence of the optimization?
+> What modifications might improve convergence? Consider techniques
+> explored earlier in the tutorial.
 
 <details class="code-fold">
 <summary> Solution </summary>
@@ -1522,8 +1529,9 @@ plot_func_resp(pmap, data_mat)
 
 </details>
 
-The neural network has well captured the functional forms of the
-predator and prey.
+The neural network successfully recovers the true linear functional
+responses, demonstrating that UDEs can discover mechanistic
+relationships directly from data.
 
 > **Exercise: Probabilistic functional forms**
 >
@@ -1531,8 +1539,12 @@ predator and prey.
 > with e.g. VI?
 
 
-This concludes this tutorial; I hope that it has given you plenty of
-ideas for your future research projects!
+This concludes the tutorial. The methods presented—from gradient-based
+optimization through Bayesian inference to universal differential
+equations—provide a comprehensive framework for mechanistic inference in
+computational science. These techniques are readily applicable to a wide
+range of scientific domains where interpretability and mechanistic
+understanding are paramount.
 
 ## Resources
 
