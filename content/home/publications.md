@@ -38,6 +38,8 @@ subtitle: ''
 ---
 
 ### Publications
+- Adde, A., **Boussange, V.**, Chauvier, Y., Dahito, M.A., Fruh, J., Gross, A., Stofer, S., Rey, E., Sieber, P., Fopp, F., Schouten, R., Van Moorter, B., Guisan, A., Graham, C., Pellissier, L., Zimmermann, N.E., Altermatt, F., _Spatial biodiversity indicators and a composite index for conservation prioritization in Switzerland_. [[bioRxiv]](https://doi.org/10.1101/2025.06.10.657334) (2025). Accepted in Ecology.
+
 - **Boussange, V.**, Vilimelis-Aceituno, P., Schäfer, F., Pellissier, L., _A calibration framework to improve mechanistic forecasts with hybrid dynamic models_. Accepted in Methods in Ecology and Evolution (2025). [[preprint]](https://www.biorxiv.org/content/10.1101/2022.07.25.501365v2)
 
 -  Sapienza, F., Bolibar, J., Schäfer, F., Groenke, B., Pal, A., **Boussange, V.**, Heimbach, P., Hooker, G., Pérez, F, Persson, P.O., Rackauckas, C., _Differentiable Programming for Differential Equations: A Review_. Accepted in SIAM Review (2025). [[preprint]](https://arxiv.org/abs/2406.09699)
@@ -66,8 +68,6 @@ subtitle: ''
 - Van Moorter, B., Kivimaki, I., Panzacchi, M., Schouten, R., Wuyts, B., Niebuhr, B. B., Saerens, M., **Boussange, V.**, _A Unified Framework for Prioritizing Habitat and Connectivity Conservation through Analytical Sensitivity_. [[bioRxiv]](https://doi.org/10.64898/2026.01.05.697654) (2026). In revision at Landscape Ecology.
 
 - **Boussange, V.**, Brun, P., Malle, J. T., Midolo, G., Portier, J., Sanchez, T., Zimmermann, N. E., Axmanova, I., Bruelheide, H., Chytry, M., Kambach, S., Lososova, Z., Vecera, M., Birrun, I., Ecker, K. T., Lenoir, J., Svenning, J.C., Karger, D. N., _Multi-scale species richness estimation with deep learning_. [[arXiv]](https://arxiv.org/abs/2507.06358) (2025). In revision at Nature Communications.
-
-- Adde, A., **Boussange, V.**, Chauvier, Y., Dahito, M.A., Fruh, J., Gross, A., Stofer, S., Rey, E., Sieber, P., Fopp, F., Schouten, R., Van Moorter, B., Guisan, A., Graham, C., Pellissier, L., Zimmermann, N.E., Altermatt, F., _Spatial biodiversity indicators and a composite index for conservation prioritization in Switzerland_. [[bioRxiv]](https://doi.org/10.1101/2025.06.10.657334) (2025). In revision at Scientific Data.
 
 - Poulet, T., Truttmann,  S., **Boussange, V.**, Veveakis, M., *Chaotic Slow Slip Events in New Zealand from two coupled slip patches: a proof of concept*. [[arXiv]](https://arxiv.org/abs/2411.01688) (2024). [GitHub repository](https://github.com/vboussange/coupledOscillators). In review.
 

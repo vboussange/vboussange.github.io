@@ -52,6 +52,13 @@ design:
 ---
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 
+
+# [AMJAX](https://github.com/vboussange/amjax)
+Algebraic multigrid solvers in JAX.
+
+{{< github_button button="star" user="vboussange" repo="amjax" count="true" dark="true" large="true">}}
+
+
 # [jaxscape](https://github.com/vboussange/jaxscape)
 A minimal JAX library for graph-based connectivity analysis at scales.
 
