@@ -1,6 +1,73 @@
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 
 <style>
+  :root {
+    --primary: #3A5A40;
+    --vb-accent: #3A5A40;
+    --vb-accent-hover: #263B2A;
+    --vb-accent-focus: rgba(58, 90, 64, 0.24);
+    --vb-scroll-border: rgba(0, 0, 0, 0.1);
+    --vb-scroll-shadow: rgba(0, 0, 0, 0.14);
+  }
+
+  .dark {
+    --vb-scroll-border: rgba(255, 255, 255, 0.14);
+    --vb-scroll-shadow: rgba(0, 0, 0, 0.34);
+  }
+
+  a,
+  .article-title a,
+  .summary-link,
+  .navbar-light .navbar-nav .nav-link.active,
+  #navbar-main .main-menu-item ul li .nav-link.active,
+  .docs-sidebar .docs-toc-item.active a,
+  .docs-sidebar .docs-toc-item a.active,
+  #TableOfContents li a.active,
+  .featurette-icon {
+    color: var(--vb-accent);
+  }
+
+  #navbar-main .main-menu-item .nav-item .nav-link.active,
+  #navbar-main .dropdown-item-active {
+    color: var(--vb-accent) !important;
+  }
+
+  a:hover,
+  .article-title a:hover,
+  .summary-link:hover {
+    color: var(--vb-accent-hover);
+  }
+
+  .btn-primary,
+  .btn.btn-primary.active,
+  .page-item.active .page-link {
+    background-color: var(--vb-accent);
+    border-color: var(--vb-accent);
+  }
+
+  .btn-primary:hover,
+  .btn.btn-primary.active:hover,
+  .page-item.active .page-link:hover {
+    background-color: var(--vb-accent-hover);
+    border-color: var(--vb-accent-hover);
+  }
+
+  .btn-outline-primary {
+    border-color: var(--vb-accent);
+    color: var(--vb-accent);
+  }
+
+  .btn-outline-primary:hover {
+    background-color: var(--vb-accent);
+    border-color: var(--vb-accent);
+    color: #ffffff;
+  }
+
+  .form-control:focus {
+    border-color: var(--vb-accent);
+    box-shadow: 0 0 0 0.2rem var(--vb-accent-focus);
+  }
+
   .topic-links {
     display: flex;
     flex-wrap: wrap;
@@ -78,7 +145,106 @@
     padding: 0.12rem 0.35rem;
   }
 
+  .home-section .homepage-scroll-panel {
+    --homepage-scroll-bg: #ffffff;
+  }
+
+  .home-section:nth-of-type(even) .homepage-scroll-panel {
+    --homepage-scroll-bg: #f7f7f7;
+  }
+
+  .dark .home-section .homepage-scroll-panel {
+    --homepage-scroll-bg: #272935;
+  }
+
+  .dark .home-section:nth-of-type(even) .homepage-scroll-panel {
+    --homepage-scroll-bg: #23252f;
+  }
+
+  .homepage-scroll-panel {
+    --homepage-scroll-max: 32rem;
+    background: var(--homepage-scroll-bg);
+    border-bottom: 1px solid var(--vb-scroll-border);
+    border-top: 1px solid var(--vb-scroll-border);
+    box-shadow: inset 0 12px 12px -16px var(--vb-scroll-shadow),
+      inset 0 -12px 12px -16px var(--vb-scroll-shadow);
+    max-height: var(--homepage-scroll-max);
+    overflow-y: auto;
+    overscroll-behavior-y: auto;
+    padding: 0.35rem 0.8rem 0.35rem 0;
+    scrollbar-color: rgba(58, 90, 64, 0.58) transparent;
+    scrollbar-gutter: stable;
+    scrollbar-width: thin;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .homepage-scroll-panel:focus-visible {
+    outline: 2px solid var(--vb-accent);
+    outline-offset: 0.25rem;
+  }
+
+  .homepage-scroll-panel::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+
+  .homepage-scroll-panel::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .homepage-scroll-panel::-webkit-scrollbar-thumb {
+    background: rgba(58, 90, 64, 0.5);
+    border-radius: 999px;
+  }
+
+  .homepage-scroll-panel::-webkit-scrollbar-thumb:hover {
+    background: rgba(58, 90, 64, 0.72);
+  }
+
+  .homepage-scroll-panel-publications {
+    --homepage-scroll-max: clamp(28rem, 64vh, 42rem);
+  }
+
+  .homepage-scroll-panel-posts {
+    --homepage-scroll-max: clamp(20rem, 48vh, 32rem);
+  }
+
+  .homepage-scroll-panel-software {
+    --homepage-scroll-max: clamp(18rem, 42vh, 28rem);
+  }
+
+  .homepage-scroll-panel-students {
+    --homepage-scroll-max: clamp(22rem, 52vh, 34rem);
+  }
+
+  .homepage-scroll-panel-funding {
+    --homepage-scroll-max: clamp(16rem, 38vh, 24rem);
+  }
+
+  .homepage-scroll-panel .media.stream-item:not(:last-child) {
+    border-bottom: 1px solid var(--vb-scroll-border);
+    margin-bottom: 1.15rem;
+    padding-bottom: 1.15rem;
+  }
+
+  .homepage-scroll-panel-publications .publication-group-title {
+    background: var(--homepage-scroll-bg);
+    padding: 0.35rem 0 0.25rem;
+    position: sticky;
+    top: -0.35rem;
+    z-index: 2;
+  }
+
+  .homepage-scroll-panel-software .software-class-title {
+    background: var(--homepage-scroll-bg);
+    padding: 0.35rem 0 0.25rem;
+    position: sticky;
+    top: -0.35rem;
+    z-index: 2;
+  }
+
   .software-list,
+  .post-list,
   .publication-grouped-list,
   .funding-list,
   .resource-list {
@@ -89,6 +255,14 @@
   .software-class {
     display: grid;
     gap: 0.75rem;
+  }
+
+  .post-list {
+    gap: 1.15rem;
+  }
+
+  .homepage-section-see-all {
+    margin-top: 1rem;
   }
 
   .software-class-title,
@@ -311,13 +485,20 @@
     display: inline-flex;
     height: 100%;
     inset: 0;
+    overflow: hidden;
     position: absolute;
     width: 100%;
   }
 
   .student-photo {
     background: #ffffff;
+    display: block;
     object-fit: cover;
+    z-index: 2;
+  }
+
+  .student-photo[hidden] {
+    display: none;
   }
 
   .student-avatar {
@@ -326,6 +507,13 @@
     font-size: 0.8rem;
     font-weight: 700;
     justify-content: center;
+    opacity: 1;
+    transition: opacity 120ms ease;
+    z-index: 1;
+  }
+
+  .student-portrait.has-student-photo .student-avatar {
+    opacity: 0;
   }
 
   .student-identity {

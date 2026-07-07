@@ -4,12 +4,14 @@ current:
     project: A mechanistic approach to biome transitions across space and time
     institution: ETH Zurich, D-USYS
     period: 2024-2028
+    external_link: https://www.wsl.ch/en/staff/lechartr/
   - name: Ghali Elouahdani
     role: Semester project
     project: Accelerating ecological connectivity analysis with graph neural networks
     project_url: /studentprojects/connectivity/
     institution: EPFL, IC
     period: 2026
+    external_link: https://people.epfl.ch/ghali.elouahdani?lang=en
   - name: Fanny Missier
     role: Semester project
     project: Developing an algebraic multigrid solver in JAX
@@ -22,9 +24,6 @@ current:
     institution: Department of Computer Science, ETH Zurich
     period: 2025-2026
     note: Co-supervision with Swiss Data Science Center
-    external_link: https://www.cscs.ch/publications/stories/2024/jeffrey-zweidler-my-internship-at-cscs
-    image_url: https://www.cscs.ch/fileadmin/_processed_/d/a/csm_Jeffrey_6a1c9d1bf7.jpeg
-    image_position: 86% 35%
   - name: Moritz Dieing
     role: Master thesis
     project: Attention-based deep multiple instance learning for species richness prediction

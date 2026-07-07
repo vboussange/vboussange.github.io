@@ -1,12 +1,12 @@
 ---
-widget: blank
-
-headless: true
-
-weight: 80
-
 title: Talks
 subtitle: ''
+summary: 'Selected seminars, conference presentations, posters, and workshops.'
+authors: []
+tags: []
+categories: []
+date: 2026-07-07
+draft: false
 ---
 
 - _Multi-scale species richness estimation with deep learning_, speaker, International Biogeography Society, Aarhus, Denmark (January 2026).
@@ -19,10 +19,10 @@ subtitle: ''
 - _Reproducible research and geodata processing_, 2-day workshop co-organizer and speaker, Swiss Federal Institute for Forest Snow and Landscape Research (WSL), Birmensdorf, Switzerland (June 2024).
 - [_Introduction to Julia for Geosciences_](https://meetingorganizer.copernicus.org/EGU24/session/49443), co-convener, Short course at EGU 2024, Vienna, Austria (April 2024).
 - _A scalable machine learning approach to assess the combined effect of habitat loss and climate change on biodiversity_, speaker, International Biogeography Society conference (IBS) 2024, Prague, Czech Republic (January 2024).
-- _**PiecewiseInference.jl**: a machine learning framework for inverse ecosystem modelling_, speaker, EGU 2023, Vienna, Austria (April 2023). [[slides]](slides/EGU2023.pdf)
+- _**PiecewiseInference.jl**: a machine learning framework for inverse ecosystem modelling_, speaker, EGU 2023, Vienna, Austria (April 2023). [[slides]](/slides/EGU2023.pdf)
 - _Practical introduction to Julia for modelling and data analysis in biodiversity and earth sciences_, 2-day workshop organizer and speaker, WSL Biodiversity Center, Birmensdorf, Switzerland (March 2023).
 - _Combining eco-evolutionary theory and machine learning to advance our understanding of living systems_, invited speaker, Seminar at the Laboratoire interdisciplinaire de physique (LiPhy), Grenoble, France (February 2023). {{% staticref "slides/liphy_presentation.pdf" %}}[slides]{{% /staticref %}}
-- _**HighDimPDE.jl**: A Julia package for solving high-dimensional PDEs_, speaker, JuliaCon2022, online [*video* 📺](https://youtu.be/4sXqGhhknT4)
+- _**HighDimPDE.jl**: A Julia package for solving high-dimensional PDEs_, speaker, JuliaCon2022, online [*video*](https://youtu.be/4sXqGhhknT4)
 - _Interpretable machine learning for forecasting dynamical processes in ecosystems_, speaker, World Biodiversity Forum, Davos, Switzerland (June 2022). {{% staticref "slides/interpretable_ML.pdf" %}}[slides]{{% /staticref %}}
 - _Investigating empirical patterns of biodiversity with mechanistic eco-evolutionary models_, invited speaker, Seminar at the Theoretical Ecology and Evolution group, Universität Bern, Switzerland (June 2022).
 - _Numerical approximations of solutions of highly dimensional, non-local nonlinear PDEs_, invited speaker, StAMBio seminar, St Andrews, UK (November 2021). [[slides]](/files/slides/CCS2021_V2.4_splitted.pdf)

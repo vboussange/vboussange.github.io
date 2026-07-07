@@ -1,0 +1,7 @@
+<footer class="site-footer">
+  {{ partial "hooks/footer" . }}
+
+  {{ with site.Params.footer.text }}
+    <p class="footer-text">{{ . | markdownify | emojify }}</p>
+  {{ end }}
+</footer>

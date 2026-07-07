@@ -1,0 +1,2 @@
+{{ $count := .Get "count" | default 10 }}
+{{ partial "post_list.html" (dict "count" $count) }}

@@ -1,0 +1,20 @@
+{{ $count := .count | default 10 | int }}
+{{ $posts := where (where site.RegularPages "Section" "post") "Draft" "!=" true }}
+{{ $posts = sort $posts "Date" "desc" }}
+{{ if gt $count 0 }}
+  {{ $posts = first $count $posts }}
+{{ end }}
+
+{{ if $posts }}
+<div class="post-list homepage-scroll-panel homepage-scroll-panel-posts" role="region" aria-label="Scrollable posts" tabindex="0">
+  {{ range $index, $item := $posts }}
+    {{ partial "views/compact.html" (dict "item" $item "index" $index) }}
+  {{ end }}
+</div>
+<div class="see-all homepage-section-see-all">
+  <a href="{{ "post/" | relLangURL }}">
+    See all
+    <i class="fas fa-angle-right"></i>
+  </a>
+</div>
+{{ end }}

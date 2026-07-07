@@ -7,7 +7,7 @@
 }}
 
 {{ if $publications }}
-<div class="publication-grouped-list">
+<div class="publication-grouped-list homepage-scroll-panel homepage-scroll-panel-publications" role="region" aria-label="Scrollable publication list" tabindex="0">
   {{ range $classes }}
     {{ $class := . }}
     {{ $items := where $publications "Params.publication_class" $class.key }}
@@ -20,5 +20,11 @@
     </section>
     {{ end }}
   {{ end }}
+</div>
+<div class="see-all homepage-section-see-all">
+  <a href="{{ "publication/" | relLangURL }}">
+    See all
+    <i class="fas fa-angle-right"></i>
+  </a>
 </div>
 {{ end }}

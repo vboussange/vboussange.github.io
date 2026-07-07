@@ -1,6 +1,6 @@
 {{ $funding := (where site.RegularPages "Section" "funding").ByWeight }}
 {{ if $funding }}
-<div class="funding-list">
+<div class="funding-list homepage-scroll-panel homepage-scroll-panel-funding" role="region" aria-label="Scrollable funding list" tabindex="0">
   {{ range $funding }}
     {{ if not .Draft }}
       {{ $href := .RelPermalink }}
@@ -47,5 +47,11 @@
       </article>
     {{ end }}
   {{ end }}
+</div>
+<div class="see-all homepage-section-see-all">
+  <a href="{{ "funding/" | relLangURL }}">
+    See all
+    <i class="fas fa-angle-right"></i>
+  </a>
 </div>
 {{ end }}

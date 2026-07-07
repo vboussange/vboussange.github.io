@@ -1,1 +1,5 @@
-{{ partial "software_list.html" . }}
+{{ $scroll := true }}
+{{ with .Get "scroll" }}
+  {{ $scroll = ne . "false" }}
+{{ end }}
+{{ partial "software_list.html" (dict "scroll" $scroll) }}

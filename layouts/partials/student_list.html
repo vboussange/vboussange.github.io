@@ -2,8 +2,9 @@
   (dict "title" "Current" "items" site.Data.students.current)
   (dict "title" "Alumni" "items" site.Data.students.alumni)
 }}
+{{ $scroll := .scroll | default true }}
 {{ if site.Data.students }}
-<div class="student-list">
+<div class="student-list{{ if $scroll }} homepage-scroll-panel homepage-scroll-panel-students{{ end }}"{{ if $scroll }} role="region" aria-label="Scrollable student list" tabindex="0"{{ end }}>
   {{ range $groups }}
     {{ $groupTitle := .title }}
     {{ with .items }}
@@ -21,10 +22,10 @@
             {{ $hasRemoteImage := or (hasPrefix $image "https://") (hasPrefix $image "http://") }}
             <article class="student-item">
               <div class="student-person">
-                <span class="student-portrait">
+                <span class="student-portrait{{ if $hasRemoteImage }} has-student-photo{{ end }}">
                   <span class="student-avatar" aria-hidden="true">{{ $initials }}</span>
                 {{ if $hasRemoteImage }}
-                    <img class="student-photo" src="{{ $image | safeURL }}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.hidden=true"{{ with .image_position }} style="object-position: {{ . | safeCSS }};"{{ end }}>
+                    <img class="student-photo" src="{{ $image | safeURL }}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.hidden=true;this.parentElement.classList.remove('has-student-photo')"{{ with .image_position }} style="object-position: {{ . | safeCSS }};"{{ end }}>
                 {{ end }}
                 </span>
                 <div class="student-identity">
@@ -58,4 +59,12 @@
     {{ end }}
   {{ end }}
 </div>
+{{ if $scroll }}
+<div class="see-all homepage-section-see-all">
+  <a href="{{ "students/" | relLangURL }}">
+    See all
+    <i class="fas fa-angle-right"></i>
+  </a>
+</div>
+{{ end }}
 {{ end }}

@@ -10,7 +10,7 @@ headless: true
 # Order that this section appears on the page.
 weight: 90
 
-title: Teaching & Resources
+title: Teaching
 subtitle: ''
 
 # content:
@@ -38,9 +38,6 @@ subtitle: ''
 ---
 ### Students
 {{< student_list >}}
-
-### Resources
-{{< resource_list >}}
 
 ### Teaching
 #### 2024

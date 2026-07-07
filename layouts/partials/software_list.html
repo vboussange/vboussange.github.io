@@ -1,11 +1,12 @@
 {{ $software := where site.RegularPages "Section" "software" }}
+{{ $scroll := .scroll }}
 {{ $classes := slice
   (dict "key" "ML library" "title" "ML library")
   (dict "key" "ML model" "title" "ML model")
   (dict "key" "Domain-centric library" "title" "Domain-centric library")
 }}
 {{ if $software }}
-<div class="software-list">
+<div class="software-list{{ if $scroll }} homepage-scroll-panel homepage-scroll-panel-software{{ end }}"{{ if $scroll }} role="region" aria-label="Scrollable software list" tabindex="0"{{ end }}>
   {{ range $classes }}
     {{ $class := . }}
     {{ $items := where (where $software "Params.software_class" $class.key) "Draft" "!=" true }}
@@ -45,4 +46,12 @@
     {{ end }}
   {{ end }}
 </div>
+{{ if $scroll }}
+<div class="see-all homepage-section-see-all">
+  <a href="{{ "software/" | relLangURL }}">
+    See all
+    <i class="fas fa-angle-right"></i>
+  </a>
+</div>
+{{ end }}
 {{ end }}
