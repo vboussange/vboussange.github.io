@@ -37,14 +37,7 @@ subtitle: ''
 #   columns: '2'
 ---
 ### Students
-- Capucine Lechartre, PhD co-supervision, **A mechanistic approach to biome transitions across space and time**, *ETH Zürich, D-USYS* (2024-2028)
-- Ghali Elouahdani, semester project, **Accelerating ecological connectivity analysis with graph neural networks**, *EPFL, IC* (2026)
-- Fanny Missier, semester project, **Developing an algebraic multigrid solver in JAX**, *EPFL, IC* (2026)
-- Jeffrey Zweidler, Master thesis, **Forecasting invasive species range expansion using ecologically-informed neural networks**, *Department of Computer Science, ETH Zürich*  (2025-2026, co-supervision with Swiss Data Science Center)
-- Moritz Dieing, Master thesis, **Attention-based deep multiple instance learning for species richness prediction**, *Department of Computer Science, ETH Zürich* (2025-2026, co-supervision with Swiss Data Science Center)
-#### Alumni
-- Cecilia Valenzuela Agui, Taste of research internship, *Computational Biology and Bioinformatics, ETH Zürich* (2020)
-- Nicolas Demolin, Research internship, *Applied Mathematics and Modeling, Polytech Nice* (2020)
+{{< student_list >}}
 
 ### Resources
 {{< resource_list >}}

@@ -1,0 +1,61 @@
+{{ $groups := slice
+  (dict "title" "Current" "items" site.Data.students.current)
+  (dict "title" "Alumni" "items" site.Data.students.alumni)
+}}
+{{ if site.Data.students }}
+<div class="student-list">
+  {{ range $groups }}
+    {{ $groupTitle := .title }}
+    {{ with .items }}
+      <section class="student-group">
+        <h4 class="student-group-title">{{ $groupTitle }}</h4>
+        <div class="student-items">
+          {{ range . }}
+            {{ $student := . }}
+            {{ $name := .name }}
+            {{ $initials := "" }}
+            {{ range first 2 (split $name " ") }}
+              {{ $initials = printf "%s%s" $initials (substr . 0 1) }}
+            {{ end }}
+            {{ $image := .image_url | default "" }}
+            {{ $hasRemoteImage := or (hasPrefix $image "https://") (hasPrefix $image "http://") }}
+            <article class="student-item">
+              <div class="student-person">
+                <span class="student-portrait">
+                  <span class="student-avatar" aria-hidden="true">{{ $initials }}</span>
+                {{ if $hasRemoteImage }}
+                    <img class="student-photo" src="{{ $image | safeURL }}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.hidden=true"{{ with .image_position }} style="object-position: {{ . | safeCSS }};"{{ end }}>
+                {{ end }}
+                </span>
+                <div class="student-identity">
+                  {{ with .external_link }}
+                    <a class="student-name" href="{{ . }}" target="_blank" rel="noopener">{{ $name }}</a>
+                  {{ else }}
+                    <span class="student-name">{{ $name }}</span>
+                  {{ end }}
+                  {{ with .role }}<span class="student-role">{{ . | markdownify | emojify }}</span>{{ end }}
+                </div>
+              </div>
+              <div class="student-details">
+                {{ with .project }}
+                  <p class="student-project">
+                    {{ with $student.project_url }}
+                      <a href="{{ . | relURL }}">{{ $student.project | markdownify | emojify }}</a>
+                    {{ else }}
+                      {{ $student.project | markdownify | emojify }}
+                    {{ end }}
+                  </p>
+                {{ end }}
+                <p class="student-meta">
+                  {{ with .institution }}{{ . | markdownify | emojify }}{{ end }}{{ if and .institution .period }} · {{ end }}{{ with .period }}{{ . }}{{ end }}
+                </p>
+                {{ with .note }}<p class="student-note">{{ . | markdownify | emojify }}</p>{{ end }}
+              </div>
+            </article>
+          {{ end }}
+        </div>
+      </section>
+    {{ end }}
+  {{ end }}
+</div>
+{{ end }}

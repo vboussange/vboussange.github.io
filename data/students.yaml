@@ -1,0 +1,43 @@
+current:
+  - name: Capucine Lechartre
+    role: PhD co-supervision
+    project: A mechanistic approach to biome transitions across space and time
+    institution: ETH Zurich, D-USYS
+    period: 2024-2028
+  - name: Ghali Elouahdani
+    role: Semester project
+    project: Accelerating ecological connectivity analysis with graph neural networks
+    project_url: /studentprojects/connectivity/
+    institution: EPFL, IC
+    period: 2026
+  - name: Fanny Missier
+    role: Semester project
+    project: Developing an algebraic multigrid solver in JAX
+    project_url: /studentprojects/AMG_JAX/
+    institution: EPFL, IC
+    period: 2026
+  - name: Jeffrey Zweidler
+    role: Master thesis
+    project: Forecasting invasive species range expansion using ecologically-informed neural networks
+    institution: Department of Computer Science, ETH Zurich
+    period: 2025-2026
+    note: Co-supervision with Swiss Data Science Center
+    external_link: https://www.cscs.ch/publications/stories/2024/jeffrey-zweidler-my-internship-at-cscs
+    image_url: https://www.cscs.ch/fileadmin/_processed_/d/a/csm_Jeffrey_6a1c9d1bf7.jpeg
+    image_position: 86% 35%
+  - name: Moritz Dieing
+    role: Master thesis
+    project: Attention-based deep multiple instance learning for species richness prediction
+    institution: Department of Computer Science, ETH Zurich
+    period: 2025-2026
+    note: Co-supervision with Swiss Data Science Center
+
+alumni:
+  - name: Cecilia Valenzuela Agui
+    role: Taste of research internship
+    institution: Computational Biology and Bioinformatics, ETH Zurich
+    period: 2020
+  - name: Nicolas Demolin
+    role: Research internship
+    institution: Applied Mathematics and Modeling, Polytech Nice
+    period: 2020

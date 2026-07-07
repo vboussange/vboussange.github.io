@@ -93,6 +93,7 @@
       {{ with $person.interests }}
       <section class="about-profile-section about-profile-interests">
         <div class="section-subheading">{{ i18n "interests" | markdownify }}</div>
+        <p class="topic-links-hint">Click a topic to browse related work.</p>
         {{ partial "topic_links.html" (dict "topics" .) }}
       </section>
       {{ end }}
