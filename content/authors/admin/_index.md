@@ -22,7 +22,16 @@ bio: Scientific machine learning and computational ecology.
 interests:
 - Scientific machine learning
 - Scientific computing
+- Graph neural networks
+- Spatio-temporal forecasting
+- Geospatial deep learning
+- (Partial) differential equations
+- Scientific software engineering (Julia/JAX)
+- Spatial optimization
 - Biomathematics
+- Biodiversity science
+- Weather/climate science
+- Energy markets
 # - Interdisciplinary science
 
 
@@ -31,7 +40,7 @@ education:
   courses:
   - course: PhD in Environmental Sciences
     institution: ETH Zürich, Switzerland
-    year: 2022
+    year: 2023
   - course: MSc in Energy and Environmental Sciences
     institution: INSA Lyon, France
     year: 2018
@@ -76,11 +85,10 @@ highlight_name: true
 ---
 
 
-Hey there, I'm Victor, a postdoctoral researcher in the [Information and Network Dynamics Lab](https://indy.epfl.ch) at the [Ecole Polytechnique Fédérale de Lausanne (EPFL)](https://www.epfl.ch).
+Hey there, I'm Victor, an applied ML researcher working in AI for science, currently at the [Information and Network Dynamics Lab](https://indy.epfl.ch) at the [Ecole Polytechnique Fédérale de Lausanne (EPFL)](https://www.epfl.ch).
 <br>
 
-I am an interdisciplinary scientist specializing in **biomathematics**, **scientific computing**, and **machine learning** with applications for **environmental sciences**.
-I am especially interested in **hybrid methods** that combine the extrapolation capabilities of process-based models with the flexibility of machine learning techniques. My main domain of application is **ecology**, although the solutions I develop often extend beyond this field.
+I develop methods for high-dimensional, spatio-temporal forecasting and inverse problems that remain robust under low signal-to-noise ratios and distribution shift, with application in biology and environmental sciences. I am particularly interested in hybrid modelling, integrating domain priors with deep learning and GPU-accelerated differentiable computing. I ship open-source libraries implementing these methods, lead funded research projects, and mentor students in applied machine learning and scientific computing.
 <br>
 
 Outside of work, I am a part-time alpinist, passionate about mountain adventures and writing. I also enjoy sailing and surfing occasionally. You can check out **my alpine CV** [here]({{<ref "/pages/alpine_cv.md" >}}).
