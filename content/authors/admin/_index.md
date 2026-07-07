@@ -6,31 +6,32 @@ title: Victor Boussange
 superuser: true
 
 # Role/position/tagline
-role: Postdoctoral researcher
+role: Applied ML researcher
 
 # Organizations/Affiliations to show in About widget
 organizations:
-- name: WSL Birmensdorf
-  url: https://www.wsl.ch/en/
-- name: ETH Zürich
-  url: https://www.ethz.ch/en
+- name: Information and Network Dynamics Lab
+  url: https://indy.epfl.ch
+- name: EPFL
+  url: https://www.epfl.ch
 
 # Short bio (displayed in user profile at end of posts)
-bio: Scientific machine learning and computational ecology.
+bio: AI for science
 
 # Interests to show in About widget
 interests:
 - Scientific machine learning
+- Bayesian inference
 - Scientific computing
 - Graph neural networks
 - Spatio-temporal forecasting
 - Geospatial deep learning
-- (Partial) differential equations
-- Scientific software engineering (Julia/JAX)
+- Partial differential equations
+- Scientific software
 - Spatial optimization
 - Biomathematics
 - Biodiversity science
-- Weather/climate science
+- Weather and climate science
 - Energy markets
 # - Interdisciplinary science
 

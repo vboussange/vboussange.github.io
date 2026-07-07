@@ -1,0 +1,9 @@
+{{ $topics := .topics }}
+{{ if $topics }}
+<div class="topic-links">
+  {{ range $topics }}
+    {{ $topic := . }}
+    <a class="topic-link" href="{{ printf "tag/%s/" ($topic | urlize) | relLangURL }}">{{ $topic | markdownify | emojify }}</a>
+  {{ end }}
+</div>
+{{ end }}

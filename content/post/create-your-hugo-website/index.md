@@ -5,7 +5,8 @@ title: "Create and deploy your Hugo website"
 subtitle: ""
 summary: ""
 authors: []
-tags: []
+tags:
+- Scientific software
 categories: []
 date: 2022-03-27T17:40:15+02:00
 lastmod: 2022-03-27T17:40:15+02:00

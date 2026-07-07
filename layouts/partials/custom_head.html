@@ -1,6 +1,327 @@
-{{ if .HasShortcode "github_button" }}
 <script async defer src="https://buttons.github.io/buttons.js"></script>
-{{end}}
+
+<style>
+  .topic-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin: 0.35rem 0 0;
+  }
+
+  .topic-link {
+    border: 1px solid rgba(0, 0, 0, 0.14);
+    border-radius: 0.25rem;
+    color: inherit;
+    display: inline-flex;
+    font-size: 0.78rem;
+    line-height: 1.2;
+    padding: 0.18rem 0.45rem;
+    text-decoration: none;
+  }
+
+  .topic-link:hover {
+    border-color: rgba(0, 0, 0, 0.32);
+    text-decoration: none;
+  }
+
+  .about-profile-sections {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1.2rem;
+  }
+
+  .about-profile-section .section-subheading {
+    margin-bottom: 0.35rem;
+  }
+
+  .about-profile-interests .topic-links {
+    gap: 0.28rem;
+    margin-top: 0;
+  }
+
+  .about-profile-interests .topic-link {
+    font-size: 0.74rem;
+    line-height: 1.15;
+    padding: 0.14rem 0.38rem;
+  }
+
+  .about-profile-education .ul-edu {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    column-gap: 1.25rem;
+    row-gap: 0.5rem;
+  }
+
+  .about-profile-education .ul-edu li {
+    margin-bottom: 0;
+  }
+
+  .about-profile-education .ul-edu .description p {
+    margin-bottom: 0.1rem;
+  }
+
+  .topic-links-small {
+    gap: 0.25rem;
+    margin-top: 0.5rem;
+  }
+
+  .topic-link-small {
+    font-size: 0.7rem;
+    padding: 0.12rem 0.35rem;
+  }
+
+  .software-list,
+  .publication-grouped-list,
+  .funding-list,
+  .resource-list {
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  .software-class {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .software-class-title,
+  .publication-group-title {
+    margin-bottom: 0.15rem;
+  }
+
+  .publication-note {
+    color: rgba(0, 0, 0, 0.62);
+    font-size: 0.86rem;
+    font-style: italic;
+    margin-top: 0.15rem;
+  }
+
+  .funding-item {
+    align-items: center;
+    column-gap: 1rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) max-content;
+  }
+
+  .funding-copy {
+    min-width: 0;
+  }
+
+  .funding-copy h4 {
+    margin-bottom: 0.2rem;
+  }
+
+  .funding-copy p {
+    margin-bottom: 0.45rem;
+  }
+
+  .funding-meta,
+  .funding-secondary-links {
+    align-items: center;
+    color: rgba(0, 0, 0, 0.62);
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 0.85rem;
+    gap: 0.25rem;
+  }
+
+  .funding-secondary-links {
+    margin-bottom: 0.4rem;
+  }
+
+  .funding-amount {
+    border: 1px solid rgba(0, 0, 0, 0.16);
+    border-radius: 0.25rem;
+    justify-self: end;
+    min-width: 5.25rem;
+    padding: 0.35rem 0.55rem;
+    text-align: center;
+  }
+
+  .funding-amount-value,
+  .funding-amount-currency {
+    display: block;
+    line-height: 1.1;
+  }
+
+  .funding-amount-value {
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  .funding-amount-currency {
+    color: rgba(0, 0, 0, 0.62);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    margin-top: 0.12rem;
+    text-transform: uppercase;
+  }
+
+  .software-item {
+    align-items: center;
+    column-gap: 1rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) max-content;
+  }
+
+  .software-copy {
+    min-width: 0;
+  }
+
+  .software-copy h4 {
+    margin-bottom: 0.2rem;
+  }
+
+  .software-item-header {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 0.75rem;
+  }
+
+  .software-item-header h4,
+  .resource-item h4 {
+    margin-bottom: 0;
+  }
+
+  .software-item p,
+  .resource-item p {
+    margin-bottom: 0.45rem;
+  }
+
+  .software-actions {
+    align-items: center;
+    display: inline-flex;
+    gap: 0.35rem;
+    justify-self: end;
+    min-height: 24px;
+  }
+
+  .software-actions > span:empty {
+    display: none;
+  }
+
+  .github-star-fallback {
+    align-items: stretch;
+    background: #0d1117;
+    border: 1px solid #57606a;
+    border-radius: 0.25rem;
+    color: #f0f6fc;
+    display: inline-flex;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 22px;
+    overflow: hidden;
+    text-decoration: none;
+  }
+
+  .github-star-fallback:hover {
+    background: #161b22;
+    color: #ffffff;
+    text-decoration: none;
+  }
+
+  .github-star-fallback[hidden] {
+    display: none;
+  }
+
+  .github-star-label,
+  .github-star-count {
+    align-items: center;
+    display: inline-flex;
+    min-height: 24px;
+    padding: 0 0.5rem;
+  }
+
+  .github-star-label {
+    gap: 0.3rem;
+  }
+
+  .github-star-count {
+    background: #0b0f14;
+    border-left: 1px solid #30363d;
+  }
+
+  .software-secondary-links {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 0.85rem;
+    gap: 0.25rem;
+  }
+
+  @media (max-width: 575.98px) {
+    .software-item {
+      grid-template-columns: minmax(0, 1fr);
+      row-gap: 0.35rem;
+    }
+
+    .software-actions {
+      justify-self: start;
+    }
+
+    .funding-item {
+      grid-template-columns: minmax(0, 1fr);
+      row-gap: 0.45rem;
+    }
+
+    .funding-amount {
+      justify-self: start;
+    }
+  }
+</style>
+
+<script>
+  (function () {
+    function formatStars(count) {
+      if (!Number.isFinite(count)) return "";
+      if (count >= 1000) {
+        var value = count / 1000;
+        var digits = value < 10 ? 1 : 0;
+        return value.toFixed(digits).replace(/\.0$/, "") + "k";
+      }
+      return String(count);
+    }
+
+    function validCountText(value) {
+      if (Number.isFinite(value)) return formatStars(value);
+      if (typeof value !== "string") return "";
+      var text = value.trim();
+      return /^\d+(?:\.\d+)?[km]?$/i.test(text.replace(/,/g, "")) ? text : "";
+    }
+
+    function loadFallbackCounts() {
+      if (typeof window.fetch !== "function") return;
+      var cache = {};
+      document.querySelectorAll("[data-github-star-fallback]").forEach(function (button) {
+        var user = button.getAttribute("data-github-user");
+        var repo = button.getAttribute("data-github-repo");
+        var counter = button.querySelector("[data-github-star-count]");
+        if (!user || !repo || !counter) return;
+        var key = user + "/" + repo;
+        cache[key] = cache[key] || fetch("https://img.shields.io/github/stars/" + encodeURIComponent(user) + "/" + encodeURIComponent(repo) + ".json")
+          .then(function (response) { return response.ok ? response.json() : null; })
+          .then(function (data) { return validCountText(data && (data.value || data.message)); })
+          .then(function (count) {
+            if (count) return count;
+            return fetch("https://api.github.com/repos/" + encodeURIComponent(user) + "/" + encodeURIComponent(repo))
+              .then(function (response) { return response.ok ? response.json() : null; })
+              .then(function (data) { return validCountText(data && data.stargazers_count); });
+          })
+          .catch(function () { return null; });
+        cache[key].then(function (countText) {
+          if (countText) {
+            counter.textContent = countText;
+          }
+        });
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      loadFallbackCounts();
+    });
+  })();
+</script>
 
 <script type="text/x-mathjax-config"> MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "all" } } }); </script>
 <script type="text/x-mathjax-config">

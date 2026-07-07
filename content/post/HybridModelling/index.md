@@ -8,9 +8,10 @@ header-includes:
 draft: false
 title: "On combining machine learning-based and theoretical ecosystem models"
 tags:
-  - Ecology and evolution
+  - Biodiversity science
+  - Biomathematics
   - Julia
-  - Scientific Machine Learning
+  - Scientific machine learning
 authors:
   - admin
 lastmod: "2023-03-31"
@@ -851,4 +852,3 @@ Hybrid approaches are the future! But they
  is best at
 
   - But JAX is also very cool 🫠
-

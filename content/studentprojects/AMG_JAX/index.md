@@ -4,7 +4,9 @@ summary: "This project aims to develop a high-performance algebraic multigrid (A
 tags:
 - JAX
 - Algebraic Multigrid
-- Scientific Machine Learning
+- Scientific machine learning
+- Scientific computing
+- Scientific software
 date: "2025-11-19T00:00:00Z"
 
 # Optional external URL for project (replaces project detail page).

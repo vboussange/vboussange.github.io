@@ -7,7 +7,11 @@ header-includes:
   - "\\newcommand{\\M}{\\mathcal{M}}"
 draft: false
 title: "A practical introduction to approximate Bayesian computation"
-tags: []
+tags:
+- Scientific machine learning
+- Bayesian inference
+- Biomathematics
+- Julia
 categories: []
 authors: []
 lastmod: "2022-11-27"
@@ -480,5 +484,3 @@ Median (95% intervals):
 Parameter 1: 1.53 (1.45,1.61)
 Parameter 2: 0.35 (0.29,0.41)
 ```
-
-

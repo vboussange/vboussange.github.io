@@ -1,0 +1,51 @@
+{{ $funding := (where site.RegularPages "Section" "funding").ByWeight }}
+{{ if $funding }}
+<div class="funding-list">
+  {{ range $funding }}
+    {{ if not .Draft }}
+      {{ $href := .RelPermalink }}
+      {{ $target := "" }}
+      {{ with .Params.external_link }}
+        {{ $href = . }}
+        {{ $target = `target="_blank" rel="noopener"` }}
+      {{ end }}
+      <article class="funding-item">
+        <div class="funding-copy">
+          <h4>
+            {{ if .Params.external_link }}
+              <a href="{{ $href }}" {{ $target | safeHTMLAttr }}>{{ .Title | markdownify | emojify }}</a>
+            {{ else }}
+              {{ .Title | markdownify | emojify }}
+            {{ end }}
+          </h4>
+          <div class="funding-meta">
+            {{ with .Params.funder }}<span>{{ . | markdownify }}</span>{{ end }}
+            {{ if and .Params.funder .Params.year }}<span aria-hidden="true">·</span>{{ end }}
+            {{ with .Params.year }}<span>{{ . }}</span>{{ end }}
+          </div>
+          {{ with .Params.summary }}<p>{{ . | markdownify | emojify }}</p>{{ end }}
+          {{ with .Params.related_resources }}
+            <p class="funding-secondary-links">
+              {{ range $index, $resource := . }}
+                {{ if $index }}<span aria-hidden="true">·</span>{{ end }}
+                {{ $label := $resource.label | default $resource.slug }}
+                {{ $page := site.GetPage (printf "resource/%s" $resource.slug) }}
+                {{ if $page }}
+                  <a href="{{ $page.RelPermalink }}">{{ $label | markdownify }}</a>
+                {{ else }}
+                  <span>{{ $label | markdownify }}</span>
+                {{ end }}
+              {{ end }}
+            </p>
+          {{ end }}
+          {{ partial "tag_links.html" (dict "tags" .Params.tags) }}
+        </div>
+        <div class="funding-amount" aria-label="{{ .Params.amount }} {{ .Params.currency }}">
+          <span class="funding-amount-value">{{ .Params.amount }}</span>
+          <span class="funding-amount-currency">{{ .Params.currency }}</span>
+        </div>
+      </article>
+    {{ end }}
+  {{ end }}
+</div>
+{{ end }}

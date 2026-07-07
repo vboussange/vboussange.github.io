@@ -1,0 +1,20 @@
+{{ $resources := (where site.RegularPages "Section" "resource").ByWeight }}
+{{ if $resources }}
+<div class="resource-list">
+  {{ range $resources }}
+    {{ if not .Draft }}
+    {{ $href := .RelPermalink }}
+    {{ $target := "" }}
+    {{ with .Params.external_link }}
+      {{ $href = . }}
+      {{ $target = `target="_blank" rel="noopener"` }}
+    {{ end }}
+    <article class="resource-item">
+      <h4><a href="{{ $href }}" {{ $target | safeHTMLAttr }}>{{ .Title | markdownify | emojify }}</a></h4>
+      {{ with .Params.summary }}<p>{{ . | markdownify | emojify }}</p>{{ end }}
+      {{ partial "tag_links.html" (dict "tags" .Params.tags) }}
+    </article>
+    {{ end }}
+  {{ end }}
+</div>
+{{ end }}

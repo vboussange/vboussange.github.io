@@ -3,8 +3,11 @@ title: Accelerating ecological connectivity analysis with graph neural networks
 summary: "This project develops a graph neural network approach to accelerate ecological connectivity analysis by mapping fine-scale landscape features onto lower-dimensional graph representations, overcoming the computational bottlenecks of traditional resistance distance calculations. The research aims to enable high-resolution gene flow predictions across fragmented landscapes while maintaining computational tractability, with potential applications to real-world conservation planning for identifying critical ecological corridors and restoration priorities."
 tags:
 - Graph theory
-- Graph Neural Networks
+- Graph neural networks
 - Ecological Connectivity
+- Biodiversity science
+- Spatial optimization
+- Geospatial deep learning
 date: "2025-11-19T00:00:00Z"
 
 # Optional external URL for project (replaces project detail page).

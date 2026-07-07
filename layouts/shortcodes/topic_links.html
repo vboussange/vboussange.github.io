@@ -1,0 +1,5 @@
+{{ $author := .Get "author" | default "admin" }}
+{{ $person_page := site.GetPage (printf "/authors/%s" $author) }}
+{{ with $person_page }}
+  {{ partial "topic_links.html" (dict "topics" .Params.interests) }}
+{{ end }}

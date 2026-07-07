@@ -22,7 +22,7 @@ authors:
 
 tags:
 - Sailing
-- Open Source Project
+- Scientific software
 
 categories:
 - Sailing tutorials

@@ -8,8 +8,9 @@ header-includes:
 draft: false
 title: "A multi-language overview on how to handle dependencies within a research project"
 tags:
-  - julia
-  - python
+  - Scientific software
+  - Julia
+  - Python
 authors:
   - admin
   - Mauro Werder

@@ -2,7 +2,11 @@
 title: "Highly dimensional non-local non-linear PDEs in Biology, Finance and Economics"
 summary: ""
 authors: []
-tags: []
+tags:
+- Scientific machine learning
+- Scientific computing
+- Partial differential equations
+- Deep learning
 categories: []
 date: 2021-05-01T00:20:37+01:00
 draft: true
@@ -21,11 +25,13 @@ authors:
 - admin
 
 tags:
-- Deep Learning
-- Scientific Machine Learning
+- Scientific machine learning
+- Scientific computing
+- Partial differential equations
+- Deep learning
 
 categories:
-- Scientific Machine Learning
+- Scientific machine learning
 ---
 
 PDEs are useful mathematical objects to model a variety of processes in fields such as physics, engineering, finance and biology.

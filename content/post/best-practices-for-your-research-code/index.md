@@ -8,8 +8,9 @@ header-includes:
 draft: false
 title: "A multi-language overview on how to organise your research project code and documents"
 tags:
-  - julia
-  - python
+  - Scientific software
+  - Julia
+  - Python
 authors:
   - Mauro Werder
   - admin

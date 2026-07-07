@@ -21,7 +21,8 @@ publishDate: "2017-01-01T00:00:00Z"
 # Legend: 0 = Uncategorized; 1 = Conference paper; 2 = Journal article;
 # 3 = Preprint / Working Paper; 4 = Report; 5 = Book; 6 = Book section;
 # 7 = Thesis; 8 = Patent
-publication_types: ["3"]
+publication_types: ["7"]
+publication_class: books
 
 # Publication name and optional abbreviated publication name.
 # publication: Under review at Partial Differential Equations and Applications.
@@ -35,7 +36,7 @@ This thesis altogether advances our general understanding of the eco-evolutionar
 # Summary. An optional shortened abstract.
 summary: Ecological and economic systems are complex adaptive systems, composed of multiple entities which interact and undergo evolutionary processes. The complexity of these systems present a crucial challenge for underpinning their general organizational principles. This thesis develops innovative modelling techniques and advances our comprehension of the eco-evolutionary processes and feedbacks that shape these systems.
 
-tags: [Deep Learning, eco-evolutionary dynamics, economic system, inverse modelling, Scientific Machine Learning, PDEs]
+tags: [Scientific machine learning, Biomathematics, Biodiversity science, Energy markets, Partial differential equations]
 
 # Display this page in the Featured widget?
 featured: true
@@ -70,11 +71,7 @@ image:
 #   Simply enter your project's folder or file name without extension.
 #   E.g. `internal-project` references `content/project/internal-project/index.md`.
 #   Otherwise, set `projects: []`.
-projects:
-# - highdimpde 
-# - econobiology
-# - mini-batching
-# - deep_learning_for_PDEs
+projects: []
 
 # Slides (optional).
 #   Associate this publication with Markdown slides.

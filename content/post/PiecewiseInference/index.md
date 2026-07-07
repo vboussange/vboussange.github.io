@@ -7,7 +7,9 @@ draft: false
 title: "Inverse ecosystem modeling made easy with PiecewiseInference.jl"
 date: 2023-03-26
 tags: 
-    - Scientific Machine Learning
+    - Scientific machine learning
+    - Biodiversity science
+    - Scientific software
     - Julia
 categories: []
 authors: []

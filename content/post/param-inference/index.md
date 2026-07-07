@@ -33,7 +33,8 @@ authors:
 # - 吳恩達
 
 tags:
-- Scientific Machine Learning
+- Scientific machine learning
+- Biomathematics
 - Julia
 
 categories:

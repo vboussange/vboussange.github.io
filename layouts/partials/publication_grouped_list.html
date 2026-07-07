@@ -1,0 +1,24 @@
+{{ $publications := where (where site.RegularPages "Section" "publication") "Draft" "!=" true }}
+{{ $classes := slice
+  (dict "key" "peer-reviewed" "title" "Peer-reviewed")
+  (dict "key" "books" "title" "Books")
+  (dict "key" "conference-papers" "title" "Conference papers")
+  (dict "key" "preprints" "title" "Preprints")
+}}
+
+{{ if $publications }}
+<div class="publication-grouped-list">
+  {{ range $classes }}
+    {{ $class := . }}
+    {{ $items := where $publications "Params.publication_class" $class.key }}
+    {{ if $items }}
+    <section class="publication-group">
+      <h3 class="publication-group-title">{{ $class.title }}</h3>
+      {{ range $index, $item := sort $items "Date" "desc" }}
+        {{ partial "views/citation.html" (dict "item" $item "index" $index) }}
+      {{ end }}
+    </section>
+    {{ end }}
+  {{ end }}
+</div>
+{{ end }}

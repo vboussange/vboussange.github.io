@@ -1,0 +1,48 @@
+{{ $software := where site.RegularPages "Section" "software" }}
+{{ $classes := slice
+  (dict "key" "ML library" "title" "ML library")
+  (dict "key" "ML model" "title" "ML model")
+  (dict "key" "Domain-centric library" "title" "Domain-centric library")
+}}
+{{ if $software }}
+<div class="software-list">
+  {{ range $classes }}
+    {{ $class := . }}
+    {{ $items := where (where $software "Params.software_class" $class.key) "Draft" "!=" true }}
+    {{ if $items }}
+    <section class="software-class">
+      <h3 class="software-class-title">{{ $class.title }}</h3>
+      {{ range sort $items "Weight" "asc" }}
+        {{ $href := .RelPermalink }}
+        {{ $target := "" }}
+        {{ with .Params.external_link }}
+          {{ $href = . }}
+          {{ $target = `target="_blank" rel="noopener"` }}
+        {{ end }}
+        <article class="software-item">
+          <div class="software-copy">
+            <h4><a href="{{ $href }}" {{ $target | safeHTMLAttr }}>{{ .Title | markdownify | emojify }}</a></h4>
+            {{ with .Params.summary }}<p>{{ . | markdownify | emojify }}</p>{{ end }}
+            {{ if or .Params.model_url .Params.dataset_url .Params.app_url }}
+              <p class="software-secondary-links">
+                {{ with .Params.model_url }}<a href="{{ . }}" target="_blank" rel="noopener">Model card</a>{{ end }}
+                {{ if and .Params.model_url .Params.dataset_url }}<span aria-hidden="true">·</span>{{ end }}
+                {{ with .Params.dataset_url }}<a href="{{ . }}" target="_blank" rel="noopener">Dataset</a>{{ end }}
+                {{ if and (or .Params.model_url .Params.dataset_url) .Params.app_url }}<span aria-hidden="true">·</span>{{ end }}
+                {{ with .Params.app_url }}<a href="{{ . }}" target="_blank" rel="noopener">Gradio app</a>{{ end }}
+              </p>
+            {{ end }}
+            {{ partial "tag_links.html" (dict "tags" .Params.tags) }}
+          </div>
+          {{ if and .Params.github_user .Params.github_repo }}
+            <div class="software-actions">
+              {{ partial "github_button.html" (dict "button" "star" "user" .Params.github_user "repo" .Params.github_repo "count" "true" "dark" "true" "star_count" .Params.github_stars) }}
+            </div>
+          {{ end }}
+        </article>
+      {{ end }}
+    </section>
+    {{ end }}
+  {{ end }}
+</div>
+{{ end }}

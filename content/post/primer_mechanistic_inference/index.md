@@ -7,7 +7,9 @@ date: "2025-01-02"
 draft: false
 title: "A primer on mechanistic inference with differentiable process-based models in Julia"
 tags:
-  - Scientific Machine Learning
+  - Scientific machine learning
+  - Bayesian inference
+  - Biomathematics
   - Julia
 authors:
   - admin

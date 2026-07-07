@@ -8,8 +8,9 @@ header-includes:
 draft: false
 title: "A multi-language overview on how to test your research project code"
 tags:
-  - julia
-  - python
+  - Scientific software
+  - Julia
+  - Python
 authors:
   - admin
   - Mauro Werder
