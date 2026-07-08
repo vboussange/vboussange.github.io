@@ -1,0 +1,56 @@
+{{- $entry := .entry -}}
+{{- $level := .level | default 0 -}}
+{{- if $entry -}}
+<article class="alpine-cv-entry{{ if gt $level 0 }} alpine-cv-entry-child{{ end }}">
+  <div class="alpine-cv-entry-content">
+    <div class="alpine-cv-entry-header">
+      <div class="alpine-cv-entry-title">
+        {{- with $entry.url -}}
+          {{- $external := or (hasPrefix . "http://") (hasPrefix . "https://") -}}
+          <a href="{{ . | safeURL }}"{{ if $external }} target="_blank" rel="noopener"{{ end }}>{{ $entry.title | markdownify | emojify }}</a>
+        {{- else -}}
+          {{ $entry.title | markdownify | emojify }}
+        {{- end -}}
+      </div>
+      <div class="alpine-cv-badges">
+        {{ with $entry.year }}<span>{{ . }}</span>{{ end }}
+        {{ with $entry.date }}<span>{{ . }}</span>{{ end }}
+        {{ with $entry.grade }}<span>{{ . }}</span>{{ end }}
+        {{ with $entry.pitches }}<span>{{ . }}</span>{{ end }}
+        {{ with $entry.duration }}<span>{{ . }}</span>{{ end }}
+        {{ with $entry.distance }}<span>{{ . }}</span>{{ end }}
+        {{ with $entry.mode }}<span>{{ . }}</span>{{ end }}
+        {{ with $entry.role }}<span>{{ . }}</span>{{ end }}
+        {{ with $entry.rating }}
+          {{- $rating := math.Min 5 (math.Max 0 (int .)) -}}
+          {{- if gt $rating 0 -}}
+            <span class="alpine-cv-rating" aria-label="{{ $rating }} out of 5 stars">
+              {{- range seq 1 5 -}}
+                <span class="{{ if le . $rating }}is-filled{{ else }}is-empty{{ end }}" aria-hidden="true">★</span>
+              {{- end -}}
+            </span>
+          {{- end -}}
+        {{ end }}
+      </div>
+    </div>
+    {{ with $entry.location }}<p class="alpine-cv-location">{{ . | markdownify | emojify }}</p>{{ end }}
+    {{ with $entry.note }}<p class="alpine-cv-note">{{ . | markdownify | emojify }}</p>{{ end }}
+  </div>
+
+  {{ with $entry.children }}
+    <div class="alpine-cv-children">
+      {{ range . }}
+        {{ partial "alpine_cv_entry.html" (dict "entry" . "level" (add $level 1)) }}
+      {{ end }}
+    </div>
+  {{ end }}
+
+  {{ with $entry.media }}
+    <div class="alpine-cv-media-list">
+      {{ range . }}
+        {{ partial "alpine_cv_media.html" . }}
+      {{ end }}
+    </div>
+  {{ end }}
+</article>
+{{- end -}}

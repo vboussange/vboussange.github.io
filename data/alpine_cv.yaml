@@ -1,0 +1,582 @@
+intro: "A personal log of selected mountain, sailing, and self-powered trips."
+categories:
+  - slug: sailing
+    title: Sailing
+    summary: "Longer trips and sea miles."
+    entries:
+      - title: "Tippelei voyage to Norway"
+        year: 2023
+        date: "May-September 2023"
+        location: "Norway"
+        note: "Bought Tippelei, a 40-year-old, 36-foot sailing boat, and sailed it to Norway during a sabbatical."
+        media:
+          - type: youtube
+            id: "TkmXIaGAx-I"
+            title: "Tippelei sailing voyage"
+
+  - slug: ski-mountaineering
+    title: "Ski mountaineering / Backcountry skiing"
+    summary: "Ski tours, couloirs, traverses, and bicycle-ski trips."
+    entries:
+      - title: "Couloir du Pertuis par le Morétan"
+        url: "https://skitour.fr/topos/284"
+        grade: "4.1 E2"
+        location: "France"
+        date: "February 2025"
+        year: 2025
+      - title: "Rocher Gris 2757m, couloir du Dérobé"
+        url: "https://skitour.fr/topos/8856"
+        grade: "5.1 E2"
+        location: "France"
+        date: "February 2025"
+        year: 2025
+        rating: 1
+      - title: "Sunnenhöreli 2164m"
+        grade: "PD"
+        location: "Switzerland"
+        date: "January 2025"
+        year: 2025
+      - title: "Wintertürmli 3002m, from Meiental"
+        grade: "AD-"
+        location: "Switzerland"
+        date: "January 2025"
+        year: 2025
+      - title: "Plattenburg 2747m, W face"
+        grade: "45°"
+        location: "Switzerland"
+        date: "January 2025"
+        year: 2025
+      - title: "Dent d'Hérens 4171m, SW face and W arête"
+        grade: "AD"
+        location: "Switzerland"
+        date: "May 2024"
+        year: 2024
+        media:
+          - type: instagram
+            id: "C6_M73dKX9V"
+            title: "Dent d'Hérens"
+      - title: "Finsteraarhorn 4274m"
+        grade: "AD"
+        location: "Switzerland"
+        date: "April 2024"
+        year: 2024
+        media:
+          - type: youtube
+            id: "fb2iS7i_PxA"
+            title: "Finsteraarhorn and Wyssnollen"
+      - title: "Wyssnollen 3590m, from Grünhornlücke"
+        grade: "AD"
+        location: "Switzerland"
+        date: "April 2024"
+        year: 2024
+      - title: "From Tromsø to Nordkapp with bicycle and skis"
+        location: "Norway"
+        date: "March 2024"
+        year: 2024
+        mode: "bike + ski"
+        children:
+          - title: "Tromsø - Laksvelbukt"
+            mode: "bike"
+          - title: "Tomas couloir"
+          - title: "Banana couloir of Holmbukktinden"
+            grade: "45°"
+          - title: "Laksvelbukt - Nordkjosbotn"
+            mode: "bike"
+          - title: "Lille Russetinden 1527m"
+          - title: "Nordkjosbotn - Lyngseidet"
+            mode: "bike"
+          - title: "New Year's Rocket"
+            url: "https://fatmap.com/routeid/2931511/new-year's-rocket"
+            grade: "50°"
+          - title: "Istinden 1490m"
+          - title: "Store Kjsotinden 1488m"
+          - title: "Lyngseidet - Skervøy"
+            mode: "bike"
+          - title: "Store Kågtinden 1228m"
+          - title: "Skervøy - Nordkapp"
+            mode: "bike"
+        media:
+          - type: youtube
+            id: "8rTHwFRBPxc"
+            title: "Tromsø to Nordkapp with bicycle and skis"
+      - title: "Druesberg 2282m, D-, from Zürich with bicycle"
+        grade: "D-"
+        location: "Switzerland"
+        date: "February 2024"
+        year: 2024
+        mode: "bike + ski"
+        media:
+          - type: youtube
+            id: "u942702uVGo"
+            title: "Druesberg by bicycle and skis"
+      - title: "Piz Badus 2928m, E face"
+        grade: "PD+"
+        location: "Switzerland"
+        date: "January 2024"
+        year: 2024
+      - title: "Piz Ravetsch 3007m, NW face"
+        grade: "PD"
+        location: "Switzerland"
+        date: "January 2024"
+        year: 2024
+      - title: "Aiguille de l'Épaisseur 3230m, SE face"
+        grade: "PD"
+        location: "France"
+        date: "January 2024"
+        year: 2024
+      - title: "Pizzo Rotondo 3192m, from Capanna Piansecco"
+        grade: "D+"
+        location: "Switzerland"
+        date: "January 2024"
+        year: 2024
+      - title: "Râteau d'Aussois 3131m, NW face"
+        grade: "PD+"
+        location: "France"
+        date: "January 2024"
+        year: 2024
+      - title: "Winterhorn / Pizzo d'Orsino 2662m, NW face"
+        grade: "AD+"
+        location: "Switzerland"
+        date: "December 2023"
+        year: 2023
+      - title: "Chrüz 2195m"
+        grade: "F"
+        location: "Switzerland"
+        date: "December 2023"
+        year: 2023
+      - title: "Girenspitz 2367m"
+        grade: "PD+"
+        location: "Switzerland"
+        date: "December 2023"
+        year: 2023
+      - title: "Piet 1965m"
+        grade: "PD+"
+        location: "Switzerland"
+        date: "December 2023"
+        year: 2023
+      - title: "Mont Blanc 4808m"
+        url: "https://www.camptocamp.org/routes/46950/fr/mont-blanc-par-les-grands-mulets-arete-n-du-dome"
+        grade: "3.2 AD"
+        location: "France"
+        date: "May 2023"
+        year: 2023
+        note: "Uphill via Arête Nord and descent via Grand and Petit Plateau."
+      - title: "Bishorn 4153m, from cabane de Tracuit"
+        url: "https://www.camptocamp.org/routes/45969/fr/bishorn-versant-nw-voie-normale-"
+        grade: "PD"
+        location: "Switzerland"
+        date: "April 2023"
+        year: 2023
+      - title: "Mt Vélan 3727m, Couloir Hannibal"
+        url: "https://www.camptocamp.org/routes/45518/fr/mont-velan-couloir-d-annibal"
+        grade: "4.3 D"
+        location: "Switzerland"
+        year: 2023
+        note: "Uphill and downhill via Couloir Hannibal."
+      - title: "Traverse of the Alps from Innsbruck to Venezia with bicycles and skis"
+        duration: "11 days"
+        date: "March 2023"
+        year: 2023
+        mode: "bike + ski"
+        children:
+          - title: "Innsbruck - Valles"
+            location: "Austria / Italy"
+            mode: "bike"
+          - title: "Wilde Kreuzspitze 3132m"
+            url: "https://www.suedtirolerland.it/de/freizeit-aktiv/wintersport/skitouren/auf-die-wilde-kreuzspitze/"
+          - title: "Valles - Lungiarù"
+            mode: "bike"
+          - title: "Ciampani 2668m, via Canale Norte"
+          - title: "Lungiarù - Misurina"
+            mode: "bike"
+          - title: "Canale Norte Staunies"
+            url: "https://fatmap.com/routeid/19588/staunies-north-couloir"
+          - title: "Forcella degli Angeli - Forcella del Diavolo"
+          - title: "Misurina - Mareson Pecol"
+            mode: "bike"
+          - title: "Mt Pelmo 3168m"
+          - title: "Mareson Pecol - Venezia"
+            mode: "bike"
+        media:
+          - type: youtube
+            id: "5PEl9Ajqwwo"
+            title: "Innsbruck to Venezia with bicycles and skis"
+      - title: "Trou de la Mouche 2453m, Tour du Passage du Père"
+        url: "https://skitour.fr/topos/853"
+        grade: "45° AD"
+        location: "Aravis, France"
+        year: 2023
+      - title: "Pointe du Midi 2364m"
+        location: "Aravis, France"
+        year: 2023
+      - title: "Fuggstock 2371m"
+        grade: "PD"
+        location: "Glarus, Switzerland"
+        year: 2023
+      - title: "Rote Totz 2847m"
+        grade: "PD"
+        location: "Wallis, Switzerland"
+        year: 2023
+      - title: "Horlini 2458m"
+        location: "Wallis, Switzerland"
+        year: 2023
+      - title: "Pic de l'Étendard 3464m"
+        url: "https://www.camptocamp.org/routes/54094/fr/pic-de-l-etendard-versant-ne-voie-normale-a-pied-"
+        grade: "PD"
+        year: 2022
+      - title: "Roche du Chardonnet 2950m"
+        url: "https://www.camptocamp.org/routes/49758/fr/roche-du-chardonnet-versant-w-par-le-vallon-des-muandes"
+        grade: "PD"
+        year: 2022
+      - title: "Haute Route Chamonix - Zermatt"
+        duration: "7 days"
+        role: "group leader"
+        date: "February 2022"
+        year: 2022
+        media:
+          - type: youtube
+            id: "CfwHbL9e0kQ"
+            title: "Haute Route Chamonix - Zermatt"
+        children:
+          - title: "Grande Tête de By 3588m"
+          - title: "Tête de Valpelline 3798m"
+      - title: "Redertenstock 2214m"
+        grade: "PD"
+        year: 2022
+      - title: "Oberalpstock 3328m, over Staldenfirn into Maderanertal"
+        grade: "D"
+        year: 2022
+      - title: "Chronenstock 2451m"
+        grade: "AD-"
+        year: 2022
+      - title: "Spilauer Grätli 2303m"
+        grade: "PD"
+        year: 2022
+      - title: "Hundstock 2212m"
+        grade: "AD-"
+        year: 2022
+      - title: "Hagelstock 2181m"
+        grade: "L"
+        year: 2022
+      - title: "Pic du Rognolet 2659m"
+        grade: "PD"
+        year: 2021
+      - title: "Petit Château 2458m, Couloir NE"
+        grade: "40° / PD-"
+        year: 2021
+      - title: "Chläbdächer 2017m"
+        grade: "PD+"
+        year: 2021
+      - title: "Strahlhorn 4190m, from Britanniahütte"
+        grade: "AD"
+        year: 2021
+      - title: "Allalinhorn 4027m"
+        grade: "PD+"
+        year: 2021
+      - title: "Hausstock 3158m, S ridge"
+        grade: "38° / D"
+        year: 2021
+      - title: "Stucklistock 3313m, S ridge"
+        grade: "40° / D"
+        year: 2021
+      - title: "Pigne d'Arolla 3787m"
+        grade: "PD+"
+        role: "group leader"
+        year: 2021
+      - title: "Pointes d'Oren 3520m"
+        grade: "PD"
+        year: 2021
+      - title: "Mont Brulé 3576m"
+        grade: "AD-"
+        year: 2021
+      - title: "Graubünden Haute Route"
+        duration: "7 days"
+        role: "group leader"
+        year: 2021
+        media:
+          - type: youtube
+            id: "-AAVG_6zCjQ"
+            title: "Graubünden Haute Route"
+        children:
+          - title: "Piz d'Agnel 3204m"
+            grade: "PD"
+          - title: "Pischahorn 2980m"
+            grade: "PD"
+          - title: "Egghorn 3127m"
+          - title: "Buinlücke"
+            grade: "45°"
+      - title: "Piz Fess 2881m"
+        grade: "PD"
+        role: "group leader"
+        year: 2021
+      - title: "Piz Tomül 2946m"
+        grade: "PD"
+        role: "group leader"
+        year: 2021
+      - title: "Wissigstock 2887m"
+        grade: "PD"
+        role: "group leader"
+        year: 2019
+      - title: "Piz Calderas 3397m"
+        grade: "AD+"
+        year: 2019
+      - title: "Piz Linard 3410m"
+        grade: "AD"
+        year: 2019
+      - title: "Piz d'Err 3377m"
+        grade: "AD"
+        year: 2019
+      - title: "Pizzo Centrale 2999m, from Gemsstock / S ridge"
+        grade: "AD-"
+        role: "group leader"
+        year: 2019
+      - title: "Hengelhorn"
+        grade: "AD"
+        year: 2019
+      - title: "Spitzmielen 2501m"
+        grade: "PD+"
+        role: "group leader"
+        year: 2019
+      - title: "Rossstock 2460m"
+        grade: "PD"
+        role: "group leader"
+        year: 2019
+      - title: "Rütistein 2025m"
+        grade: "PD"
+        year: 2019
+      - title: "Roggenstock 1776m"
+        note: "By night."
+        year: 2019
+
+  - slug: alpinism
+    title: Alpinism
+    summary: "Classic alpine routes and high peaks."
+    entries:
+      - title: "Aiguilles Dorées 3519m, E-W traverse"
+        grade: "D-"
+        year: 2024
+      - title: "Nadelgrat"
+        grade: "AD"
+        year: 2024
+        note: "Dirruhorn 4035m, Hohberghorn 4219m, Stecknadelhorn 4241m, Nadelhorn 4327m."
+      - title: "Dent Blanche 4358m, S arête"
+        grade: "AD"
+        year: 2024
+      - title: "Breithorn 4139m - 4159m - 4164m, E-W traverse"
+        grade: "AD+"
+        year: 2024
+      - title: "Lyskamm 4527m - 4479m, E-W traverse"
+        grade: "AD"
+        year: 2024
+      - title: "Monte Rosa - Dufourspitze 4634m, W-SE traverse"
+        grade: "AD+"
+        year: 2024
+      - title: "Weissmies 4017m, Nordgrat"
+        grade: "AD+"
+        year: 2024
+      - title: "Gwächtenhorn 3404m, W-E traverse"
+        grade: "PD"
+        year: 2024
+      - title: "Nadelhorn 4327m"
+        grade: "PD"
+        year: 2022
+      - title: "Tête Blanche 3421m, North Face, Petite Fourche 3512m"
+        year: 2022
+      - title: "Vrenelisgärtli 2905m, normal route from Glärnischhütte"
+        grade: "PD"
+        role: "group leader"
+        year: 2021
+      - title: "Spaghetti tour"
+        role: "group leader"
+        year: 2021
+        media:
+          - type: youtube
+            id: "sVtr_m1H1II"
+            title: "Spaghetti tour"
+        children:
+          - title: "Castor 4228m"
+            grade: "PD I"
+          - title: "Naso del Liskamm 4272m"
+            grade: "PD+"
+          - title: "Parrotspitze 4434m"
+            grade: "PD"
+          - title: "Zumsteinspitze 4563m"
+      - title: "Alphubel 4206m, from Täschhütte / SE ridge"
+        grade: "PD"
+        year: 2020
+      - title: "Mönch 4017m, normal route"
+        grade: "AD"
+        year: 2020
+      - title: "Piz Palü 3882m, W-E traverse from Rifugi dals Chamuotschs-Fortezza"
+        grade: "PD 2c"
+        year: 2020
+      - title: "Basodino 3273m, E ridge"
+        year: 2020
+      - title: "Vorder Tierberg 3090m"
+        grade: "F"
+        year: 2019
+      - title: "Mount Ararat 5137m"
+        location: "Turkey"
+        year: 2008
+
+  - slug: alpine-climbing
+    title: "Alpine climbing"
+    summary: "Multi-pitch routes, ridges, and alpine rock climbs."
+    entries:
+      - title: "Schmalstöckli 2012m, Bird on a wire"
+        grade: "6b"
+        pitches: "5 pitches"
+        year: 2024
+      - title: "Läged Windgällen 2572m, Zentralpfeiler"
+        grade: "6a"
+        pitches: "10 pitches"
+        year: 2024
+      - title: "Balmflue 730m, Südwände + Föhrenweg"
+        grade: "6b"
+        pitches: "5 + 4 pitches"
+        year: 2024
+      - title: "Cheselenflue 1750m, Dr Blau Chäfer"
+        grade: "6a+"
+        pitches: "6 pitches"
+        year: 2024
+      - title: "Pic de Jallouvre 2408m, Voie des Cristaux"
+        grade: "AD-"
+        year: 2022
+      - title: "Pointes de la Blonnière 2369m, Arête à Marion"
+        grade: "AD-"
+        year: 2022
+      - title: "Dri Horlini, SW ridge"
+        grade: "AD"
+        year: 2022
+      - title: "Mattstock 1935m, Kobold - Gipfelstürmer - Südwestgrat"
+        year: 2022
+      - title: "Haggenspitz 1762m, Nordwestgrat"
+        year: 2022
+      - title: "Sewenstock 2820m, Amarone"
+        grade: "5c+ max"
+        pitches: "10 pitches, 7 pitches in 6a+"
+        year: 2021
+      - title: "Gemsplanggenstock 2752m"
+        grade: "5c+ max"
+        pitches: "14 pitches"
+        year: 2020
+      - title: "Gross Furkahorn 3169m, E-S-E ridge"
+        grade: "IV+"
+        pitches: "12 pitches"
+        year: 2020
+      - title: "Hannibalturm 2920m, Conquest of Paradise"
+        grade: "6b"
+        pitches: "6 pitches"
+        year: 2020
+      - title: "Brüggler, Sonntagweg"
+        grade: "6a+"
+        pitches: "7 pitches"
+        year: 2020
+      - title: "Bockmattli, Namenlose Kante"
+        grade: "5a"
+        pitches: "9 pitches"
+        year: 2020
+      - title: "Poncione di Manió 2925m"
+        grade: "AD+ 4a"
+        year: 2020
+
+  - slug: canyoning
+    title: Canyoning
+    summary: "Canyon descents and group-led trips."
+    entries:
+      - title: "Barranco de Arandari"
+        role: "group leader"
+        location: "Pyrenees, Spain"
+        year: 2021
+      - title: "Tiger Snake"
+        location: "Newnes Plateau, Australia"
+        year: 2016
+      - title: "Claustral Canyon"
+        location: "Blue Mountains, Australia"
+        year: 2016
+      - title: "Tourmoun"
+        grade: "v3a3II"
+        role: "group leader"
+        location: "Pyrenees, France"
+        year: 2013
+      - title: "Soussoueou"
+        grade: "v3a3II"
+        role: "group leader"
+        location: "Pyrenees, France"
+        year: 2013
+      - title: "Gorgol"
+        grade: "v4a4III"
+        role: "group leader"
+        location: "Pyrenees, France"
+        year: 2013
+      - title: "Forronías"
+        role: "group leader"
+        location: "Pyrenees, France"
+        year: 2013
+      - title: "Bitet inférieur"
+        grade: "v4a3IV"
+        role: "group leader"
+        location: "Pyrenees, France"
+        year: 2013
+      - title: "Peonera Inferior"
+        grade: "v2a3III"
+        location: "Pyrenees, Spain"
+        year: 2012
+
+  - slug: caving
+    title: Caving
+    summary: "Cave trips."
+    entries:
+      - title: "Blowfly Cave"
+        location: "NSW, Australia"
+        year: 2016
+
+  - slug: bikepacking
+    title: Bikepacking
+    summary: "Self-powered bike and mountain journeys."
+    entries:
+      - title: "From the first to the last droplet of the Rhône river"
+        role: "group leader"
+        children:
+          - title: "Rhône Glacier to Geneva"
+            duration: "5 days"
+            location: "Switzerland"
+            year: 2020
+            note: "Mountain biking in self-sufficiency through the Zwischbergenpass 3268m."
+            media:
+              - type: youtube
+                id: "gHgxTTPf2Vc"
+                title: "Rhône Glacier to Geneva"
+          - title: "Geneva to Lyon"
+            distance: "400 km"
+            year: 2019
+          - title: "Lyon to Marseille"
+            distance: "400 km"
+            year: 2018
+      - title: "Tour du Mont Blanc"
+        duration: "5 days"
+        role: "group leader"
+        year: 2019
+        note: "Mountain biking."
+        media:
+          - type: youtube
+            id: "LEumD6ZbYU0"
+            title: "Tour du Mont Blanc"
+      - title: "Sydney Canberra"
+        distance: "500 km"
+        location: "Australia"
+        year: 2016
+
+  - slug: hikes
+    title: Hikes
+    summary: "Longer hiking trips."
+    entries:
+      - title: "Larapinta trail"
+        duration: "10 days"
+        distance: "200 km"
+        location: "Australia"
+        year: 2016
+      - title: "Overland Track"
+        duration: "5 days"
+        location: "Tasmania, Australia"
+        year: 2015

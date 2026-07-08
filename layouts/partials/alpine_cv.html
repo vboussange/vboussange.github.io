@@ -1,0 +1,42 @@
+{{- $data := . -}}
+{{- if $data -}}
+  {{- $total := 0 -}}
+  {{- range $data.categories -}}
+    {{- $total = add $total (len (default (slice) .entries)) -}}
+  {{- end -}}
+<div class="alpine-cv">
+  <div class="alpine-cv-intro">
+    {{ with $data.intro }}<p>{{ . | markdownify | emojify }}</p>{{ end }}
+    <div class="alpine-cv-stats" aria-label="Alpine CV summary">
+      <span>{{ $total }} entries</span>
+    </div>
+  </div>
+
+  <nav class="alpine-cv-nav" aria-label="Alpine CV sections">
+    {{ range $data.categories }}
+      {{ $slug := .slug | default (.title | urlize) }}
+      <a href="#{{ $slug }}">{{ .title | markdownify | emojify }}</a>
+    {{ end }}
+  </nav>
+
+  <div class="alpine-cv-sections">
+    {{ range $data.categories }}
+      {{ $slug := .slug | default (.title | urlize) }}
+      <section class="alpine-cv-section" id="{{ $slug }}">
+        <header class="alpine-cv-section-header">
+          <div>
+            <h2>{{ .title | markdownify | emojify }}</h2>
+            {{ with .summary }}<p>{{ . | markdownify | emojify }}</p>{{ end }}
+          </div>
+          <span class="alpine-cv-count">{{ len (default (slice) .entries) }}</span>
+        </header>
+        <div class="alpine-cv-entry-list">
+          {{ range .entries }}
+            {{ partial "alpine_cv_entry.html" (dict "entry" . "level" 0) }}
+          {{ end }}
+        </div>
+      </section>
+    {{ end }}
+  </div>
+</div>
+{{- end -}}
