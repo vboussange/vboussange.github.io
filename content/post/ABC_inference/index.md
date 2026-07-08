@@ -8,9 +8,7 @@ header-includes:
 draft: false
 title: "A practical introduction to approximate Bayesian computation"
 tags:
-- Scientific machine learning
 - Bayesian inference
-- Biomathematics
 - Julia
 categories: []
 authors: []

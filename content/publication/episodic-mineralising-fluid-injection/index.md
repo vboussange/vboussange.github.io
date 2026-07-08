@@ -17,7 +17,6 @@ abstract: ""
 summary: ""
 tags:
 - Scientific computing
-- Biomathematics
 featured: false
 url_pdf: "https://www.biorxiv.org/content/10.1101/2021.07.06.451404.abstract"
 url_code: ""

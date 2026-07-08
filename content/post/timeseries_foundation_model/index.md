@@ -6,7 +6,6 @@ draft: false
 title: "Are time series foundation models useful for scientific applications?"
 tags:
   - Spatio-temporal forecasting
-  - Scientific machine learning
   - Python
 authors:
   - admin

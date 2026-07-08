@@ -6,7 +6,6 @@ tags:
 - Scientific machine learning
 - Geospatial deep learning
 - Biodiversity science
-- Spatio-temporal forecasting
 - Python
 external_link: https://github.com/vboussange/MuScaRi
 model_url: https://huggingface.co/vboussange/muscari

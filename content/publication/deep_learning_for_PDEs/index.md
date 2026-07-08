@@ -38,7 +38,7 @@ abstract: Nonlinear partial differential equations (PDEs) are used to model dyna
 # Summary. An optional shortened abstract.
 summary: Nonlinear partial differential equations (PDEs) are used to model dynamical processes in a large number of scientific fields, ranging from finance to biology. In this article we propose two numerical methods based on machine learning and on Picard iterations, respectively, to approximately solve non-local nonlinear PDEs. Our work extends recently developed methods to overcome the curse of dimensionality in solving PDEs.
 
-tags: [Scientific machine learning, Scientific computing, Partial differential equations, Deep learning]
+tags: [Scientific machine learning, Scientific computing, Partial differential equations, Deep learning, Biomathematics]
 
 # Display this page in the Featured widget?
 featured: true

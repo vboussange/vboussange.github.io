@@ -5,7 +5,7 @@ software_class: ML library
 tags:
 - Scientific machine learning
 - Scientific software
-- Biomathematics
+- Bayesian inference
 - Julia
 external_link: https://github.com/vboussange/HybridDynamicModels.jl
 github_user: vboussange

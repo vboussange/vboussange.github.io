@@ -8,10 +8,10 @@ header-includes:
 draft: false
 title: "On combining machine learning-based and theoretical ecosystem models"
 tags:
-  - Biodiversity science
-  - Biomathematics
   - Julia
   - Scientific machine learning
+  - Bayesian inference
+  - Spatio-temporal forecasting
 authors:
   - admin
 lastmod: "2023-03-31"

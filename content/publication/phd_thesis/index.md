@@ -36,7 +36,7 @@ This thesis altogether advances our general understanding of the eco-evolutionar
 # Summary. An optional shortened abstract.
 summary: Ecological and economic systems are complex adaptive systems, composed of multiple entities which interact and undergo evolutionary processes. The complexity of these systems present a crucial challenge for underpinning their general organizational principles. This thesis develops innovative modelling techniques and advances our comprehension of the eco-evolutionary processes and feedbacks that shape these systems.
 
-tags: [Scientific machine learning, Biomathematics, Biodiversity science, Energy markets, Partial differential equations]
+tags: [Scientific machine learning, Biomathematics, Biodiversity science, Partial differential equations]
 
 # Display this page in the Featured widget?
 featured: true

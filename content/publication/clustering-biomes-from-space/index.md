@@ -20,7 +20,6 @@ status_note: "Submitted to Remote Sensing of Environment."
 tags:
 - Biodiversity science
 - Geospatial deep learning
-- Scientific machine learning
 featured: false
 url_pdf: "https://doi.org/10.2139/ssrn.6876998"
 url_code: ""

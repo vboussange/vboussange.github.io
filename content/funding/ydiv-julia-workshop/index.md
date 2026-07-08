@@ -8,7 +8,6 @@ funder: yDiv Graduate School & Postdoc Program
 tags:
 - Scientific computing
 - Scientific software
-- Biodiversity science
 - Julia
 external_link: ""
 related_resources:

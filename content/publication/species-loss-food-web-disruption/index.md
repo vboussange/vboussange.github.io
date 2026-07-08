@@ -23,7 +23,6 @@ abstract: ""
 summary: ""
 tags:
 - Biodiversity science
-- Biomathematics
 featured: false
 url_pdf: "https://doi.org/10.1038/s42003-025-08396-y"
 url_code: ""

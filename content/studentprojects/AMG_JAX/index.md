@@ -7,6 +7,7 @@ tags:
 - Scientific machine learning
 - Scientific computing
 - Scientific software
+- Partial differential equations
 date: "2025-11-19T00:00:00Z"
 
 # Optional external URL for project (replaces project detail page).

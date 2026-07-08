@@ -43,7 +43,7 @@ abstract: Faunal turnover in Indo-Australia across Wallace’s Line is one of th
 # # Summary. An optional shortened abstract.
 # summary: Differentiation mechanisms are influenced by the properties of the landscape over which individuals interact, disperse and evolve. Here, we investigate how habitat connectivity and habitat heterogeneity affect phenotypic differentiation by formulating a stochastic eco-evolutionary model where individuals are structured over a spatial graph. By formalising the eco-evolutionary and spatial dynamics of biological populations on graphs, our study establishes fundamental links between landscape features and phenotypic differentiation.
 
-tags: [Biodiversity science, Biogeography, Evolutionary ecology, Spatio-temporal forecasting]
+tags: [Biodiversity science, Biogeography, Evolutionary ecology]
 
 # Display this page in the Featured widget?
 featured: true

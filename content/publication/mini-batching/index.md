@@ -36,7 +36,7 @@ abstract: Ecosystems are involved in global biogeochemical cycles that regulate 
 # Summary. An optional shortened abstract.
 summary: Ecosystems are involved in global biogeochemical cycles that regulate climate and provide essential services to human societies. Mechanistic models are required to describe ecosystem dynamics and anticipate their response to anthropogenic pressure, but their adoption has been limited in practice because of issues with parameter identification and because of model inaccuracies. We propose a machine learning (ML) framework relying on a mini-batch method combined with automatic differentiation and state-of-the-art optimizers. The proposed ML framework can efficiently learn from data and elucidate mechanistic pathways to improve our understanding and predictions of ecosystem dynamics.
 
-tags: [Scientific machine learning, Biodiversity science, Biomathematics, Spatio-temporal forecasting]
+tags: [Scientific machine learning, Biomathematics, Spatio-temporal forecasting, Bayesian inference]
 
 # Display this page in the Featured widget?
 featured: true

@@ -22,7 +22,6 @@ authors:
 
 tags:
 - Sailing
-- Scientific software
 
 categories:
 - Sailing tutorials

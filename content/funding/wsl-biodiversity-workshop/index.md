@@ -8,7 +8,6 @@ funder: WSL Biodiversity Center
 tags:
 - Scientific computing
 - Scientific software
-- Biodiversity science
 - Julia
 external_link: ""
 related_resources:
