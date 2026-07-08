@@ -4,7 +4,6 @@ summary: "This project develops a graph neural network approach to accelerate ec
 tags:
 - Graph theory
 - Graph neural networks
-- Ecological Connectivity
 - Biodiversity science
 - Spatial optimization
 - Geospatial deep learning

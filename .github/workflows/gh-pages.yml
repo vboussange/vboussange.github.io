@@ -22,6 +22,7 @@ jobs:
         GO_VERSION: 1.17
         HUGO_VERSION: 0.95.0
         HUGO_EXTENDED: true
+        HUGO_COMMIT_DATE: ${{ github.event.head_commit.timestamp }}
         TARGET_REPO: vboussange/vboussange.github.io
         TARGET_BRANCH: gh-pages
         TOKEN: ${{ secrets.TOKEN_HUGO_DEPLOY }}

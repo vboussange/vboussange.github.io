@@ -145,6 +145,74 @@
     padding: 0.12rem 0.35rem;
   }
 
+  .compact-title-row {
+    align-items: baseline;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.5rem;
+  }
+
+  .compact-type-badge {
+    background: rgba(58, 90, 64, 0.08);
+    border: 1px solid rgba(58, 90, 64, 0.32);
+    border-radius: 0.25rem;
+    color: var(--vb-accent);
+    display: inline-flex;
+    flex: 0 0 auto;
+    font-size: 0.68rem;
+    font-weight: 700;
+    line-height: 1.2;
+    padding: 0.12rem 0.34rem;
+  }
+
+  .compact-publication-meta {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.2rem;
+  }
+
+  .dark .compact-type-badge {
+    background: rgba(163, 177, 138, 0.14);
+    border-color: rgba(163, 177, 138, 0.42);
+    color: #c7d7aa;
+  }
+
+  .footer-last-updated {
+    background: #ffffff;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    bottom: 0;
+    box-shadow: 0 -0.25rem 0.75rem rgba(0, 0, 0, 0.04);
+    color: rgba(0, 0, 0, 0.54);
+    font-size: 0.72rem;
+    left: 0;
+    margin: 0;
+    padding: 0.42rem 1rem;
+    position: fixed;
+    right: 0;
+    text-align: center;
+    z-index: 1020;
+  }
+
+  .dark .footer-last-updated {
+    background: #23252f;
+    border-top-color: rgba(255, 255, 255, 0.14);
+    box-shadow: 0 -0.25rem 0.75rem rgba(0, 0, 0, 0.28);
+    color: rgba(255, 255, 255, 0.58);
+  }
+
+  body {
+    padding-bottom: 2rem;
+  }
+
+  .page-body .home-section {
+    padding: 3rem 0;
+  }
+
+  .page-body .home-section:first-of-type {
+    padding-top: 2rem;
+  }
+
   .home-section .homepage-scroll-panel {
     --homepage-scroll-bg: #ffffff;
   }
@@ -568,7 +636,29 @@
     margin-top: 0.15rem;
   }
 
+  @media (max-width: 991.98px) {
+    .page-body .home-section {
+      padding: 2.25rem 0;
+    }
+
+    .page-body .home-section:first-of-type {
+      padding-top: 1.5rem;
+    }
+
+    .page-body .section-heading {
+      margin-bottom: 0.75rem !important;
+    }
+  }
+
   @media (max-width: 575.98px) {
+    .page-body .home-section {
+      padding: 1.75rem 0;
+    }
+
+    .page-body .home-section:first-of-type {
+      padding-top: 1.25rem;
+    }
+
     .software-item {
       grid-template-columns: minmax(0, 1fr);
       row-gap: 0.35rem;

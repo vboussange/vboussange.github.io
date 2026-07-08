@@ -1,0 +1,36 @@
+{{- $item := . -}}
+{{- $label := "" -}}
+{{- $section := $item.Section | default $item.Type -}}
+
+{{- if eq $item.Type "publication" -}}
+  {{- $class := $item.Params.publication_class | default "" -}}
+  {{- if eq $class "peer-reviewed" -}}
+    {{- $label = "Peer-reviewed" -}}
+  {{- else if eq $class "preprints" -}}
+    {{- $label = "Preprint" -}}
+  {{- else if eq $class "conference-papers" -}}
+    {{- $label = "Conference paper" -}}
+  {{- else if eq $class "books" -}}
+    {{- $label = "Book/report" -}}
+  {{- else -}}
+    {{- $label = "Publication" -}}
+  {{- end -}}
+{{- else if eq $item.Type "software" -}}
+  {{- $label = $item.Params.software_class | default "Software" -}}
+{{- else if eq $item.Type "post" -}}
+  {{- $label = "Post" -}}
+{{- else if eq $item.Type "resource" -}}
+  {{- $label = "Resource" -}}
+{{- else if eq $item.Type "funding" -}}
+  {{- $label = "Funding" -}}
+{{- else if or (eq $section "studentprojects") (eq $item.Type "project") -}}
+  {{- $label = "Student project" -}}
+{{- else if or (eq $section "talk") (eq $section "talks") (eq $item.Type "event") -}}
+  {{- $label = "Talk" -}}
+{{- else -}}
+  {{- $label = $item.Type | humanize -}}
+{{- end -}}
+
+{{- with $label -}}
+  <span class="compact-type-badge">{{ . }}</span>
+{{- end -}}

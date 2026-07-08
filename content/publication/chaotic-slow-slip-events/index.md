@@ -17,7 +17,6 @@ summary: ""
 status_note: ""
 tags:
 - Scientific computing
-- Biomathematics
 featured: false
 url_pdf: "https://arxiv.org/abs/2411.01688"
 url_code: "https://github.com/vboussange/coupledOscillators"

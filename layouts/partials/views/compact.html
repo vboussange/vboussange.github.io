@@ -3,6 +3,10 @@
 {{/* Dynamic view adjusts to content type. */}}
 {{ $show_authors_only := false }}{{/* Show authors only or full metadata? */}}
 {{ $is_publication := eq $item.Type "publication" }}
+{{ $show_type_badge := true }}
+{{ if isset . "show_type_badge" }}
+  {{ $show_type_badge = .show_type_badge }}
+{{ end }}
 {{ $link := $item.RelPermalink }}
 {{ $target := "" }}
 {{ if $item.Params.external_link }}
@@ -34,11 +38,16 @@
 <div class="media stream-item view-compact">
   <div class="media-body">
 
-    <div class="section-subheading article-title mb-0 mt-0">
-      {{ if $is_publication }}
-        <span class="publication-title">{{ $item.Title }}</span>
-      {{ else }}
-        <a href="{{$link}}" {{ $target | safeHTMLAttr }}>{{ $item.Title }}</a>
+    <div class="compact-title-row">
+      <div class="section-subheading article-title mb-0 mt-0">
+        {{ if $is_publication }}
+          <span class="publication-title">{{ $item.Title }}</span>
+        {{ else }}
+          <a href="{{$link}}" {{ $target | safeHTMLAttr }}>{{ $item.Title }}</a>
+        {{ end }}
+      </div>
+      {{ if $show_type_badge }}
+        {{ partial "compact_type_badge.html" $item }}
       {{ end }}
     </div>
 
@@ -57,6 +66,18 @@
     {{ end }}
 
     <div class="stream-meta article-metadata">
+      {{ if $is_publication }}
+      <div class="compact-publication-meta">
+        <span>{{ $item.Date.Format "2006" }}</span>
+        {{ if $item.Params.publication }}
+          <span class="middot-divider"></span>
+          <span>{{ $item.Params.publication | markdownify }}</span>
+        {{ else if $item.Params.publication_short }}
+          <span class="middot-divider"></span>
+          <span>{{ $item.Params.publication_short | markdownify }}</span>
+        {{ end }}
+      </div>
+      {{ end }}
 
       {{ if eq $item.Type "event" }}
       <div>

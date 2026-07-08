@@ -1,6 +1,19 @@
 <footer class="site-footer">
   {{ partial "hooks/footer" . }}
 
+  {{ $dateFormat := site.Params.locale.date_format | default "Jan 2, 2006" }}
+  {{ $commitDate := "" }}
+  {{ with getenv "HUGO_COMMIT_DATE" }}
+    {{ $commitDate = dateFormat $dateFormat . }}
+  {{ else }}
+    {{ with site.Params.footer.commit_date }}
+      {{ $commitDate = dateFormat $dateFormat . }}
+    {{ end }}
+  {{ end }}
+  {{ with $commitDate }}
+    <p class="footer-last-updated">Last updated: {{ . }}</p>
+  {{ end }}
+
   {{ with site.Params.footer.text }}
     <p class="footer-text">{{ . | markdownify | emojify }}</p>
   {{ end }}

@@ -9,7 +9,6 @@ title: "A primer on mechanistic inference with differentiable process-based mode
 tags:
   - Scientific machine learning
   - Bayesian inference
-  - Biomathematics
   - Julia
 authors:
   - admin

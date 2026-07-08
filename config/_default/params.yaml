@@ -40,6 +40,7 @@ header:
     highlight_active_link: true
 
 footer:
+  commit_date: '2026-07-07T15:40:08+02:00'
   copyright:
     notice: ''
     license:
