@@ -30,7 +30,6 @@ summary: ""
 status_note: "Accepted in Ecology."
 tags:
 - Biodiversity science
-- Geospatial deep learning
 - Spatial optimization
 featured: false
 url_pdf: "https://doi.org/10.1101/2025.06.10.657334"

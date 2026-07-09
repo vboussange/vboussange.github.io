@@ -21,7 +21,6 @@ summary: ""
 tags:
 - Biodiversity science
 - Weather and climate science
-- Partial differential equations
 featured: false
 url_pdf: "https://doi.org/10.1098/rstb.2023.0017"
 url_code: ""
