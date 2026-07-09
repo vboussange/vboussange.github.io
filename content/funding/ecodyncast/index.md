@@ -8,7 +8,6 @@ funder: SNSF Spark
 tags:
 - Graph neural networks
 - Spatio-temporal forecasting
-- Scientific machine learning
 external_link: https://data.snf.ch/grants/grant/237783
 related_resources: []
 date: "2025-01-01T00:00:00Z"

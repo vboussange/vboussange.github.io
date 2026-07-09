@@ -26,4 +26,4 @@ jobs:
         TARGET_REPO: vboussange/vboussange.github.io
         TARGET_BRANCH: gh-pages
         TOKEN: ${{ secrets.TOKEN_HUGO_DEPLOY }}
-        CNAME: vboussange.github.io
+        CNAME: victorboussange.com

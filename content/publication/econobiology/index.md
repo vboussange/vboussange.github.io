@@ -37,7 +37,7 @@ abstract: The processes of ecological interactions, dispersal and mutations shap
 # Summary. An optional shortened abstract.
 summary: Analogies between organisational routines and genes, firms and phenotypes, economic activities and biological populations, and between the processes acting upon these entities, have been used to advance our qualitative understanding of mechanisms driving economic change. Yet, it remained unclear whether biological concepts can be used to quantitatively describe long-term economic change. Here, we use an inverse modelling framework together with economic time-series data to test whether eco-evolutionary processes can explain the collective dynamics of national economic activities. Comparing the support of different biologically inspired dynamic community models against a null model, we find evidence for positive interactions between economic activities and their spatial dispersal.
 
-tags: [Scientific machine learning, Biomathematics, Bayesian inference, Economic complexity, Spatio-temporal forecasting]
+tags: [Biomathematics, Bayesian inference, Economic complexity, Spatio-temporal forecasting]
 
 # Display this page in the Featured widget?
 featured: true

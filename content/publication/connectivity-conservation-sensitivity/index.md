@@ -22,7 +22,6 @@ status_note: "Revision requested from Landscape Ecology."
 tags:
 - Biodiversity science
 - Spatial optimization
-- Scientific computing
 featured: false
 url_pdf: "https://doi.org/10.64898/2026.01.05.697654"
 url_code: ""

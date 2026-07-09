@@ -7,6 +7,7 @@ tags:
 - Scientific software
 - Partial differential equations
 - JAX
+- Scientific machine learning
 external_link: https://github.com/vboussange/amjax
 github_user: vboussange
 github_repo: amjax

@@ -3,7 +3,6 @@ title: MuScaRi
 summary: Multi-scale model for spatial biodiversity estimation.
 software_class: ML model
 tags:
-- Scientific machine learning
 - Geospatial deep learning
 - Biodiversity science
 - Python

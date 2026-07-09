@@ -17,7 +17,6 @@ status_note: "Accepted at the International Association for Pattern Recognition 
 tags:
 - Biodiversity science
 - Geospatial deep learning
-- Scientific machine learning
 featured: false
 url_pdf: ""
 url_code: ""

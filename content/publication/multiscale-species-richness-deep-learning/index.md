@@ -32,7 +32,6 @@ status_note: "Revision requested from Nature Communications."
 tags:
 - Biodiversity science
 - Geospatial deep learning
-- Scientific machine learning
 featured: false
 url_pdf: "https://arxiv.org/abs/2507.06358"
 url_code: ""
