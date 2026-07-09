@@ -86,12 +86,6 @@ highlight_name: true
 ---
 
 
-Hey there, I'm Victor, an applied ML researcher working in AI for science, currently at the [Information and Network Dynamics Lab](https://indy.epfl.ch) at the [Ecole Polytechnique Fédérale de Lausanne (EPFL)](https://www.epfl.ch).
-<br>
-
-I develop methods for high-dimensional, spatio-temporal forecasting and inverse problems that remain robust under low signal-to-noise ratios and distribution shift, with application in biology and environmental sciences. I am particularly interested in hybrid modelling, integrating domain priors with deep learning and GPU-accelerated differentiable computing. I ship open-source libraries implementing these methods, lead funded research projects, and mentor students in applied machine learning and scientific computing.
-<br>
-
-Outside of work, I am a part-time alpinist, passionate about mountain adventures and writing. I also enjoy sailing and surfing occasionally. You can check out **my alpine CV** [here]({{<ref "/pages/alpine_cv.md" >}}).
+I am an applied ML researcher working in the space of AI for (environmental) science. I develop spatio-temporal models and methods to simulate and forecast complex dynamical systems, with a current focus on biodiversity dynamics ([because society needs nature to thrive!](https://www.weforum.org/publications/nature-risk-rising-why-the-crisis-engulfing-nature-matters-for-business-and-the-economy/)). Addressing methodological challenges in environmental science often yields innovative solutions with broader scientific applications: my work has produced original contributions in fields ranging from pure machine learning research to oncology. I am particularly interested in hybrid (physics-informed) modelling, integrating domain priors with deep learning and GPU-accelerated differentiable computing. I lead [funded research projects](/#funding), ship [open-source libraries](/#software) implementing these methods, and [mentor students](/#teaching) in applied machine learning and scientific computing. Outside of work, I enjoy being in the mountains or at sea for some adventure. Alpinism and sailing are very similar to science: success lies in making good decisions under uncertainty.
 
 <!-- {{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/demo_resume.pdf" "newtab" >}}resumé{{< /staticref >}}. -->

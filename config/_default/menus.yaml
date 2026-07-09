@@ -5,29 +5,32 @@
 
 main:
   - name: 🏠 Home
-    url: '#about'
+    url: '/'
     weight: 10
   - name: 🔬 Student projects
-    url: 'studentprojects'
+    url: '/studentprojects/'
     weight: 20
   - name: 🧑🏽‍💻 Software
-    url: '#software'
+    url: '/software/'
     weight: 30
   - name: 📄 Publications
-    url: '#publications'
+    url: '/publication/'
     weight: 40
   - name: 🎤 Talks
-    url: 'talks/'
+    url: '/talks/'
     weight: 45
   - name: 🎓 Teaching
-    url: '#teaching'
+    url: '/teaching/'
     weight: 50
   - name: 📚 Resources
-    url: 'resources/'
+    url: '/resources/'
     weight: 55
   - name: 💬 Posts
-    url: '#posts'
+    url: '/post/'
     weight: 60
+  - name: 🏔️ Alpine CV
+    url: '/pages/alpine_cv/'
+    weight: 65
   # - name: Contact
   #   url: '#contact'
   #   weight: 60
