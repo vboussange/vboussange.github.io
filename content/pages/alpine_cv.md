@@ -1,5 +1,5 @@
 ---
-title: "Alpine CV"
+title: "Adventures"
 subtitle: ""
 summary: "A personal log of selected mountain, sailing, and self-powered trips."
 authors: []

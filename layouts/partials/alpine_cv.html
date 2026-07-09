@@ -7,12 +7,12 @@
 <div class="alpine-cv">
   <div class="alpine-cv-intro">
     {{ with $data.intro }}<p>{{ . | markdownify | emojify }}</p>{{ end }}
-    <div class="alpine-cv-stats" aria-label="Alpine CV summary">
+    <div class="alpine-cv-stats" aria-label="Adventures summary">
       <span>{{ $total }} entries</span>
     </div>
   </div>
 
-  <nav class="alpine-cv-nav" aria-label="Alpine CV sections">
+  <nav class="alpine-cv-nav" aria-label="Adventures sections">
     {{ range $data.categories }}
       {{ $slug := .slug | default (.title | urlize) }}
       <a href="#{{ $slug }}">{{ .title | markdownify | emojify }}</a>

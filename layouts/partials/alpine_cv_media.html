@@ -2,7 +2,7 @@
 {{- if eq $media.type "youtube" -}}
   {{- with $media.id -}}
     <div class="alpine-cv-media alpine-cv-media-youtube">
-      <iframe src="https://www.youtube.com/embed/{{ . }}" title="{{ $media.title | default "Alpine CV video" }}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/{{ . }}" title="{{ $media.title | default "Adventures video" }}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </div>
   {{- else -}}
     {{- with $media.url -}}

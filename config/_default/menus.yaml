@@ -28,7 +28,7 @@ main:
   - name: 💬 Posts
     url: '/post/'
     weight: 60
-  - name: 🏔️ Alpine CV
+  - name: 🏔️ Adventures
     url: '/pages/alpine_cv/'
     weight: 65
   # - name: Contact

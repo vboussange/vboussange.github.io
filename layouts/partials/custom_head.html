@@ -6,11 +6,15 @@
     --vb-accent: #3A5A40;
     --vb-accent-hover: #263B2A;
     --vb-accent-focus: rgba(58, 90, 64, 0.24);
+    --vb-link-underline: rgba(58, 90, 64, 0.46);
+    --vb-link-underline-hover: rgba(38, 59, 42, 0.78);
     --vb-scroll-border: rgba(0, 0, 0, 0.1);
     --vb-scroll-shadow: rgba(0, 0, 0, 0.14);
   }
 
   .dark {
+    --vb-link-underline: rgba(199, 215, 170, 0.56);
+    --vb-link-underline-hover: rgba(199, 215, 170, 0.9);
     --vb-scroll-border: rgba(255, 255, 255, 0.14);
     --vb-scroll-shadow: rgba(0, 0, 0, 0.34);
   }
@@ -36,6 +40,43 @@
   .article-title a:hover,
   .summary-link:hover {
     color: var(--vb-accent-hover);
+  }
+
+  .article-style a:not(.btn):not(.badge):not(.topic-link),
+  .pub-list-item a:not(.btn):not(.badge),
+  .software-copy a:not(.topic-link),
+  .funding-copy a:not(.topic-link),
+  .resource-item a:not(.topic-link),
+  a.student-name,
+  .student-details a,
+  .summary-link,
+  .homepage-section-see-all a,
+  .alpine-cv-entry a,
+  .alpine-cv-note a,
+  .alpine-cv-media-link a {
+    text-decoration-color: var(--vb-link-underline);
+    text-decoration-line: underline;
+    text-decoration-skip-ink: auto;
+    text-decoration-style: dashed;
+    text-decoration-thickness: 0.075em;
+    text-underline-offset: 0.16em;
+    transition: color 160ms ease, text-decoration-color 160ms ease, text-underline-offset 160ms ease;
+  }
+
+  .article-style a:not(.btn):not(.badge):not(.topic-link):hover,
+  .pub-list-item a:not(.btn):not(.badge):hover,
+  .software-copy a:not(.topic-link):hover,
+  .funding-copy a:not(.topic-link):hover,
+  .resource-item a:not(.topic-link):hover,
+  a.student-name:hover,
+  .student-details a:hover,
+  .summary-link:hover,
+  .homepage-section-see-all a:hover,
+  .alpine-cv-entry a:hover,
+  .alpine-cv-note a:hover,
+  .alpine-cv-media-link a:hover {
+    text-decoration-color: var(--vb-link-underline-hover);
+    text-underline-offset: 0.22em;
   }
 
   .btn-primary,
