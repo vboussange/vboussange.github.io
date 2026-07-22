@@ -374,15 +374,33 @@
   }
 
   .alpine-cv-badges > .alpine-cv-rating {
+    --alpine-rating-empty: rgba(183, 121, 31, 0.28);
+    --alpine-rating-filled: #b7791f;
     background: transparent;
     border-color: transparent;
-    color: #b7791f;
+    color: var(--alpine-rating-filled);
     gap: 0.04rem;
     padding: 0.08rem 0;
   }
 
   .alpine-cv-rating .is-empty {
-    color: rgba(183, 121, 31, 0.28);
+    color: var(--alpine-rating-empty);
+  }
+
+  .alpine-cv-rating .is-half {
+    color: var(--alpine-rating-empty);
+    display: inline-block;
+    position: relative;
+  }
+
+  .alpine-cv-rating .is-half::before {
+    color: var(--alpine-rating-filled);
+    content: "★";
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    width: 50%;
   }
 
   .alpine-cv-location,
@@ -455,13 +473,11 @@
   }
 
   .dark .alpine-cv-badges > .alpine-cv-rating {
+    --alpine-rating-empty: rgba(230, 179, 95, 0.28);
+    --alpine-rating-filled: #e6b35f;
     background: transparent;
     border-color: transparent;
-    color: #e6b35f;
-  }
-
-  .dark .alpine-cv-rating .is-empty {
-    color: rgba(230, 179, 95, 0.28);
+    color: var(--alpine-rating-filled);
   }
 
   .dark .alpine-cv-nav a,

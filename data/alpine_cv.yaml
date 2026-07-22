@@ -4,6 +4,66 @@ categories:
     title: Sailing
     summary: "Longer trips and sea miles."
     entries:
+      - title: "Peaux de foc au cercle polaire"
+        year: 2025
+        date: "March 2025"
+        location: "Northern Norway"
+        mode: "⛵ + 🎿"
+        children:
+          - title: "Lausanne – Bodø"
+            mode: "🚆"
+          - title: "Bodø – Kjerringøy"
+            mode: "⛵"
+          - title: "Kjerringøy – Nordskot"
+            mode: "⛵"
+          - title: "Nordskot – Trollfjorden"
+            mode: "⛵"
+          - title: "Trolltinden, N couloir to approximately 700m"
+            grade: "4.1"
+            mode: "🎿"
+            rating: 3
+          - title: "Trollfjorden – Blokken"
+            mode: "⛵"
+          - title: "Fuglen 874m, Camarandine Couloir"
+            url: "https://www.camptocamp.org/routes/1781824/fr/fuglen-couloir-de-la-camarandine"
+            grade: "4.1"
+            mode: "🎿"
+            rating: 2
+          - title: "Blokken – Ersfjord"
+            mode: "⛵"
+          - title: "Luttinden 759m, SE couloir"
+            url: "https://skitour.fr/topos/8919"
+            grade: "4.1"
+            mode: "🎿"
+            rating: 3.5
+          - title: "Luttinden 759m, S/SW couloir"
+            grade: "3.3"
+            mode: "🎿"
+            rating: 3
+          - title: "Fuglan 720m, NW couloir"
+            grade: "4.1"
+            mode: "🎿"
+            rating: 2
+          - title: "Latræva couloir"
+            grade: "4.3"
+            mode: "🎿"
+            rating: 5
+          - title: "Ersfjord – Mefjordbotn"
+            mode: "⛵"
+          - title: "The King's Gate couloir"
+            grade: "5.2"
+            mode: "🎿"
+            rating: 5
+          - title: "Store Hesten 874m"
+            grade: "F"
+            mode: "🎿"
+            rating: 3
+          - title: "Mefjordbotn – Reine"
+            mode: "⛵"
+          - title: "Munken 797m, first SW couloir"
+            grade: "4.3"
+            mode: "🎿"
+            rating: 5
       - title: "Tippelei voyage to Norway"
         year: 2023
         date: "May-September 2023"
@@ -18,6 +78,140 @@ categories:
     title: "Ski mountaineering / Backcountry skiing"
     summary: "Ski tours, couloirs, traverses, and bicycle-ski trips."
     entries:
+      - title: "Kungsleden ski-and-pulka traverse"
+        year: 2026
+        date: "March–April 2026"
+        location: "Swedish Lapland, Sweden"
+        mode: "🎿 + 🛷"
+        children:
+          - title: "Lausanne – Kiruna"
+            mode: "🚆"
+          - title: "Kiruna – Nikkaluokta"
+            mode: "🚌"
+          - title: "Nikkaluokta – STF Kebnekaise Fjällstation"
+            url: "https://www.swedishtouristassociation.com/trails/nikkaluokta-kebnekaise/"
+            mode: "🎿 + 🛷"
+          - title: "Duolbagorni 1672m"
+            grade: "4.1"
+            mode: "🎿"
+          - title: "STF Kebnekaise Fjällstation – Rabots glaciär base camp"
+            mode: "🎿 + 🛷"
+          - title: "Kebnekaise, W-face couloir to point 1800m"
+            grade: "4.2"
+            mode: "🎿"
+            rating: 5
+          - title: "Rabots glaciär – STF Nallo Fjällstuga"
+            mode: "🎿 + 🛷"
+          - title: "Šielmmáčohkka 2004m, SW couloir"
+            grade: "4.2"
+            mode: "🎿"
+            rating: 2
+          - title: "STF Nallo Fjällstuga – STF Alesjaure Fjällstuga"
+            mode: "🎿 + 🛷"
+          - title: "STF Alesjaure Fjällstuga – Áhpparjávri base camp"
+            mode: "🎿 + 🛷"
+          - title: "Unnamed SW couloir north of Áhpparjávri"
+            grade: "4.2"
+            mode: "🎿"
+            rating: 3.5
+          - title: "Áhpparjávri – STF Abiskojaure Fjällstuga"
+            mode: "🎿 + 🛷"
+          - title: "STF Abiskojaure Fjällstuga – Abisko"
+            mode: "🎿 + 🛷"
+          - title: "Abisko – Lausanne"
+            mode: "🚆"
+      - title: "Segla 639m"
+        grade: "F"
+        location: "Senja, Troms, Norway"
+        date: "March 2026"
+        year: 2026
+        rating: 2
+      - title: "Krokelvtinden 756m"
+        grade: "PD"
+        location: "Senja, Troms, Norway"
+        date: "March 2026"
+        year: 2026
+        rating: 2
+      - title: "Breikågen 683m"
+        url: "https://ut.no/turforslag/115575"
+        grade: "PD"
+        location: "Kågen, Troms, Norway"
+        date: "March 2026"
+        year: 2026
+        rating: 3.5
+      - title: "Ololsatinden 954m"
+        grade: "PD"
+        location: "Lyngen, Troms, Norway"
+        date: "March 2026"
+        year: 2026
+        rating: 2
+      - title: "Fontanabran 2702m, NE couloir"
+        url: "https://skitour.fr/topos/5092"
+        grade: "4.2"
+        location: "Valais, Switzerland"
+        date: "February 2026"
+        year: 2026
+        rating: 3
+      - title: "Tête de Ferret 2713m"
+        url: "https://www.sac-cas.ch/en/huts-and-tours/sac-route-portal/tete-de-ferret-612/ski-touring/from-la-fouly-via-lechere-2115/"
+        grade: "PD+"
+        location: "Val Ferret, Switzerland; Aosta Valley, Italy"
+        date: "January 2026"
+        year: 2026
+        rating: 2
+      - title: "Mont Rogneux 3083m"
+        url: "https://www.sac-cas.ch/en/huts-and-tours/sac-route-portal/mont-rogneux-vs-1206/ski-touring/"
+        grade: "PD+"
+        location: "Valais, Switzerland"
+        date: "January 2026"
+        year: 2026
+        rating: 2.5
+      - title: "Seeberghore 2071m and Stuedelistand 2028m"
+        url: "https://www.sac-cas.ch/en/huts-and-tours/sac-route-portal/seeberghore-6261/ski-touring/"
+        location: "Bernese Alps, Switzerland"
+        date: "January 2026"
+        year: 2026
+        rating: 3
+      - title: "Mont de l'Étoile 3369m"
+        url: "https://www.sac-cas.ch/en/huts-and-tours/sac-route-portal/mont-de-letoile-9083/ski-touring/"
+        grade: "AD-"
+        location: "Valais, Switzerland"
+        date: "December 2025"
+        year: 2025
+        rating: 2
+      - title: "Lys Derrey (Mys Derrey) 1863m"
+        url: "https://www.sac-cas.ch/en/huts-and-tours/sac-route-portal/lys-derrey-mys-derrey-8102/ski-touring/"
+        grade: "PD-"
+        location: "Fribourg Prealps, Switzerland"
+        date: "December 2025"
+        year: 2025
+        rating: 1
+      - title: "Pointe des Martinets 2653m, from Morcles"
+        grade: "D"
+        location: "Vaud Alps, Switzerland"
+        date: "November 2025"
+        year: 2025
+        rating: 2.5
+      - title: "Galenstock 3586m, from Realp"
+        url: "https://www.sac-cas.ch/de/huetten-und-touren/sac-tourenportal/galenstock-727/skitouren/von-realp-oder-der-albert-heim-huette-5116/"
+        grade: "AD"
+        location: "Uri Alps, Switzerland"
+        date: "May 2025"
+        year: 2025
+        rating: 2
+      - title: "Grosses Fiescherhorn 4049m and Hinteres Fiescherhorn 4025m"
+        grade: "AD-"
+        location: "Bernese Alps, Switzerland"
+        date: "April 2025"
+        year: 2025
+        rating: 3
+        note: "Descent via the W face of Hinteres Fiescherhorn."
+      - title: "Passo San Giacomo, quota 2501 (2498m), from All'Acqua"
+        url: "https://www.sac-cas.ch/en/huts-and-tours/sac-route-portal/passo-san-giacomo-quota-2501-9520/ski-touring/"
+        location: "Val Bedretto, Ticino, Switzerland"
+        date: "February 2025"
+        year: 2025
+        rating: 2
       - title: "Couloir du Pertuis par le Morétan"
         url: "https://skitour.fr/topos/284"
         grade: "4.1 E2"
@@ -73,28 +267,35 @@ categories:
         location: "Norway"
         date: "March 2024"
         year: 2024
-        mode: "bike + ski"
+        mode: "🚲 + 🎿"
         children:
           - title: "Tromsø - Laksvelbukt"
-            mode: "bike"
+            mode: "🚲"
           - title: "Tomas couloir"
+            mode: "🎿"
           - title: "Banana couloir of Holmbukktinden"
             grade: "45°"
+            mode: "🎿"
           - title: "Laksvelbukt - Nordkjosbotn"
-            mode: "bike"
+            mode: "🚲"
           - title: "Lille Russetinden 1527m"
+            mode: "🎿"
           - title: "Nordkjosbotn - Lyngseidet"
-            mode: "bike"
+            mode: "🚲"
           - title: "New Year's Rocket"
             url: "https://fatmap.com/routeid/2931511/new-year's-rocket"
             grade: "50°"
+            mode: "🎿"
           - title: "Istinden 1490m"
+            mode: "🎿"
           - title: "Store Kjsotinden 1488m"
+            mode: "🎿"
           - title: "Lyngseidet - Skervøy"
-            mode: "bike"
+            mode: "🚲"
           - title: "Store Kågtinden 1228m"
+            mode: "🎿"
           - title: "Skervøy - Nordkapp"
-            mode: "bike"
+            mode: "🚲"
         media:
           - type: youtube
             id: "8rTHwFRBPxc"
@@ -104,7 +305,7 @@ categories:
         location: "Switzerland"
         date: "February 2024"
         year: 2024
-        mode: "bike + ski"
+        mode: "🚲 + 🎿"
         media:
           - type: youtube
             id: "u942702uVGo"
@@ -177,26 +378,31 @@ categories:
         duration: "11 days"
         date: "March 2023"
         year: 2023
-        mode: "bike + ski"
+        mode: "🚲 + 🎿"
         children:
           - title: "Innsbruck - Valles"
             location: "Austria / Italy"
-            mode: "bike"
+            mode: "🚲"
           - title: "Wilde Kreuzspitze 3132m"
             url: "https://www.suedtirolerland.it/de/freizeit-aktiv/wintersport/skitouren/auf-die-wilde-kreuzspitze/"
+            mode: "🎿"
           - title: "Valles - Lungiarù"
-            mode: "bike"
+            mode: "🚲"
           - title: "Ciampani 2668m, via Canale Norte"
+            mode: "🎿"
           - title: "Lungiarù - Misurina"
-            mode: "bike"
+            mode: "🚲"
           - title: "Canale Norte Staunies"
             url: "https://fatmap.com/routeid/19588/staunies-north-couloir"
+            mode: "🎿"
           - title: "Forcella degli Angeli - Forcella del Diavolo"
+            mode: "🎿"
           - title: "Misurina - Mareson Pecol"
-            mode: "bike"
+            mode: "🚲"
           - title: "Mt Pelmo 3168m"
+            mode: "🎿"
           - title: "Mareson Pecol - Venezia"
-            mode: "bike"
+            mode: "🚲"
         media:
           - type: youtube
             id: "5PEl9Ajqwwo"
@@ -233,13 +439,16 @@ categories:
         role: "group leader"
         date: "February 2022"
         year: 2022
+        mode: "🎿"
         media:
           - type: youtube
             id: "CfwHbL9e0kQ"
             title: "Haute Route Chamonix - Zermatt"
         children:
           - title: "Grande Tête de By 3588m"
+            mode: "🎿"
           - title: "Tête de Valpelline 3798m"
+            mode: "🎿"
       - title: "Redertenstock 2214m"
         grade: "PD"
         year: 2022
@@ -293,6 +502,7 @@ categories:
         duration: "7 days"
         role: "group leader"
         year: 2021
+        mode: "🎿"
         media:
           - type: youtube
             id: "-AAVG_6zCjQ"
@@ -300,11 +510,15 @@ categories:
         children:
           - title: "Piz d'Agnel 3204m"
             grade: "PD"
+            mode: "🎿"
           - title: "Pischahorn 2980m"
             grade: "PD"
+            mode: "🎿"
           - title: "Egghorn 3127m"
+            mode: "🎿"
           - title: "Buinlücke"
             grade: "45°"
+            mode: "🎿"
       - title: "Piz Fess 2881m"
         grade: "PD"
         role: "group leader"
@@ -352,6 +566,64 @@ categories:
     title: Alpinism
     summary: "Classic alpine routes and high peaks."
     entries:
+      - title: "Arête de l'Argentine 2421m, E–W traverse"
+        url: "https://www.camptocamp.org/routes/55475/fr/arete-de-l-argentine-traversee-e-w"
+        grade: "AD+"
+        location: "Vaud, Switzerland"
+        date: "July 2026"
+        year: 2026
+        rating: 3.5
+      - title: "Pointe des Ecandies 2873m, S–N traverse"
+        url: "https://www.camptocamp.org/routes/54398/fr/pointe-des-ecandies-traversee-s-n"
+        grade: "D"
+        location: "Valais, Switzerland"
+        date: "July 2026"
+        year: 2026
+        rating: 4.5
+      - title: "Ober Gabelhorn 4064m, Arbengrat–Wellenkuppe traverse"
+        url: "https://www.camptocamp.org/routes/176643/fr/ober-gabelhorn-traversee-arbengrat-wellenkuppe"
+        grade: "AD+"
+        location: "Valais, Switzerland"
+        date: "August 2025"
+        year: 2025
+        rating: 4
+      - title: "Zinalrothorn 4221m, SE/SW ridge via the Gabel"
+        url: "https://www.camptocamp.org/routes/55292/fr/zinalrothorn-arete-se-puis-sw-par-la-gabel-voie-normale-depuis-la-rothornhutte"
+        grade: "AD"
+        location: "Valais, Switzerland"
+        date: "August 2025"
+        year: 2025
+        rating: 4
+        note: "Descent via the [N ridge](https://www.camptocamp.org/routes/54494/fr/zinalrothorn-arete-n)."
+      - title: "Dent de Broc 1828m, W ridge"
+        url: "https://www.camptocamp.org/routes/464311/fr/dent-de-broc-arete-w"
+        grade: "AD+ 5c"
+        location: "Fribourg, Switzerland"
+        date: "August 2025"
+        year: 2025
+        rating: 2
+      - title: "Pollux 4090m, SW ridge"
+        url: "https://www.camptocamp.org/routes/54631/fr/pollux-arete-sw"
+        grade: "PD+"
+        location: "Valais, Switzerland; Aosta Valley, Italy"
+        date: "August 2025"
+        year: 2025
+        rating: 2
+      - title: "Piz Bernina 4047m, Biancograt"
+        url: "https://www.camptocamp.org/routes/53776/fr/piz-bernina-biancograt"
+        grade: "AD"
+        location: "Graubünden, Switzerland; Lombardy, Italy"
+        date: "July 2025"
+        year: 2025
+        rating: 4
+        note: "Continued with the [W–E traverse of Piz Palü](https://www.camptocamp.org/routes/287858/fr/piz-palu-traversee-w-e-depuis-marco-rosa)."
+      - title: "Lagginhorn 4010m, S ridge"
+        url: "https://www.sac-cas.ch/en/huts-and-tours/sac-route-portal/lagginhorn-1000/alpinism/from-hohsaas-weissmies-hut-s-n-traverse-from-lagginjoch-1232/"
+        grade: "AD"
+        location: "Valais, Switzerland"
+        date: "June 2025"
+        year: 2025
+        rating: 3.5
       - title: "Aiguilles Dorées 3519m, E-W traverse"
         grade: "D-"
         year: 2024
@@ -423,6 +695,30 @@ categories:
     title: "Alpine climbing"
     summary: "Multi-pitch routes, ridges, and alpine rock climbs."
     entries:
+      - title: "Räterichsbodensee, Seeplatten – Tim und Struppi"
+        url: "https://www.allgaeu-plaisir.de/wp-content/uploads/2016/11/Topo-9.pdf"
+        grade: "5c"
+        pitches: "10 pitches"
+        location: "Grimsel, Switzerland"
+        date: "September 2025"
+        year: 2025
+      - title: "Balmflue Südgrat"
+        grade: "5c max"
+        pitches: "19 pitches"
+        distance: "450m"
+        location: "Solothurn, Switzerland"
+        date: "June 2025"
+        year: 2025
+        rating: 2
+      - title: "Galtigentürme traverse (Pilatus)"
+        url: "https://www.engelbergmountainguide.ch/sommer/klettern/einfache-klettertouren/galtigentuerme-pilatus-2/"
+        grade: "4b max"
+        pitches: "11 pitches"
+        distance: "300m"
+        location: "Pilatus, Switzerland"
+        date: "June 2025"
+        year: 2025
+        rating: 2.5
       - title: "Schmalstöckli 2012m, Bird on a wire"
         grade: "6b"
         pitches: "5 pitches"

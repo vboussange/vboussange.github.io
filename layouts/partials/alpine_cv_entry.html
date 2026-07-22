@@ -13,20 +13,27 @@
         {{- end -}}
       </div>
       <div class="alpine-cv-badges">
-        {{ with $entry.year }}<span>{{ . }}</span>{{ end }}
-        {{ with $entry.date }}<span>{{ . }}</span>{{ end }}
+        {{ with $entry.mode }}<span>{{ . }}</span>{{ end }}
+        {{ with $entry.date }}
+          <span>{{ . }}</span>
+        {{ else }}
+          {{ with $entry.year }}<span>{{ . }}</span>{{ end }}
+        {{ end }}
         {{ with $entry.grade }}<span>{{ . }}</span>{{ end }}
         {{ with $entry.pitches }}<span>{{ . }}</span>{{ end }}
         {{ with $entry.duration }}<span>{{ . }}</span>{{ end }}
         {{ with $entry.distance }}<span>{{ . }}</span>{{ end }}
-        {{ with $entry.mode }}<span>{{ . }}</span>{{ end }}
         {{ with $entry.role }}<span>{{ . }}</span>{{ end }}
         {{ with $entry.rating }}
-          {{- $rating := math.Min 5 (math.Max 0 (int .)) -}}
-          {{- if gt $rating 0 -}}
-            <span class="alpine-cv-rating" aria-label="{{ $rating }} out of 5 stars">
-              {{- range seq 1 5 -}}
-                <span class="{{ if le . $rating }}is-filled{{ else }}is-empty{{ end }}" aria-hidden="true">★</span>
+          {{- $rating := math.Min 5 (math.Max 0 (float .)) -}}
+          {{- $halfSteps := int (math.Round (mul $rating 2)) -}}
+          {{- $displayRating := div $halfSteps 2.0 -}}
+          {{- if gt $halfSteps 0 -}}
+            <span class="alpine-cv-rating" role="img" aria-label="{{ $displayRating }} out of 5 stars">
+              {{- range $star := seq 1 5 -}}
+                {{- $fullThreshold := mul $star 2 -}}
+                {{- $halfThreshold := sub $fullThreshold 1 -}}
+                <span class="{{ if ge $halfSteps $fullThreshold }}is-filled{{ else if ge $halfSteps $halfThreshold }}is-half{{ else }}is-empty{{ end }}" aria-hidden="true">★</span>
               {{- end -}}
             </span>
           {{- end -}}
