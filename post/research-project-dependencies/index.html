@@ -1,0 +1,2692 @@
+<!DOCTYPE html><html lang="en-us" >
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.5.0 for Hugo" />
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Victor Boussange" />
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Your future self and others should be able to recreate the minimal environment to run the scripts in your research project. This is best achieved using **package managers**  and **virtual environments**." />
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://victorboussange.com/post/research-project-dependencies/" />
+
+  
+  
+  
+    <meta name="theme-color" content="#3A5A40" />
+  
+
+  
+  
+    
+    <script src="/js/mathjax-config.js"></script>
+  
+
+  
+
+  <link rel="stylesheet" href="/css/vendor-bundle.min.c7b8d9abd591ba2253ea42747e3ac3f5.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha512-W0xM4mr6dEP9nREo7Z9z+9X70wytKvMGeDsj7ps2+xg5QPrEBXC8tAW1IFnzjR6eoJ90JmCnFzerQJTLzIEHjA==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/github.min.css" crossorigin="anonymous" title="hl-light" media="print" onload="this.media='all'">
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" media="print" onload="this.media='all'" disabled>
+        
+      
+    
+
+    
+    
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.3d95c7012d7168b52379790218977386.css" />
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+    <link rel="manifest" href="/manifest.webmanifest" />
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_hua3c898eed18b98379688891d5011a1d0_203625_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hua3c898eed18b98379688891d5011a1d0_203625_180x180_fill_lanczos_center_3.png" />
+
+  <link rel="canonical" href="https://victorboussange.com/post/research-project-dependencies/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary" />
+  
+    <meta property="twitter:site" content="@wowchemy" />
+    <meta property="twitter:creator" content="@wowchemy" />
+  
+  <meta property="og:site_name" content="Victor Boussange" />
+  <meta property="og:url" content="https://victorboussange.com/post/research-project-dependencies/" />
+  <meta property="og:title" content="A multi-language overview on how to handle dependencies within a research project | Victor Boussange" />
+  <meta property="og:description" content="Your future self and others should be able to recreate the minimal environment to run the scripts in your research project. This is best achieved using **package managers**  and **virtual environments**." /><meta property="og:image" content="https://victorboussange.com/media/icon_hua3c898eed18b98379688891d5011a1d0_203625_512x512_fill_lanczos_center_3.png" />
+    <meta property="twitter:image" content="https://victorboussange.com/media/icon_hua3c898eed18b98379688891d5011a1d0_203625_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2024-06-11T00:00:00&#43;00:00"
+      />
+    
+    <meta property="article:modified_time" content="2024-06-25T00:00:00&#43;00:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://victorboussange.com/post/research-project-dependencies/"
+  },
+  "headline": "A multi-language overview on how to handle dependencies within a research project",
+  
+  "datePublished": "2024-06-11T00:00:00Z",
+  "dateModified": "2024-06-25T00:00:00Z",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Victor Boussange"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Victor Boussange",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://victorboussange.com/media/icon_hua3c898eed18b98379688891d5011a1d0_203625_192x192_fill_lanczos_center_3.png"
+    }
+  },
+  "description": "Your future self and others should be able to recreate the minimal environment to run the scripts in your research project. This is best achieved using **package managers**  and **virtual environments**."
+}
+</script>
+
+  
+
+  
+
+  
+
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+<style>
+  :root {
+    --primary: #3A5A40;
+    --vb-accent: #3A5A40;
+    --vb-accent-hover: #263B2A;
+    --vb-accent-focus: rgba(58, 90, 64, 0.24);
+    --vb-link-underline: rgba(58, 90, 64, 0.46);
+    --vb-link-underline-hover: rgba(38, 59, 42, 0.78);
+    --vb-scroll-border: rgba(0, 0, 0, 0.1);
+    --vb-scroll-shadow: rgba(0, 0, 0, 0.14);
+  }
+
+  .dark {
+    --vb-link-underline: rgba(199, 215, 170, 0.56);
+    --vb-link-underline-hover: rgba(199, 215, 170, 0.9);
+    --vb-scroll-border: rgba(255, 255, 255, 0.14);
+    --vb-scroll-shadow: rgba(0, 0, 0, 0.34);
+  }
+
+  a,
+  .article-title a,
+  .summary-link,
+  .navbar-light .navbar-nav .nav-link.active,
+  #navbar-main .main-menu-item ul li .nav-link.active,
+  .docs-sidebar .docs-toc-item.active a,
+  .docs-sidebar .docs-toc-item a.active,
+  #TableOfContents li a.active,
+  .featurette-icon {
+    color: var(--vb-accent);
+  }
+
+  #navbar-main .main-menu-item .nav-item .nav-link.active,
+  #navbar-main .dropdown-item-active {
+    color: var(--vb-accent) !important;
+  }
+
+  a:hover,
+  .article-title a:hover,
+  .summary-link:hover {
+    color: var(--vb-accent-hover);
+  }
+
+  .article-style a:not(.btn):not(.badge):not(.topic-link),
+  .pub-list-item a:not(.btn):not(.badge),
+  .software-copy a:not(.topic-link),
+  .funding-copy a:not(.topic-link),
+  .resource-item a:not(.topic-link),
+  a.student-name,
+  .student-details a,
+  .summary-link,
+  .homepage-section-see-all a,
+  .alpine-cv-entry a,
+  .alpine-cv-note a,
+  .alpine-cv-media-link a {
+    text-decoration-color: var(--vb-link-underline);
+    text-decoration-line: underline;
+    text-decoration-skip-ink: auto;
+    text-decoration-style: dashed;
+    text-decoration-thickness: 0.075em;
+    text-underline-offset: 0.16em;
+    transition: color 160ms ease, text-decoration-color 160ms ease, text-underline-offset 160ms ease;
+  }
+
+  .article-style a:not(.btn):not(.badge):not(.topic-link):hover,
+  .pub-list-item a:not(.btn):not(.badge):hover,
+  .software-copy a:not(.topic-link):hover,
+  .funding-copy a:not(.topic-link):hover,
+  .resource-item a:not(.topic-link):hover,
+  a.student-name:hover,
+  .student-details a:hover,
+  .summary-link:hover,
+  .homepage-section-see-all a:hover,
+  .alpine-cv-entry a:hover,
+  .alpine-cv-note a:hover,
+  .alpine-cv-media-link a:hover {
+    text-decoration-color: var(--vb-link-underline-hover);
+    text-underline-offset: 0.22em;
+  }
+
+  .btn-primary,
+  .btn.btn-primary.active,
+  .page-item.active .page-link {
+    background-color: var(--vb-accent);
+    border-color: var(--vb-accent);
+  }
+
+  .btn-primary:hover,
+  .btn.btn-primary.active:hover,
+  .page-item.active .page-link:hover {
+    background-color: var(--vb-accent-hover);
+    border-color: var(--vb-accent-hover);
+  }
+
+  .btn-outline-primary {
+    border-color: var(--vb-accent);
+    color: var(--vb-accent);
+  }
+
+  .btn-outline-primary:hover {
+    background-color: var(--vb-accent);
+    border-color: var(--vb-accent);
+    color: #ffffff;
+  }
+
+  .form-control:focus {
+    border-color: var(--vb-accent);
+    box-shadow: 0 0 0 0.2rem var(--vb-accent-focus);
+  }
+
+  .topic-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin: 0.35rem 0 0;
+  }
+
+  .topic-link {
+    border: 1px solid rgba(0, 0, 0, 0.14);
+    border-radius: 0.25rem;
+    color: inherit;
+    display: inline-flex;
+    font-size: 0.78rem;
+    line-height: 1.2;
+    padding: 0.18rem 0.45rem;
+    text-decoration: none;
+  }
+
+  .topic-link:hover {
+    border-color: rgba(0, 0, 0, 0.32);
+    text-decoration: none;
+  }
+
+  .about-profile-sections {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1.2rem;
+  }
+
+  .about-profile-section .section-subheading {
+    margin-bottom: 0.35rem;
+  }
+
+  .about-profile-interests .topic-links {
+    gap: 0.28rem;
+    margin-top: 0;
+  }
+
+  .topic-links-hint {
+    color: rgba(0, 0, 0, 0.58);
+    font-size: 0.82rem;
+    line-height: 1.3;
+    margin-bottom: 0.35rem;
+    margin-top: -0.1rem;
+  }
+
+  .about-profile-interests .topic-link {
+    font-size: 0.74rem;
+    line-height: 1.15;
+    padding: 0.14rem 0.38rem;
+  }
+
+  .about-profile-education .ul-edu {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    column-gap: 1.25rem;
+    row-gap: 0.5rem;
+  }
+
+  .about-profile-education .ul-edu li {
+    margin-bottom: 0;
+  }
+
+  .about-profile-education .ul-edu .description p {
+    margin-bottom: 0.1rem;
+  }
+
+  .topic-links-small {
+    gap: 0.25rem;
+    margin-top: 0.5rem;
+  }
+
+  .topic-link-small {
+    font-size: 0.7rem;
+    padding: 0.12rem 0.35rem;
+  }
+
+  .compact-title-row {
+    align-items: baseline;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.5rem;
+  }
+
+  .compact-type-badge {
+    background: rgba(58, 90, 64, 0.08);
+    border: 1px solid rgba(58, 90, 64, 0.32);
+    border-radius: 0.25rem;
+    color: var(--vb-accent);
+    display: inline-flex;
+    flex: 0 0 auto;
+    font-size: 0.68rem;
+    font-weight: 700;
+    line-height: 1.2;
+    padding: 0.12rem 0.34rem;
+  }
+
+  .compact-publication-meta {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.2rem;
+  }
+
+  .dark .compact-type-badge {
+    background: rgba(163, 177, 138, 0.14);
+    border-color: rgba(163, 177, 138, 0.42);
+    color: #c7d7aa;
+  }
+
+  .footer-last-updated {
+    background: #ffffff;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    bottom: 0;
+    box-shadow: 0 -0.25rem 0.75rem rgba(0, 0, 0, 0.04);
+    color: rgba(0, 0, 0, 0.54);
+    font-size: 0.72rem;
+    left: 0;
+    margin: 0;
+    padding: 0.42rem 1rem;
+    position: fixed;
+    right: 0;
+    text-align: center;
+    z-index: 1020;
+  }
+
+  .dark .footer-last-updated {
+    background: #23252f;
+    border-top-color: rgba(255, 255, 255, 0.14);
+    box-shadow: 0 -0.25rem 0.75rem rgba(0, 0, 0, 0.28);
+    color: rgba(255, 255, 255, 0.58);
+  }
+
+  body {
+    padding-bottom: 2rem;
+  }
+
+  .alpine-cv {
+    display: grid;
+    gap: 1.6rem;
+  }
+
+  .alpine-cv-intro {
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+  }
+
+  .alpine-cv-intro p {
+    color: rgba(0, 0, 0, 0.68);
+    margin: 0;
+  }
+
+  .alpine-cv-stats {
+    color: rgba(0, 0, 0, 0.58);
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 0.78rem;
+    gap: 0.35rem;
+    justify-content: flex-end;
+  }
+
+  .alpine-cv-stats span,
+  .alpine-cv-count,
+  .alpine-cv-badges > span {
+    background: rgba(58, 90, 64, 0.08);
+    border: 1px solid rgba(58, 90, 64, 0.26);
+    border-radius: 0.25rem;
+    color: var(--vb-accent);
+    display: inline-flex;
+    font-size: 0.72rem;
+    font-weight: 700;
+    line-height: 1.2;
+    padding: 0.14rem 0.4rem;
+  }
+
+  .alpine-cv-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+
+  .alpine-cv-nav a {
+    border: 1px solid rgba(0, 0, 0, 0.14);
+    border-radius: 0.25rem;
+    color: inherit;
+    font-size: 0.78rem;
+    line-height: 1.2;
+    padding: 0.22rem 0.48rem;
+    text-decoration: none;
+  }
+
+  .alpine-cv-nav a:hover {
+    border-color: rgba(58, 90, 64, 0.38);
+    color: var(--vb-accent-hover);
+    text-decoration: none;
+  }
+
+  .alpine-cv-sections,
+  .alpine-cv-entry-list,
+  .alpine-cv-media-list {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .alpine-cv-section {
+    scroll-margin-top: 5rem;
+  }
+
+  .alpine-cv-section-header {
+    align-items: start;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.55rem;
+  }
+
+  .alpine-cv-section-header h2 {
+    margin-bottom: 0.2rem;
+  }
+
+  .alpine-cv-section-header p {
+    color: rgba(0, 0, 0, 0.58);
+    font-size: 0.9rem;
+    margin: 0;
+  }
+
+  .alpine-cv-entry {
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 0.35rem;
+    display: grid;
+    gap: 0.7rem;
+    padding: 0.75rem 0.85rem;
+  }
+
+  .alpine-cv-entry-child {
+    background: rgba(0, 0, 0, 0.018);
+    padding: 0.55rem 0.65rem;
+  }
+
+  .alpine-cv-entry-header {
+    align-items: baseline;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem 0.65rem;
+    justify-content: space-between;
+  }
+
+  .alpine-cv-entry-title {
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  .alpine-cv-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+  }
+
+  .alpine-cv-badges > .alpine-cv-rating {
+    --alpine-rating-empty: rgba(183, 121, 31, 0.28);
+    --alpine-rating-filled: #b7791f;
+    background: transparent;
+    border-color: transparent;
+    color: var(--alpine-rating-filled);
+    gap: 0.04rem;
+    padding: 0.08rem 0;
+  }
+
+  .alpine-cv-rating .is-empty {
+    color: var(--alpine-rating-empty);
+  }
+
+  .alpine-cv-rating .is-half {
+    color: var(--alpine-rating-empty);
+    display: inline-block;
+    position: relative;
+  }
+
+  .alpine-cv-rating .is-half::before {
+    color: var(--alpine-rating-filled);
+    content: "★";
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    width: 50%;
+  }
+
+  .alpine-cv-location,
+  .alpine-cv-note {
+    color: rgba(0, 0, 0, 0.62);
+    font-size: 0.86rem;
+    line-height: 1.35;
+    margin: 0;
+  }
+
+  .alpine-cv-children {
+    border-left: 2px solid rgba(58, 90, 64, 0.24);
+    display: grid;
+    gap: 0.5rem;
+    margin-left: 0.2rem;
+    padding-left: 0.75rem;
+  }
+
+  .alpine-cv-media {
+    max-width: 42rem;
+    width: 100%;
+  }
+
+  .alpine-cv-media-youtube {
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+  }
+
+  .alpine-cv-media-youtube iframe {
+    border: 0;
+    height: 100%;
+    width: 100%;
+  }
+
+  .alpine-cv-media-instagram {
+    display: grid;
+    gap: 0.4rem;
+  }
+
+  .alpine-cv-media-instagram blockquote {
+    margin: 0 !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .alpine-cv-media-link {
+    font-size: 0.82rem;
+    margin: 0;
+  }
+
+  .dark .alpine-cv-intro,
+  .dark .alpine-cv-section-header {
+    border-bottom-color: rgba(255, 255, 255, 0.14);
+  }
+
+  .dark .alpine-cv-intro p,
+  .dark .alpine-cv-section-header p,
+  .dark .alpine-cv-location,
+  .dark .alpine-cv-note,
+  .dark .alpine-cv-stats {
+    color: rgba(255, 255, 255, 0.66);
+  }
+
+  .dark .alpine-cv-stats span,
+  .dark .alpine-cv-count,
+  .dark .alpine-cv-badges > span {
+    background: rgba(163, 177, 138, 0.14);
+    border-color: rgba(163, 177, 138, 0.42);
+    color: #c7d7aa;
+  }
+
+  .dark .alpine-cv-badges > .alpine-cv-rating {
+    --alpine-rating-empty: rgba(230, 179, 95, 0.28);
+    --alpine-rating-filled: #e6b35f;
+    background: transparent;
+    border-color: transparent;
+    color: var(--alpine-rating-filled);
+  }
+
+  .dark .alpine-cv-nav a,
+  .dark .alpine-cv-entry {
+    border-color: rgba(255, 255, 255, 0.14);
+  }
+
+  .dark .alpine-cv-entry-child {
+    background: rgba(255, 255, 255, 0.035);
+  }
+
+  .dark .alpine-cv-children {
+    border-left-color: rgba(163, 177, 138, 0.34);
+  }
+
+  .page-body .home-section {
+    padding: 3rem 0;
+  }
+
+  .page-body .home-section:first-of-type {
+    padding-top: 2rem;
+  }
+
+  .home-section .homepage-scroll-panel {
+    --homepage-scroll-bg: #ffffff;
+  }
+
+  .home-section:nth-of-type(even) .homepage-scroll-panel {
+    --homepage-scroll-bg: #f7f7f7;
+  }
+
+  .dark .home-section .homepage-scroll-panel {
+    --homepage-scroll-bg: #272935;
+  }
+
+  .dark .home-section:nth-of-type(even) .homepage-scroll-panel {
+    --homepage-scroll-bg: #23252f;
+  }
+
+  .homepage-scroll-panel {
+    --homepage-scroll-max: 32rem;
+    background: var(--homepage-scroll-bg);
+    border-bottom: 1px solid var(--vb-scroll-border);
+    border-top: 1px solid var(--vb-scroll-border);
+    box-shadow: inset 0 12px 12px -16px var(--vb-scroll-shadow),
+      inset 0 -12px 12px -16px var(--vb-scroll-shadow);
+    max-height: var(--homepage-scroll-max);
+    overflow-y: auto;
+    overscroll-behavior-y: auto;
+    padding: 0.35rem 0.8rem 0.35rem 0;
+    scrollbar-color: rgba(58, 90, 64, 0.58) transparent;
+    scrollbar-gutter: stable;
+    scrollbar-width: thin;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .homepage-scroll-panel:focus-visible {
+    outline: 2px solid var(--vb-accent);
+    outline-offset: 0.25rem;
+  }
+
+  .homepage-scroll-panel::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+
+  .homepage-scroll-panel::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .homepage-scroll-panel::-webkit-scrollbar-thumb {
+    background: rgba(58, 90, 64, 0.5);
+    border-radius: 999px;
+  }
+
+  .homepage-scroll-panel::-webkit-scrollbar-thumb:hover {
+    background: rgba(58, 90, 64, 0.72);
+  }
+
+  .homepage-scroll-panel-publications {
+    --homepage-scroll-max: clamp(28rem, 64vh, 42rem);
+  }
+
+  .homepage-scroll-panel-posts {
+    --homepage-scroll-max: clamp(20rem, 48vh, 32rem);
+  }
+
+  .homepage-scroll-panel-software {
+    --homepage-scroll-max: clamp(18rem, 42vh, 28rem);
+  }
+
+  .homepage-scroll-panel-students {
+    --homepage-scroll-max: clamp(22rem, 52vh, 34rem);
+  }
+
+  .homepage-scroll-panel-funding {
+    --homepage-scroll-max: clamp(16rem, 38vh, 24rem);
+  }
+
+  .homepage-scroll-panel .media.stream-item:not(:last-child) {
+    border-bottom: 1px solid var(--vb-scroll-border);
+    margin-bottom: 1.15rem;
+    padding-bottom: 1.15rem;
+  }
+
+  .homepage-scroll-panel-publications .publication-group-title {
+    background: var(--homepage-scroll-bg);
+    padding: 0.35rem 0 0.25rem;
+    position: sticky;
+    top: -0.35rem;
+    z-index: 2;
+  }
+
+  .homepage-scroll-panel-software .software-class-title {
+    background: var(--homepage-scroll-bg);
+    padding: 0.35rem 0 0.25rem;
+    position: sticky;
+    top: -0.35rem;
+    z-index: 2;
+  }
+
+  .software-list,
+  .post-list,
+  .publication-grouped-list,
+  .funding-list,
+  .resource-list {
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  .software-class {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .post-list {
+    gap: 1.15rem;
+  }
+
+  .homepage-section-see-all {
+    margin-top: 1rem;
+  }
+
+  .software-class-title,
+  .publication-group-title {
+    margin-bottom: 0.15rem;
+  }
+
+  .publication-note {
+    color: rgba(0, 0, 0, 0.62);
+    font-size: 0.86rem;
+    font-style: italic;
+    margin-top: 0.15rem;
+  }
+
+  .funding-item {
+    align-items: center;
+    column-gap: 1rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) max-content;
+  }
+
+  .funding-copy {
+    min-width: 0;
+  }
+
+  .funding-copy h4 {
+    margin-bottom: 0.2rem;
+  }
+
+  .funding-copy p {
+    margin-bottom: 0.45rem;
+  }
+
+  .funding-meta,
+  .funding-secondary-links {
+    align-items: center;
+    color: rgba(0, 0, 0, 0.62);
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 0.85rem;
+    gap: 0.25rem;
+  }
+
+  .funding-secondary-links {
+    margin-bottom: 0.4rem;
+  }
+
+  .funding-amount {
+    border: 1px solid rgba(0, 0, 0, 0.16);
+    border-radius: 0.25rem;
+    justify-self: end;
+    min-width: 5.25rem;
+    padding: 0.35rem 0.55rem;
+    text-align: center;
+  }
+
+  .funding-amount-value,
+  .funding-amount-currency {
+    display: block;
+    line-height: 1.1;
+  }
+
+  .funding-amount-value {
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  .funding-amount-currency {
+    color: rgba(0, 0, 0, 0.62);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    margin-top: 0.12rem;
+    text-transform: uppercase;
+  }
+
+  .software-item {
+    align-items: center;
+    column-gap: 1rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) max-content;
+  }
+
+  .software-copy {
+    min-width: 0;
+  }
+
+  .software-copy h4 {
+    margin-bottom: 0.2rem;
+  }
+
+  .software-item-header {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 0.75rem;
+  }
+
+  .software-item-header h4,
+  .resource-item h4 {
+    margin-bottom: 0;
+  }
+
+  .software-item p,
+  .resource-item p {
+    margin-bottom: 0.45rem;
+  }
+
+  .software-actions {
+    align-items: center;
+    display: inline-flex;
+    gap: 0.35rem;
+    justify-self: end;
+    min-height: 24px;
+  }
+
+  .software-actions > span:empty {
+    display: none;
+  }
+
+  .github-star-fallback {
+    align-items: stretch;
+    background: #0d1117;
+    border: 1px solid #57606a;
+    border-radius: 0.25rem;
+    color: #f0f6fc;
+    display: inline-flex;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 22px;
+    overflow: hidden;
+    text-decoration: none;
+  }
+
+  .github-star-fallback:hover {
+    background: #161b22;
+    color: #ffffff;
+    text-decoration: none;
+  }
+
+  .github-star-fallback[hidden] {
+    display: none;
+  }
+
+  .github-star-label,
+  .github-star-count {
+    align-items: center;
+    display: inline-flex;
+    min-height: 24px;
+    padding: 0 0.5rem;
+  }
+
+  .github-star-label {
+    gap: 0.3rem;
+  }
+
+  .github-star-count {
+    background: #0b0f14;
+    border-left: 1px solid #30363d;
+  }
+
+  .software-secondary-links {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 0.85rem;
+    gap: 0.25rem;
+  }
+
+  .student-list {
+    display: grid;
+    gap: 1.2rem;
+  }
+
+  .student-group {
+    display: grid;
+    gap: 0.65rem;
+  }
+
+  .student-group-title {
+    margin-bottom: 0;
+  }
+
+  .student-items {
+    display: grid;
+    gap: 0.7rem;
+  }
+
+  .student-item {
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 0.35rem;
+    display: grid;
+    grid-template-columns: minmax(11.5rem, 14rem) minmax(0, 1fr);
+    overflow: hidden;
+  }
+
+  .student-person {
+    align-items: center;
+    background: rgba(0, 0, 0, 0.025);
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    display: grid;
+    gap: 0.65rem;
+    grid-template-columns: 2.65rem minmax(0, 1fr);
+    min-width: 0;
+    padding: 0.7rem 0.75rem;
+  }
+
+  .student-portrait {
+    display: block;
+    height: 2.65rem;
+    position: relative;
+    width: 2.65rem;
+  }
+
+  .student-photo,
+  .student-avatar {
+    align-items: center;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 50%;
+    display: inline-flex;
+    height: 100%;
+    inset: 0;
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+  }
+
+  .student-photo {
+    background: #ffffff;
+    display: block;
+    object-fit: cover;
+    z-index: 2;
+  }
+
+  .student-photo[hidden] {
+    display: none;
+  }
+
+  .student-avatar {
+    background: #f3f5f7;
+    color: rgba(0, 0, 0, 0.7);
+    font-size: 0.8rem;
+    font-weight: 700;
+    justify-content: center;
+    opacity: 1;
+    transition: opacity 120ms ease;
+    z-index: 1;
+  }
+
+  .student-portrait.has-student-photo .student-avatar {
+    opacity: 0;
+  }
+
+  .student-identity {
+    min-width: 0;
+  }
+
+  .student-name,
+  .student-role {
+    display: block;
+    line-height: 1.22;
+  }
+
+  .student-name {
+    color: inherit;
+    font-weight: 700;
+  }
+
+  .student-name:hover {
+    color: inherit;
+  }
+
+  .student-role,
+  .student-meta,
+  .student-note {
+    color: rgba(0, 0, 0, 0.62);
+    font-size: 0.82rem;
+  }
+
+  .student-role {
+    margin-top: 0.16rem;
+  }
+
+  .student-details {
+    min-width: 0;
+    padding: 0.68rem 0.85rem;
+  }
+
+  .student-project {
+    font-weight: 600;
+    line-height: 1.35;
+    margin-bottom: 0.2rem;
+  }
+
+  .student-meta,
+  .student-note {
+    line-height: 1.35;
+    margin-bottom: 0;
+  }
+
+  .student-note {
+    font-style: italic;
+    margin-top: 0.15rem;
+  }
+
+  @media (max-width: 991.98px) {
+    .page-body .home-section {
+      padding: 2.25rem 0;
+    }
+
+    .page-body .home-section:first-of-type {
+      padding-top: 1.5rem;
+    }
+
+    .page-body .section-heading {
+      margin-bottom: 0.75rem !important;
+    }
+  }
+
+  @media (max-width: 575.98px) {
+    .page-body .home-section {
+      padding: 1.75rem 0;
+    }
+
+    .page-body .home-section:first-of-type {
+      padding-top: 1.25rem;
+    }
+
+    .alpine-cv-intro,
+    .alpine-cv-section-header,
+    .alpine-cv-entry-header {
+      align-items: start;
+      flex-direction: column;
+    }
+
+    .alpine-cv-stats {
+      justify-content: flex-start;
+    }
+
+    .alpine-cv-entry {
+      padding: 0.68rem 0.72rem;
+    }
+
+    .alpine-cv-media {
+      max-width: 100%;
+    }
+
+    .software-item {
+      grid-template-columns: minmax(0, 1fr);
+      row-gap: 0.35rem;
+    }
+
+    .software-actions {
+      justify-self: start;
+    }
+
+    .funding-item {
+      grid-template-columns: minmax(0, 1fr);
+      row-gap: 0.45rem;
+    }
+
+    .funding-amount {
+      justify-self: start;
+    }
+
+    .student-item {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .student-person {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      border-right: 0;
+    }
+  }
+</style>
+
+<script>
+  (function () {
+    function formatStars(count) {
+      if (!Number.isFinite(count)) return "";
+      if (count >= 1000) {
+        var value = count / 1000;
+        var digits = value < 10 ? 1 : 0;
+        return value.toFixed(digits).replace(/\.0$/, "") + "k";
+      }
+      return String(count);
+    }
+
+    function validCountText(value) {
+      if (Number.isFinite(value)) return formatStars(value);
+      if (typeof value !== "string") return "";
+      var text = value.trim();
+      return /^\d+(?:\.\d+)?[km]?$/i.test(text.replace(/,/g, "")) ? text : "";
+    }
+
+    function loadFallbackCounts() {
+      if (typeof window.fetch !== "function") return;
+      var cache = {};
+      document.querySelectorAll("[data-github-star-fallback]").forEach(function (button) {
+        var user = button.getAttribute("data-github-user");
+        var repo = button.getAttribute("data-github-repo");
+        var counter = button.querySelector("[data-github-star-count]");
+        if (!user || !repo || !counter) return;
+        var key = user + "/" + repo;
+        cache[key] = cache[key] || fetch("https://img.shields.io/github/stars/" + encodeURIComponent(user) + "/" + encodeURIComponent(repo) + ".json")
+          .then(function (response) { return response.ok ? response.json() : null; })
+          .then(function (data) { return validCountText(data && (data.value || data.message)); })
+          .then(function (count) {
+            if (count) return count;
+            return fetch("https://api.github.com/repos/" + encodeURIComponent(user) + "/" + encodeURIComponent(repo))
+              .then(function (response) { return response.ok ? response.json() : null; })
+              .then(function (data) { return validCountText(data && data.stargazers_count); });
+          })
+          .catch(function () { return null; });
+        cache[key].then(function (countText) {
+          if (countText) {
+            counter.textContent = countText;
+          }
+        });
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      loadFallbackCounts();
+    });
+  })();
+</script>
+
+<script type="text/x-mathjax-config"> MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "all" } } }); </script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+processEscapes: true
+}
+});
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+
+  <title>A multi-language overview on how to handle dependencies within a research project | Victor Boussange</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="90db55917be15cc7a3af16361adf8664" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.e22a2a20712150175b9cd707be2d0584.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="header--fixed">
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+    <div class="container-xl">
+
+      
+      <div class="d-none d-lg-inline-flex">
+        <a class="navbar-brand" href="/">Victor Boussange</a>
+      </div>
+      
+
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+      
+      <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+        <a class="navbar-brand" href="/">Victor Boussange</a>
+      </div>
+      
+
+      
+      
+      <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+        
+        <ul class="navbar-nav d-md-inline-flex">
+          
+
+          
+
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/"><span>🏠 Home</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/studentprojects/"><span>🔬 Student projects</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/software/"><span>🧑🏽‍💻 Software</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/publication/"><span>📄 Publications</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/talks/"><span>🎤 Talks</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/teaching/"><span>🎓 Teaching</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/resources/"><span>📚 Resources</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link  active" href="/post/"><span>💬 Posts</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/pages/alpine_cv/"><span>🏔️ Adventures</span></a>
+          </li>
+
+          
+          
+
+        
+
+          
+        </ul>
+      </div>
+
+      <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+        
+        
+          
+        
+
+        
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+        
+        
+        <li class="nav-item dropdown theme-dropdown">
+          <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item js-set-theme-light">
+              <span>Light</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-dark">
+              <span>Dark</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-auto">
+              <span>Automatic</span>
+            </a>
+          </div>
+        </li>
+        
+
+        
+        
+
+      </ul>
+
+    </div>
+  </nav>
+</header>
+
+
+  </div>
+
+  <div class="page-body">
+    
+    
+    
+
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>A multi-language overview on how to handle dependencies within a research project</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+  <span class="author-highlighted">
+      Victor Boussange</span>, <span >
+      Mauro Werder</span>
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+          Last updated on
+      
+    
+    Jun 25, 2024
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    11 min read
+  </span>
+  
+
+  
+  
+  
+  
+
+  
+  
+
+</div>
+
+    
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <p>Your future self and others should be able to recreate the minimal environment to run the scripts in your research project. This is best achieved using <strong>package managers</strong>  and <strong>virtual environments</strong>.</p>
+<p>This post is part of a series of posts on best practices for managing research project code. Much of this material was developed in collaboration with <a href="https://github.com/mauro3" target="_blank" rel="noopener">Mauro Werder</a> as part of the <a href="https://github.com/mauro3/CORDS/tree/master" target="_blank" rel="noopener">Course On Reproducible Research, Data Pipelines, and Scientific Computing (CORDS)</a>. If you have experiences to share or spot any errors, please reach out!</p>
+<h2 id="content">Content</h2>
+<ul>
+<li><a href="#content">Content</a></li>
+<li><a href="#some-definitions">Some definitions</a>
+<ul>
+<li><a href="#what-is-a-dependency">What is a dependency?</a></li>
+<li><a href="#what-is-a-package-manager">What is a package manager?</a></li>
+<li><a href="#what-is-a-virtual-environment">What is a virtual environment?</a></li>
+</ul>
+</li>
+<li><a href="#package-managers">Package managers</a>
+<ul>
+<li><a href="#multilanguage-overview">Multilanguage overview</a>
+<ul>
+<li><a href="#conda"><code>conda</code></a></li>
+<li><a href="#renv"><code>renv</code></a></li>
+<li><a href="#pkg"><code>Pkg</code></a></li>
+</ul>
+</li>
+<li><a href="#environment-files">Environment files</a>
+<ul>
+<li><a href="#julia">Julia</a></li>
+<li><a href="#python">Python</a></li>
+<li><a href="#r">R</a></li>
+</ul>
+</li>
+<li><a href="#working-with-interactive-environments">Working with interactive environments</a></li>
+<li><a href="#caveats-of-virtual-environments">Caveats of virtual environments</a></li>
+</ul>
+</li>
+<li><a href="#advanced-topic-package-development">Advanced topic: package development</a></li>
+<li><a href="#take-home-messages">Take-home messages</a></li>
+</ul>
+<h2 id="some-definitions">Some definitions</h2>
+<h3 id="what-is-a-dependency">What is a dependency?</h3>
+<p>A <strong>dependency</strong>  is an external package that a project requires to run.</p>
+<h3 id="what-is-a-package-manager">What is a package manager?</h3>
+<p>A <strong>package manager</strong> like <code>conda</code>, <code>Pkg</code> or <code>renv</code> <strong>automates the process of installing, upgrading, configuring, and managing dependencies</strong>. It usually relies on a <strong>package repository</strong>, which is a central location that stores in one place the source code of packages or where to find it.</p>
+<h3 id="what-is-a-virtual-environment">What is a virtual environment?</h3>
+<p>A <strong>virtual environment</strong> is an isolated environment where you can install and manage dependencies separately from the system-wide installation. This isolation ensures that different projects can have different dependencies and versions of packages without causing conflicts. Why use a virtual environment?</p>
+<ul>
+<li>For yourself, to best deal with multiple projects and to prevent your code from breaking down overtime.
+<ul>
+<li>Without specifying a virtual environment, you install packages in your base environment, which is shared across all your projects.</li>
+<li>Imagine you are working with Project A and Project B, which both depend on Package1 (currently @v1.1).</li>
+<li>You leave aside Project A for a few months, and focus on Project B.</li>
+<li>A new feature in Package1 motivate you to upgrade to v1.2, which modifies the API or the behavior of one function used in both projects.</li>
+<li>You then want to come back to Project A, but now everything is broken! Because your code has been formatted to work with <a href="mailto:Package1@v1.1">Package1@v1.1</a>.</li>
+<li>Hence, you want to make sure to compartmentalize environments.</li>
+</ul>
+</li>
+<li>To share your environment with others individuals and machines.
+<ul>
+<li>A virtual environement tracks the minimum dependencies, which can easily be shared and installed on other machines (e.g., a HPC).</li>
+</ul>
+</li>
+</ul>
+<h2 id="package-managers">Package managers</h2>
+<h3 id="multilanguage-overview">Multilanguage overview</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Python</th>
+<th>R</th>
+<th>Julia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Package Manager</strong></td>
+<td><code>pip</code>, <code>conda</code> (see also <code>mamba</code>), <code>poetry</code></td>
+<td><code>install.packages()</code> (base R)</td>
+<td><code>Pkg</code></td>
+</tr>
+<tr>
+<td><strong>Package Repository</strong></td>
+<td>PyPI (Python Package Index), <code>conda-forge</code></td>
+<td>CRAN (Comprehensive R Archive Network)</td>
+<td>General registry</td>
+</tr>
+<tr>
+<td><strong>Distribution Format</strong></td>
+<td><code>.whl</code> (wheel, incl binaries) or <code>tar.gz</code> (source)</td>
+<td><code>.tar.gz</code> (source and/or binary)</td>
+<td><code>Pkg</code> will git clone from source, and download (binary) artifacts</td>
+</tr>
+<tr>
+<td><strong>Virtual Environment</strong></td>
+<td><code>venv</code>, <code>virtualenv</code>, <code>conda env</code></td>
+<td><code>renv</code></td>
+<td>Built-in in the <code>Pkg</code> module</td>
+</tr>
+<tr>
+<td><strong>Dependency Management</strong></td>
+<td><code>requirements.txt</code> or <code>Pipfile</code> (<code>pip</code>), or <code>environment.yml</code> (<code>conda env</code>) or <code>pyproject.toml</code> (<code>poetry</code>)</td>
+<td><code>DESCRIPTION</code>, <code>NAMESPACE</code></td>
+<td><code>Project.toml</code>, <code>Manifest.toml</code>, <code>Artifacts.toml</code></td>
+</tr>
+</tbody>
+</table>
+<p>This table is very much inspired by <a href="https://scientificcoder.com/comparing-package-management-in-python-r-julia-and-rust" target="_blank" rel="noopener">The Scientific Coder article</a> on package managers.</p>
+<p>Julia or R have built-in package managers which can be called within the REPL but Python package managers are called from outside the language.</p>
+<h4 id="conda"><code>conda</code></h4>
+<p><code>conda</code> is a very appropriate package manager for scientific projects in Python. Over its older concurrent <code>pip</code>, it can handle python versions and all sorts non-python dependencies artifacts. With two lines of code, it allows someone to quickly install the virtual environment, without any pre-requiste python installation.</p>
+<p>Here are some essential <code>conda</code> commands.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">conda create --name myenv <span class="c1"># creates new virtual environment</span>
+</span></span><span class="line"><span class="cl">conda activate myenv <span class="c1"># activate the environment</span>
+</span></span><span class="line"><span class="cl">conda install numpy -c conda-forge <span class="c1"># install a package</span>
+</span></span><span class="line"><span class="cl">conda deactivate
+</span></span></code></pre></div><p>Note that not using <code>-c conda-forge</code> will do just fine, but what is it? <code>conda-forge</code> is a community-driven <strong>channel</strong> (repository in the python jargon) that often has more up-to-date packages and a broader selection than the default Anaconda repository. You should use for several reasons, but mostly because <code>conda-forge</code> generally has the largest volume of packages and the most up-to-date versions</p>
+<p>Note that some packages are only available through PyPi (<code>pip</code>). But you are covered for that: You can install <code>pip</code> packages within a <code>conda env</code>, by first activating the <code>conda env</code> and then normally using <code>pip</code>. <code>pip</code> should be part of your dependencies though. Always try to install packages using <code>conda</code> first.</p>
+<p>We highly recommend using <a href="https://mamba.readthedocs.io/en/latest/" target="_blank" rel="noopener"><code>mamba</code></a> as a drop-in replacement for <code>conda</code>, for much faster use.</p>
+<p><strong>Some useful resources</strong></p>
+<ul>
+<li>
+<p><a href="https://earth-env-data-science.github.io/lectures/environment/python_environments.html" target="_blank" rel="noopener">A good resource for better understanding difference between <code>mamba</code> and <code>conda</code>, and their lightweights alternatives</a></p>
+</li>
+<li>
+<p><a href="https://carpentries-incubator.github.io/introduction-to-conda-for-data-scientists/04-sharing-environments/index.html" target="_blank" rel="noopener">Advanced tutorial on using <code>conda</code> environments for a scientific project</a></p>
+</li>
+<li>
+<p><a href="https://medium.com/i-want-to-be-the-very-best/installing-packages-from-github-with-conda-commands-ebf10de396f4" target="_blank" rel="noopener">Tutorial on how to install a package directly from github repository</a></p>
+</li>
+</ul>
+<h4 id="renv"><code>renv</code></h4>
+<p>Here are some basics on how to use <code>renv</code>, but see the <a href="https://rstudio.github.io/renv/articles/renv.html" target="_blank" rel="noopener">renv vignette</a> and documentation for more advanced usage.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># Initialize renv in your project</span>
+</span></span><span class="line"><span class="cl"><span class="n">renv</span><span class="o">::</span><span class="nf">init</span><span class="p">(</span><span class="n">project</span> <span class="o">=</span> <span class="s">&#34;path/to/environment&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Install a package and snapshot the environment</span>
+</span></span><span class="line"><span class="cl"><span class="nf">install.packages</span><span class="p">(</span><span class="s">&#34;dplyr&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">renv</span><span class="o">::</span><span class="nf">snapshot</span><span class="p">()</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># Load the renv environment for the project</span>
+</span></span><span class="line"><span class="cl"><span class="n">renv</span><span class="o">::</span><span class="nf">activate</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Restore the project&#39;s dependencies</span>
+</span></span><span class="line"><span class="cl"><span class="n">renv</span><span class="o">::</span><span class="nf">restore</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">renv</span><span class="o">::</span><span class="nf">update</span><span class="p">()</span>
+</span></span></code></pre></div><pre tabindex="0"><code>renv::history()
+renv::revert()
+</code></pre><h4 id="pkg"><code>Pkg</code></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-julia" data-lang="julia"><span class="line"><span class="cl"><span class="k">using</span> <span class="n">Pkg</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c"># Create a new project environment</span>
+</span></span><span class="line"><span class="cl"><span class="n">Pkg</span><span class="o">.</span><span class="n">activate</span><span class="p">(</span><span class="s">&#34;path/to/MyProject&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c"># Add packages to the project environment</span>
+</span></span><span class="line"><span class="cl"><span class="n">Pkg</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s">&#34;DataFrames&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><p>You can also use the Julia REPL by typing <code>]</code></p>
+<pre tabindex="0"><code>(@v1.10) pkg&gt; add DataFrames
+</code></pre><p>or string macros <code>pkg&quot;add DataFrames&quot;</code></p>
+<p>Not that in Julia, the global shared environment is inherited in custom environment. This can be useful!
+It is a good idea to install utility packages that you will use for development but that are not mandatory to run your code in the global environment. For instance, the macro <code>@btime</code> from <code>BenchmarkTools</code> is very handy to profile code. But you may not want to have <code>BenchmarkTools</code> in your dependencies. Just install it in base, and then you will be able to call
+<code>julia  using BenchmarkTools </code>
+within your custom environment.
+Other utility packages to consider having in your global environments are</p>
+<ul>
+<li><code>Test</code>,</li>
+<li><a href="https://github.com/JuliaTesting/TestEnv.jl" target="_blank" rel="noopener"><code>TestEnv</code></a>,</li>
+<li><code>Revise</code></li>
+<li><code>LocalRegistry</code></li>
+</ul>
+<h3 id="environment-files">Environment files</h3>
+<p>Environment files specify the exact versions of the dependencies in your virtual environment, and are used by package managers to instantiate the environment. They are usually <code>.txt</code>, <code>.toml</code> or <code>.yml</code> files.</p>
+<p>Always version control your environment files!</p>
+<h4 id="julia">Julia</h4>
+<p>In Julia, the environment is defined using two files: the <code>Project.toml</code> and <code>Manifest.toml</code>. The <code>Project.toml</code> file lists the direct dependencies, while the <code>Manifest.toml</code> file captures the full dependency graph, including all transitive dependencies. The <code>Manifest.toml</code> file may not be tracked in a project, and will be reconstructed if missing. It specifies the exact version of the environment. For reproducibility, you want to include <code>Manifest.toml</code> in your git repo.
+<code>Artifacts.toml</code> is used to handle non-Julia package dependencies.</p>
+<details>
+<summary>Project.toml example</summary>
+<pre><code>
+authors = ["Some One <someone@email.com>",
+           "Foo Bar <foo@bar.com>"]
+name = "MyEnv"
+uuid = "7876af07-990d-54b4-ab0e-23690620f79a" # mandatory for packages
+version = "1.2.5"
+<p>[deps]
+DataFrames = &ldquo;7876af07-990d-54b4-ab0e-23690620f79a&rdquo;
+Plots = &ldquo;8dfed614-e22c-5e08-85e1-65c5234f0b40&rdquo;</p>
+<p>[compat]
+CUDA = &ldquo;4.4, 5&rdquo;
+julia = &ldquo;1.10&rdquo;
+</pre></code></p>
+</details>
+<p>When you are located within the project root folder containing the <code>.toml</code> file, start julia with</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ julia --project<span class="o">=</span>.
+</span></span></code></pre></div><p>This will load the environment. If it is the first time that you use it, you need to instantiate it with</p>
+<pre tabindex="0"><code class="language-julia-repl" data-lang="julia-repl">(Example) pkg&gt; instantiate
+</code></pre><p><strong>Some useful resources</strong></p>
+<ul>
+<li><a href="https://pkgdocs.julialang.org/v1/toml-files/" target="_blank" rel="noopener">see here for more info on Julia <code>.toml</code> files here</a></li>
+</ul>
+<h4 id="python">Python</h4>
+<p><code>conda env</code> reads <code>.yml</code>, which can take any names. <code>.yml</code> files are not created automatically! Create <code>environment.yml</code> with</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">conda env <span class="nb">export</span> --name machine-learning-env --from-history --file environment.yml
+</span></span></code></pre></div><p>This creates an <code>environment.yml</code> file</p>
+<details>
+<summary>environment.yml example</summary>
+<pre><code>
+name: machine-learning-env
+<p>channels:</p>
+<ul>
+<li>pytorch</li>
+<li>conda-forge</li>
+</ul>
+<p>dependencies:</p>
+<ul>
+<li>pytorch=1.1
+</pre></code></li>
+</ul>
+</details>
+<p>Not using <code>--from-history</code> will result in listing <strong>all</strong> dependencies, those installed explicitly AND implicitly. This may be a bit messier.</p>
+<p>To specify <code>pip</code> packages, just insert in the <code>.toml</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="w">  </span>- <span class="l">pip=19.1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">pip</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">kaggle==1.5</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">yellowbrick==0.9</span><span class="w">
+</span></span></span></code></pre></div><p>Note the double ‘==’ instead of ‘=’ for the pip installation and that you should include pip itself as a dependency and then a subsection denoting those packages to be installed via pip. Also, note that <code>--from-history</code> won&rsquo;t catch the pip dependencies. So the best way to proceed is to specify the dependencies by hand.</p>
+<p><strong>Installing from <code>environment.yml</code></strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mamba env create --prefix ./.env --file environment.yml
+</span></span></code></pre></div><p><strong>Some additional resources</strong></p>
+<ul>
+<li><a href="https://note.nkmk.me/en/python-pip-install-requirements/" target="_blank" rel="noopener">Good resource on managing packages with pip</a></li>
+</ul>
+<h4 id="r">R</h4>
+<p>Environments with <code>renv</code> are specified in a <code>renv.lock</code> and <code>DESCRIPTION</code> files. It is a JSON file that has two main components: R and Packages. The R component specifies the R version used and the list of repositories where packages were installed. The Packages component includes a record for each package used in the project, with all necessary details for reinstalling that exact version. These details are derived from the installed package’s <code>DESCRIPTION</code> file and cover installations from any source, including CRAN, Bioconductor, GitHub, Gitlab, and Bitbucket. For more information on supported sources, refer to vignette(&ldquo;package-sources&rdquo;).</p>
+<details>
+<summary>renv.lock</summary>
+<pre><code>
+{
+  "R": {
+    "Version": "4.3.3",
+    "Repositories": [
+      {
+        "Name": "CRAN",
+        "URL": "https://cloud.r-project.org"
+      }
+    ]
+  },
+  "Packages": {
+    "markdown": {
+      "Package": "markdown",
+      "Version": "1.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "4584a57f565dd7987d59dda3a02cfb41"
+    },
+    "mime": {
+      "Package": "mime",
+      "Version": "0.12.1",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteUsername": "yihui",
+      "RemoteRepo": "mime",
+      "RemoteRef": "main",
+      "RemoteSha": "1763e0dcb72fb58d97bab97bb834fc71f1e012bc",
+      "Requirements": [
+        "tools"
+      ],
+      "Hash": "c2772b6269924dad6784aaa1d99dbb86"
+    }
+  }
+}
+</code></pre>
+</details>
+<h3 id="working-with-interactive-environments">Working with interactive environments</h3>
+<p>Jupyter notebooks can use <code>Pkg</code>, <code>conda</code> and <code>renv</code> environments, but you may need some extra steps (see how to make Jupyter aware of your Conda environments <a href="https://carpentries-incubator.github.io/introduction-to-conda-for-data-scientists/04-sharing-environments/index.html#making-jupyter-aware-of-your-conda-environments" target="_blank" rel="noopener">here</a> and <a href="https://medium.com/@nrk25693/how-to-add-your-conda-environment-to-your-jupyter-notebook-in-just-4-steps-abeab8b8d084" target="_blank" rel="noopener">there</a>. You do not need to follow these steps if you are using Visual Studio Code.</p>
+<p>Other interactive notebooks solutions store directly the environemnts in the files, which is great for reproducibility purposes. This is the case of <code>Pluto</code> notebooks, which are designed to be reproducible. Under the hood they contain the package environment inside them <code>Binder</code> notebooks also ship with a virtual environment, but using <code>Docker</code> (see below and <a href="https://earth-env-data-science.github.io/lectures/environment/binder.html" target="_blank" rel="noopener">a tutorial here</a>).</p>
+<p>I personally do not like notebooks, and prefer using scripts in Visual Studio Code, executing them line by line for development with whether the <code>Julia</code> extension or the Jupyter extension with <code>&quot;jupyter.interactiveWindow.textEditor.executeSelection&quot;: true</code>. With such an approach, you can specify which virtual environment should be used at login, and never worry again with that later.</p>
+<h3 id="caveats-of-virtual-environments">Caveats of virtual environments</h3>
+<p>Some packages/libraries rely on system libraries and utilities; for instance <code>pytorch</code> relies on CUDA drivers, which are specific to a certain machine (<a href="https://carpentries-incubator.github.io/introduction-to-conda-for-data-scientists/05-managing-cuda-dependencies/index.html" target="_blank" rel="noopener">see how you can deal with CUDA drivers with <code>conda</code> here</a>), or the behavior of the packages my be dependent on system environmental variables. As such, by replicating a virtual environment, you won&rsquo;t necessarily reproduce the same exact computing environment.
+To reproduce more closely a computing environment, <strong>containers</strong> may be used. Containers virtualize layers of the operating system, replicating to a deeper lever your environment and making it more reproducible. <a href="https://docs.docker.com/get-started/" target="_blank" rel="noopener">Docker</a> or Singularity are popular solutions. Unfortunately, building containers may be difficult, and the virtualization may add a layer of complexity to your pipeline&hellip;
+But see <a href="https://rscdata_science.gitlab.io/rsc_data_science_blog/post/singularity_as_devel_env/" target="_blank" rel="noopener">Using singularity as a development environment</a> and <a href="https://github.com/microsoft/vscode-remote-release/issues/3066#issuecomment-1019500216" target="_blank" rel="noopener">How to remote dev with vscode and singularity</a>. Note that you could use both a container and a virtual environment&hellip; See <a href="https://rstudio.github.io/renv/articles/docker.html" target="_blank" rel="noopener">here a tutorial with <code>renv</code></a>.</p>
+<p><strong>Some additional resources</strong>
+For more information, check <a href="https://carpentries-incubator.github.io/docker-introduction/" target="_blank" rel="noopener">Reproducible Computational Environments Using Containers: Introduction to Docker</a>.</p>
+<h2 id="advanced-topic-package-development">Advanced topic: package development</h2>
+<p>It can make sense for research projects to distinguish between scripts placed in <code>scripts/</code> and reused functions, models, etc., placed in <code>src</code>. We&rsquo;ll cover that more broadly in another post. In such case, it is best to compartmentalize dependencies so as to have a minimal working environment for the <code>src/</code> functions and classes, independent of that for your <code>scripts</code>. One practical approach for this is to specify the <code>src</code> folder as a package. This has a few advantages, including</p>
+<ul>
+<li>not having to deal with relative position of files to call the functions in <code>src/</code></li>
+<li>maximizing your productivity by creating a generic package additionally to your main research project.</li>
+</ul>
+<p>You can achieve this easily with development tools.</p>
+<p>For Python, tools like <code>setuptools</code> and <code>poetry</code> facilitate package development. If you&rsquo;re working in R, <code>devtools</code> is the go-to tool for developing packages. In Julia, the <code>Pkg</code> tool serves a similar purpose.</p>
+<p>Package templates can be useful to simplify the creation of packages by generating package skeletons. In Python, checkout out <code>cookiecutter</code>. In R, check <code>usethis</code>. For Julia, use the <code>Pkg.generate()</code> built-in functionality, or the more advanced <code>PkgTemplates.jl</code> package.</p>
+<p>Note that you may want at some point to locate your <code>src/</code> (and associated <code>tests</code>, <code>docs</code>, etc&hellip;) in a separate git repo.</p>
+<p><strong>Some additional resources</strong></p>
+<ul>
+<li><a href="https://goodresearch.dev/setup#install-a-project-package" target="_blank" rel="noopener">goodresearch tutorial</a> on how to install a project package</li>
+<li>the <a href="https://py-pkgs.org/" target="_blank" rel="noopener">Python Packages book</a> offers comprehensive guidance using <code>poetry</code>.</li>
+<li>the <a href="https://r-pkgs.org/" target="_blank" rel="noopener">R Packages book</a> covers all aspects of package development.</li>
+<li>the <a href="https://pkgdocs.julialang.org/v1/" target="_blank" rel="noopener">Pkg documentation</a> and this <a href="https://julialang.org/contribute/developing_package/" target="_blank" rel="noopener">how-to guide</a> for detailed instructions.</li>
+</ul>
+<h2 id="take-home-messages">Take-home messages</h2>
+<ul>
+<li>Make sure you understand what are package managers, virtual environments, and dependencies both within your project scripts and at the system level.</li>
+<li>Clearly document all dependencies and environment setup instructions in project repositories.</li>
+<li>Provide instructions in an <strong>Installation</strong> section in the <code>readme.md</code> on how to set up the virtual environment.</li>
+<li>Check out these toy research repositories <a href="https://github.com/mauro3/toy-research-project-breithorn" target="_blank" rel="noopener">in Julia</a> (which uses relative paths for importing the <code>src</code> functions), <a href="https://github.com/vboussange/rere" target="_blank" rel="noopener">Python</a> (which has <code>src</code> as package), and <a href="https://github.com/vboussange/breithornToyProjectCORDS" target="_blank" rel="noopener">R</a> (which has <code>src</code> as package) that implement what I believe good examples of research projects!</li>
+</ul>
+
+    </div>
+
+    
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/scientific-software/">Scientific software</a>
+  
+  <a class="badge badge-light" href="/tag/julia/">Julia</a>
+  
+  <a class="badge badge-light" href="/tag/python/">Python</a>
+  
+</div>
+
+
+
+<div class="share-box">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://victorboussange.com/post/research-project-dependencies/&amp;text=A%20multi-language%20overview%20on%20how%20to%20handle%20dependencies%20within%20a%20research%20project" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://victorboussange.com/post/research-project-dependencies/&amp;t=A%20multi-language%20overview%20on%20how%20to%20handle%20dependencies%20within%20a%20research%20project" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=A%20multi-language%20overview%20on%20how%20to%20handle%20dependencies%20within%20a%20research%20project&amp;body=https://victorboussange.com/post/research-project-dependencies/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://victorboussange.com/post/research-project-dependencies/&amp;title=A%20multi-language%20overview%20on%20how%20to%20handle%20dependencies%20within%20a%20research%20project" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=A%20multi-language%20overview%20on%20how%20to%20handle%20dependencies%20within%20a%20research%20project%20https://victorboussange.com/post/research-project-dependencies/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://victorboussange.com/post/research-project-dependencies/&amp;title=A%20multi-language%20overview%20on%20how%20to%20handle%20dependencies%20within%20a%20research%20project" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="https://victorboussange.com"><img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_hu17fe142d2d9ea2daa3913aa53535eec6_854723_270x270_fill_q75_lanczos_center.jpg" alt="Victor Boussange"></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="https://victorboussange.com">Victor Boussange</a></h5>
+      <h6 class="card-subtitle">Applied ML researcher</h6>
+      <p class="card-text">AI for science</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+    <li>
+      <a href="mailto:vic.boussange@gmail.com" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://scholar.google.com/citations?user=SaQH5YoAAAAJ&amp;hl=en" target="_blank" rel="noopener">
+        <i class="ai ai-google-scholar"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/vboussange" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://www.linkedin.com/in/vboussange/" target="_blank" rel="noopener">
+        <i class="fab fa-linkedin"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/uploads/cv.pdf" >
+        <i class="ai ai-cv"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://orcid.org/0000-0002-4202-3599" target="_blank" rel="noopener">
+        <i class="ai ai-orcid"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+  
+    
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+  
+
+
+
+  
+  
+  
+    
+  
+  
+    <p class="footer-last-updated">Last updated: Jul 22, 2026</p>
+  
+
+  
+</footer>
+
+    </div>
+    
+  </div>
+
+      
+
+    
+    <script src="/js/vendor-bundle.min.3d946de2e8784a477845261d87025092.js"></script>
+
+    
+    
+    
+      
+
+      
+      
+
+      
+
+      
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/highlight.min.js" integrity="sha512-Ypjm0o7jOxAd4hpdoppSEN0TQOC19UtPAqD+4s5AlXmUvbmmS/YMxYqAqarQYyxTnB6/rqip9qcxlNB/3U9Wdg==" crossorigin="anonymous"></script>
+        
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/r.min.js" crossorigin="anonymous"></script>
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/latex.min.js" crossorigin="anonymous"></script>
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/julia.min.js" crossorigin="anonymous"></script>
+        
+      
+
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js" integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js" integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+
+    
+    
+    
+    <script id="page-data" type="application/json">{"use_headroom":true}</script>
+
+    
+    
+      <script src="/js/wowchemy-headroom.e8fd2d733eef6a8bbbe0539398fc0547.js" type="module"></script>
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/en/js/wowchemy.min.de33c90527762392d440555c36739dd9.js"></script>
+
+    
+    
+    
+    
+    
+    
+      
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <script src="/js/wowchemy-publication.b0d291ed6d27eacec233e6cf5204f99a.js" type="module"></script>
+
+
+
+
+
+
+</body>
+</html>

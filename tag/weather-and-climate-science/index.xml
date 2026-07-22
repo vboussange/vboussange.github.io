@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Weather and climate science | Victor Boussange</title>
+    <link>https://victorboussange.com/tag/weather-and-climate-science/</link>
+      <atom:link href="https://victorboussange.com/tag/weather-and-climate-science/index.xml" rel="self" type="application/rss+xml" />
+    <description>Weather and climate science</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sun, 01 Jan 2023 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://victorboussange.com/media/icon_hua3c898eed18b98379688891d5011a1d0_203625_512x512_fill_lanczos_center_3.png</url>
+      <title>Weather and climate science</title>
+      <link>https://victorboussange.com/tag/weather-and-climate-science/</link>
+    </image>
+    
+    <item>
+      <title>Ancient sedimentary DNA to forecast trajectories of ecosystem under climate change</title>
+      <link>https://victorboussange.com/publication/ancient-dna-forecast-ecosystems/</link>
+      <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
+      <guid>https://victorboussange.com/publication/ancient-dna-forecast-ecosystems/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

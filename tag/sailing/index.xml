@@ -1,0 +1,5626 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sailing | Victor Boussange</title>
+    <link>https://victorboussange.com/tag/sailing/</link>
+      <atom:link href="https://victorboussange.com/tag/sailing/index.xml" rel="self" type="application/rss+xml" />
+    <description>Sailing</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Fri, 26 May 2023 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://victorboussange.com/media/icon_hua3c898eed18b98379688891d5011a1d0_203625_512x512_fill_lanczos_center_3.png</url>
+      <title>Sailing</title>
+      <link>https://victorboussange.com/tag/sailing/</link>
+    </image>
+    
+    <item>
+      <title>Open source navigation system for sailing</title>
+      <link>https://victorboussange.com/post/navigationsystem/</link>
+      <pubDate>Fri, 26 May 2023 00:00:00 +0000</pubDate>
+      <guid>https://victorboussange.com/post/navigationsystem/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Back in the days, people used to orient themselves with paper maps and the stars or with a sextant. Unfortunately, we have lost this knowledge. It would now be difficult, at least for me, to live without a digital map and a GPS. In this blog post, I detail how to set up a handy navigation system for sailing, using a Raspberry Pi and OpenPlotter to transmit GPS and AIS signals over Wifi to the Navionics Boating app.&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&#34;choosing-the-right-chart-maps&#34;&gt;Choosing the Right Chart Maps&lt;/h2&gt;
+&lt;p&gt;There are plenty of digital chart map options available for navigation, and we had to figure out which one would fit our need on the boat. After careful consideration, we narrowed down our choices to two alternatives: &lt;a href=&#34;https://www.o-charts.org&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;o-charts charts&lt;/a&gt;, to be used in combination with OpenCPN, an open source navigation software, or &lt;a href=&#34;https://www.navionics.com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Navionics&lt;/a&gt; charts, to be used with the &amp;ldquo;Navionics Boating&amp;rdquo; application. Both had a similar pricing for what we wanted (charts for Germany, Denmark, Sweden, Norway, Shetland Islands, UK, Ireland and France): around 120-150EUR, with a slight advantage for Navionics. Pros for o-charts is that you can use them more than one year, although the update option is only valid for a year (I think, although I am not 100% sure). Navionics charts is only valid for a year, the period of the subscription. Pros for Navionics is that you can use your subscription on many devices (at least 5, I think), while you cannot use o-charts on iOS devices and on more than 2 devices. Because we wanted to have charts on our smartphones, we decided to go for Navionics.&lt;/p&gt;
+&lt;h2 id=&#34;the-importance-of-accurate-gps-and-ais&#34;&gt;The Importance of Accurate GPS and AIS&lt;/h2&gt;
+&lt;p&gt;While our smartphones&amp;rsquo; GPS serves us well in our daily lives, accurate positioning becomes critical when sailing. It ensures that we navigate safely, avoiding shallow waters and potential collisions. Additionally, during nighttime navigation, an instrument called AIS (Automatic Identification System) proves invaluable by providing information about nearby large ships.&lt;/p&gt;
+&lt;p&gt;In the following, I explain how I installed a server on our boat that transmits GPS and AIS to the &amp;ldquo;Navionics Boating&amp;rdquo; application our smartphone and tablets through Wifi. For this, I used a Raspberry Pi 4, OpenPlotter, and a GPS beacon and a radio antenna fixed on the outside of the boat and connected to the Raspberry.&lt;/p&gt;
+&lt;h2 id=&#34;installing-openplotter-on-the-raspberry-pi&#34;&gt;Installing OpenPlotter on the Raspberry Pi&lt;/h2&gt;
+&lt;p&gt;To get started, you need to install &lt;a href=&#34;https://openmarine.net/openplotter&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;OpenPlotter&lt;/a&gt;, a Linux distribution designed for Raspberry Pi and that contains the essential software for navigation. I used the 64-bit &lt;a href=&#34;https://openplotter.readthedocs.io/en/latest/getting_started/downloading.html#openplotter-starting&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;OpenPlotter Starting image&lt;/a&gt; that contains an appropriate pre-built kernel. To install it, you&amp;rsquo;ll need a less than 32GB SD-card, to be formatted in FAT32. My problem was that the SD card I had had already been used on a Raspberry Pi, and as such contained an EXT4 partition. EXT4 partitions are used by Linux systems, but are not recognized by MacOS. This prevented me to format the card in FAT32. To allow formatting, I used the &lt;code&gt;diskutil&lt;/code&gt; utility from MacOS.&lt;/p&gt;
+&lt;p&gt;First run&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;diskutil list&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;in the Terminal. This allows you to identify your SD card, in my case &lt;code&gt;/dev/disk4&lt;/code&gt;.  I had previously installed &lt;a href=&#34;https://medium.com/@iamalleksy/how-to-mount-raspberry-pi-sd-card-using-mac-3046abc2059a&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;code&gt;ext4fuse&lt;/code&gt;&lt;/a&gt;, not sure if this is a required step. To format the SD card, execute the command&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;sudo diskutil eraseDisk FAT32 RASPBERRY MBRFormat /dev/disk4
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;You can change &lt;code&gt;RASPBERRY&lt;/code&gt; with any name you like best. More details of this command in &lt;a href=&#34;https://superuser.com/questions/527657/how-do-you-format-a-2-gb-sd-card-to-fat32-preferably-with-disk-utility&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;this thread&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Now the SD card is ready to be used. Download the &lt;a href=&#34;https://www.raspberrypi.com/software/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Raspberry Pi Imager&lt;/a&gt; to install the image on the SD card. You first need to unzip the image, then execute Raspberry Pi Imager, click &amp;ldquo;Choose OS&amp;rdquo; and click on &amp;ldquo;Use custom&amp;rdquo;. Locate the &lt;code&gt;.img&lt;/code&gt; file, then choose the SD card in &amp;ldquo;Choose storage&amp;rdquo; and hit &amp;ldquo;Write&amp;rdquo;. The SD card is ready. Insert it in the Raspberry Pi and swith the power on. The system is going boot on the SD card and set up OpenPlotter. This took a relatively short amount of time.&lt;/p&gt;
+&lt;h2 id=&#34;setting-up-openplotter&#34;&gt;Setting up OpenPlotter&lt;/h2&gt;
+&lt;p&gt;I had an external monitor that I could use for the Raspberry Pi. I encountered a minor hurdle as OpenPlotter failed to identify it correctly, and did not properly display. I had to adjust the resolution of the screen by hitting the raspberry, then &amp;ldquo;Preferences&amp;rdquo; and &amp;ldquo;Screen configuration&amp;rdquo;. Check also the configuration of the monitor, that may be set to zoom in the visual signal.&lt;/p&gt;
+&lt;h2 id=&#34;setting-up-the-gps&#34;&gt;Setting up the GPS&lt;/h2&gt;
+&lt;p&gt;Configuring the GPS was a straightforward process that involved following &lt;a href=&#34;https://youtu.be/r8CGixMl18k?t=358&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;this tutorial&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;setting-up-the-ais&#34;&gt;Setting up the AIS&lt;/h2&gt;
+&lt;p&gt;Similar to configuring the GPS, we followed &lt;a href=&#34;https://www.youtube.com/watch?v=qEeyl-WSDHk&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;this video tutorial&lt;/a&gt; (in French, with translation available) to set up the AIS system. At first, I did not correctly calibrate the PPM offset, and although I did follow the rest of the procedure correctly, I had an &amp;ldquo;inactive&amp;rdquo; AIS process. I then redid the whole procedure, properly waiting for more than an hour to get the PPM initial guess correct, and with this value, I did manage to make it work.&lt;/p&gt;
+&lt;h2 id=&#34;getting-the-signal-on-navionics-through-openplotter-access-point&#34;&gt;Getting the signal on Navionics through OpenPlotter Access Point&lt;/h2&gt;
+&lt;p&gt;To transmit the GPS and AIS data to the Navionics application, we established an access point using the Raspberry Pi. This allowed us to create a Wi-Fi network, enabling our devices to receive the signals. We followed this &lt;a href=&#34;https://www.youtube.com/watch?v=tlU4HKT6XxM&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;this video&lt;/a&gt; to set up the access point, which provided clear instructions for this setup.&lt;/p&gt;
+&lt;p&gt;I did struggle to switch off the access point to connect back the Raspberry Pi to a Wifi network with Internet in order to do some updates and download a few stuff. It turns out it is quite easy. Go to the Network app, and on the Network mode tab, select back for &amp;ldquo;AP&amp;rdquo; &amp;ldquo;non&amp;rdquo; instead of &amp;ldquo;xx:xx:..:xx on board&amp;rdquo;. Then hit the pen and sd card button, and reboot. Now you can connect back to a wifi network.&lt;/p&gt;
+&lt;h2 id=&#34;setting-up-a-ssh-connection-to-transfer-big-files&#34;&gt;Setting up a SSH connection to transfer big files&lt;/h2&gt;
+&lt;p&gt;I could not properly download the charts I needed on the Raspberry Pi because the wifi on the boat was too weak. So I decided to download it on my smartphone that I could bring closer to the hotspot, and then transfer the files to the Raspberry Pi. In order to facilitate the process, I installed a SSH connection between my laptop and the Pi, then transferred through Airdrop the charts from my phone to my laptop, and then from the laptop to the Pi with SSH and the &lt;code&gt;scp&lt;/code&gt; command. To enable the SSH access, click on the Raspberry, then &amp;ldquo;Raspberry Pi Configuration&amp;rdquo;, the go to the &amp;ldquo;Interfaces&amp;rdquo; tab and enable SSH. From your laptop, connect to the Raspberry AP, go to the terminal and run&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;ssh pi@openplotter.local
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The password by default is &lt;code&gt;raspberry&lt;/code&gt; (this is indicated &lt;a href=&#34;https://openplotter.readthedocs.io/en/latest/getting_started/installing.html?highlight=ssh#headless&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;). Then you can use the following command to transfer any folder to the Pi&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;scp -r path/to/folder/on/laptop pi@openplotter.local:/home/pi/path/you/want/to/drop/the/folder
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;useful-links&#34;&gt;Useful links&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.o-charts.org&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;o-charts charts&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.navionics.com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Navionics charts&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://openmarine.net/openplotter&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;OpenPlotter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://openplotter.readthedocs.io/en/latest/getting_started/downloading.html#openplotter-starting&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;OpenPlotter Starting image&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://medium.com/@iamalleksy/how-to-mount-raspberry-pi-sd-card-using-mac-3046abc2059a&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;ext4fuse&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.raspberrypi.com/software/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Raspberry Pi Imager&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://youtu.be/r8CGixMl18k?t=358&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Tutorial: Setting up GPS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://youtu.be/r8CGixMl18k&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Tutorial: Setting up AIS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=tlU4HKT6XxM&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Tutorial: Creating OpenPlotter Access Point&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://openplotter.readthedocs.io/en/latest/getting_started/installing.html?highlight=ssh#headless&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Tutorial: SSH Connection&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Adventures</title>
+      <link>https://victorboussange.com/pages/alpine_cv/</link>
+      <pubDate>Tue, 15 Mar 2022 22:32:56 +0100</pubDate>
+      <guid>https://victorboussange.com/pages/alpine_cv/</guid>
+      <description>&lt;div class=&#34;alpine-cv&#34;&gt;
+  &lt;div class=&#34;alpine-cv-intro&#34;&gt;
+    &lt;p&gt;A personal log of selected mountain, sailing, and self-powered trips.&lt;/p&gt;
+    &lt;div class=&#34;alpine-cv-stats&#34; aria-label=&#34;Adventures summary&#34;&gt;
+      &lt;span&gt;137 entries&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;nav class=&#34;alpine-cv-nav&#34; aria-label=&#34;Adventures sections&#34;&gt;
+    
+      
+      &lt;a href=&#34;#sailing&#34;&gt;Sailing&lt;/a&gt;
+    
+      
+      &lt;a href=&#34;#ski-mountaineering&#34;&gt;Ski mountaineering / Backcountry skiing&lt;/a&gt;
+    
+      
+      &lt;a href=&#34;#alpinism&#34;&gt;Alpinism&lt;/a&gt;
+    
+      
+      &lt;a href=&#34;#alpine-climbing&#34;&gt;Alpine climbing&lt;/a&gt;
+    
+      
+      &lt;a href=&#34;#canyoning&#34;&gt;Canyoning&lt;/a&gt;
+    
+      
+      &lt;a href=&#34;#caving&#34;&gt;Caving&lt;/a&gt;
+    
+      
+      &lt;a href=&#34;#bikepacking&#34;&gt;Bikepacking&lt;/a&gt;
+    
+      
+      &lt;a href=&#34;#hikes&#34;&gt;Hikes&lt;/a&gt;
+    
+  &lt;/nav&gt;
+
+  &lt;div class=&#34;alpine-cv-sections&#34;&gt;
+    
+      
+      &lt;section class=&#34;alpine-cv-section&#34; id=&#34;sailing&#34;&gt;
+        &lt;header class=&#34;alpine-cv-section-header&#34;&gt;
+          &lt;div&gt;
+            &lt;h2&gt;Sailing&lt;/h2&gt;
+            &lt;p&gt;Longer trips and sea miles.&lt;/p&gt;
+          &lt;/div&gt;
+          &lt;span class=&#34;alpine-cv-count&#34;&gt;2&lt;/span&gt;
+        &lt;/header&gt;
+        &lt;div class=&#34;alpine-cv-entry-list&#34;&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Peaux de foc au cercle polaire&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;⛵ &amp;#43; 🎿&lt;/span&gt;
+        
+          &lt;span&gt;March 2025&lt;/span&gt;
+        
+        
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Northern Norway&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+    &lt;div class=&#34;alpine-cv-children&#34;&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Lausanne – Bodø&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;🚆&lt;/span&gt;
+        
+          
+        
+        
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Bodø – Kjerringøy&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;⛵&lt;/span&gt;
+        
+          
+        
+        
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Kjerringøy – Nordskot&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;⛵&lt;/span&gt;
+        
+          
+        
+        
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Nordskot – Trollfjorden&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;⛵&lt;/span&gt;
+        
+          
+        
+        
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Trolltinden, N couloir to approximately 700m&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;🎿&lt;/span&gt;
+        
+          
+        
+        &lt;span&gt;4.1&lt;/span&gt;
+        
+        
+        
+        
+        &lt;span class=&#34;alpine-cv-rating&#34; role=&#34;img&#34; aria-label=&#34;3 out of 5 stars&#34;&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Trollfjorden – Blokken&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;⛵&lt;/span&gt;
+        
+          
+        
+        
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;&lt;a href=&#34;https://www.camptocamp.org/routes/1781824/fr/fuglen-couloir-de-la-camarandine&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Fuglen 874m, Camarandine Couloir&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;🎿&lt;/span&gt;
+        
+          
+        
+        &lt;span&gt;4.1&lt;/span&gt;
+        
+        
+        
+        
+        &lt;span class=&#34;alpine-cv-rating&#34; role=&#34;img&#34; aria-label=&#34;2 out of 5 stars&#34;&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Blokken – Ersfjord&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;⛵&lt;/span&gt;
+        
+          
+        
+        
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;&lt;a href=&#34;https://skitour.fr/topos/8919&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Luttinden 759m, SE couloir&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;🎿&lt;/span&gt;
+        
+          
+        
+        &lt;span&gt;4.1&lt;/span&gt;
+        
+        
+        
+        
+        &lt;span class=&#34;alpine-cv-rating&#34; role=&#34;img&#34; aria-label=&#34;3.5 out of 5 stars&#34;&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-half&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Luttinden 759m, S/SW couloir&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;🎿&lt;/span&gt;
+        
+          
+        
+        &lt;span&gt;3.3&lt;/span&gt;
+        
+        
+        
+        
+        &lt;span class=&#34;alpine-cv-rating&#34; role=&#34;img&#34; aria-label=&#34;3 out of 5 stars&#34;&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Fuglan 720m, NW couloir&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;🎿&lt;/span&gt;
+        
+          
+        
+        &lt;span&gt;4.1&lt;/span&gt;
+        
+        
+        
+        
+        &lt;span class=&#34;alpine-cv-rating&#34; role=&#34;img&#34; aria-label=&#34;2 out of 5 stars&#34;&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Latræva couloir&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;🎿&lt;/span&gt;
+        
+          
+        
+        &lt;span&gt;4.3&lt;/span&gt;
+        
+        
+        
+        
+        &lt;span class=&#34;alpine-cv-rating&#34; role=&#34;img&#34; aria-label=&#34;5 out of 5 stars&#34;&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Ersfjord – Mefjordbotn&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;⛵&lt;/span&gt;
+        
+          
+        
+        
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;The King&amp;rsquo;s Gate couloir&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;🎿&lt;/span&gt;
+        
+          
+        
+        &lt;span&gt;5.2&lt;/span&gt;
+        
+        
+        
+        
+        &lt;span class=&#34;alpine-cv-rating&#34; role=&#34;img&#34; aria-label=&#34;5 out of 5 stars&#34;&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Store Hesten 874m&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;🎿&lt;/span&gt;
+        
+          
+        
+        &lt;span&gt;F&lt;/span&gt;
+        
+        
+        
+        
+        &lt;span class=&#34;alpine-cv-rating&#34; role=&#34;img&#34; aria-label=&#34;3 out of 5 stars&#34;&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Mefjordbotn – Reine&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;⛵&lt;/span&gt;
+        
+          
+        
+        
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Munken 797m, first SW couloir&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;🎿&lt;/span&gt;
+        
+          
+        
+        &lt;span&gt;4.3&lt;/span&gt;
+        
+        
+        
+        
+        &lt;span class=&#34;alpine-cv-rating&#34; role=&#34;img&#34; aria-label=&#34;5 out of 5 stars&#34;&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+    &lt;/div&gt;
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Tippelei voyage to Norway&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;May-September 2023&lt;/span&gt;
+        
+        
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Norway&lt;/p&gt;
+    &lt;p class=&#34;alpine-cv-note&#34;&gt;Bought Tippelei, a 40-year-old, 36-foot sailing boat, and sailed it to Norway during a sabbatical.&lt;/p&gt;
+  &lt;/div&gt;
+
+  
+
+  
+    &lt;div class=&#34;alpine-cv-media-list&#34;&gt;
+      
+        &lt;div class=&#34;alpine-cv-media alpine-cv-media-youtube&#34;&gt;
+      &lt;iframe src=&#34;https://www.youtube.com/embed/TkmXIaGAx-I&#34; title=&#34;Tippelei sailing voyage&#34; loading=&#34;lazy&#34; allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&#34; allowfullscreen&gt;&lt;/iframe&gt;
+    &lt;/div&gt;
+      
+    &lt;/div&gt;
+  
+&lt;/article&gt;
+          
+        &lt;/div&gt;
+      &lt;/section&gt;
+    
+      
+      &lt;section class=&#34;alpine-cv-section&#34; id=&#34;ski-mountaineering&#34;&gt;
+        &lt;header class=&#34;alpine-cv-section-header&#34;&gt;
+          &lt;div&gt;
+            &lt;h2&gt;Ski mountaineering / Backcountry skiing&lt;/h2&gt;
+            &lt;p&gt;Ski tours, couloirs, traverses, and bicycle-ski trips.&lt;/p&gt;
+          &lt;/div&gt;
+          &lt;span class=&#34;alpine-cv-count&#34;&gt;75&lt;/span&gt;
+        &lt;/header&gt;
+        &lt;div class=&#34;alpine-cv-entry-list&#34;&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Kungsleden ski-and-pulka traverse&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;🎿 &amp;#43; 🛷&lt;/span&gt;
+        
+          &lt;span&gt;March–April 2026&lt;/span&gt;
+        
+        
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Swedish Lapland, Sweden&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+    &lt;div class=&#34;alpine-cv-children&#34;&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Lausanne – Kiruna&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;🚆&lt;/span&gt;
+        
+          
+        
+        
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Kiruna – Nikkaluokta&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;🚌&lt;/span&gt;
+        
+          
+        
+        
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;&lt;a href=&#34;https://www.swedishtouristassociation.com/trails/nikkaluokta-kebnekaise/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Nikkaluokta – STF Kebnekaise Fjällstation&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;🎿 &amp;#43; 🛷&lt;/span&gt;
+        
+          
+        
+        
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Duolbagorni 1672m&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;🎿&lt;/span&gt;
+        
+          
+        
+        &lt;span&gt;4.1&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;STF Kebnekaise Fjällstation – Rabots glaciär base camp&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;🎿 &amp;#43; 🛷&lt;/span&gt;
+        
+          
+        
+        
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Kebnekaise, W-face couloir to point 1800m&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;🎿&lt;/span&gt;
+        
+          
+        
+        &lt;span&gt;4.2&lt;/span&gt;
+        
+        
+        
+        
+        &lt;span class=&#34;alpine-cv-rating&#34; role=&#34;img&#34; aria-label=&#34;5 out of 5 stars&#34;&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Rabots glaciär – STF Nallo Fjällstuga&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;🎿 &amp;#43; 🛷&lt;/span&gt;
+        
+          
+        
+        
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Šielmmáčohkka 2004m, SW couloir&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;🎿&lt;/span&gt;
+        
+          
+        
+        &lt;span&gt;4.2&lt;/span&gt;
+        
+        
+        
+        
+        &lt;span class=&#34;alpine-cv-rating&#34; role=&#34;img&#34; aria-label=&#34;2 out of 5 stars&#34;&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;STF Nallo Fjällstuga – STF Alesjaure Fjällstuga&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;🎿 &amp;#43; 🛷&lt;/span&gt;
+        
+          
+        
+        
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;STF Alesjaure Fjällstuga – Áhpparjávri base camp&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;🎿 &amp;#43; 🛷&lt;/span&gt;
+        
+          
+        
+        
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Unnamed SW couloir north of Áhpparjávri&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;🎿&lt;/span&gt;
+        
+          
+        
+        &lt;span&gt;4.2&lt;/span&gt;
+        
+        
+        
+        
+        &lt;span class=&#34;alpine-cv-rating&#34; role=&#34;img&#34; aria-label=&#34;3.5 out of 5 stars&#34;&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-half&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Áhpparjávri – STF Abiskojaure Fjällstuga&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;🎿 &amp;#43; 🛷&lt;/span&gt;
+        
+          
+        
+        
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;STF Abiskojaure Fjällstuga – Abisko&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;🎿 &amp;#43; 🛷&lt;/span&gt;
+        
+          
+        
+        
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Abisko – Lausanne&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;🚆&lt;/span&gt;
+        
+          
+        
+        
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+    &lt;/div&gt;
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Segla 639m&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;March 2026&lt;/span&gt;
+        
+        &lt;span&gt;F&lt;/span&gt;
+        
+        
+        
+        
+        &lt;span class=&#34;alpine-cv-rating&#34; role=&#34;img&#34; aria-label=&#34;2 out of 5 stars&#34;&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Senja, Troms, Norway&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Krokelvtinden 756m&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;March 2026&lt;/span&gt;
+        
+        &lt;span&gt;PD&lt;/span&gt;
+        
+        
+        
+        
+        &lt;span class=&#34;alpine-cv-rating&#34; role=&#34;img&#34; aria-label=&#34;2 out of 5 stars&#34;&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Senja, Troms, Norway&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;&lt;a href=&#34;https://ut.no/turforslag/115575&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Breikågen 683m&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;March 2026&lt;/span&gt;
+        
+        &lt;span&gt;PD&lt;/span&gt;
+        
+        
+        
+        
+        &lt;span class=&#34;alpine-cv-rating&#34; role=&#34;img&#34; aria-label=&#34;3.5 out of 5 stars&#34;&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-half&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Kågen, Troms, Norway&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Ololsatinden 954m&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;March 2026&lt;/span&gt;
+        
+        &lt;span&gt;PD&lt;/span&gt;
+        
+        
+        
+        
+        &lt;span class=&#34;alpine-cv-rating&#34; role=&#34;img&#34; aria-label=&#34;2 out of 5 stars&#34;&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Lyngen, Troms, Norway&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;&lt;a href=&#34;https://skitour.fr/topos/5092&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Fontanabran 2702m, NE couloir&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;February 2026&lt;/span&gt;
+        
+        &lt;span&gt;4.2&lt;/span&gt;
+        
+        
+        
+        
+        &lt;span class=&#34;alpine-cv-rating&#34; role=&#34;img&#34; aria-label=&#34;3 out of 5 stars&#34;&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Valais, Switzerland&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;&lt;a href=&#34;https://www.sac-cas.ch/en/huts-and-tours/sac-route-portal/tete-de-ferret-612/ski-touring/from-la-fouly-via-lechere-2115/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Tête de Ferret 2713m&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;January 2026&lt;/span&gt;
+        
+        &lt;span&gt;PD&amp;#43;&lt;/span&gt;
+        
+        
+        
+        
+        &lt;span class=&#34;alpine-cv-rating&#34; role=&#34;img&#34; aria-label=&#34;2 out of 5 stars&#34;&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Val Ferret, Switzerland; Aosta Valley, Italy&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;&lt;a href=&#34;https://www.sac-cas.ch/en/huts-and-tours/sac-route-portal/mont-rogneux-vs-1206/ski-touring/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Mont Rogneux 3083m&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;January 2026&lt;/span&gt;
+        
+        &lt;span&gt;PD&amp;#43;&lt;/span&gt;
+        
+        
+        
+        
+        &lt;span class=&#34;alpine-cv-rating&#34; role=&#34;img&#34; aria-label=&#34;2.5 out of 5 stars&#34;&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-half&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Valais, Switzerland&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;&lt;a href=&#34;https://www.sac-cas.ch/en/huts-and-tours/sac-route-portal/seeberghore-6261/ski-touring/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Seeberghore 2071m and Stuedelistand 2028m&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;January 2026&lt;/span&gt;
+        
+        
+        
+        
+        
+        
+        &lt;span class=&#34;alpine-cv-rating&#34; role=&#34;img&#34; aria-label=&#34;3 out of 5 stars&#34;&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Bernese Alps, Switzerland&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;&lt;a href=&#34;https://www.sac-cas.ch/en/huts-and-tours/sac-route-portal/mont-de-letoile-9083/ski-touring/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Mont de l&amp;rsquo;Étoile 3369m&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;December 2025&lt;/span&gt;
+        
+        &lt;span&gt;AD-&lt;/span&gt;
+        
+        
+        
+        
+        &lt;span class=&#34;alpine-cv-rating&#34; role=&#34;img&#34; aria-label=&#34;2 out of 5 stars&#34;&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Valais, Switzerland&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;&lt;a href=&#34;https://www.sac-cas.ch/en/huts-and-tours/sac-route-portal/lys-derrey-mys-derrey-8102/ski-touring/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Lys Derrey (Mys Derrey) 1863m&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;December 2025&lt;/span&gt;
+        
+        &lt;span&gt;PD-&lt;/span&gt;
+        
+        
+        
+        
+        &lt;span class=&#34;alpine-cv-rating&#34; role=&#34;img&#34; aria-label=&#34;1 out of 5 stars&#34;&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Fribourg Prealps, Switzerland&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Pointe des Martinets 2653m, from Morcles&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;November 2025&lt;/span&gt;
+        
+        &lt;span&gt;D&lt;/span&gt;
+        
+        
+        
+        
+        &lt;span class=&#34;alpine-cv-rating&#34; role=&#34;img&#34; aria-label=&#34;2.5 out of 5 stars&#34;&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-half&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Vaud Alps, Switzerland&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;&lt;a href=&#34;https://www.sac-cas.ch/de/huetten-und-touren/sac-tourenportal/galenstock-727/skitouren/von-realp-oder-der-albert-heim-huette-5116/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Galenstock 3586m, from Realp&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;May 2025&lt;/span&gt;
+        
+        &lt;span&gt;AD&lt;/span&gt;
+        
+        
+        
+        
+        &lt;span class=&#34;alpine-cv-rating&#34; role=&#34;img&#34; aria-label=&#34;2 out of 5 stars&#34;&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Uri Alps, Switzerland&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Grosses Fiescherhorn 4049m and Hinteres Fiescherhorn 4025m&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;April 2025&lt;/span&gt;
+        
+        &lt;span&gt;AD-&lt;/span&gt;
+        
+        
+        
+        
+        &lt;span class=&#34;alpine-cv-rating&#34; role=&#34;img&#34; aria-label=&#34;3 out of 5 stars&#34;&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Bernese Alps, Switzerland&lt;/p&gt;
+    &lt;p class=&#34;alpine-cv-note&#34;&gt;Descent via the W face of Hinteres Fiescherhorn.&lt;/p&gt;
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;&lt;a href=&#34;https://www.sac-cas.ch/en/huts-and-tours/sac-route-portal/passo-san-giacomo-quota-2501-9520/ski-touring/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Passo San Giacomo, quota 2501 (2498m), from All&amp;rsquo;Acqua&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;February 2025&lt;/span&gt;
+        
+        
+        
+        
+        
+        
+        &lt;span class=&#34;alpine-cv-rating&#34; role=&#34;img&#34; aria-label=&#34;2 out of 5 stars&#34;&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Val Bedretto, Ticino, Switzerland&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;&lt;a href=&#34;https://skitour.fr/topos/284&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Couloir du Pertuis par le Morétan&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;February 2025&lt;/span&gt;
+        
+        &lt;span&gt;4.1 E2&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;France&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;&lt;a href=&#34;https://skitour.fr/topos/8856&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Rocher Gris 2757m, couloir du Dérobé&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;February 2025&lt;/span&gt;
+        
+        &lt;span&gt;5.1 E2&lt;/span&gt;
+        
+        
+        
+        
+        &lt;span class=&#34;alpine-cv-rating&#34; role=&#34;img&#34; aria-label=&#34;1 out of 5 stars&#34;&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;France&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Sunnenhöreli 2164m&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;January 2025&lt;/span&gt;
+        
+        &lt;span&gt;PD&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Switzerland&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Wintertürmli 3002m, from Meiental&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;January 2025&lt;/span&gt;
+        
+        &lt;span&gt;AD-&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Switzerland&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Plattenburg 2747m, W face&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;January 2025&lt;/span&gt;
+        
+        &lt;span&gt;45°&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Switzerland&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Dent d&amp;rsquo;Hérens 4171m, SW face and W arête&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;May 2024&lt;/span&gt;
+        
+        &lt;span&gt;AD&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Switzerland&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+
+  
+    &lt;div class=&#34;alpine-cv-media-list&#34;&gt;
+      
+        &lt;div class=&#34;alpine-cv-media alpine-cv-media-instagram&#34;&gt;
+      &lt;blockquote class=&#34;instagram-media&#34; data-instgrm-permalink=&#34;https://www.instagram.com/p/C6_M73dKX9V/&#34; data-instgrm-version=&#34;14&#34;&gt;&lt;/blockquote&gt;
+      &lt;p class=&#34;alpine-cv-media-link&#34;&gt;&lt;a href=&#34;https://www.instagram.com/p/C6_M73dKX9V/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Dent d&amp;#39;Hérens&lt;/a&gt;&lt;/p&gt;
+      &lt;script async src=&#34;//www.instagram.com/embed.js&#34;&gt;&lt;/script&gt;
+    &lt;/div&gt;
+      
+    &lt;/div&gt;
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Finsteraarhorn 4274m&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;April 2024&lt;/span&gt;
+        
+        &lt;span&gt;AD&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Switzerland&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+
+  
+    &lt;div class=&#34;alpine-cv-media-list&#34;&gt;
+      
+        &lt;div class=&#34;alpine-cv-media alpine-cv-media-youtube&#34;&gt;
+      &lt;iframe src=&#34;https://www.youtube.com/embed/fb2iS7i_PxA&#34; title=&#34;Finsteraarhorn and Wyssnollen&#34; loading=&#34;lazy&#34; allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&#34; allowfullscreen&gt;&lt;/iframe&gt;
+    &lt;/div&gt;
+      
+    &lt;/div&gt;
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Wyssnollen 3590m, from Grünhornlücke&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;April 2024&lt;/span&gt;
+        
+        &lt;span&gt;AD&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Switzerland&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;From Tromsø to Nordkapp with bicycle and skis&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;🚲 &amp;#43; 🎿&lt;/span&gt;
+        
+          &lt;span&gt;March 2024&lt;/span&gt;
+        
+        
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Norway&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+    &lt;div class=&#34;alpine-cv-children&#34;&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Tromsø - Laksvelbukt&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;🚲&lt;/span&gt;
+        
+          
+        
+        
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Tomas couloir&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;🎿&lt;/span&gt;
+        
+          
+        
+        
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Banana couloir of Holmbukktinden&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;🎿&lt;/span&gt;
+        
+          
+        
+        &lt;span&gt;45°&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Laksvelbukt - Nordkjosbotn&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;🚲&lt;/span&gt;
+        
+          
+        
+        
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Lille Russetinden 1527m&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;🎿&lt;/span&gt;
+        
+          
+        
+        
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Nordkjosbotn - Lyngseidet&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;🚲&lt;/span&gt;
+        
+          
+        
+        
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;&lt;a href=&#34;https://fatmap.com/routeid/2931511/new-year%27s-rocket&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;New Year&amp;rsquo;s Rocket&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;🎿&lt;/span&gt;
+        
+          
+        
+        &lt;span&gt;50°&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Istinden 1490m&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;🎿&lt;/span&gt;
+        
+          
+        
+        
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Store Kjsotinden 1488m&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;🎿&lt;/span&gt;
+        
+          
+        
+        
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Lyngseidet - Skervøy&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;🚲&lt;/span&gt;
+        
+          
+        
+        
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Store Kågtinden 1228m&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;🎿&lt;/span&gt;
+        
+          
+        
+        
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Skervøy - Nordkapp&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;🚲&lt;/span&gt;
+        
+          
+        
+        
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+    &lt;/div&gt;
+  
+
+  
+    &lt;div class=&#34;alpine-cv-media-list&#34;&gt;
+      
+        &lt;div class=&#34;alpine-cv-media alpine-cv-media-youtube&#34;&gt;
+      &lt;iframe src=&#34;https://www.youtube.com/embed/8rTHwFRBPxc&#34; title=&#34;Tromsø to Nordkapp with bicycle and skis&#34; loading=&#34;lazy&#34; allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&#34; allowfullscreen&gt;&lt;/iframe&gt;
+    &lt;/div&gt;
+      
+    &lt;/div&gt;
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Druesberg 2282m, D-, from Zürich with bicycle&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;🚲 &amp;#43; 🎿&lt;/span&gt;
+        
+          &lt;span&gt;February 2024&lt;/span&gt;
+        
+        &lt;span&gt;D-&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Switzerland&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+
+  
+    &lt;div class=&#34;alpine-cv-media-list&#34;&gt;
+      
+        &lt;div class=&#34;alpine-cv-media alpine-cv-media-youtube&#34;&gt;
+      &lt;iframe src=&#34;https://www.youtube.com/embed/u942702uVGo&#34; title=&#34;Druesberg by bicycle and skis&#34; loading=&#34;lazy&#34; allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&#34; allowfullscreen&gt;&lt;/iframe&gt;
+    &lt;/div&gt;
+      
+    &lt;/div&gt;
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Piz Badus 2928m, E face&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;January 2024&lt;/span&gt;
+        
+        &lt;span&gt;PD&amp;#43;&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Switzerland&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Piz Ravetsch 3007m, NW face&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;January 2024&lt;/span&gt;
+        
+        &lt;span&gt;PD&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Switzerland&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Aiguille de l&amp;rsquo;Épaisseur 3230m, SE face&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;January 2024&lt;/span&gt;
+        
+        &lt;span&gt;PD&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;France&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Pizzo Rotondo 3192m, from Capanna Piansecco&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;January 2024&lt;/span&gt;
+        
+        &lt;span&gt;D&amp;#43;&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Switzerland&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Râteau d&amp;rsquo;Aussois 3131m, NW face&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;January 2024&lt;/span&gt;
+        
+        &lt;span&gt;PD&amp;#43;&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;France&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Winterhorn / Pizzo d&amp;rsquo;Orsino 2662m, NW face&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;December 2023&lt;/span&gt;
+        
+        &lt;span&gt;AD&amp;#43;&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Switzerland&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Chrüz 2195m&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;December 2023&lt;/span&gt;
+        
+        &lt;span&gt;F&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Switzerland&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Girenspitz 2367m&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;December 2023&lt;/span&gt;
+        
+        &lt;span&gt;PD&amp;#43;&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Switzerland&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Piet 1965m&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;December 2023&lt;/span&gt;
+        
+        &lt;span&gt;PD&amp;#43;&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Switzerland&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;&lt;a href=&#34;https://www.camptocamp.org/routes/46950/fr/mont-blanc-par-les-grands-mulets-arete-n-du-dome&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Mont Blanc 4808m&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;May 2023&lt;/span&gt;
+        
+        &lt;span&gt;3.2 AD&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;France&lt;/p&gt;
+    &lt;p class=&#34;alpine-cv-note&#34;&gt;Uphill via Arête Nord and descent via Grand and Petit Plateau.&lt;/p&gt;
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;&lt;a href=&#34;https://www.camptocamp.org/routes/45969/fr/bishorn-versant-nw-voie-normale-&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Bishorn 4153m, from cabane de Tracuit&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;April 2023&lt;/span&gt;
+        
+        &lt;span&gt;PD&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Switzerland&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;&lt;a href=&#34;https://www.camptocamp.org/routes/45518/fr/mont-velan-couloir-d-annibal&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Mt Vélan 3727m, Couloir Hannibal&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2023&lt;/span&gt;
+        
+        &lt;span&gt;4.3 D&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Switzerland&lt;/p&gt;
+    &lt;p class=&#34;alpine-cv-note&#34;&gt;Uphill and downhill via Couloir Hannibal.&lt;/p&gt;
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Traverse of the Alps from Innsbruck to Venezia with bicycles and skis&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;🚲 &amp;#43; 🎿&lt;/span&gt;
+        
+          &lt;span&gt;March 2023&lt;/span&gt;
+        
+        
+        
+        &lt;span&gt;11 days&lt;/span&gt;
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+    &lt;div class=&#34;alpine-cv-children&#34;&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Innsbruck - Valles&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;🚲&lt;/span&gt;
+        
+          
+        
+        
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Austria / Italy&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;&lt;a href=&#34;https://www.suedtirolerland.it/de/freizeit-aktiv/wintersport/skitouren/auf-die-wilde-kreuzspitze/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Wilde Kreuzspitze 3132m&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;🎿&lt;/span&gt;
+        
+          
+        
+        
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Valles - Lungiarù&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;🚲&lt;/span&gt;
+        
+          
+        
+        
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Ciampani 2668m, via Canale Norte&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;🎿&lt;/span&gt;
+        
+          
+        
+        
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Lungiarù - Misurina&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;🚲&lt;/span&gt;
+        
+          
+        
+        
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;&lt;a href=&#34;https://fatmap.com/routeid/19588/staunies-north-couloir&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Canale Norte Staunies&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;🎿&lt;/span&gt;
+        
+          
+        
+        
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Forcella degli Angeli - Forcella del Diavolo&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;🎿&lt;/span&gt;
+        
+          
+        
+        
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Misurina - Mareson Pecol&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;🚲&lt;/span&gt;
+        
+          
+        
+        
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Mt Pelmo 3168m&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;🎿&lt;/span&gt;
+        
+          
+        
+        
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Mareson Pecol - Venezia&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;🚲&lt;/span&gt;
+        
+          
+        
+        
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+    &lt;/div&gt;
+  
+
+  
+    &lt;div class=&#34;alpine-cv-media-list&#34;&gt;
+      
+        &lt;div class=&#34;alpine-cv-media alpine-cv-media-youtube&#34;&gt;
+      &lt;iframe src=&#34;https://www.youtube.com/embed/5PEl9Ajqwwo&#34; title=&#34;Innsbruck to Venezia with bicycles and skis&#34; loading=&#34;lazy&#34; allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&#34; allowfullscreen&gt;&lt;/iframe&gt;
+    &lt;/div&gt;
+      
+    &lt;/div&gt;
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;&lt;a href=&#34;https://skitour.fr/topos/853&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Trou de la Mouche 2453m, Tour du Passage du Père&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2023&lt;/span&gt;
+        
+        &lt;span&gt;45° AD&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Aravis, France&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Pointe du Midi 2364m&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2023&lt;/span&gt;
+        
+        
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Aravis, France&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Fuggstock 2371m&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2023&lt;/span&gt;
+        
+        &lt;span&gt;PD&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Glarus, Switzerland&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Rote Totz 2847m&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2023&lt;/span&gt;
+        
+        &lt;span&gt;PD&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Wallis, Switzerland&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Horlini 2458m&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2023&lt;/span&gt;
+        
+        
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Wallis, Switzerland&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;&lt;a href=&#34;https://www.camptocamp.org/routes/54094/fr/pic-de-l-etendard-versant-ne-voie-normale-a-pied-&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Pic de l&amp;rsquo;Étendard 3464m&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2022&lt;/span&gt;
+        
+        &lt;span&gt;PD&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;&lt;a href=&#34;https://www.camptocamp.org/routes/49758/fr/roche-du-chardonnet-versant-w-par-le-vallon-des-muandes&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Roche du Chardonnet 2950m&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2022&lt;/span&gt;
+        
+        &lt;span&gt;PD&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Haute Route Chamonix - Zermatt&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;🎿&lt;/span&gt;
+        
+          &lt;span&gt;February 2022&lt;/span&gt;
+        
+        
+        
+        &lt;span&gt;7 days&lt;/span&gt;
+        
+        &lt;span&gt;group leader&lt;/span&gt;
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+    &lt;div class=&#34;alpine-cv-children&#34;&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Grande Tête de By 3588m&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;🎿&lt;/span&gt;
+        
+          
+        
+        
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Tête de Valpelline 3798m&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;🎿&lt;/span&gt;
+        
+          
+        
+        
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+    &lt;/div&gt;
+  
+
+  
+    &lt;div class=&#34;alpine-cv-media-list&#34;&gt;
+      
+        &lt;div class=&#34;alpine-cv-media alpine-cv-media-youtube&#34;&gt;
+      &lt;iframe src=&#34;https://www.youtube.com/embed/CfwHbL9e0kQ&#34; title=&#34;Haute Route Chamonix - Zermatt&#34; loading=&#34;lazy&#34; allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&#34; allowfullscreen&gt;&lt;/iframe&gt;
+    &lt;/div&gt;
+      
+    &lt;/div&gt;
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Redertenstock 2214m&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2022&lt;/span&gt;
+        
+        &lt;span&gt;PD&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Oberalpstock 3328m, over Staldenfirn into Maderanertal&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2022&lt;/span&gt;
+        
+        &lt;span&gt;D&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Chronenstock 2451m&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2022&lt;/span&gt;
+        
+        &lt;span&gt;AD-&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Spilauer Grätli 2303m&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2022&lt;/span&gt;
+        
+        &lt;span&gt;PD&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Hundstock 2212m&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2022&lt;/span&gt;
+        
+        &lt;span&gt;AD-&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Hagelstock 2181m&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2022&lt;/span&gt;
+        
+        &lt;span&gt;L&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Pic du Rognolet 2659m&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2021&lt;/span&gt;
+        
+        &lt;span&gt;PD&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Petit Château 2458m, Couloir NE&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2021&lt;/span&gt;
+        
+        &lt;span&gt;40° / PD-&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Chläbdächer 2017m&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2021&lt;/span&gt;
+        
+        &lt;span&gt;PD&amp;#43;&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Strahlhorn 4190m, from Britanniahütte&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2021&lt;/span&gt;
+        
+        &lt;span&gt;AD&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Allalinhorn 4027m&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2021&lt;/span&gt;
+        
+        &lt;span&gt;PD&amp;#43;&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Hausstock 3158m, S ridge&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2021&lt;/span&gt;
+        
+        &lt;span&gt;38° / D&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Stucklistock 3313m, S ridge&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2021&lt;/span&gt;
+        
+        &lt;span&gt;40° / D&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Pigne d&amp;rsquo;Arolla 3787m&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2021&lt;/span&gt;
+        
+        &lt;span&gt;PD&amp;#43;&lt;/span&gt;
+        
+        
+        
+        &lt;span&gt;group leader&lt;/span&gt;
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Pointes d&amp;rsquo;Oren 3520m&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2021&lt;/span&gt;
+        
+        &lt;span&gt;PD&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Mont Brulé 3576m&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2021&lt;/span&gt;
+        
+        &lt;span&gt;AD-&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Graubünden Haute Route&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;🎿&lt;/span&gt;
+        
+          &lt;span&gt;2021&lt;/span&gt;
+        
+        
+        
+        &lt;span&gt;7 days&lt;/span&gt;
+        
+        &lt;span&gt;group leader&lt;/span&gt;
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+    &lt;div class=&#34;alpine-cv-children&#34;&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Piz d&amp;rsquo;Agnel 3204m&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;🎿&lt;/span&gt;
+        
+          
+        
+        &lt;span&gt;PD&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Pischahorn 2980m&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;🎿&lt;/span&gt;
+        
+          
+        
+        &lt;span&gt;PD&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Egghorn 3127m&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;🎿&lt;/span&gt;
+        
+          
+        
+        
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Buinlücke&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        &lt;span&gt;🎿&lt;/span&gt;
+        
+          
+        
+        &lt;span&gt;45°&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+    &lt;/div&gt;
+  
+
+  
+    &lt;div class=&#34;alpine-cv-media-list&#34;&gt;
+      
+        &lt;div class=&#34;alpine-cv-media alpine-cv-media-youtube&#34;&gt;
+      &lt;iframe src=&#34;https://www.youtube.com/embed/-AAVG_6zCjQ&#34; title=&#34;Graubünden Haute Route&#34; loading=&#34;lazy&#34; allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&#34; allowfullscreen&gt;&lt;/iframe&gt;
+    &lt;/div&gt;
+      
+    &lt;/div&gt;
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Piz Fess 2881m&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2021&lt;/span&gt;
+        
+        &lt;span&gt;PD&lt;/span&gt;
+        
+        
+        
+        &lt;span&gt;group leader&lt;/span&gt;
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Piz Tomül 2946m&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2021&lt;/span&gt;
+        
+        &lt;span&gt;PD&lt;/span&gt;
+        
+        
+        
+        &lt;span&gt;group leader&lt;/span&gt;
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Wissigstock 2887m&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2019&lt;/span&gt;
+        
+        &lt;span&gt;PD&lt;/span&gt;
+        
+        
+        
+        &lt;span&gt;group leader&lt;/span&gt;
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Piz Calderas 3397m&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2019&lt;/span&gt;
+        
+        &lt;span&gt;AD&amp;#43;&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Piz Linard 3410m&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2019&lt;/span&gt;
+        
+        &lt;span&gt;AD&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Piz d&amp;rsquo;Err 3377m&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2019&lt;/span&gt;
+        
+        &lt;span&gt;AD&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Pizzo Centrale 2999m, from Gemsstock / S ridge&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2019&lt;/span&gt;
+        
+        &lt;span&gt;AD-&lt;/span&gt;
+        
+        
+        
+        &lt;span&gt;group leader&lt;/span&gt;
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Hengelhorn&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2019&lt;/span&gt;
+        
+        &lt;span&gt;AD&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Spitzmielen 2501m&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2019&lt;/span&gt;
+        
+        &lt;span&gt;PD&amp;#43;&lt;/span&gt;
+        
+        
+        
+        &lt;span&gt;group leader&lt;/span&gt;
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Rossstock 2460m&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2019&lt;/span&gt;
+        
+        &lt;span&gt;PD&lt;/span&gt;
+        
+        
+        
+        &lt;span&gt;group leader&lt;/span&gt;
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Rütistein 2025m&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2019&lt;/span&gt;
+        
+        &lt;span&gt;PD&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Roggenstock 1776m&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2019&lt;/span&gt;
+        
+        
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;p class=&#34;alpine-cv-note&#34;&gt;By night.&lt;/p&gt;
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+        &lt;/div&gt;
+      &lt;/section&gt;
+    
+      
+      &lt;section class=&#34;alpine-cv-section&#34; id=&#34;alpinism&#34;&gt;
+        &lt;header class=&#34;alpine-cv-section-header&#34;&gt;
+          &lt;div&gt;
+            &lt;h2&gt;Alpinism&lt;/h2&gt;
+            &lt;p&gt;Classic alpine routes and high peaks.&lt;/p&gt;
+          &lt;/div&gt;
+          &lt;span class=&#34;alpine-cv-count&#34;&gt;26&lt;/span&gt;
+        &lt;/header&gt;
+        &lt;div class=&#34;alpine-cv-entry-list&#34;&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;&lt;a href=&#34;https://www.camptocamp.org/routes/55475/fr/arete-de-l-argentine-traversee-e-w&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Arête de l&amp;rsquo;Argentine 2421m, E–W traverse&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;July 2026&lt;/span&gt;
+        
+        &lt;span&gt;AD&amp;#43;&lt;/span&gt;
+        
+        
+        
+        
+        &lt;span class=&#34;alpine-cv-rating&#34; role=&#34;img&#34; aria-label=&#34;3.5 out of 5 stars&#34;&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-half&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Vaud, Switzerland&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;&lt;a href=&#34;https://www.camptocamp.org/routes/54398/fr/pointe-des-ecandies-traversee-s-n&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Pointe des Ecandies 2873m, S–N traverse&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;July 2026&lt;/span&gt;
+        
+        &lt;span&gt;D&lt;/span&gt;
+        
+        
+        
+        
+        &lt;span class=&#34;alpine-cv-rating&#34; role=&#34;img&#34; aria-label=&#34;4.5 out of 5 stars&#34;&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-half&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Valais, Switzerland&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;&lt;a href=&#34;https://www.camptocamp.org/routes/176643/fr/ober-gabelhorn-traversee-arbengrat-wellenkuppe&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Ober Gabelhorn 4064m, Arbengrat–Wellenkuppe traverse&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;August 2025&lt;/span&gt;
+        
+        &lt;span&gt;AD&amp;#43;&lt;/span&gt;
+        
+        
+        
+        
+        &lt;span class=&#34;alpine-cv-rating&#34; role=&#34;img&#34; aria-label=&#34;4 out of 5 stars&#34;&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Valais, Switzerland&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;&lt;a href=&#34;https://www.camptocamp.org/routes/55292/fr/zinalrothorn-arete-se-puis-sw-par-la-gabel-voie-normale-depuis-la-rothornhutte&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Zinalrothorn 4221m, SE/SW ridge via the Gabel&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;August 2025&lt;/span&gt;
+        
+        &lt;span&gt;AD&lt;/span&gt;
+        
+        
+        
+        
+        &lt;span class=&#34;alpine-cv-rating&#34; role=&#34;img&#34; aria-label=&#34;4 out of 5 stars&#34;&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Valais, Switzerland&lt;/p&gt;
+    &lt;p class=&#34;alpine-cv-note&#34;&gt;Descent via the &lt;a href=&#34;https://www.camptocamp.org/routes/54494/fr/zinalrothorn-arete-n&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;N ridge&lt;/a&gt;.&lt;/p&gt;
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;&lt;a href=&#34;https://www.camptocamp.org/routes/464311/fr/dent-de-broc-arete-w&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Dent de Broc 1828m, W ridge&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;August 2025&lt;/span&gt;
+        
+        &lt;span&gt;AD&amp;#43; 5c&lt;/span&gt;
+        
+        
+        
+        
+        &lt;span class=&#34;alpine-cv-rating&#34; role=&#34;img&#34; aria-label=&#34;2 out of 5 stars&#34;&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Fribourg, Switzerland&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;&lt;a href=&#34;https://www.camptocamp.org/routes/54631/fr/pollux-arete-sw&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Pollux 4090m, SW ridge&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;August 2025&lt;/span&gt;
+        
+        &lt;span&gt;PD&amp;#43;&lt;/span&gt;
+        
+        
+        
+        
+        &lt;span class=&#34;alpine-cv-rating&#34; role=&#34;img&#34; aria-label=&#34;2 out of 5 stars&#34;&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Valais, Switzerland; Aosta Valley, Italy&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;&lt;a href=&#34;https://www.camptocamp.org/routes/53776/fr/piz-bernina-biancograt&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Piz Bernina 4047m, Biancograt&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;July 2025&lt;/span&gt;
+        
+        &lt;span&gt;AD&lt;/span&gt;
+        
+        
+        
+        
+        &lt;span class=&#34;alpine-cv-rating&#34; role=&#34;img&#34; aria-label=&#34;4 out of 5 stars&#34;&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Graubünden, Switzerland; Lombardy, Italy&lt;/p&gt;
+    &lt;p class=&#34;alpine-cv-note&#34;&gt;Continued with the &lt;a href=&#34;https://www.camptocamp.org/routes/287858/fr/piz-palu-traversee-w-e-depuis-marco-rosa&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;W–E traverse of Piz Palü&lt;/a&gt;.&lt;/p&gt;
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;&lt;a href=&#34;https://www.sac-cas.ch/en/huts-and-tours/sac-route-portal/lagginhorn-1000/alpinism/from-hohsaas-weissmies-hut-s-n-traverse-from-lagginjoch-1232/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Lagginhorn 4010m, S ridge&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;June 2025&lt;/span&gt;
+        
+        &lt;span&gt;AD&lt;/span&gt;
+        
+        
+        
+        
+        &lt;span class=&#34;alpine-cv-rating&#34; role=&#34;img&#34; aria-label=&#34;3.5 out of 5 stars&#34;&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-half&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Valais, Switzerland&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Aiguilles Dorées 3519m, E-W traverse&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2024&lt;/span&gt;
+        
+        &lt;span&gt;D-&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Nadelgrat&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2024&lt;/span&gt;
+        
+        &lt;span&gt;AD&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;p class=&#34;alpine-cv-note&#34;&gt;Dirruhorn 4035m, Hohberghorn 4219m, Stecknadelhorn 4241m, Nadelhorn 4327m.&lt;/p&gt;
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Dent Blanche 4358m, S arête&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2024&lt;/span&gt;
+        
+        &lt;span&gt;AD&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Breithorn 4139m - 4159m - 4164m, E-W traverse&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2024&lt;/span&gt;
+        
+        &lt;span&gt;AD&amp;#43;&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Lyskamm 4527m - 4479m, E-W traverse&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2024&lt;/span&gt;
+        
+        &lt;span&gt;AD&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Monte Rosa - Dufourspitze 4634m, W-SE traverse&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2024&lt;/span&gt;
+        
+        &lt;span&gt;AD&amp;#43;&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Weissmies 4017m, Nordgrat&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2024&lt;/span&gt;
+        
+        &lt;span&gt;AD&amp;#43;&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Gwächtenhorn 3404m, W-E traverse&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2024&lt;/span&gt;
+        
+        &lt;span&gt;PD&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Nadelhorn 4327m&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2022&lt;/span&gt;
+        
+        &lt;span&gt;PD&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Tête Blanche 3421m, North Face, Petite Fourche 3512m&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2022&lt;/span&gt;
+        
+        
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Vrenelisgärtli 2905m, normal route from Glärnischhütte&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2021&lt;/span&gt;
+        
+        &lt;span&gt;PD&lt;/span&gt;
+        
+        
+        
+        &lt;span&gt;group leader&lt;/span&gt;
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Spaghetti tour&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2021&lt;/span&gt;
+        
+        
+        
+        
+        
+        &lt;span&gt;group leader&lt;/span&gt;
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+    &lt;div class=&#34;alpine-cv-children&#34;&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Castor 4228m&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          
+        
+        &lt;span&gt;PD I&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Naso del Liskamm 4272m&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          
+        
+        &lt;span&gt;PD&amp;#43;&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Parrotspitze 4434m&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          
+        
+        &lt;span&gt;PD&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Zumsteinspitze 4563m&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          
+        
+        
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+    &lt;/div&gt;
+  
+
+  
+    &lt;div class=&#34;alpine-cv-media-list&#34;&gt;
+      
+        &lt;div class=&#34;alpine-cv-media alpine-cv-media-youtube&#34;&gt;
+      &lt;iframe src=&#34;https://www.youtube.com/embed/sVtr_m1H1II&#34; title=&#34;Spaghetti tour&#34; loading=&#34;lazy&#34; allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&#34; allowfullscreen&gt;&lt;/iframe&gt;
+    &lt;/div&gt;
+      
+    &lt;/div&gt;
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Alphubel 4206m, from Täschhütte / SE ridge&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2020&lt;/span&gt;
+        
+        &lt;span&gt;PD&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Mönch 4017m, normal route&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2020&lt;/span&gt;
+        
+        &lt;span&gt;AD&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Piz Palü 3882m, W-E traverse from Rifugi dals Chamuotschs-Fortezza&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2020&lt;/span&gt;
+        
+        &lt;span&gt;PD 2c&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Basodino 3273m, E ridge&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2020&lt;/span&gt;
+        
+        
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Vorder Tierberg 3090m&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2019&lt;/span&gt;
+        
+        &lt;span&gt;F&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Mount Ararat 5137m&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2008&lt;/span&gt;
+        
+        
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Turkey&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+        &lt;/div&gt;
+      &lt;/section&gt;
+    
+      
+      &lt;section class=&#34;alpine-cv-section&#34; id=&#34;alpine-climbing&#34;&gt;
+        &lt;header class=&#34;alpine-cv-section-header&#34;&gt;
+          &lt;div&gt;
+            &lt;h2&gt;Alpine climbing&lt;/h2&gt;
+            &lt;p&gt;Multi-pitch routes, ridges, and alpine rock climbs.&lt;/p&gt;
+          &lt;/div&gt;
+          &lt;span class=&#34;alpine-cv-count&#34;&gt;19&lt;/span&gt;
+        &lt;/header&gt;
+        &lt;div class=&#34;alpine-cv-entry-list&#34;&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;&lt;a href=&#34;https://www.allgaeu-plaisir.de/wp-content/uploads/2016/11/Topo-9.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Räterichsbodensee, Seeplatten – Tim und Struppi&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;September 2025&lt;/span&gt;
+        
+        &lt;span&gt;5c&lt;/span&gt;
+        &lt;span&gt;10 pitches&lt;/span&gt;
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Grimsel, Switzerland&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Balmflue Südgrat&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;June 2025&lt;/span&gt;
+        
+        &lt;span&gt;5c max&lt;/span&gt;
+        &lt;span&gt;19 pitches&lt;/span&gt;
+        
+        &lt;span&gt;450m&lt;/span&gt;
+        
+        &lt;span class=&#34;alpine-cv-rating&#34; role=&#34;img&#34; aria-label=&#34;2 out of 5 stars&#34;&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Solothurn, Switzerland&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;&lt;a href=&#34;https://www.engelbergmountainguide.ch/sommer/klettern/einfache-klettertouren/galtigentuerme-pilatus-2/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Galtigentürme traverse (Pilatus)&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;June 2025&lt;/span&gt;
+        
+        &lt;span&gt;4b max&lt;/span&gt;
+        &lt;span&gt;11 pitches&lt;/span&gt;
+        
+        &lt;span&gt;300m&lt;/span&gt;
+        
+        &lt;span class=&#34;alpine-cv-rating&#34; role=&#34;img&#34; aria-label=&#34;2.5 out of 5 stars&#34;&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-filled&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-half&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;span class=&#34;is-empty&#34; aria-hidden=&#34;true&#34;&gt;★&lt;/span&gt;&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Pilatus, Switzerland&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Schmalstöckli 2012m, Bird on a wire&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2024&lt;/span&gt;
+        
+        &lt;span&gt;6b&lt;/span&gt;
+        &lt;span&gt;5 pitches&lt;/span&gt;
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Läged Windgällen 2572m, Zentralpfeiler&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2024&lt;/span&gt;
+        
+        &lt;span&gt;6a&lt;/span&gt;
+        &lt;span&gt;10 pitches&lt;/span&gt;
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Balmflue 730m, Südwände + Föhrenweg&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2024&lt;/span&gt;
+        
+        &lt;span&gt;6b&lt;/span&gt;
+        &lt;span&gt;5 &amp;#43; 4 pitches&lt;/span&gt;
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Cheselenflue 1750m, Dr Blau Chäfer&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2024&lt;/span&gt;
+        
+        &lt;span&gt;6a&amp;#43;&lt;/span&gt;
+        &lt;span&gt;6 pitches&lt;/span&gt;
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Pic de Jallouvre 2408m, Voie des Cristaux&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2022&lt;/span&gt;
+        
+        &lt;span&gt;AD-&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Pointes de la Blonnière 2369m, Arête à Marion&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2022&lt;/span&gt;
+        
+        &lt;span&gt;AD-&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Dri Horlini, SW ridge&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2022&lt;/span&gt;
+        
+        &lt;span&gt;AD&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Mattstock 1935m, Kobold - Gipfelstürmer - Südwestgrat&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2022&lt;/span&gt;
+        
+        
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Haggenspitz 1762m, Nordwestgrat&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2022&lt;/span&gt;
+        
+        
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Sewenstock 2820m, Amarone&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2021&lt;/span&gt;
+        
+        &lt;span&gt;5c&amp;#43; max&lt;/span&gt;
+        &lt;span&gt;10 pitches, 7 pitches in 6a&amp;#43;&lt;/span&gt;
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Gemsplanggenstock 2752m&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2020&lt;/span&gt;
+        
+        &lt;span&gt;5c&amp;#43; max&lt;/span&gt;
+        &lt;span&gt;14 pitches&lt;/span&gt;
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Gross Furkahorn 3169m, E-S-E ridge&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2020&lt;/span&gt;
+        
+        &lt;span&gt;IV&amp;#43;&lt;/span&gt;
+        &lt;span&gt;12 pitches&lt;/span&gt;
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Hannibalturm 2920m, Conquest of Paradise&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2020&lt;/span&gt;
+        
+        &lt;span&gt;6b&lt;/span&gt;
+        &lt;span&gt;6 pitches&lt;/span&gt;
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Brüggler, Sonntagweg&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2020&lt;/span&gt;
+        
+        &lt;span&gt;6a&amp;#43;&lt;/span&gt;
+        &lt;span&gt;7 pitches&lt;/span&gt;
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Bockmattli, Namenlose Kante&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2020&lt;/span&gt;
+        
+        &lt;span&gt;5a&lt;/span&gt;
+        &lt;span&gt;9 pitches&lt;/span&gt;
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Poncione di Manió 2925m&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2020&lt;/span&gt;
+        
+        &lt;span&gt;AD&amp;#43; 4a&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+        &lt;/div&gt;
+      &lt;/section&gt;
+    
+      
+      &lt;section class=&#34;alpine-cv-section&#34; id=&#34;canyoning&#34;&gt;
+        &lt;header class=&#34;alpine-cv-section-header&#34;&gt;
+          &lt;div&gt;
+            &lt;h2&gt;Canyoning&lt;/h2&gt;
+            &lt;p&gt;Canyon descents and group-led trips.&lt;/p&gt;
+          &lt;/div&gt;
+          &lt;span class=&#34;alpine-cv-count&#34;&gt;9&lt;/span&gt;
+        &lt;/header&gt;
+        &lt;div class=&#34;alpine-cv-entry-list&#34;&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Barranco de Arandari&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2021&lt;/span&gt;
+        
+        
+        
+        
+        
+        &lt;span&gt;group leader&lt;/span&gt;
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Pyrenees, Spain&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Tiger Snake&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2016&lt;/span&gt;
+        
+        
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Newnes Plateau, Australia&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Claustral Canyon&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2016&lt;/span&gt;
+        
+        
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Blue Mountains, Australia&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Tourmoun&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2013&lt;/span&gt;
+        
+        &lt;span&gt;v3a3II&lt;/span&gt;
+        
+        
+        
+        &lt;span&gt;group leader&lt;/span&gt;
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Pyrenees, France&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Soussoueou&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2013&lt;/span&gt;
+        
+        &lt;span&gt;v3a3II&lt;/span&gt;
+        
+        
+        
+        &lt;span&gt;group leader&lt;/span&gt;
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Pyrenees, France&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Gorgol&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2013&lt;/span&gt;
+        
+        &lt;span&gt;v4a4III&lt;/span&gt;
+        
+        
+        
+        &lt;span&gt;group leader&lt;/span&gt;
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Pyrenees, France&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Forronías&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2013&lt;/span&gt;
+        
+        
+        
+        
+        
+        &lt;span&gt;group leader&lt;/span&gt;
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Pyrenees, France&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Bitet inférieur&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2013&lt;/span&gt;
+        
+        &lt;span&gt;v4a3IV&lt;/span&gt;
+        
+        
+        
+        &lt;span&gt;group leader&lt;/span&gt;
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Pyrenees, France&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Peonera Inferior&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2012&lt;/span&gt;
+        
+        &lt;span&gt;v2a3III&lt;/span&gt;
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Pyrenees, Spain&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+        &lt;/div&gt;
+      &lt;/section&gt;
+    
+      
+      &lt;section class=&#34;alpine-cv-section&#34; id=&#34;caving&#34;&gt;
+        &lt;header class=&#34;alpine-cv-section-header&#34;&gt;
+          &lt;div&gt;
+            &lt;h2&gt;Caving&lt;/h2&gt;
+            &lt;p&gt;Cave trips.&lt;/p&gt;
+          &lt;/div&gt;
+          &lt;span class=&#34;alpine-cv-count&#34;&gt;1&lt;/span&gt;
+        &lt;/header&gt;
+        &lt;div class=&#34;alpine-cv-entry-list&#34;&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Blowfly Cave&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2016&lt;/span&gt;
+        
+        
+        
+        
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;NSW, Australia&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+        &lt;/div&gt;
+      &lt;/section&gt;
+    
+      
+      &lt;section class=&#34;alpine-cv-section&#34; id=&#34;bikepacking&#34;&gt;
+        &lt;header class=&#34;alpine-cv-section-header&#34;&gt;
+          &lt;div&gt;
+            &lt;h2&gt;Bikepacking&lt;/h2&gt;
+            &lt;p&gt;Self-powered bike and mountain journeys.&lt;/p&gt;
+          &lt;/div&gt;
+          &lt;span class=&#34;alpine-cv-count&#34;&gt;3&lt;/span&gt;
+        &lt;/header&gt;
+        &lt;div class=&#34;alpine-cv-entry-list&#34;&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;From the first to the last droplet of the Rhône river&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          
+        
+        
+        
+        
+        
+        &lt;span&gt;group leader&lt;/span&gt;
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+    &lt;div class=&#34;alpine-cv-children&#34;&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Rhône Glacier to Geneva&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2020&lt;/span&gt;
+        
+        
+        
+        &lt;span&gt;5 days&lt;/span&gt;
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Switzerland&lt;/p&gt;
+    &lt;p class=&#34;alpine-cv-note&#34;&gt;Mountain biking in self-sufficiency through the Zwischbergenpass 3268m.&lt;/p&gt;
+  &lt;/div&gt;
+
+  
+
+  
+    &lt;div class=&#34;alpine-cv-media-list&#34;&gt;
+      
+        &lt;div class=&#34;alpine-cv-media alpine-cv-media-youtube&#34;&gt;
+      &lt;iframe src=&#34;https://www.youtube.com/embed/gHgxTTPf2Vc&#34; title=&#34;Rhône Glacier to Geneva&#34; loading=&#34;lazy&#34; allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&#34; allowfullscreen&gt;&lt;/iframe&gt;
+    &lt;/div&gt;
+      
+    &lt;/div&gt;
+  
+&lt;/article&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Geneva to Lyon&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2019&lt;/span&gt;
+        
+        
+        
+        
+        &lt;span&gt;400 km&lt;/span&gt;
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+        &lt;article class=&#34;alpine-cv-entry alpine-cv-entry-child&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Lyon to Marseille&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2018&lt;/span&gt;
+        
+        
+        
+        
+        &lt;span&gt;400 km&lt;/span&gt;
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+      
+    &lt;/div&gt;
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Tour du Mont Blanc&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2019&lt;/span&gt;
+        
+        
+        
+        &lt;span&gt;5 days&lt;/span&gt;
+        
+        &lt;span&gt;group leader&lt;/span&gt;
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;p class=&#34;alpine-cv-note&#34;&gt;Mountain biking.&lt;/p&gt;
+  &lt;/div&gt;
+
+  
+
+  
+    &lt;div class=&#34;alpine-cv-media-list&#34;&gt;
+      
+        &lt;div class=&#34;alpine-cv-media alpine-cv-media-youtube&#34;&gt;
+      &lt;iframe src=&#34;https://www.youtube.com/embed/LEumD6ZbYU0&#34; title=&#34;Tour du Mont Blanc&#34; loading=&#34;lazy&#34; allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&#34; allowfullscreen&gt;&lt;/iframe&gt;
+    &lt;/div&gt;
+      
+    &lt;/div&gt;
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Sydney Canberra&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2016&lt;/span&gt;
+        
+        
+        
+        
+        &lt;span&gt;500 km&lt;/span&gt;
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Australia&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+        &lt;/div&gt;
+      &lt;/section&gt;
+    
+      
+      &lt;section class=&#34;alpine-cv-section&#34; id=&#34;hikes&#34;&gt;
+        &lt;header class=&#34;alpine-cv-section-header&#34;&gt;
+          &lt;div&gt;
+            &lt;h2&gt;Hikes&lt;/h2&gt;
+            &lt;p&gt;Longer hiking trips.&lt;/p&gt;
+          &lt;/div&gt;
+          &lt;span class=&#34;alpine-cv-count&#34;&gt;2&lt;/span&gt;
+        &lt;/header&gt;
+        &lt;div class=&#34;alpine-cv-entry-list&#34;&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Larapinta trail&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2016&lt;/span&gt;
+        
+        
+        
+        &lt;span&gt;10 days&lt;/span&gt;
+        &lt;span&gt;200 km&lt;/span&gt;
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Australia&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+            &lt;article class=&#34;alpine-cv-entry&#34;&gt;
+  &lt;div class=&#34;alpine-cv-entry-content&#34;&gt;
+    &lt;div class=&#34;alpine-cv-entry-header&#34;&gt;
+      &lt;div class=&#34;alpine-cv-entry-title&#34;&gt;Overland Track&lt;/div&gt;
+      &lt;div class=&#34;alpine-cv-badges&#34;&gt;
+        
+        
+          &lt;span&gt;2015&lt;/span&gt;
+        
+        
+        
+        &lt;span&gt;5 days&lt;/span&gt;
+        
+        
+        
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;alpine-cv-location&#34;&gt;Tasmania, Australia&lt;/p&gt;
+    
+  &lt;/div&gt;
+
+  
+
+  
+&lt;/article&gt;
+          
+        &lt;/div&gt;
+      &lt;/section&gt;
+    
+  &lt;/div&gt;
+&lt;/div&gt;
+
+</description>
+    </item>
+    
+  </channel>
+</rss>

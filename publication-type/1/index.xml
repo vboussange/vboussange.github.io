@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>1 | Victor Boussange</title>
+    <link>https://victorboussange.com/publication-type/1/</link>
+      <atom:link href="https://victorboussange.com/publication-type/1/index.xml" rel="self" type="application/rss+xml" />
+    <description>1</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Thu, 01 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://victorboussange.com/media/icon_hua3c898eed18b98379688891d5011a1d0_203625_512x512_fill_lanczos_center_3.png</url>
+      <title>1</title>
+      <link>https://victorboussange.com/publication-type/1/</link>
+    </image>
+    
+    <item>
+      <title>Biodiversity Profile Estimation with Earth Observation</title>
+      <link>https://victorboussange.com/publication/biodiversity-profile-estimation-earth-observation/</link>
+      <pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://victorboussange.com/publication/biodiversity-profile-estimation-earth-observation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Episodic mineralising fluid injection through chemical shear zones</title>
+      <link>https://victorboussange.com/publication/episodic-mineralising-fluid-injection/</link>
+      <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
+      <guid>https://victorboussange.com/publication/episodic-mineralising-fluid-injection/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

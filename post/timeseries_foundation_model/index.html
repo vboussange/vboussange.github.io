@@ -1,0 +1,2512 @@
+<!DOCTYPE html><html lang="en-us" >
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.5.0 for Hugo" />
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Victor Boussange" />
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Neuron activity, fish stocks, viral spread, El Niño oscillations, energy demand: these complex phenomena show remarkable patterns that continue to fascinate scientists. Analyzing these dynamics through scientific models (that is, models embedding domain knowledge; e." />
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://victorboussange.com/post/timeseries_foundation_model/" />
+
+  
+  
+  
+    <meta name="theme-color" content="#3A5A40" />
+  
+
+  
+  
+    
+    <script src="/js/mathjax-config.js"></script>
+  
+
+  
+
+  <link rel="stylesheet" href="/css/vendor-bundle.min.c7b8d9abd591ba2253ea42747e3ac3f5.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha512-W0xM4mr6dEP9nREo7Z9z+9X70wytKvMGeDsj7ps2+xg5QPrEBXC8tAW1IFnzjR6eoJ90JmCnFzerQJTLzIEHjA==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/github.min.css" crossorigin="anonymous" title="hl-light" media="print" onload="this.media='all'">
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" media="print" onload="this.media='all'" disabled>
+        
+      
+    
+
+    
+    
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.3d95c7012d7168b52379790218977386.css" />
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+    <link rel="manifest" href="/manifest.webmanifest" />
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_hua3c898eed18b98379688891d5011a1d0_203625_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hua3c898eed18b98379688891d5011a1d0_203625_180x180_fill_lanczos_center_3.png" />
+
+  <link rel="canonical" href="https://victorboussange.com/post/timeseries_foundation_model/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary_large_image" />
+  
+    <meta property="twitter:site" content="@wowchemy" />
+    <meta property="twitter:creator" content="@wowchemy" />
+  
+  <meta property="og:site_name" content="Victor Boussange" />
+  <meta property="og:url" content="https://victorboussange.com/post/timeseries_foundation_model/" />
+  <meta property="og:title" content="Are time series foundation models useful for scientific applications? | Victor Boussange" />
+  <meta property="og:description" content="Neuron activity, fish stocks, viral spread, El Niño oscillations, energy demand: these complex phenomena show remarkable patterns that continue to fascinate scientists. Analyzing these dynamics through scientific models (that is, models embedding domain knowledge; e." /><meta property="og:image" content="https://victorboussange.com/post/timeseries_foundation_model/featured.png" />
+    <meta property="twitter:image" content="https://victorboussange.com/post/timeseries_foundation_model/featured.png" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2026-02-20T00:00:00&#43;00:00"
+      />
+    
+    <meta property="article:modified_time" content="2026-02-20T00:00:00&#43;00:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://victorboussange.com/post/timeseries_foundation_model/"
+  },
+  "headline": "Are time series foundation models useful for scientific applications?",
+  
+  "image": [
+    "https://victorboussange.com/post/timeseries_foundation_model/featured.png"
+  ],
+  
+  "datePublished": "2026-02-20T00:00:00Z",
+  "dateModified": "2026-02-20T00:00:00Z",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Victor Boussange"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Victor Boussange",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://victorboussange.com/media/icon_hua3c898eed18b98379688891d5011a1d0_203625_192x192_fill_lanczos_center_3.png"
+    }
+  },
+  "description": "Neuron activity, fish stocks, viral spread, El Niño oscillations, energy demand: these complex phenomena show remarkable patterns that continue to fascinate scientists. Analyzing these dynamics through scientific models (that is, models embedding domain knowledge; e."
+}
+</script>
+
+  
+
+  
+
+  
+
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+<style>
+  :root {
+    --primary: #3A5A40;
+    --vb-accent: #3A5A40;
+    --vb-accent-hover: #263B2A;
+    --vb-accent-focus: rgba(58, 90, 64, 0.24);
+    --vb-link-underline: rgba(58, 90, 64, 0.46);
+    --vb-link-underline-hover: rgba(38, 59, 42, 0.78);
+    --vb-scroll-border: rgba(0, 0, 0, 0.1);
+    --vb-scroll-shadow: rgba(0, 0, 0, 0.14);
+  }
+
+  .dark {
+    --vb-link-underline: rgba(199, 215, 170, 0.56);
+    --vb-link-underline-hover: rgba(199, 215, 170, 0.9);
+    --vb-scroll-border: rgba(255, 255, 255, 0.14);
+    --vb-scroll-shadow: rgba(0, 0, 0, 0.34);
+  }
+
+  a,
+  .article-title a,
+  .summary-link,
+  .navbar-light .navbar-nav .nav-link.active,
+  #navbar-main .main-menu-item ul li .nav-link.active,
+  .docs-sidebar .docs-toc-item.active a,
+  .docs-sidebar .docs-toc-item a.active,
+  #TableOfContents li a.active,
+  .featurette-icon {
+    color: var(--vb-accent);
+  }
+
+  #navbar-main .main-menu-item .nav-item .nav-link.active,
+  #navbar-main .dropdown-item-active {
+    color: var(--vb-accent) !important;
+  }
+
+  a:hover,
+  .article-title a:hover,
+  .summary-link:hover {
+    color: var(--vb-accent-hover);
+  }
+
+  .article-style a:not(.btn):not(.badge):not(.topic-link),
+  .pub-list-item a:not(.btn):not(.badge),
+  .software-copy a:not(.topic-link),
+  .funding-copy a:not(.topic-link),
+  .resource-item a:not(.topic-link),
+  a.student-name,
+  .student-details a,
+  .summary-link,
+  .homepage-section-see-all a,
+  .alpine-cv-entry a,
+  .alpine-cv-note a,
+  .alpine-cv-media-link a {
+    text-decoration-color: var(--vb-link-underline);
+    text-decoration-line: underline;
+    text-decoration-skip-ink: auto;
+    text-decoration-style: dashed;
+    text-decoration-thickness: 0.075em;
+    text-underline-offset: 0.16em;
+    transition: color 160ms ease, text-decoration-color 160ms ease, text-underline-offset 160ms ease;
+  }
+
+  .article-style a:not(.btn):not(.badge):not(.topic-link):hover,
+  .pub-list-item a:not(.btn):not(.badge):hover,
+  .software-copy a:not(.topic-link):hover,
+  .funding-copy a:not(.topic-link):hover,
+  .resource-item a:not(.topic-link):hover,
+  a.student-name:hover,
+  .student-details a:hover,
+  .summary-link:hover,
+  .homepage-section-see-all a:hover,
+  .alpine-cv-entry a:hover,
+  .alpine-cv-note a:hover,
+  .alpine-cv-media-link a:hover {
+    text-decoration-color: var(--vb-link-underline-hover);
+    text-underline-offset: 0.22em;
+  }
+
+  .btn-primary,
+  .btn.btn-primary.active,
+  .page-item.active .page-link {
+    background-color: var(--vb-accent);
+    border-color: var(--vb-accent);
+  }
+
+  .btn-primary:hover,
+  .btn.btn-primary.active:hover,
+  .page-item.active .page-link:hover {
+    background-color: var(--vb-accent-hover);
+    border-color: var(--vb-accent-hover);
+  }
+
+  .btn-outline-primary {
+    border-color: var(--vb-accent);
+    color: var(--vb-accent);
+  }
+
+  .btn-outline-primary:hover {
+    background-color: var(--vb-accent);
+    border-color: var(--vb-accent);
+    color: #ffffff;
+  }
+
+  .form-control:focus {
+    border-color: var(--vb-accent);
+    box-shadow: 0 0 0 0.2rem var(--vb-accent-focus);
+  }
+
+  .topic-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin: 0.35rem 0 0;
+  }
+
+  .topic-link {
+    border: 1px solid rgba(0, 0, 0, 0.14);
+    border-radius: 0.25rem;
+    color: inherit;
+    display: inline-flex;
+    font-size: 0.78rem;
+    line-height: 1.2;
+    padding: 0.18rem 0.45rem;
+    text-decoration: none;
+  }
+
+  .topic-link:hover {
+    border-color: rgba(0, 0, 0, 0.32);
+    text-decoration: none;
+  }
+
+  .about-profile-sections {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1.2rem;
+  }
+
+  .about-profile-section .section-subheading {
+    margin-bottom: 0.35rem;
+  }
+
+  .about-profile-interests .topic-links {
+    gap: 0.28rem;
+    margin-top: 0;
+  }
+
+  .topic-links-hint {
+    color: rgba(0, 0, 0, 0.58);
+    font-size: 0.82rem;
+    line-height: 1.3;
+    margin-bottom: 0.35rem;
+    margin-top: -0.1rem;
+  }
+
+  .about-profile-interests .topic-link {
+    font-size: 0.74rem;
+    line-height: 1.15;
+    padding: 0.14rem 0.38rem;
+  }
+
+  .about-profile-education .ul-edu {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    column-gap: 1.25rem;
+    row-gap: 0.5rem;
+  }
+
+  .about-profile-education .ul-edu li {
+    margin-bottom: 0;
+  }
+
+  .about-profile-education .ul-edu .description p {
+    margin-bottom: 0.1rem;
+  }
+
+  .topic-links-small {
+    gap: 0.25rem;
+    margin-top: 0.5rem;
+  }
+
+  .topic-link-small {
+    font-size: 0.7rem;
+    padding: 0.12rem 0.35rem;
+  }
+
+  .compact-title-row {
+    align-items: baseline;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.5rem;
+  }
+
+  .compact-type-badge {
+    background: rgba(58, 90, 64, 0.08);
+    border: 1px solid rgba(58, 90, 64, 0.32);
+    border-radius: 0.25rem;
+    color: var(--vb-accent);
+    display: inline-flex;
+    flex: 0 0 auto;
+    font-size: 0.68rem;
+    font-weight: 700;
+    line-height: 1.2;
+    padding: 0.12rem 0.34rem;
+  }
+
+  .compact-publication-meta {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.2rem;
+  }
+
+  .dark .compact-type-badge {
+    background: rgba(163, 177, 138, 0.14);
+    border-color: rgba(163, 177, 138, 0.42);
+    color: #c7d7aa;
+  }
+
+  .footer-last-updated {
+    background: #ffffff;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    bottom: 0;
+    box-shadow: 0 -0.25rem 0.75rem rgba(0, 0, 0, 0.04);
+    color: rgba(0, 0, 0, 0.54);
+    font-size: 0.72rem;
+    left: 0;
+    margin: 0;
+    padding: 0.42rem 1rem;
+    position: fixed;
+    right: 0;
+    text-align: center;
+    z-index: 1020;
+  }
+
+  .dark .footer-last-updated {
+    background: #23252f;
+    border-top-color: rgba(255, 255, 255, 0.14);
+    box-shadow: 0 -0.25rem 0.75rem rgba(0, 0, 0, 0.28);
+    color: rgba(255, 255, 255, 0.58);
+  }
+
+  body {
+    padding-bottom: 2rem;
+  }
+
+  .alpine-cv {
+    display: grid;
+    gap: 1.6rem;
+  }
+
+  .alpine-cv-intro {
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+  }
+
+  .alpine-cv-intro p {
+    color: rgba(0, 0, 0, 0.68);
+    margin: 0;
+  }
+
+  .alpine-cv-stats {
+    color: rgba(0, 0, 0, 0.58);
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 0.78rem;
+    gap: 0.35rem;
+    justify-content: flex-end;
+  }
+
+  .alpine-cv-stats span,
+  .alpine-cv-count,
+  .alpine-cv-badges > span {
+    background: rgba(58, 90, 64, 0.08);
+    border: 1px solid rgba(58, 90, 64, 0.26);
+    border-radius: 0.25rem;
+    color: var(--vb-accent);
+    display: inline-flex;
+    font-size: 0.72rem;
+    font-weight: 700;
+    line-height: 1.2;
+    padding: 0.14rem 0.4rem;
+  }
+
+  .alpine-cv-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+
+  .alpine-cv-nav a {
+    border: 1px solid rgba(0, 0, 0, 0.14);
+    border-radius: 0.25rem;
+    color: inherit;
+    font-size: 0.78rem;
+    line-height: 1.2;
+    padding: 0.22rem 0.48rem;
+    text-decoration: none;
+  }
+
+  .alpine-cv-nav a:hover {
+    border-color: rgba(58, 90, 64, 0.38);
+    color: var(--vb-accent-hover);
+    text-decoration: none;
+  }
+
+  .alpine-cv-sections,
+  .alpine-cv-entry-list,
+  .alpine-cv-media-list {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .alpine-cv-section {
+    scroll-margin-top: 5rem;
+  }
+
+  .alpine-cv-section-header {
+    align-items: start;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.55rem;
+  }
+
+  .alpine-cv-section-header h2 {
+    margin-bottom: 0.2rem;
+  }
+
+  .alpine-cv-section-header p {
+    color: rgba(0, 0, 0, 0.58);
+    font-size: 0.9rem;
+    margin: 0;
+  }
+
+  .alpine-cv-entry {
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 0.35rem;
+    display: grid;
+    gap: 0.7rem;
+    padding: 0.75rem 0.85rem;
+  }
+
+  .alpine-cv-entry-child {
+    background: rgba(0, 0, 0, 0.018);
+    padding: 0.55rem 0.65rem;
+  }
+
+  .alpine-cv-entry-header {
+    align-items: baseline;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem 0.65rem;
+    justify-content: space-between;
+  }
+
+  .alpine-cv-entry-title {
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  .alpine-cv-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+  }
+
+  .alpine-cv-badges > .alpine-cv-rating {
+    --alpine-rating-empty: rgba(183, 121, 31, 0.28);
+    --alpine-rating-filled: #b7791f;
+    background: transparent;
+    border-color: transparent;
+    color: var(--alpine-rating-filled);
+    gap: 0.04rem;
+    padding: 0.08rem 0;
+  }
+
+  .alpine-cv-rating .is-empty {
+    color: var(--alpine-rating-empty);
+  }
+
+  .alpine-cv-rating .is-half {
+    color: var(--alpine-rating-empty);
+    display: inline-block;
+    position: relative;
+  }
+
+  .alpine-cv-rating .is-half::before {
+    color: var(--alpine-rating-filled);
+    content: "★";
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    width: 50%;
+  }
+
+  .alpine-cv-location,
+  .alpine-cv-note {
+    color: rgba(0, 0, 0, 0.62);
+    font-size: 0.86rem;
+    line-height: 1.35;
+    margin: 0;
+  }
+
+  .alpine-cv-children {
+    border-left: 2px solid rgba(58, 90, 64, 0.24);
+    display: grid;
+    gap: 0.5rem;
+    margin-left: 0.2rem;
+    padding-left: 0.75rem;
+  }
+
+  .alpine-cv-media {
+    max-width: 42rem;
+    width: 100%;
+  }
+
+  .alpine-cv-media-youtube {
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+  }
+
+  .alpine-cv-media-youtube iframe {
+    border: 0;
+    height: 100%;
+    width: 100%;
+  }
+
+  .alpine-cv-media-instagram {
+    display: grid;
+    gap: 0.4rem;
+  }
+
+  .alpine-cv-media-instagram blockquote {
+    margin: 0 !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .alpine-cv-media-link {
+    font-size: 0.82rem;
+    margin: 0;
+  }
+
+  .dark .alpine-cv-intro,
+  .dark .alpine-cv-section-header {
+    border-bottom-color: rgba(255, 255, 255, 0.14);
+  }
+
+  .dark .alpine-cv-intro p,
+  .dark .alpine-cv-section-header p,
+  .dark .alpine-cv-location,
+  .dark .alpine-cv-note,
+  .dark .alpine-cv-stats {
+    color: rgba(255, 255, 255, 0.66);
+  }
+
+  .dark .alpine-cv-stats span,
+  .dark .alpine-cv-count,
+  .dark .alpine-cv-badges > span {
+    background: rgba(163, 177, 138, 0.14);
+    border-color: rgba(163, 177, 138, 0.42);
+    color: #c7d7aa;
+  }
+
+  .dark .alpine-cv-badges > .alpine-cv-rating {
+    --alpine-rating-empty: rgba(230, 179, 95, 0.28);
+    --alpine-rating-filled: #e6b35f;
+    background: transparent;
+    border-color: transparent;
+    color: var(--alpine-rating-filled);
+  }
+
+  .dark .alpine-cv-nav a,
+  .dark .alpine-cv-entry {
+    border-color: rgba(255, 255, 255, 0.14);
+  }
+
+  .dark .alpine-cv-entry-child {
+    background: rgba(255, 255, 255, 0.035);
+  }
+
+  .dark .alpine-cv-children {
+    border-left-color: rgba(163, 177, 138, 0.34);
+  }
+
+  .page-body .home-section {
+    padding: 3rem 0;
+  }
+
+  .page-body .home-section:first-of-type {
+    padding-top: 2rem;
+  }
+
+  .home-section .homepage-scroll-panel {
+    --homepage-scroll-bg: #ffffff;
+  }
+
+  .home-section:nth-of-type(even) .homepage-scroll-panel {
+    --homepage-scroll-bg: #f7f7f7;
+  }
+
+  .dark .home-section .homepage-scroll-panel {
+    --homepage-scroll-bg: #272935;
+  }
+
+  .dark .home-section:nth-of-type(even) .homepage-scroll-panel {
+    --homepage-scroll-bg: #23252f;
+  }
+
+  .homepage-scroll-panel {
+    --homepage-scroll-max: 32rem;
+    background: var(--homepage-scroll-bg);
+    border-bottom: 1px solid var(--vb-scroll-border);
+    border-top: 1px solid var(--vb-scroll-border);
+    box-shadow: inset 0 12px 12px -16px var(--vb-scroll-shadow),
+      inset 0 -12px 12px -16px var(--vb-scroll-shadow);
+    max-height: var(--homepage-scroll-max);
+    overflow-y: auto;
+    overscroll-behavior-y: auto;
+    padding: 0.35rem 0.8rem 0.35rem 0;
+    scrollbar-color: rgba(58, 90, 64, 0.58) transparent;
+    scrollbar-gutter: stable;
+    scrollbar-width: thin;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .homepage-scroll-panel:focus-visible {
+    outline: 2px solid var(--vb-accent);
+    outline-offset: 0.25rem;
+  }
+
+  .homepage-scroll-panel::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+
+  .homepage-scroll-panel::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .homepage-scroll-panel::-webkit-scrollbar-thumb {
+    background: rgba(58, 90, 64, 0.5);
+    border-radius: 999px;
+  }
+
+  .homepage-scroll-panel::-webkit-scrollbar-thumb:hover {
+    background: rgba(58, 90, 64, 0.72);
+  }
+
+  .homepage-scroll-panel-publications {
+    --homepage-scroll-max: clamp(28rem, 64vh, 42rem);
+  }
+
+  .homepage-scroll-panel-posts {
+    --homepage-scroll-max: clamp(20rem, 48vh, 32rem);
+  }
+
+  .homepage-scroll-panel-software {
+    --homepage-scroll-max: clamp(18rem, 42vh, 28rem);
+  }
+
+  .homepage-scroll-panel-students {
+    --homepage-scroll-max: clamp(22rem, 52vh, 34rem);
+  }
+
+  .homepage-scroll-panel-funding {
+    --homepage-scroll-max: clamp(16rem, 38vh, 24rem);
+  }
+
+  .homepage-scroll-panel .media.stream-item:not(:last-child) {
+    border-bottom: 1px solid var(--vb-scroll-border);
+    margin-bottom: 1.15rem;
+    padding-bottom: 1.15rem;
+  }
+
+  .homepage-scroll-panel-publications .publication-group-title {
+    background: var(--homepage-scroll-bg);
+    padding: 0.35rem 0 0.25rem;
+    position: sticky;
+    top: -0.35rem;
+    z-index: 2;
+  }
+
+  .homepage-scroll-panel-software .software-class-title {
+    background: var(--homepage-scroll-bg);
+    padding: 0.35rem 0 0.25rem;
+    position: sticky;
+    top: -0.35rem;
+    z-index: 2;
+  }
+
+  .software-list,
+  .post-list,
+  .publication-grouped-list,
+  .funding-list,
+  .resource-list {
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  .software-class {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .post-list {
+    gap: 1.15rem;
+  }
+
+  .homepage-section-see-all {
+    margin-top: 1rem;
+  }
+
+  .software-class-title,
+  .publication-group-title {
+    margin-bottom: 0.15rem;
+  }
+
+  .publication-note {
+    color: rgba(0, 0, 0, 0.62);
+    font-size: 0.86rem;
+    font-style: italic;
+    margin-top: 0.15rem;
+  }
+
+  .funding-item {
+    align-items: center;
+    column-gap: 1rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) max-content;
+  }
+
+  .funding-copy {
+    min-width: 0;
+  }
+
+  .funding-copy h4 {
+    margin-bottom: 0.2rem;
+  }
+
+  .funding-copy p {
+    margin-bottom: 0.45rem;
+  }
+
+  .funding-meta,
+  .funding-secondary-links {
+    align-items: center;
+    color: rgba(0, 0, 0, 0.62);
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 0.85rem;
+    gap: 0.25rem;
+  }
+
+  .funding-secondary-links {
+    margin-bottom: 0.4rem;
+  }
+
+  .funding-amount {
+    border: 1px solid rgba(0, 0, 0, 0.16);
+    border-radius: 0.25rem;
+    justify-self: end;
+    min-width: 5.25rem;
+    padding: 0.35rem 0.55rem;
+    text-align: center;
+  }
+
+  .funding-amount-value,
+  .funding-amount-currency {
+    display: block;
+    line-height: 1.1;
+  }
+
+  .funding-amount-value {
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  .funding-amount-currency {
+    color: rgba(0, 0, 0, 0.62);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    margin-top: 0.12rem;
+    text-transform: uppercase;
+  }
+
+  .software-item {
+    align-items: center;
+    column-gap: 1rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) max-content;
+  }
+
+  .software-copy {
+    min-width: 0;
+  }
+
+  .software-copy h4 {
+    margin-bottom: 0.2rem;
+  }
+
+  .software-item-header {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 0.75rem;
+  }
+
+  .software-item-header h4,
+  .resource-item h4 {
+    margin-bottom: 0;
+  }
+
+  .software-item p,
+  .resource-item p {
+    margin-bottom: 0.45rem;
+  }
+
+  .software-actions {
+    align-items: center;
+    display: inline-flex;
+    gap: 0.35rem;
+    justify-self: end;
+    min-height: 24px;
+  }
+
+  .software-actions > span:empty {
+    display: none;
+  }
+
+  .github-star-fallback {
+    align-items: stretch;
+    background: #0d1117;
+    border: 1px solid #57606a;
+    border-radius: 0.25rem;
+    color: #f0f6fc;
+    display: inline-flex;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 22px;
+    overflow: hidden;
+    text-decoration: none;
+  }
+
+  .github-star-fallback:hover {
+    background: #161b22;
+    color: #ffffff;
+    text-decoration: none;
+  }
+
+  .github-star-fallback[hidden] {
+    display: none;
+  }
+
+  .github-star-label,
+  .github-star-count {
+    align-items: center;
+    display: inline-flex;
+    min-height: 24px;
+    padding: 0 0.5rem;
+  }
+
+  .github-star-label {
+    gap: 0.3rem;
+  }
+
+  .github-star-count {
+    background: #0b0f14;
+    border-left: 1px solid #30363d;
+  }
+
+  .software-secondary-links {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 0.85rem;
+    gap: 0.25rem;
+  }
+
+  .student-list {
+    display: grid;
+    gap: 1.2rem;
+  }
+
+  .student-group {
+    display: grid;
+    gap: 0.65rem;
+  }
+
+  .student-group-title {
+    margin-bottom: 0;
+  }
+
+  .student-items {
+    display: grid;
+    gap: 0.7rem;
+  }
+
+  .student-item {
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 0.35rem;
+    display: grid;
+    grid-template-columns: minmax(11.5rem, 14rem) minmax(0, 1fr);
+    overflow: hidden;
+  }
+
+  .student-person {
+    align-items: center;
+    background: rgba(0, 0, 0, 0.025);
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    display: grid;
+    gap: 0.65rem;
+    grid-template-columns: 2.65rem minmax(0, 1fr);
+    min-width: 0;
+    padding: 0.7rem 0.75rem;
+  }
+
+  .student-portrait {
+    display: block;
+    height: 2.65rem;
+    position: relative;
+    width: 2.65rem;
+  }
+
+  .student-photo,
+  .student-avatar {
+    align-items: center;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 50%;
+    display: inline-flex;
+    height: 100%;
+    inset: 0;
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+  }
+
+  .student-photo {
+    background: #ffffff;
+    display: block;
+    object-fit: cover;
+    z-index: 2;
+  }
+
+  .student-photo[hidden] {
+    display: none;
+  }
+
+  .student-avatar {
+    background: #f3f5f7;
+    color: rgba(0, 0, 0, 0.7);
+    font-size: 0.8rem;
+    font-weight: 700;
+    justify-content: center;
+    opacity: 1;
+    transition: opacity 120ms ease;
+    z-index: 1;
+  }
+
+  .student-portrait.has-student-photo .student-avatar {
+    opacity: 0;
+  }
+
+  .student-identity {
+    min-width: 0;
+  }
+
+  .student-name,
+  .student-role {
+    display: block;
+    line-height: 1.22;
+  }
+
+  .student-name {
+    color: inherit;
+    font-weight: 700;
+  }
+
+  .student-name:hover {
+    color: inherit;
+  }
+
+  .student-role,
+  .student-meta,
+  .student-note {
+    color: rgba(0, 0, 0, 0.62);
+    font-size: 0.82rem;
+  }
+
+  .student-role {
+    margin-top: 0.16rem;
+  }
+
+  .student-details {
+    min-width: 0;
+    padding: 0.68rem 0.85rem;
+  }
+
+  .student-project {
+    font-weight: 600;
+    line-height: 1.35;
+    margin-bottom: 0.2rem;
+  }
+
+  .student-meta,
+  .student-note {
+    line-height: 1.35;
+    margin-bottom: 0;
+  }
+
+  .student-note {
+    font-style: italic;
+    margin-top: 0.15rem;
+  }
+
+  @media (max-width: 991.98px) {
+    .page-body .home-section {
+      padding: 2.25rem 0;
+    }
+
+    .page-body .home-section:first-of-type {
+      padding-top: 1.5rem;
+    }
+
+    .page-body .section-heading {
+      margin-bottom: 0.75rem !important;
+    }
+  }
+
+  @media (max-width: 575.98px) {
+    .page-body .home-section {
+      padding: 1.75rem 0;
+    }
+
+    .page-body .home-section:first-of-type {
+      padding-top: 1.25rem;
+    }
+
+    .alpine-cv-intro,
+    .alpine-cv-section-header,
+    .alpine-cv-entry-header {
+      align-items: start;
+      flex-direction: column;
+    }
+
+    .alpine-cv-stats {
+      justify-content: flex-start;
+    }
+
+    .alpine-cv-entry {
+      padding: 0.68rem 0.72rem;
+    }
+
+    .alpine-cv-media {
+      max-width: 100%;
+    }
+
+    .software-item {
+      grid-template-columns: minmax(0, 1fr);
+      row-gap: 0.35rem;
+    }
+
+    .software-actions {
+      justify-self: start;
+    }
+
+    .funding-item {
+      grid-template-columns: minmax(0, 1fr);
+      row-gap: 0.45rem;
+    }
+
+    .funding-amount {
+      justify-self: start;
+    }
+
+    .student-item {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .student-person {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      border-right: 0;
+    }
+  }
+</style>
+
+<script>
+  (function () {
+    function formatStars(count) {
+      if (!Number.isFinite(count)) return "";
+      if (count >= 1000) {
+        var value = count / 1000;
+        var digits = value < 10 ? 1 : 0;
+        return value.toFixed(digits).replace(/\.0$/, "") + "k";
+      }
+      return String(count);
+    }
+
+    function validCountText(value) {
+      if (Number.isFinite(value)) return formatStars(value);
+      if (typeof value !== "string") return "";
+      var text = value.trim();
+      return /^\d+(?:\.\d+)?[km]?$/i.test(text.replace(/,/g, "")) ? text : "";
+    }
+
+    function loadFallbackCounts() {
+      if (typeof window.fetch !== "function") return;
+      var cache = {};
+      document.querySelectorAll("[data-github-star-fallback]").forEach(function (button) {
+        var user = button.getAttribute("data-github-user");
+        var repo = button.getAttribute("data-github-repo");
+        var counter = button.querySelector("[data-github-star-count]");
+        if (!user || !repo || !counter) return;
+        var key = user + "/" + repo;
+        cache[key] = cache[key] || fetch("https://img.shields.io/github/stars/" + encodeURIComponent(user) + "/" + encodeURIComponent(repo) + ".json")
+          .then(function (response) { return response.ok ? response.json() : null; })
+          .then(function (data) { return validCountText(data && (data.value || data.message)); })
+          .then(function (count) {
+            if (count) return count;
+            return fetch("https://api.github.com/repos/" + encodeURIComponent(user) + "/" + encodeURIComponent(repo))
+              .then(function (response) { return response.ok ? response.json() : null; })
+              .then(function (data) { return validCountText(data && data.stargazers_count); });
+          })
+          .catch(function () { return null; });
+        cache[key].then(function (countText) {
+          if (countText) {
+            counter.textContent = countText;
+          }
+        });
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      loadFallbackCounts();
+    });
+  })();
+</script>
+
+<script type="text/x-mathjax-config"> MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "all" } } }); </script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+processEscapes: true
+}
+});
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+
+  <title>Are time series foundation models useful for scientific applications? | Victor Boussange</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="8bd12426785b8738a29a99b5aed1ad5f" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.e22a2a20712150175b9cd707be2d0584.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="header--fixed">
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+    <div class="container-xl">
+
+      
+      <div class="d-none d-lg-inline-flex">
+        <a class="navbar-brand" href="/">Victor Boussange</a>
+      </div>
+      
+
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+      
+      <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+        <a class="navbar-brand" href="/">Victor Boussange</a>
+      </div>
+      
+
+      
+      
+      <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+        
+        <ul class="navbar-nav d-md-inline-flex">
+          
+
+          
+
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/"><span>🏠 Home</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/studentprojects/"><span>🔬 Student projects</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/software/"><span>🧑🏽‍💻 Software</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/publication/"><span>📄 Publications</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/talks/"><span>🎤 Talks</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/teaching/"><span>🎓 Teaching</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/resources/"><span>📚 Resources</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link  active" href="/post/"><span>💬 Posts</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/pages/alpine_cv/"><span>🏔️ Adventures</span></a>
+          </li>
+
+          
+          
+
+        
+
+          
+        </ul>
+      </div>
+
+      <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+        
+        
+          
+        
+
+        
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+        
+        
+        <li class="nav-item dropdown theme-dropdown">
+          <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item js-set-theme-light">
+              <span>Light</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-dark">
+              <span>Dark</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-auto">
+              <span>Automatic</span>
+            </a>
+          </div>
+        </li>
+        
+
+        
+        
+
+      </ul>
+
+    </div>
+  </nav>
+</header>
+
+
+  </div>
+
+  <div class="page-body">
+    
+    
+    
+
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+<div class="article-container pt-3">
+  <h1>Are time series foundation models useful for scientific applications?</h1>
+
+  
+
+  
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+  <span class="author-highlighted">
+      Victor Boussange</span>
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Feb 20, 2026
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    7 min read
+  </span>
+  
+
+  
+  
+  
+  
+
+  
+  
+
+</div>
+
+  
+
+
+
+
+
+</div>
+
+
+<div class="article-header article-container featured-image-wrapper mt-4 mb-4" style="max-width: 720px; max-height: 360px;">
+  <div style="position: relative">
+    <img src="/post/timeseries_foundation_model/featured_hu983de7d6c651232afdb469bbe86a9146_683192_720x2500_fit_q75_h2_lanczos_3.webp" width="720" height="360" alt="" class="featured-image">
+    <span class="article-header-caption">The <a href="https://en.wikipedia.org/wiki/Lorenz_system" target="_blank" rel="noopener">Lorenz attractor</a>, a chaotic dynamical system decribing atmospheric convection. Can time series foundation models forecast such complex dynamics? Picture from <a href="https://medium.com/quantaphy/the-butterfly-effect-meet-the-lorenz-attractor-381ed89b98ab" target="_blank" rel="noopener">Yash</a></span>
+  </div>
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <script
+	type="module"
+	src="https://gradio.s3-us-west-2.amazonaws.com/6.5.1/gradio.js"
+></script>
+<p>Neuron activity, fish stocks, viral spread, El Niño oscillations, energy demand: these complex phenomena show remarkable patterns that continue to fascinate scientists. Analyzing these dynamics through scientific models (that is, models embedding domain knowledge; e.g., <a href="https://en.wikipedia.org/wiki/Compartmental_models_%28epidemiology%29" target="_blank" rel="noopener">compartmental models</a>) has allowed us to explore and understand the driving forces and mechanisms underlying these dynamical systems.</p>
+<p>At the other end of the modeling spectrum, we have purely data-driven approaches that incorporate no scientific knowledge about the system. These models have their place in the scientific realm because they address a fundamental question: Can you forecast the system with data alone? Or is domain knowledge essential? A purely data-driven model achieving strong predictive performance provides both a scientific baseline <em>and</em> a reality check for domain-informed approaches.</p>
+<p>Designing such baselines has traditionally been challenging, until now. <strong>Chronos-2</strong> is a time series foundation model bringing zero-shot forecasting to the AI4Science community. Zero-shot forecasting means the method works off-the-shelf: plug in your time series dataset and obtain predictions without any training or fine-tuning. In this post, we discuss how <strong>Chronos-2</strong> differs from existing time series forecasting methods, delve into its architectural details, and benchmark it on an interesting scientific application: predicting spiking neuron dynamics 🧠.</p>
+<h2 id="from-linear-autoregressive-models-to-foundation-models-for-time-series-forecasting">From linear autoregressive models to foundation models for time series forecasting</h2>
+<p>Classical data-driven approaches for time series forecasting, such as <a href="https://en.wikipedia.org/wiki/Autoregressive_model" target="_blank" rel="noopener">classical autoregressive models</a>, had limited expressive power for non-linear dynamics.</p>
+<p>The advent of deep learning, particularly <a href="https://en.wikipedia.org/wiki/Recurrent_neural_network" target="_blank" rel="noopener">recurrent neural network architectures</a>, allowed models to capture complex non-linear patterns and temporal dependencies that classical methods missed. But critically, these models faced overfitting problems when only short time series were available, which is quite problematic for scientific applications, where datasets are often shallow.</p>
+<p>An intriguing idea came from <a href="https://arxiv.org/abs/2302.11939" target="_blank" rel="noopener">this paper from 2024</a>, where the authors used GPT-2, a pretrained large language model, and adapted it to predict time series. The approach worked remarkably well: patterns in text are universal, and having seen many of them allowed predicting time series with minimal fine-tuning.</p>
+<p>This was the prelude to <strong>time series foundation models</strong>. Time series foundation models are no longer fine-tuned from LLM backbones, but follow similar training strategies (learning from massive time series corpora). Importantly, they enable zero-shot forecasting; this allows plug-and-play forecasting through in-context learning, where the model learns patterns from the provided context without parameter updates.</p>
+<p>Time series foundation models have shown increasing interest (Google&rsquo;s TimesFM and others demonstrated impressive capabilities) but most remained <em>univariate</em>, treating variables independently and ignoring covariates and multivariate structure inherent to scientific systems. Accounting for covariates (exogenous variables) is critical for scientific applications: for neuron activity, the applied stimulus; for fish stocks, fishing pressure; for energy demand, weather conditions. This limitation considerably restricted the use of these models for scientific applications.</p>
+<h2 id="meet-chronos-2-covariate-informed-multivariate-time-series-forecasting">Meet Chronos-2: covariate-informed multivariate time series forecasting</h2>
+<p>Chronos-2 addresses these limitations. It&rsquo;s a time series foundation model with a transformer-based architecture supporting:</p>
+<ul>
+<li><strong>Multivariate forecasting</strong>: Jointly model co-evolving variables (e.g., coupled climate indices, neural population dynamics)</li>
+<li><strong>Covariate integration</strong>: Incorporate both past-only covariates (observed history) and known future covariates (planned interventions, calendar effects)</li>
+<li><strong>Cross-learning</strong>: Share information across related time series in a batch, particularly valuable when you have multiple related series. We&rsquo;ll discuss this in more detail below</li>
+</ul>
+<p>The base model (120M parameters) runs on a single mid-range GPU, while the small model (28M parameters) is CPU-compatible with less than 1% performance degradation, demonstrating remarkable efficiency. This capability makes it accessible to anyone without high-end infrastructure!</p>
+<p>On comprehensive benchmarks including <a href="https://huggingface.co/spaces/autogluon/fev-bench" target="_blank" rel="noopener">FEV-Bench</a>, <a href="https://huggingface.co/spaces/Salesforce/GIFT-Eval" target="_blank" rel="noopener">GIFT-Eval</a>, and Chronos-Bench-II, Chronos-2 achieves <strong>state-of-the-art zero-shot performance</strong>, with the largest gains on covariate-informed forecasting tasks. For AI4Science, this provides a step-change capability: establishing robust data-driven baselines requires only a few lines of code, allowing researchers to quickly assess the intrinsic predictability of their systems.</p>
+<p><strong>Chronos-2 Model card on HF</strong>: <a href="https://huggingface.co/amazon/chronos-2" target="_blank" rel="noopener">https://huggingface.co/amazon/chronos-2</a></p>
+<h2 id="the-secret-sauce-group-attention">The secret sauce: group attention</h2>
+<p>Time series foundation models approach forecasting differently than classical methods: to leverage transformer architectures, they discretize (patch or tokenize) the continuous signal.</p>
+<p>While decoder-only architectures (like <a href="https://huggingface.co/google/timesfm-2.0-500m-pytorch" target="_blank" rel="noopener">TimesFM</a> or <a href="https://huggingface.co/Salesforce/moirai-2.0-R-small" target="_blank" rel="noopener">Moirai</a>) may seem natural for time series modeling, Chronos-2 uses an <strong>encoder-only architecture</strong> based on a <a href="https://en.wikipedia.org/wiki/T5_%28language_model%29" target="_blank" rel="noopener">T5</a> variant with rotary position embeddings. These embeddings are now a standard technique in modern transformers; see this excellent <a href="https://huggingface.co/blog/designing-positional-encoding" target="_blank" rel="noopener">HF blog post on positional encodings</a> for more details.</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="https://arxiv.org/html/2510.15821v1/x1.png" alt="Chronos-2 architecture" loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+<em>Figure: Chronos-2 architecture showing patching, time attention, and group attention layers. Source: <a href="https://arxiv.org/abs/2510.15821" target="_blank" rel="noopener">Chronos-2 paper</a></em></p>
+<p>Chronos-2&rsquo;s core innovation is <strong>group attention</strong> in the transformer stack. Traditional time series transformers apply self-attention along the temporal dimension. Chronos-2 alternates between two attention mechanisms:</p>
+<ul>
+<li><strong>Time attention</strong>: Aggregates information across patches within a single time series (capturing temporal dependencies)</li>
+<li><strong>Group attention</strong>: Aggregates information across all series within a group at each patch index (capturing cross-series patterns)</li>
+</ul>
+<p>Together with the patching and masking strategy, this mechanism naturally handles diverse scenarios: single time series, multiple series sharing metadata, variates of a multivariate series, or targets with associated covariates. The model infers variable interactions <em>in-context</em> without architectural changes per task.</p>
+<p>Critically, compared to concatenating covariates for the multivariate setting (as <a href="https://huggingface.co/Salesforce/moirai-1.0-R-base" target="_blank" rel="noopener">Moirai-1</a> does) which leads to quadratic scaling, the group attention mechanism scales linearly with the number of variates $V$.</p>
+<p>Since Chronos and GIFT-Eval are primarily univariate corpus datasets, Chronos-2 leverages synthetic data for multivariate capabilities. The training data combines univariate generators (AR models, exponential smoothing, trend-seasonality decompositions) with multivariatizers that impose instantaneous and temporal correlations on sampled univariate series. Combined with curated univariate data, this enables robust cross-task generalization.</p>
+<h2 id="putting-chronos-2-on-the-test-bench-spiking-neuron-dynamics">Putting Chronos-2 on the test bench: spiking neuron dynamics</h2>
+<p>Let&rsquo;s stress-test Chronos-2 on an important problem in neuroscience: neural dynamics. Our goal here is to predict neural firing 🧠🔥.</p>
+<div align="center">
+<p><a href="https://youtu.be/lhkK6jURljs" target="_blank" rel="noopener">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="https://img.youtube.com/vi/lhkK6jURljs/0.jpg" alt="Firing neuron visualization" loading="lazy" data-zoomable /></div>
+  </div></figure>
+</a></p>
+<p><em>A neuron firing in real-time. Calcium waves sweep along the cell body as the neuron spikes. The complex dynamics we&rsquo;re trying to predict: can a purely data-driven model forecast when and how these firing patterns emerge? (UC Berkeley images by Na Ji)</em></p>
+</div>
+<p>We&rsquo;ll use the <strong><a href="https://en.wikipedia.org/wiki/FitzHugh%E2%80%93Nagumo_model" target="_blank" rel="noopener">FitzHugh-Nagumo model</a></strong>, a simplified neuron model exhibiting complex dynamics from steady states to limit cycles to <a href="https://en.wikipedia.org/wiki/Attractor" target="_blank" rel="noopener">chaotic attractors</a>. The latter regime echoes the butterfly effect: although the system is fully deterministic, the nonlinearity is such that long-term prediction becomes impossible.</p>
+<p>The model describes a neuron&rsquo;s membrane potential $v$ and recovery variable $w$ driven by external forcing $f(t)$:</p>
+<p>$$\frac{dv}{dt} = (1 - v) \cdot v \cdot (v - a) - w + f(t)$$</p>
+<p>$$\frac{dw}{dt} = \varepsilon \cdot (v - b \cdot w)$$</p>
+<p>We generate diverse time series by varying parameters $a$ (excitability threshold), $b$ (recovery strength), $\varepsilon$ (recovery timescale), and forcing patterns (sinusoidal external stimulus).</p>
+<p>This parameter space spans three dynamical regimes: stable fixed points (low excitability), limit cycles (sustained oscillations), and near-chaotic dynamics where long-term prediction becomes infeasible. We test whether Chronos-2 can forecast across these regimes in a zero-shot manner.</p>
+<h3 id="getting-started-with-chronos-2">Getting Started with Chronos-2</h3>
+<p>To use Chronos-2, first install the package:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pip install chronos
+</span></span></code></pre></div><p>For basic inference, load the model and call <code>predict_df</code> with your data:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">chronos</span> <span class="kn">import</span> <span class="n">BaseChronosPipeline</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">pipeline</span> <span class="o">=</span> <span class="n">BaseChronosPipeline</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;amazon/chronos-2&#34;</span><span class="p">,</span>  <span class="c1"># or &#34;autogluon/chronos-2-small&#34; for CPU</span>
+</span></span><span class="line"><span class="cl">    <span class="n">device_map</span><span class="o">=</span><span class="s2">&#34;cuda&#34;</span>     <span class="c1"># or &#34;cpu&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">predictions</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">predict_df</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">context_df</span><span class="p">,</span>          <span class="c1"># Historical data</span>
+</span></span><span class="line"><span class="cl">    <span class="n">prediction_length</span><span class="o">=</span><span class="n">H</span><span class="p">,</span> <span class="c1"># Forecast horizon</span>
+</span></span><span class="line"><span class="cl">    <span class="n">id_column</span><span class="o">=</span><span class="s1">&#39;series_id&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">timestamp_column</span><span class="o">=</span><span class="s1">&#39;timestamp&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">target</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span>         <span class="c1"># Target variable(s)</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span></code></pre></div><p>Check out the <a href="https://github.com/amazon-science/chronos-forecasting/blob/main/notebooks/chronos-2-quickstart.ipynb" target="_blank" rel="noopener">quickstart notebook</a> for more comprehensive examples.</p>
+<h3 id="interactive-experiment-forecasting-fitzhugh-nagumo-dynamics">Interactive Experiment: Forecasting FitzHugh-Nagumo Dynamics</h3>
+<p>We created an interactive experiment using Gradio to explore Chronos-2&rsquo;s capabilities on neural dynamics. The setup simulates multiple FitzHugh-Nagumo time series, which serve as context for cross-learning. One series is held out with specific parameter values to test the model&rsquo;s zero-shot forecasting ability.</p>
+<p>The interface allows adjusting the number of context series for cross-learning, varying FitzHugh-Nagumo parameters ($a$, $b$, $\varepsilon$, forcing amplitude and frequency) to explore different dynamical regimes, and toggling whether the forcing signal is provided as a known covariate. The model forecasts both the membrane potential $v$ and recovery variable $w$ simultaneously (multivariate forecasting) while incorporating the external forcing as a covariate.</p>
+<p><gradio-app src="https://vboussange-fitzhug-nagumo-chronos2-explorer.hf.space"></gradio-app></p>
+<p><strong>Results:</strong> Chronos-2 demonstrates impressive forecasting performance across dynamical regimes. When the dynamics exhibit limit cycles, the predictions are nearly indistinguishable from the ground truth. When the system exhibits chaotic behavior (as with the default parameter combination), the model cannot match the ground truth exactly but still captures it accurately over the short to medium term while properly indicating uncertainty in the predictions.</p>
+<h2 id="what-this-means-for-ai4science">What this means for AI4Science</h2>
+<p>Chronos-2 enables researchers to establish data-driven performance benchmarks with minimal effort. If Chronos-2 achieves strong predictive performance, your system has learnable structure from data alone. If it fails, you&rsquo;ve learned something fundamental about intrinsic stochasticity, measurement limitations, or the necessity of domain knowledge. Either way, comparing Chronos-2 against physics-informed models reveals where domain knowledge provides value beyond data. This is scientific insight in itself.</p>
+<p>‼️ <strong>Important caveat</strong>: Ensure your dataset is domain-specific and not represented in pretraining data. While Chronos-2 primarily uses synthetic and public benchmark datasets, verify your application domain wasn&rsquo;t included in training to avoid inflated performance estimates that would undermine scientific conclusions.</p>
+<p>Chronos-2 also supports fine-tuning for developing domain-specific models. Check out the <a href="https://github.com/amazon-science/chronos-forecasting/blob/main/notebooks/chronos-2-quickstart.ipynb" target="_blank" rel="noopener">quickstart notebook</a> for examples of covariate-informed forecasting and fine-tuning.</p>
+<hr>
+<p><em>Model weights, code, and documentation available at <a href="https://github.com/amazon-science/chronos-forecasting" target="_blank" rel="noopener">amazon-science/chronos-forecasting</a> and on the <a href="https://huggingface.co/amazon/chronos-2" target="_blank" rel="noopener">Hugging Face Hub</a></em></p>
+
+    </div>
+
+    
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/spatio-temporal-forecasting/">Spatio-temporal forecasting</a>
+  
+  <a class="badge badge-light" href="/tag/python/">Python</a>
+  
+</div>
+
+
+
+<div class="share-box">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://victorboussange.com/post/timeseries_foundation_model/&amp;text=Are%20time%20series%20foundation%20models%20useful%20for%20scientific%20applications?" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://victorboussange.com/post/timeseries_foundation_model/&amp;t=Are%20time%20series%20foundation%20models%20useful%20for%20scientific%20applications?" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Are%20time%20series%20foundation%20models%20useful%20for%20scientific%20applications?&amp;body=https://victorboussange.com/post/timeseries_foundation_model/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://victorboussange.com/post/timeseries_foundation_model/&amp;title=Are%20time%20series%20foundation%20models%20useful%20for%20scientific%20applications?" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=Are%20time%20series%20foundation%20models%20useful%20for%20scientific%20applications?%20https://victorboussange.com/post/timeseries_foundation_model/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://victorboussange.com/post/timeseries_foundation_model/&amp;title=Are%20time%20series%20foundation%20models%20useful%20for%20scientific%20applications?" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="https://victorboussange.com"><img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_hu17fe142d2d9ea2daa3913aa53535eec6_854723_270x270_fill_q75_lanczos_center.jpg" alt="Victor Boussange"></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="https://victorboussange.com">Victor Boussange</a></h5>
+      <h6 class="card-subtitle">Applied ML researcher</h6>
+      <p class="card-text">AI for science</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+    <li>
+      <a href="mailto:vic.boussange@gmail.com" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://scholar.google.com/citations?user=SaQH5YoAAAAJ&amp;hl=en" target="_blank" rel="noopener">
+        <i class="ai ai-google-scholar"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/vboussange" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://www.linkedin.com/in/vboussange/" target="_blank" rel="noopener">
+        <i class="fab fa-linkedin"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/uploads/cv.pdf" >
+        <i class="ai ai-cv"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://orcid.org/0000-0002-4202-3599" target="_blank" rel="noopener">
+        <i class="ai ai-orcid"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+  
+
+
+
+  
+  
+  
+    
+  
+  
+    <p class="footer-last-updated">Last updated: Jul 22, 2026</p>
+  
+
+  
+</footer>
+
+    </div>
+    
+  </div>
+
+      
+
+    
+    <script src="/js/vendor-bundle.min.3d946de2e8784a477845261d87025092.js"></script>
+
+    
+    
+    
+      
+
+      
+      
+
+      
+
+      
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/highlight.min.js" integrity="sha512-Ypjm0o7jOxAd4hpdoppSEN0TQOC19UtPAqD+4s5AlXmUvbmmS/YMxYqAqarQYyxTnB6/rqip9qcxlNB/3U9Wdg==" crossorigin="anonymous"></script>
+        
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/r.min.js" crossorigin="anonymous"></script>
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/latex.min.js" crossorigin="anonymous"></script>
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/julia.min.js" crossorigin="anonymous"></script>
+        
+      
+
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js" integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js" integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+
+    
+    
+    
+    <script id="page-data" type="application/json">{"use_headroom":true}</script>
+
+    
+    
+      <script src="/js/wowchemy-headroom.e8fd2d733eef6a8bbbe0539398fc0547.js" type="module"></script>
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/en/js/wowchemy.min.de33c90527762392d440555c36739dd9.js"></script>
+
+    
+    
+    
+    
+    
+    
+      
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <script src="/js/wowchemy-publication.b0d291ed6d27eacec233e6cf5204f99a.js" type="module"></script>
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Software | Victor Boussange</title>
+    <link>https://victorboussange.com/software/</link>
+      <atom:link href="https://victorboussange.com/software/index.xml" rel="self" type="application/rss+xml" />
+    <description>Software</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Thu, 01 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://victorboussange.com/media/icon_hua3c898eed18b98379688891d5011a1d0_203625_512x512_fill_lanczos_center_3.png</url>
+      <title>Software</title>
+      <link>https://victorboussange.com/software/</link>
+    </image>
+    
+    <item>
+      <title>AMJAX</title>
+      <link>https://victorboussange.com/software/amjax/</link>
+      <pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://victorboussange.com/software/amjax/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>MuScaRi</title>
+      <link>https://victorboussange.com/software/muscari/</link>
+      <pubDate>Tue, 08 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://victorboussange.com/software/muscari/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>jaxscape</title>
+      <link>https://victorboussange.com/software/jaxscape/</link>
+      <pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://victorboussange.com/software/jaxscape/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>HybridDynamicModels.jl</title>
+      <link>https://victorboussange.com/software/hybrid-dynamic-models/</link>
+      <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>https://victorboussange.com/software/hybrid-dynamic-models/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>HighDimPDE.jl</title>
+      <link>https://victorboussange.com/software/highdimpde/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      <guid>https://victorboussange.com/software/highdimpde/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>EcoEvoModelZoo.jl</title>
+      <link>https://victorboussange.com/software/ecoevomodelzoo/</link>
+      <pubDate>Sun, 26 Mar 2023 00:00:00 +0000</pubDate>
+      <guid>https://victorboussange.com/software/ecoevomodelzoo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>EvoId.jl</title>
+      <link>https://victorboussange.com/software/evoid/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      <guid>https://victorboussange.com/software/evoid/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

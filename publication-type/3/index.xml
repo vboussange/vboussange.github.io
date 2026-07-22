@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>3 | Victor Boussange</title>
+    <link>https://victorboussange.com/publication-type/3/</link>
+      <atom:link href="https://victorboussange.com/publication-type/3/index.xml" rel="self" type="application/rss+xml" />
+    <description>3</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Mon, 05 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://victorboussange.com/media/icon_hua3c898eed18b98379688891d5011a1d0_203625_512x512_fill_lanczos_center_3.png</url>
+      <title>3</title>
+      <link>https://victorboussange.com/publication-type/3/</link>
+    </image>
+    
+    <item>
+      <title>A Unified Framework for Prioritizing Habitat and Connectivity Conservation through Analytical Sensitivity</title>
+      <link>https://victorboussange.com/publication/connectivity-conservation-sensitivity/</link>
+      <pubDate>Mon, 05 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://victorboussange.com/publication/connectivity-conservation-sensitivity/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Clustering biomes from space: from pixels to foundation models</title>
+      <link>https://victorboussange.com/publication/clustering-biomes-from-space/</link>
+      <pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://victorboussange.com/publication/clustering-biomes-from-space/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Multi-scale species richness estimation with deep learning</title>
+      <link>https://victorboussange.com/publication/multiscale-species-richness-deep-learning/</link>
+      <pubDate>Tue, 01 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://victorboussange.com/publication/multiscale-species-richness-deep-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Processes analogous to ecological interactions and dispersal shape the dynamics of economic activities</title>
+      <link>https://victorboussange.com/publication/econobiology/</link>
+      <pubDate>Tue, 24 Jan 2023 00:00:00 +0000</pubDate>
+      <guid>https://victorboussange.com/publication/econobiology/</guid>
+      <description>&lt;!-- 
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    Click the &lt;em&gt;Cite&lt;/em&gt; button above to demo the feature to enable visitors to import publication metadata into their reference management software.
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    Create your slides in Markdown - click the &lt;em&gt;Slides&lt;/em&gt; button to check out the example.
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+Supplementary notes can be added here, including [code, math, and images](https://wowchemy.com/docs/writing-markdown-latex/). --&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

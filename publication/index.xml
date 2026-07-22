@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Publications | Victor Boussange</title>
+    <link>https://victorboussange.com/publication/</link>
+      <atom:link href="https://victorboussange.com/publication/index.xml" rel="self" type="application/rss+xml" />
+    <description>Publications</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Fri, 09 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://victorboussange.com/media/icon_hua3c898eed18b98379688891d5011a1d0_203625_512x512_fill_lanczos_center_3.png</url>
+      <title>Publications</title>
+      <link>https://victorboussange.com/publication/</link>
+    </image>
+    
+    <item>
+      <title>Chaotic Slow Slip Events in New Zealand from Two Coupled Slip Patches: A Proof of Concept</title>
+      <link>https://victorboussange.com/publication/chaotic-slow-slip-events/</link>
+      <pubDate>Fri, 09 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://victorboussange.com/publication/chaotic-slow-slip-events/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>A Unified Framework for Prioritizing Habitat and Connectivity Conservation through Analytical Sensitivity</title>
+      <link>https://victorboussange.com/publication/connectivity-conservation-sensitivity/</link>
+      <pubDate>Mon, 05 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://victorboussange.com/publication/connectivity-conservation-sensitivity/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Biodiversity Profile Estimation with Earth Observation</title>
+      <link>https://victorboussange.com/publication/biodiversity-profile-estimation-earth-observation/</link>
+      <pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://victorboussange.com/publication/biodiversity-profile-estimation-earth-observation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Clustering biomes from space: from pixels to foundation models</title>
+      <link>https://victorboussange.com/publication/clustering-biomes-from-space/</link>
+      <pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://victorboussange.com/publication/clustering-biomes-from-space/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Multi-scale species richness estimation with deep learning</title>
+      <link>https://victorboussange.com/publication/multiscale-species-richness-deep-learning/</link>
+      <pubDate>Tue, 01 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://victorboussange.com/publication/multiscale-species-richness-deep-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Spatial biodiversity indicators and a composite index for conservation prioritization in Switzerland</title>
+      <link>https://victorboussange.com/publication/spatial-biodiversity-indicators-switzerland/</link>
+      <pubDate>Tue, 10 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>https://victorboussange.com/publication/spatial-biodiversity-indicators-switzerland/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>A calibration framework to improve mechanistic forecasts with hybrid dynamic models</title>
+      <link>https://victorboussange.com/publication/mini-batching/</link>
+      <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>https://victorboussange.com/publication/mini-batching/</guid>
+      <description>&lt;!-- 
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    Click the &lt;em&gt;Cite&lt;/em&gt; button above to demo the feature to enable visitors to import publication metadata into their reference management software.
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    Create your slides in Markdown - click the &lt;em&gt;Slides&lt;/em&gt; button to check out the example.
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+Supplementary notes can be added here, including [code, math, and images](https://wowchemy.com/docs/writing-markdown-latex/). --&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Differentiable Programming for Differential Equations: A Review</title>
+      <link>https://victorboussange.com/publication/differentiable-programming-review/</link>
+      <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>https://victorboussange.com/publication/differentiable-programming-review/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Species loss in key habitats accelerates regional food web disruption</title>
+      <link>https://victorboussange.com/publication/species-loss-food-web-disruption/</link>
+      <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>https://victorboussange.com/publication/species-loss-food-web-disruption/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Temporal horizons in forecasting: a performance-learnability trade-off</title>
+      <link>https://victorboussange.com/publication/temporal-horizons-forecasting/</link>
+      <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>https://victorboussange.com/publication/temporal-horizons-forecasting/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>A species-level multi-trophic metaweb for Switzerland</title>
+      <link>https://victorboussange.com/publication/swiss-multitrophic-metaweb/</link>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://victorboussange.com/publication/swiss-multitrophic-metaweb/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Accelerating renewable energy development while enhancing biodiversity protection in Switzerland</title>
+      <link>https://victorboussange.com/publication/re-bd-annual-report-2024/</link>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://victorboussange.com/publication/re-bd-annual-report-2024/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Paleoenvironments shaped the exchange of terrestrial vertebrates across Wallace’s Line</title>
+      <link>https://victorboussange.com/publication/dream/</link>
+      <pubDate>Fri, 07 Jul 2023 00:00:00 +0000</pubDate>
+      <guid>https://victorboussange.com/publication/dream/</guid>
+      <description>&lt;!-- 
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    Click the &lt;em&gt;Cite&lt;/em&gt; button above to demo the feature to enable visitors to import publication metadata into their reference management software.
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    Create your slides in Markdown - click the &lt;em&gt;Slides&lt;/em&gt; button to check out the example.
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+Supplementary notes can be added here, including [code, math, and images](https://wowchemy.com/docs/writing-markdown-latex/). --&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Processes analogous to ecological interactions and dispersal shape the dynamics of economic activities</title>
+      <link>https://victorboussange.com/publication/econobiology/</link>
+      <pubDate>Tue, 24 Jan 2023 00:00:00 +0000</pubDate>
+      <guid>https://victorboussange.com/publication/econobiology/</guid>
+      <description>&lt;!-- 
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    Click the &lt;em&gt;Cite&lt;/em&gt; button above to demo the feature to enable visitors to import publication metadata into their reference management software.
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    Create your slides in Markdown - click the &lt;em&gt;Slides&lt;/em&gt; button to check out the example.
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+Supplementary notes can be added here, including [code, math, and images](https://wowchemy.com/docs/writing-markdown-latex/). --&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Ancient sedimentary DNA to forecast trajectories of ecosystem under climate change</title>
+      <link>https://victorboussange.com/publication/ancient-dna-forecast-ecosystems/</link>
+      <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
+      <guid>https://victorboussange.com/publication/ancient-dna-forecast-ecosystems/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Forward and inverse modelling of eco-evolutionary dynamics in ecological and economic systems</title>
+      <link>https://victorboussange.com/publication/phd_thesis/</link>
+      <pubDate>Wed, 05 Oct 2022 00:00:00 +0000</pubDate>
+      <guid>https://victorboussange.com/publication/phd_thesis/</guid>
+      <description>&lt;!-- 
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    Click the &lt;em&gt;Cite&lt;/em&gt; button above to demo the feature to enable visitors to import publication metadata into their reference management software.
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    Create your slides in Markdown - click the &lt;em&gt;Slides&lt;/em&gt; button to check out the example.
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+Supplementary notes can be added here, including [code, math, and images](https://wowchemy.com/docs/writing-markdown-latex/). --&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Eco-evolutionary model on spatial graphs reveals how habitat structure affects phenotypic differentiation</title>
+      <link>https://victorboussange.com/publication/differentiation-in-graphs/</link>
+      <pubDate>Wed, 06 Jul 2022 00:00:00 +0000</pubDate>
+      <guid>https://victorboussange.com/publication/differentiation-in-graphs/</guid>
+      <description>&lt;!-- 
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    Click the &lt;em&gt;Cite&lt;/em&gt; button above to demo the feature to enable visitors to import publication metadata into their reference management software.
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    Create your slides in Markdown - click the &lt;em&gt;Slides&lt;/em&gt; button to check out the example.
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+Supplementary notes can be added here, including [code, math, and images](https://wowchemy.com/docs/writing-markdown-latex/). --&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Deep learning approximations for non-local nonlinear PDEs with Neumann boundary conditions</title>
+      <link>https://victorboussange.com/publication/deep_learning_for_pdes/</link>
+      <pubDate>Thu, 05 May 2022 00:00:00 +0000</pubDate>
+      <guid>https://victorboussange.com/publication/deep_learning_for_pdes/</guid>
+      <description>&lt;!-- 
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    Click the &lt;em&gt;Cite&lt;/em&gt; button above to demo the feature to enable visitors to import publication metadata into their reference management software.
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    Create your slides in Markdown - click the &lt;em&gt;Slides&lt;/em&gt; button to check out the example.
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+Supplementary notes can be added here, including [code, math, and images](https://wowchemy.com/docs/writing-markdown-latex/). --&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Episodic mineralising fluid injection through chemical shear zones</title>
+      <link>https://victorboussange.com/publication/episodic-mineralising-fluid-injection/</link>
+      <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
+      <guid>https://victorboussange.com/publication/episodic-mineralising-fluid-injection/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
