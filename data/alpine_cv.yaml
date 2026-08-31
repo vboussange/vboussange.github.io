@@ -566,6 +566,13 @@ categories:
     title: Alpinism
     summary: "Classic alpine routes and high peaks."
     entries:
+      - title: "Matterhorn 4478m, Lion ridge - Hornli ridge traverse"
+        url: "https://www.camptocamp.org/routes/56748/fr/cervin-traversee-lion-hornli"
+        grade: "AD"
+        location: "Valais, Switzerland; Aosta Valley, Italy"
+        date: "August 2026"
+        year: 2026
+        rating: 4.5
       - title: "Arête de l'Argentine 2421m, E–W traverse"
         url: "https://www.camptocamp.org/routes/55475/fr/arete-de-l-argentine-traversee-e-w"
         grade: "AD+"
