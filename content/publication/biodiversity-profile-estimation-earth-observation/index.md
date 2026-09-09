@@ -13,12 +13,12 @@ publication: ""
 publication_short: ""
 abstract: ""
 summary: ""
-status_note: "Accepted at the International Association for Pattern Recognition Workshop on Pattern Recognition in Remote Sensing 2026."
+status_note: "Accepted in the International Conference on Pattern Recognition (ICPR) 2026, Pattern Recognition in Remote Sensing workshop."
 tags:
 - Biodiversity science
 - Geospatial deep learning
 featured: false
-url_pdf: ""
+url_pdf: "https://icpr2026orgteam.github.io/WSpapers/pdfs/paper_0131.pdf"
 url_code: ""
 url_dataset: ""
 url_poster: ""

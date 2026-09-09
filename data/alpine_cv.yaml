@@ -1,4 +1,3 @@
-intro: "A personal log of selected mountain, sailing, and self-powered trips."
 categories:
   - slug: sailing
     title: Sailing
@@ -436,7 +435,6 @@ categories:
         year: 2022
       - title: "Haute Route Chamonix - Zermatt"
         duration: "7 days"
-        role: "group leader"
         date: "February 2022"
         year: 2022
         mode: "🎿"
@@ -490,7 +488,6 @@ categories:
         year: 2021
       - title: "Pigne d'Arolla 3787m"
         grade: "PD+"
-        role: "group leader"
         year: 2021
       - title: "Pointes d'Oren 3520m"
         grade: "PD"
@@ -500,7 +497,6 @@ categories:
         year: 2021
       - title: "Graubünden Haute Route"
         duration: "7 days"
-        role: "group leader"
         year: 2021
         mode: "🎿"
         media:
@@ -521,15 +517,12 @@ categories:
             mode: "🎿"
       - title: "Piz Fess 2881m"
         grade: "PD"
-        role: "group leader"
         year: 2021
       - title: "Piz Tomül 2946m"
         grade: "PD"
-        role: "group leader"
         year: 2021
       - title: "Wissigstock 2887m"
         grade: "PD"
-        role: "group leader"
         year: 2019
       - title: "Piz Calderas 3397m"
         grade: "AD+"
@@ -542,18 +535,15 @@ categories:
         year: 2019
       - title: "Pizzo Centrale 2999m, from Gemsstock / S ridge"
         grade: "AD-"
-        role: "group leader"
         year: 2019
       - title: "Hengelhorn"
         grade: "AD"
         year: 2019
       - title: "Spitzmielen 2501m"
         grade: "PD+"
-        role: "group leader"
         year: 2019
       - title: "Rossstock 2460m"
         grade: "PD"
-        role: "group leader"
         year: 2019
       - title: "Rütistein 2025m"
         grade: "PD"
@@ -663,10 +653,8 @@ categories:
         year: 2022
       - title: "Vrenelisgärtli 2905m, normal route from Glärnischhütte"
         grade: "PD"
-        role: "group leader"
         year: 2021
       - title: "Spaghetti tour"
-        role: "group leader"
         year: 2021
         media:
           - type: youtube
@@ -785,10 +773,9 @@ categories:
 
   - slug: canyoning
     title: Canyoning
-    summary: "Canyon descents and group-led trips."
+    summary: "Canyon descents."
     entries:
       - title: "Barranco de Arandari"
-        role: "group leader"
         location: "Pyrenees, Spain"
         year: 2021
       - title: "Tiger Snake"
@@ -799,26 +786,21 @@ categories:
         year: 2016
       - title: "Tourmoun"
         grade: "v3a3II"
-        role: "group leader"
         location: "Pyrenees, France"
         year: 2013
       - title: "Soussoueou"
         grade: "v3a3II"
-        role: "group leader"
         location: "Pyrenees, France"
         year: 2013
       - title: "Gorgol"
         grade: "v4a4III"
-        role: "group leader"
         location: "Pyrenees, France"
         year: 2013
       - title: "Forronías"
-        role: "group leader"
         location: "Pyrenees, France"
         year: 2013
       - title: "Bitet inférieur"
         grade: "v4a3IV"
-        role: "group leader"
         location: "Pyrenees, France"
         year: 2013
       - title: "Peonera Inferior"
@@ -839,7 +821,6 @@ categories:
     summary: "Self-powered bike and mountain journeys."
     entries:
       - title: "From the first to the last droplet of the Rhône river"
-        role: "group leader"
         children:
           - title: "Rhône Glacier to Geneva"
             duration: "5 days"
@@ -858,7 +839,6 @@ categories:
             year: 2018
       - title: "Tour du Mont Blanc"
         duration: "5 days"
-        role: "group leader"
         year: 2019
         note: "Mountain biking."
         media:

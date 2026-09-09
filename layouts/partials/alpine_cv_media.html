@@ -1,9 +1,10 @@
 {{- $media := . -}}
 {{- if eq $media.type "youtube" -}}
   {{- with $media.id -}}
-    <div class="alpine-cv-media alpine-cv-media-youtube">
-      <iframe src="https://www.youtube.com/embed/{{ . }}" title="{{ $media.title | default "Adventures video" }}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-    </div>
+    {{- $title := $media.title | default "Adventures video" -}}
+    <a class="alpine-cv-media-icon alpine-cv-media-icon-youtube" href="https://www.youtube.com/watch?v={{ . }}" target="_blank" rel="noopener" aria-label="Watch {{ $title }} on YouTube" title="Watch {{ $title }} on YouTube">
+      <i class="fab fa-youtube" aria-hidden="true"></i>
+    </a>
   {{- else -}}
     {{- with $media.url -}}
       <p class="alpine-cv-media-link"><a href="{{ . | safeURL }}" target="_blank" rel="noopener">{{ $media.title | default "Video" }}</a></p>
@@ -11,11 +12,10 @@
   {{- end -}}
 {{- else if eq $media.type "instagram" -}}
   {{- with $media.id -}}
-    <div class="alpine-cv-media alpine-cv-media-instagram">
-      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/{{ . }}/" data-instgrm-version="14"></blockquote>
-      <p class="alpine-cv-media-link"><a href="https://www.instagram.com/p/{{ . }}/" target="_blank" rel="noopener">{{ $media.title | default "Instagram post" }}</a></p>
-      <script async src="//www.instagram.com/embed.js"></script>
-    </div>
+    {{- $title := $media.title | default "Instagram post" -}}
+    <a class="alpine-cv-media-icon alpine-cv-media-icon-instagram" href="https://www.instagram.com/p/{{ . }}/" target="_blank" rel="noopener" aria-label="Open {{ $title }} on Instagram" title="Open {{ $title }} on Instagram">
+      <i class="fab fa-instagram" aria-hidden="true"></i>
+    </a>
   {{- end -}}
 {{- else -}}
   {{- with $media.url -}}

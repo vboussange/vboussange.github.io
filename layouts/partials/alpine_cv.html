@@ -1,17 +1,6 @@
 {{- $data := . -}}
 {{- if $data -}}
-  {{- $total := 0 -}}
-  {{- range $data.categories -}}
-    {{- $total = add $total (len (default (slice) .entries)) -}}
-  {{- end -}}
 <div class="alpine-cv">
-  <div class="alpine-cv-intro">
-    {{ with $data.intro }}<p>{{ . | markdownify | emojify }}</p>{{ end }}
-    <div class="alpine-cv-stats" aria-label="Adventures summary">
-      <span>{{ $total }} entries</span>
-    </div>
-  </div>
-
   <nav class="alpine-cv-nav" aria-label="Adventures sections">
     {{ range $data.categories }}
       {{ $slug := .slug | default (.title | urlize) }}
@@ -28,7 +17,6 @@
             <h2>{{ .title | markdownify | emojify }}</h2>
             {{ with .summary }}<p>{{ . | markdownify | emojify }}</p>{{ end }}
           </div>
-          <span class="alpine-cv-count">{{ len (default (slice) .entries) }}</span>
         </header>
         <div class="alpine-cv-entry-list">
           {{ range .entries }}

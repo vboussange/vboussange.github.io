@@ -16,7 +16,7 @@ organizations:
   url: https://www.epfl.ch
 
 # Short bio (displayed in user profile at end of posts)
-bio: AI for science
+bio: ML for science
 
 # Interests to show in About widget
 interests:
