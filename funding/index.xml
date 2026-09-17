@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Funding | Victor Boussange</title>
+    <link>https://victorboussange.com/funding/</link>
+      <atom:link href="https://victorboussange.com/funding/index.xml" rel="self" type="application/rss+xml" />
+    <description>Funding</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Wed, 01 Jan 2025 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://victorboussange.com/media/icon_hua3c898eed18b98379688891d5011a1d0_203625_512x512_fill_lanczos_center_3.png</url>
+      <title>Funding</title>
+      <link>https://victorboussange.com/funding/</link>
+    </image>
+    
+    <item>
+      <title>EcoDynCast</title>
+      <link>https://victorboussange.com/funding/ecodyncast/</link>
+      <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>https://victorboussange.com/funding/ecodyncast/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>A course on reproducible research, data pipelines, and scientific computing</title>
+      <link>https://victorboussange.com/funding/cords-course/</link>
+      <pubDate>Tue, 11 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://victorboussange.com/funding/cords-course/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>yDiv workshop funding</title>
+      <link>https://victorboussange.com/funding/ydiv-julia-workshop/</link>
+      <pubDate>Thu, 01 Aug 2024 00:00:00 +0000</pubDate>
+      <guid>https://victorboussange.com/funding/ydiv-julia-workshop/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>WSL Biodiversity Center Innovative Workshop Grant</title>
+      <link>https://victorboussange.com/funding/wsl-biodiversity-workshop/</link>
+      <pubDate>Wed, 01 Mar 2023 00:00:00 +0000</pubDate>
+      <guid>https://victorboussange.com/funding/wsl-biodiversity-workshop/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
